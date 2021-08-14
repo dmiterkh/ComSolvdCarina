@@ -13,7 +13,6 @@ import com.qaprosoft.carina.demo.gui.pages.zonliner.ContactsPageOnliner;
 public class FooterMenu extends AbstractUIObject {
 	
     @FindBy(xpath = "//a[@href='https://blog.onliner.by/vacancy']")
-
     private ExtendedWebElement vacanciesLink;
 
     @FindBy(xpath = "//a[@href='https://people.onliner.by/contacts']")
