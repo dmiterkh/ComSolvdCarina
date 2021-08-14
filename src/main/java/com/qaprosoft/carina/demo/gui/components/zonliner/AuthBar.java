@@ -6,37 +6,20 @@ import org.openqa.selenium.support.FindBy;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractUIObject;
-//import com.qaprosoft.carina.demo.gui.pages.CompareModelsPage;
-//import com.qaprosoft.carina.demo.gui.pages.HomePage;
-//import com.qaprosoft.carina.demo.gui.pages.NewsPage;
+import com.qaprosoft.carina.demo.gui.pages.zonliner.LoginPageOnliner;
 
 public class AuthBar extends AbstractUIObject {
-    @FindBy(linkText = "Home")
-    private ExtendedWebElement homeLink;
-
-    @FindBy(xpath = "//div[@class='footer-inner']//a[contains(text(),'Compare')]")
-    private ExtendedWebElement compareLink;
-    
-    @FindBy(linkText = "News")
-    private ExtendedWebElement newsLink;
+	
+	@FindBy(xpath = "//div[@id='userbar']//div//div//div//div[text()='Вход']")
+    private ExtendedWebElement authLink;
 
     public AuthBar(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
     }
 
-//    public HomePage openHomePage() {
-//        homeLink.click();
-//        return new HomePage(driver);
-//    }
-//
-//    public CompareModelsPage openComparePage() {
-//        compareLink.click();
-//        return new CompareModelsPage(driver);
-//    }
-//    
-//    public NewsPage openNewsPage() {
-//        newsLink.click();
-//        return new NewsPage(driver);
-//    }
+    public LoginPageOnliner clickOnAuthLink() {
+        authLink.click(5);
+        return new LoginPageOnliner(driver);
+    }
 }
 

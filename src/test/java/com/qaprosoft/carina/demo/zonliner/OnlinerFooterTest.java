@@ -21,9 +21,7 @@ import com.qaprosoft.carina.demo.gui.pages.zonliner.ContactsPageOnliner;
 import com.qaprosoft.carina.demo.gui.pages.zonliner.VacanciesPageOnliner;
 
 /**
- * This sample shows how create Web test.
- *
- * @author qpsdemo
+ * @author Dmitry Kharevich
  */
 public class OnlinerFooterTest implements IAbstractTest {
 	
@@ -48,7 +46,7 @@ public class OnlinerFooterTest implements IAbstractTest {
     @TestLabel(name = "feature", value = {"web", "regression"})
     public void testFooter2() {
         
-    	// Open Vacancies page
+    	// Open Home page
         HomePageOnliner homePageOnliner = new HomePageOnliner(getDriver());
         homePageOnliner.open();
         Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
@@ -58,7 +56,7 @@ public class OnlinerFooterTest implements IAbstractTest {
         vacanciesPageOnliner.open();
         Assert.assertTrue(vacanciesPageOnliner.isPageOpened(), "Vacancies page is not opened");
         
-        // Return to home page
+        // Return to Home page
         vacanciesPageOnliner.openHomePageOnliner();
         homePageOnliner.open();
         Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page from Vacancies page is not opened");
@@ -68,7 +66,7 @@ public class OnlinerFooterTest implements IAbstractTest {
         contactsPageOnliner.open();
         Assert.assertTrue(contactsPageOnliner.isPageOpened(), "Contacts page is not opened");
         
-        // Return to home page
+        // Return to Home page
         contactsPageOnliner.openHomePageOnliner();
         homePageOnliner.open();
         Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page from Contacts page is not opened");
