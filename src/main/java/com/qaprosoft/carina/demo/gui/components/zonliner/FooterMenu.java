@@ -26,6 +26,7 @@ public class FooterMenu extends AbstractUIObject {
     }
 
     public HomePageOnliner openHomePageOnliner() {
+    	homeLink.scrollTo();
         homeLink.click();
         return new HomePageOnliner(driver);
     }
@@ -40,6 +41,16 @@ public class FooterMenu extends AbstractUIObject {
     	contactsLink.scrollTo();
     	contactsLink.click();
         return new ContactsPageOnliner(driver);
+    }
+    
+    // Additional method
+    public void scrollToBottom() {
+    	vacanciesLink.scrollTo();
+    }
+    
+    // Additional method
+    public void scrollToTop() {
+    	homeLink.scrollTo();
     }
 }
 

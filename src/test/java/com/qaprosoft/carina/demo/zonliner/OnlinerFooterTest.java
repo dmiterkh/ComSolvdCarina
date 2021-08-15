@@ -53,33 +53,25 @@ public class OnlinerFooterTest implements IAbstractTest {
                 
         // Open Vacancies page
         VacanciesPageOnliner vacanciesPageOnliner = homePageOnliner.getFooterMenu().openVacanciesPageOnliner();
-        vacanciesPageOnliner.open();
-        Assert.assertTrue(vacanciesPageOnliner.isPageOpened(), "Vacancies page is not opened");
         
         // Return to Home page
         vacanciesPageOnliner.openHomePageOnliner();
-        homePageOnliner.open();
-        Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page from Vacancies page is not opened");
                
         // Open Contacts page
         ContactsPageOnliner contactsPageOnliner = homePageOnliner.getFooterMenu().openContactsPageOnliner();
-        contactsPageOnliner.open();
-        Assert.assertTrue(contactsPageOnliner.isPageOpened(), "Contacts page is not opened");
         
         // Return to Home page
         contactsPageOnliner.openHomePageOnliner();
-        homePageOnliner.open();
-        Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page from Contacts page is not opened");
         
-        // Open Vacancies page from Contacts page
-        contactsPageOnliner.openVacanciesPageOnliner();
-        vacanciesPageOnliner.open();
-        Assert.assertTrue(vacanciesPageOnliner.isPageOpened(), "Vacancies page from Contacts page is not opened");
-        
+        // Open Vacancies page from Home page
+        vacanciesPageOnliner = homePageOnliner.getFooterMenu().openVacanciesPageOnliner();
+       
         //Open Contacts page from Vacancies page
-        vacanciesPageOnliner.openContactsPageOnliner();
-        contactsPageOnliner.open();
-        Assert.assertTrue(contactsPageOnliner.isPageOpened(), "Contacts page from Vacancies page is not opened");
+        contactsPageOnliner = vacanciesPageOnliner.openContactsPageOnliner();
+        
+        //Open Vacancies page from Contacts page
+        contactsPageOnliner.openVacanciesPageOnliner();
+
 
     }    
 

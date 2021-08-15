@@ -32,14 +32,7 @@ public class HomePageOnliner extends AbstractPage {
     
 //	Sections Bar, Search Filters, Shopping Cart tests 011, 012, 013, 014, 019   
     @FindBy(xpath = "//ul[@class='b-main-navigation']")
-    private SectionsBar sectionsBarLink;
-    
-  //a[@href='https://catalog.onliner.by/']
-  //a[@href='https://catalog.onliner.by/']
-  //a[@href='https://ab.onliner.by']
-  //a[@href='https://r.onliner.by/pk']
-  //a[@href='https://catalog.onliner.by/']
-  // ?????  
+    private SectionsBar sectionsBarLink; 
      
 //	Subsections tests 015   
     @FindBy(xpath = "//div[@class='g-middle-i']")
@@ -52,6 +45,16 @@ public class HomePageOnliner extends AbstractPage {
 //	Footer links tests 018   
     @FindBy(xpath = "//footer[@class='g-bottom']")
     private FooterMenu footerLink;
+    
+    
+    
+    // Additional link
+    @FindBy(xpath = "//a[@href='https://blog.onliner.by/vacancy']")
+    private ExtendedWebElement vacanciesLink;
+    
+    // Additional link
+    @FindBy(xpath = "//img[@class='onliner_logo']")
+    private ExtendedWebElement homeLink;
     
     
     public HomePageOnliner(WebDriver driver) {
@@ -81,5 +84,15 @@ public class HomePageOnliner extends AbstractPage {
     
     public FooterMenu getFooterMenu() {
         return footerLink;
+    }
+    
+    // Additional method
+    public void scrollToBottom() {
+    	vacanciesLink.scrollTo();
+    }
+    
+    // Additional method
+    public void scrollToTop() {
+    	homeLink.scrollTo();
     }
 }
