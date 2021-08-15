@@ -6,37 +6,42 @@ import org.openqa.selenium.support.FindBy;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractUIObject;
-//import com.qaprosoft.carina.demo.gui.pages.CompareModelsPage;
-//import com.qaprosoft.carina.demo.gui.pages.HomePage;
-//import com.qaprosoft.carina.demo.gui.pages.NewsPage;
+import com.qaprosoft.carina.demo.gui.pages.zonliner.CatalogPageOnliner;
+import com.qaprosoft.carina.demo.gui.pages.zonliner.AutomobilePageOnliner;
+import com.qaprosoft.carina.demo.gui.pages.zonliner.RealEstatePageOnliner;
 
 public class SectionsBar extends AbstractUIObject {
-    @FindBy(linkText = "Home")
-    private ExtendedWebElement homeLink;
+	
+    @FindBy(xpath = "//a[@href='https://catalog.onliner.by/']")
+    private ExtendedWebElement catalogLink;
 
-    @FindBy(xpath = "//div[@class='footer-inner']//a[contains(text(),'Compare')]")
-    private ExtendedWebElement compareLink;
-    
-    @FindBy(linkText = "News")
-    private ExtendedWebElement newsLink;
+    @FindBy(xpath = "//li[@class='header-style__item']//a[@href='https://ab.onliner.by']")
+    private ExtendedWebElement automobileLink;
+        
+    @FindBy(xpath = "//a[@href='https://r.onliner.by/pk']")
+    private ExtendedWebElement realEstateLink;
 
     public SectionsBar(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
     }
 
-//    public HomePage openHomePage() {
-//        homeLink.click();
-//        return new HomePage(driver);
-//    }
-//
-//    public CompareModelsPage openComparePage() {
-//        compareLink.click();
-//        return new CompareModelsPage(driver);
-//    }
-//    
-//    public NewsPage openNewsPage() {
-//        newsLink.click();
-//        return new NewsPage(driver);
-//    }
+    public CatalogPageOnliner openCatalogPageOnliner() {
+    	catalogLink.scrollTo();
+        catalogLink.click();
+        return new CatalogPageOnliner(driver);
+    }
+    
+    public AutomobilePageOnliner openAutomobilePageOnliner() {
+    	automobileLink.scrollTo();
+    	automobileLink.click();
+        return new AutomobilePageOnliner(driver);
+    }
+    
+    public RealEstatePageOnliner openRealEstatePageOnliner() {
+    	realEstateLink.scrollTo();
+    	realEstateLink.click();
+        return new RealEstatePageOnliner(driver);
+    }
+    
 }
 

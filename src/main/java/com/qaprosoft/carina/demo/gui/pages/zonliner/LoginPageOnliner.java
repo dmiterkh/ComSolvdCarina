@@ -3,7 +3,8 @@ package com.qaprosoft.carina.demo.gui.pages.zonliner;
 import java.lang.invoke.MethodHandles;
 import java.util.List;
 
-import org.openqa.selenium.SearchContext;
+import com.qaprosoft.carina.core.foundation.utils.Configuration;
+import com.qaprosoft.carina.core.foundation.utils.R;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
@@ -11,10 +12,9 @@ import org.slf4j.LoggerFactory;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractPage;
-import com.qaprosoft.carina.core.gui.AbstractUIObject;
-import com.qaprosoft.carina.demo.gui.components.NewsItem;
 import com.qaprosoft.carina.demo.gui.components.zonliner.AuthBar;
 import com.qaprosoft.carina.demo.gui.pages.zonliner.HomePageOnliner;
+import com.qaprosoft.carina.demo.gui.pages.zonliner.AuthorizedHomePageOnliner;
 
 public class LoginPageOnliner extends AbstractPage {
     private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
@@ -24,14 +24,15 @@ public class LoginPageOnliner extends AbstractPage {
         
     @FindBy(xpath = "//input[@placeholder='Пароль']")
     private ExtendedWebElement passwordFieldLink;
-//  //input[@type='password']
-    
-    @FindBy(xpath = "//button[contains(@class,'auth-button')]")
-    private ExtendedWebElement authButtonLink;
-    
+    //input[@type='password']
+ 
+    // Additional link
     @FindBy(xpath = "//div[contains(@class,'auth-input__helper')]")
     private ExtendedWebElement authHelperLink;
     
+    @FindBy(xpath = "//button[contains(@class,'auth-button')]")
+    private ExtendedWebElement authButtonLink;
+        
     public LoginPageOnliner(WebDriver driver) {
         super(driver);
         setPageURL("https://www.onliner.by/");
@@ -47,6 +48,7 @@ public class LoginPageOnliner extends AbstractPage {
     	passwordFieldLink.type(passwordArg);
     }
     
+    // Additional method
     public void clickOnAuthHelperButton() {
         authHelperLink.click();
         authHelperLink.click();
@@ -54,12 +56,11 @@ public class LoginPageOnliner extends AbstractPage {
         authHelperLink.click();
     }
     
-    public HomePageOnliner clickOnAuthButton() {
+    public AuthorizedHomePageOnliner clickOnAuthButton() {
         authButtonLink.click();
-        return new HomePageOnliner(driver);
+        return new AuthorizedHomePageOnliner(driver);
     }
     
-
     
 }
 

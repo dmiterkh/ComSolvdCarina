@@ -18,6 +18,7 @@ import com.qaprosoft.carina.core.foundation.utils.tag.Priority;
 import com.qaprosoft.carina.core.foundation.utils.tag.TestPriority;
 import com.qaprosoft.carina.demo.gui.pages.zonliner.HomePageOnliner;
 import com.qaprosoft.carina.demo.gui.pages.zonliner.LoginPageOnliner;
+import com.qaprosoft.carina.demo.gui.pages.zonliner.AuthorizedHomePageOnliner;
 
 
 
@@ -35,10 +36,15 @@ public class OnlinerLoginTest implements IAbstractTest {
     @TestLabel(name = "feature", value = {"web", "regression"})
     public void testLogPass1() {
         
-    	// Open Onliner home page and verify page is opened
+    	  // Open Onliner home page and verify page is opened
         HomePageOnliner homePageOnliner = new HomePageOnliner(getDriver());
         homePageOnliner.open();
         Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
+	
+		homePageOnliner.scrollToBottom();
+		homePageOnliner.scrollToTop();
+
+	
                
     }
     
@@ -55,7 +61,7 @@ public class OnlinerLoginTest implements IAbstractTest {
                 
         // Open Authorization page
         LoginPageOnliner loginPageOnliner = homePageOnliner.getAuthBar().clickOnAuthLink();
-        //Assert.assertTrue(loginPageOnliner.isPageOpened(), "Home page is not opened");
+
         
     }    
     
@@ -72,8 +78,6 @@ public class OnlinerLoginTest implements IAbstractTest {
                 
         // Open Authorization page
         LoginPageOnliner loginPageOnliner = homePageOnliner.getAuthBar().clickOnAuthLink();
-        //loginPageOnliner.open();
-        //Assert.assertTrue(loginPageOnliner.isPageOpened(), "Home page is not opened");
         
         // Type in Login field
         loginPageOnliner.typeInLoginField("adaxdeaeca");
@@ -98,8 +102,6 @@ public class OnlinerLoginTest implements IAbstractTest {
                 
         // Open Authorization page
         LoginPageOnliner loginPageOnliner = homePageOnliner.getAuthBar().clickOnAuthLink();
-        //loginPageOnliner.open();
-        //Assert.assertTrue(loginPageOnliner.isPageOpened(), "Home page is not opened");
         
         // Type in Login field
         loginPageOnliner.typeInLoginField("SolvD_@#$%^&_2020");
@@ -125,29 +127,23 @@ public class OnlinerLoginTest implements IAbstractTest {
                 
         // Open Authorization page
         LoginPageOnliner loginPageOnliner = homePageOnliner.getAuthBar().clickOnAuthLink();
-        //loginPageOnliner.open();
-        //Assert.assertTrue(loginPageOnliner.isPageOpened(), "Home page is not opened");
         
         // Type in Login field
         loginPageOnliner.typeInLoginField("dmiterkh@mail.ru");
-        //loginPageOnliner.open();
-        //Assert.assertTrue(loginPageOnliner.isAnyElementPresent(?????) "Login field is not opened/present");
         
         // Type in Password field
         loginPageOnliner.typeInPasswordField("111111");
+        
         // Password checking
         loginPageOnliner.clickOnAuthHelperButton();
-        //loginPageOnliner.open();
-        //Assert.assertTrue(loginPageOnliner.isAnyElementPresent(?????) "Password field is not opened/present");
         
         // Click on Auth button
-        loginPageOnliner.clickOnAuthButton();
-        //loginPageOnliner.open();
-        //Assert.assertTrue(loginPageOnliner.isAnyElementPresent(?????) "Auth button is not opened/present");
-        
-        homePageOnliner.open();
-        Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
-        
+        AuthorizedHomePageOnliner authorizedHomePageOnliner = new AuthorizedHomePageOnliner(getDriver());
+        authorizedHomePageOnliner = loginPageOnliner.clickOnAuthButton();
+
+        authorizedHomePageOnliner.scrollToBottom();
+        authorizedHomePageOnliner.scrollToTop();
+      
     }
     
     @Test()
@@ -163,25 +159,18 @@ public class OnlinerLoginTest implements IAbstractTest {
                 
         // Open Authorization page
         LoginPageOnliner loginPageOnliner = homePageOnliner.getAuthBar().clickOnAuthLink();
-        //loginPageOnliner.open();
-        //Assert.assertTrue(loginPageOnliner.isPageOpened(), "Home page is not opened");
         
         // Type in Login field
         loginPageOnliner.typeInLoginField("dmiterkh.mail.ru");
-        //loginPageOnliner.open();
-        //Assert.assertTrue(loginPageOnliner.isAnyElementPresent(?????) "Login field is not opened/present");
         
         // Type in Password field
         loginPageOnliner.typeInPasswordField("111111");
+        
         // Password checking
         loginPageOnliner.clickOnAuthHelperButton();
-        //loginPageOnliner.open();
-        //Assert.assertTrue(loginPageOnliner.isAnyElementPresent(?????) "Password field is not opened/present");
         
         // Click on Auth button
         loginPageOnliner.clickOnAuthButton();
-        //loginPageOnliner.open();
-        //Assert.assertTrue(loginPageOnliner.isAnyElementPresent(?????) "Auth button is not opened/present");
         
     }    
 

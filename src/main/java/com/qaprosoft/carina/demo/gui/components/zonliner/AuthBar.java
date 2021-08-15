@@ -8,6 +8,7 @@ import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebEleme
 import com.qaprosoft.carina.core.gui.AbstractUIObject;
 import com.qaprosoft.carina.demo.gui.pages.zonliner.LoginPageOnliner;
 
+
 public class AuthBar extends AbstractUIObject {
 	
 	@FindBy(xpath = "//div[@id='userbar']//div//div//div//div[text()='Вход']")
@@ -18,7 +19,7 @@ public class AuthBar extends AbstractUIObject {
     }
 
     public LoginPageOnliner clickOnAuthLink() {
-        authLink.click(5);
+        authLink.click();
         return new LoginPageOnliner(driver);
     }
 }
