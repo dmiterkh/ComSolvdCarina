@@ -149,8 +149,7 @@ public class OnlinerSectionsBarTest implements IAbstractTest {
 //	    realEstatePageOnliner.pause(20.0);	
 	    
 	    realEstatePageOnliner.moveOnUpperYearSlider();	
-	    realEstatePageOnliner.moveOnUpperPriceSlider();	
-	    
+	    realEstatePageOnliner.moveOnUpperPriceSlider();	    
 	}
 	
 }	

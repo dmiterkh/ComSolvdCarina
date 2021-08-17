@@ -16,7 +16,6 @@ import com.qaprosoft.carina.demo.gui.components.zonliner.AuthBar;
 import com.qaprosoft.carina.demo.gui.components.zonliner.FastSearch;
 import com.qaprosoft.carina.demo.gui.components.zonliner.SectionsBar;
 import com.qaprosoft.carina.demo.gui.components.zonliner.MiddleMenu;
-import com.qaprosoft.carina.demo.gui.components.zonliner.VideoElement;
 import com.qaprosoft.carina.demo.gui.components.zonliner.FooterMenu;
 
 public class HomePageOnliner extends AbstractPage {
@@ -34,13 +33,9 @@ public class HomePageOnliner extends AbstractPage {
     @FindBy(xpath = "//ul[@class='b-main-navigation']")
     private SectionsBar sectionsBarLink; 
      
-//	Subsections tests 015   
+//	Subsections tests 015, 017   
     @FindBy(xpath = "//div[@class='g-middle-i']")
     private MiddleMenu middleMenuLink;  
-    
-//	Video tests 017    
-    @FindBy(xpath = "//i[@class='b-icon-3']//parent::span[@class='complementary-item video']//parent::span[@class='complementary-group']//parent::div//parent::figure//a")
-    private VideoElement videoElementLink;
       
 //	Footer links tests 018   
     @FindBy(xpath = "//footer[@class='g-bottom']")
@@ -76,10 +71,6 @@ public class HomePageOnliner extends AbstractPage {
     
     public MiddleMenu getMiddleMenu() {
         return middleMenuLink;
-    }
-    
-    public VideoElement getVideoElement() {
-        return videoElementLink;
     }
     
     public FooterMenu getFooterMenu() {
