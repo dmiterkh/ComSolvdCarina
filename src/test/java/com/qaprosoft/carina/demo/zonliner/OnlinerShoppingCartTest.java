@@ -24,41 +24,21 @@ import com.qaprosoft.carina.demo.gui.pages.zonliner.ShoppingCartPageOnliner;
 import com.qaprosoft.carina.demo.gui.pages.zonliner.CatalogPageOnliner;
 import com.qaprosoft.carina.demo.gui.pages.zonliner.LaptopPageOnliner;
 
-
-
 /**
  * @author Dmitry Kharevich
  */
 
 public class OnlinerShoppingCartTest implements IAbstractTest {
-	
+
 	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 	
-//    @Test()
-//    @MethodOwner(owner = "qpsdemo")
-//    @TestPriority(Priority.P3)
-//    @TestLabel(name = "feature", value = {"web", "regression"})
-//    public void testShopCart1() {
-//        
-//    	  // Open Onliner home page and verify page is opened
-//        HomePageOnliner homePageOnliner = new HomePageOnliner(getDriver());
-//        homePageOnliner.open();
-//        Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
-//	
-//		homePageOnliner.scrollToBottom();
-//		homePageOnliner.pause(5);
-//		
-//		homePageOnliner.scrollToTop();
-//		homePageOnliner.pause(5);	
-//               
-//    }    
- 
-        
+       
     @Test()
     @MethodOwner(owner = "qpsdemo")
     @TestPriority(Priority.P3)
     @TestLabel(name = "feature", value = {"web", "regression"})
-    public void testShopCart2() {
+    //testcase019
+    public void testShopCart019() {
         
     	// Open Home page
         HomePageOnliner homePageOnliner = new HomePageOnliner(getDriver());
@@ -79,19 +59,13 @@ public class OnlinerShoppingCartTest implements IAbstractTest {
         
         // Click on Auth button
         AuthorizedHomePageOnliner authorizedHomePageOnliner = loginPageOnliner.clickOnAuthButton();
-        
-        // Additional methods
-        authorizedHomePageOnliner.scrollToBottom();
-        authorizedHomePageOnliner.pause(5);		
-        authorizedHomePageOnliner.scrollToTop();
-        authorizedHomePageOnliner.pause(5);
 
         // Click on (Enter to) Shopping Cart
         ShoppingCartPageOnliner shoppingCartPageOnliner = authorizedHomePageOnliner.clickOnShoppingCartLink();        
         
         // Return to Home page
         authorizedHomePageOnliner = shoppingCartPageOnliner.clickOnAutorizedHomePageLink();
-        
+       
         // Open Catalog page
         CatalogPageOnliner catalogPageOnliner = authorizedHomePageOnliner.getSectionsBar().openCatalogPageOnliner();
       
@@ -103,7 +77,7 @@ public class OnlinerShoppingCartTest implements IAbstractTest {
              
         // Open Laptop subsection
         LaptopPageOnliner laptopPageOnliner = catalogPageOnliner.openLaptopPageOnliner();
-      
+        
         // Choose producer
         laptopPageOnliner.clickOnProducerCheckboxLink();
       
@@ -118,7 +92,9 @@ public class OnlinerShoppingCartTest implements IAbstractTest {
         
         // Go to Shopping cart
         shoppingCartPageOnliner = itemPageOnliner.clickOnShoppingCartLink();
-        shoppingCartPageOnliner.open();      
+        
+        // Type in Number of Item window
+        shoppingCartPageOnliner.typeInNumberOfItemWindowLink();
         
         // Add one item
         shoppingCartPageOnliner.clickOnIncrementButtonLink();
@@ -128,12 +104,40 @@ public class OnlinerShoppingCartTest implements IAbstractTest {
       
         // Remove item
         shoppingCartPageOnliner.clickOnRemoveButtonLink();
+        shoppingCartPageOnliner.pause(5);
         
         // Return to Home page
         authorizedHomePageOnliner = shoppingCartPageOnliner.clickOnAutorizedHomePageLink();
-  
-        // Additional Method
-        authorizedHomePageOnliner.pause(5);
+        authorizedHomePageOnliner.pause(10);
+    }
+    
+    @Test()
+    @MethodOwner(owner = "qpsdemo")
+    @TestPriority(Priority.P3)
+    @TestLabel(name = "feature", value = {"web", "regression"})
+    //testcase019_short
+    public void testShopCart019Short() {
+        
+        // Open Home page
+        HomePageOnliner homePageOnliner = new HomePageOnliner(getDriver());
+        homePageOnliner.open();
+        Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
+        
+        // Enter to personal account
+        AuthorizedHomePageOnliner authorizedHomePageOnliner = homePageOnliner.getAuthBar().clickOnAuthLink().getAuthorizedHomePageOnliner("dmiterkh@mail.ru", "111111");
+
+        // Get Item (List of items)
+        ItemPageOnliner itemPageOnliner = authorizedHomePageOnliner.getSectionsBar().openCatalogPageOnliner().getLaptopPageOnliner().getItemPageOnliner("1000");
+        
+        // Add to Shopping cart
+        itemPageOnliner.addToShoppingCart();
+        
+        // Go to Shopping cart
+        ShoppingCartPageOnliner shoppingCartPageOnliner = itemPageOnliner.clickOnShoppingCartLink();
+        
+        // Do Shopping cart operations
+        authorizedHomePageOnliner = shoppingCartPageOnliner.showShoppingCartOperations();
+        authorizedHomePageOnliner.pause(10);
     }
 
-}
+}    

@@ -61,6 +61,15 @@ public class LoginPageOnliner extends AbstractPage {
         return new AuthorizedHomePageOnliner(driver);
     }
     
+    public AuthorizedHomePageOnliner getAuthorizedHomePageOnliner(String loginArg, String passwordArg) {
+    	loginFieldLink.click();
+    	loginFieldLink.type(loginArg);
+    	passwordFieldLink.click();
+    	passwordFieldLink.type(passwordArg);
+        authButtonLink.click();
+        return new AuthorizedHomePageOnliner(driver);
+    }
+    
     
 }
 

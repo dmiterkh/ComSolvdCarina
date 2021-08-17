@@ -2,6 +2,7 @@ package com.qaprosoft.carina.demo.gui.components.zonliner;
 
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
@@ -11,32 +12,40 @@ import com.qaprosoft.carina.core.gui.AbstractUIObject;
 //import com.qaprosoft.carina.demo.gui.pages.NewsPage;
 
 public class FastSearch extends AbstractUIObject {
-    @FindBy(linkText = "Home")
-    private ExtendedWebElement homeLink;
 
-    @FindBy(xpath = "//div[@class='footer-inner']//a[contains(text(),'Compare')]")
-    private ExtendedWebElement compareLink;
+	@FindBy(xpath = "//input[@class='fast-search__input']")
+	private ExtendedWebElement fastSearchFieldLink;
+
+    @FindBy(xpath = "//html//body//div//div//div//div//div//div[text()='на барахолке']")
+    private ExtendedWebElement usedGoodsButtonLink;
     
-    @FindBy(linkText = "News")
-    private ExtendedWebElement newsLink;
-
+    @FindBy(xpath = "//html//body//div//div//div//div//div//div[text()='на барахолке']")
+    private WebElement usedGoodsButtonLink2;
+    
+    //!!!!!! List
+    @FindBy(xpath = "//li[@class='search__result']")
+    private ExtendedWebElement firstFoundItemLink;
+  
     public FastSearch(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
     }
 
-//    public HomePage openHomePage() {
-//        homeLink.click();
-//        return new HomePage(driver);
-//    }
-//
-//    public CompareModelsPage openComparePage() {
-//        compareLink.click();
-//        return new CompareModelsPage(driver);
-//    }
-//    
-//    public NewsPage openNewsPage() {
-//        newsLink.click();
-//        return new NewsPage(driver);
-//    }
+    public void typeInFastSearchField(String queryArg) {
+        fastSearchFieldLink.click();
+        fastSearchFieldLink.type(queryArg);
+    }
+    
+    public void clickOnUsedGoodsButton() {
+    	usedGoodsButtonLink.click();
+    }
+    
+    public void getFirstFoundUsedItem(String queryArg) {
+        fastSearchFieldLink.click();
+        fastSearchFieldLink.type(queryArg);
+        driver.switchTo().frame(usedGoodsButtonLink2);
+        usedGoodsButtonLink2.click();
+        firstFoundItemLink.click();
+    }
+
 }
 

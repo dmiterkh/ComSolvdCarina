@@ -20,8 +20,6 @@ import com.qaprosoft.carina.demo.gui.pages.zonliner.HomePageOnliner;
 import com.qaprosoft.carina.demo.gui.pages.zonliner.LoginPageOnliner;
 import com.qaprosoft.carina.demo.gui.pages.zonliner.AuthorizedHomePageOnliner;
 
-
-
 /**
  * @author Dmitry Kharevich
  */
@@ -30,29 +28,13 @@ public class OnlinerLoginTest implements IAbstractTest {
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 	
+  
     @Test()
     @MethodOwner(owner = "qpsdemo")
     @TestPriority(Priority.P3)
     @TestLabel(name = "feature", value = {"web", "regression"})
-    public void testLogPass1() {
-        
-    	  // Open Onliner home page and verify page is opened
-        HomePageOnliner homePageOnliner = new HomePageOnliner(getDriver());
-        homePageOnliner.open();
-        Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
-	
-		homePageOnliner.scrollToBottom();
-		homePageOnliner.scrollToTop();
-
-	
-               
-    }
-    
-    @Test()
-    @MethodOwner(owner = "qpsdemo")
-    @TestPriority(Priority.P3)
-    @TestLabel(name = "feature", value = {"web", "regression"})
-    public void testLogPass2() {
+    //testcase000
+    public void testLogPass000() {
         
     	// Open Home page
         HomePageOnliner homePageOnliner = new HomePageOnliner(getDriver());
@@ -61,15 +43,15 @@ public class OnlinerLoginTest implements IAbstractTest {
                 
         // Open Authorization page
         LoginPageOnliner loginPageOnliner = homePageOnliner.getAuthBar().clickOnAuthLink();
-
-        
+        loginPageOnliner.pause(10.0);
     }    
     
     @Test()
     @MethodOwner(owner = "qpsdemo")
     @TestPriority(Priority.P3)
     @TestLabel(name = "feature", value = {"web", "regression"})
-    public void testLogPass3() {
+    //testcase001
+    public void testLogPass001() {
         
     	// Open Home page
         HomePageOnliner homePageOnliner = new HomePageOnliner(getDriver());
@@ -87,13 +69,15 @@ public class OnlinerLoginTest implements IAbstractTest {
         
         // Password checking  
         loginPageOnliner.clickOnAuthHelperButton();
+        loginPageOnliner.pause(10.0);
     }        
     
     @Test()
     @MethodOwner(owner = "qpsdemo")
     @TestPriority(Priority.P3)
     @TestLabel(name = "feature", value = {"web", "regression"})
-    public void testLogPass4() {
+    //testcase002
+    public void testLogPass002() {
         
     	// Open Home page
         HomePageOnliner homePageOnliner = new HomePageOnliner(getDriver());
@@ -110,70 +94,40 @@ public class OnlinerLoginTest implements IAbstractTest {
         loginPageOnliner.typeInPasswordField("SolvD_@#$%^&_2020");
         
         // Password checking
-        loginPageOnliner.clickOnAuthHelperButton();
-        
+        loginPageOnliner.clickOnAuthHelperButton();        
     }    
         
     @Test()
     @MethodOwner(owner = "qpsdemo")
     @TestPriority(Priority.P3)
     @TestLabel(name = "feature", value = {"web", "regression"})
-    public void testLogPass5() {
+    //testcase003
+    public void testLogPass003() {
         
     	// Open Home page
         HomePageOnliner homePageOnliner = new HomePageOnliner(getDriver());
         homePageOnliner.open();
         Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
                 
-        // Open Authorization page
-        LoginPageOnliner loginPageOnliner = homePageOnliner.getAuthBar().clickOnAuthLink();
-        
-        // Type in Login field
-        loginPageOnliner.typeInLoginField("dmiterkh@mail.ru");
-        
-        // Type in Password field
-        loginPageOnliner.typeInPasswordField("111111");
-        
-        // Password checking
-        loginPageOnliner.clickOnAuthHelperButton();
-        
-        // Click on Auth button
-        AuthorizedHomePageOnliner authorizedHomePageOnliner = new AuthorizedHomePageOnliner(getDriver());
-        authorizedHomePageOnliner = loginPageOnliner.clickOnAuthButton();
-
-        authorizedHomePageOnliner.scrollToBottom();
-        authorizedHomePageOnliner.scrollToTop();
-      
+        AuthorizedHomePageOnliner authorizedHomePageOnliner = homePageOnliner.getAuthBar().clickOnAuthLink().getAuthorizedHomePageOnliner("dmiterkh@mail.ru", "111111");
+        authorizedHomePageOnliner.pause(10.0);
     }
     
     @Test()
     @MethodOwner(owner = "qpsdemo")
     @TestPriority(Priority.P3)
     @TestLabel(name = "feature", value = {"web", "regression"})
-    public void testLogPass6() {
+    //testcase004
+    public void testLogPass004() {
         
     	// Open Home page
         HomePageOnliner homePageOnliner = new HomePageOnliner(getDriver());
         homePageOnliner.open();
         Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
                 
-        // Open Authorization page
-        LoginPageOnliner loginPageOnliner = homePageOnliner.getAuthBar().clickOnAuthLink();
-        
-        // Type in Login field
-        loginPageOnliner.typeInLoginField("dmiterkh.mail.ru");
-        
-        // Type in Password field
-        loginPageOnliner.typeInPasswordField("111111");
-        
-        // Password checking
-        loginPageOnliner.clickOnAuthHelperButton();
-        
-        // Click on Auth button
-        loginPageOnliner.clickOnAuthButton();
-        
+        AuthorizedHomePageOnliner authorizedHomePageOnliner = homePageOnliner.getAuthBar().clickOnAuthLink().getAuthorizedHomePageOnliner("dmiterkh.mail.ru", "111111");
+        authorizedHomePageOnliner.pause(10);        
     }    
-
 }
 
 
