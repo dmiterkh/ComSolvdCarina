@@ -22,5 +22,6 @@ public class AuthBar extends AbstractUIObject {
         authLink.click();
         return new LoginPageOnliner(driver);
     }
+    
 }
 

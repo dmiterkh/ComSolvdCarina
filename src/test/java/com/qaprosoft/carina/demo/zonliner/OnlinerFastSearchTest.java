@@ -17,14 +17,13 @@ import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
 import com.qaprosoft.carina.core.foundation.utils.tag.Priority;
 import com.qaprosoft.carina.core.foundation.utils.tag.TestPriority;
 import com.qaprosoft.carina.demo.gui.pages.zonliner.HomePageOnliner;
-import com.qaprosoft.carina.demo.gui.pages.zonliner.ContactsPageOnliner;
-import com.qaprosoft.carina.demo.gui.pages.zonliner.VacanciesPageOnliner;
+import com.qaprosoft.carina.demo.gui.components.zonliner.FastSearch;
 
 /**
  * @author Dmitry Kharevich
  */
 
-public class OnlinerFooterTest implements IAbstractTest {
+public class OnlinerFastSearchTest implements IAbstractTest {
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 	
@@ -32,35 +31,34 @@ public class OnlinerFooterTest implements IAbstractTest {
     @MethodOwner(owner = "qpsdemo")
     @TestPriority(Priority.P3)
     @TestLabel(name = "feature", value = {"web", "regression"})
-    //testcase018 
-    public void testFooter018() {
+    //testcase009 
+    public void testFastSearch009() {
         
     	// Open Home page
         HomePageOnliner homePageOnliner = new HomePageOnliner(getDriver());
         homePageOnliner.open();
         Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
-                
-        // Open Vacancies page
-        VacanciesPageOnliner vacanciesPageOnliner = homePageOnliner.getFooterMenu().openVacanciesPageOnliner();
         
-        // Return to Home page
-        vacanciesPageOnliner.openHomePageOnliner();
-               
-        // Open Contacts page
-        ContactsPageOnliner contactsPageOnliner = homePageOnliner.getFooterMenu().openContactsPageOnliner();
-        
-        // Return to Home page
-        contactsPageOnliner.openHomePageOnliner();
-        
-        // Open Vacancies page from Home page
-        vacanciesPageOnliner = homePageOnliner.getFooterMenu().openVacanciesPageOnliner();
-       
-        //Open Contacts page from Vacancies page
-        contactsPageOnliner = vacanciesPageOnliner.openContactsPageOnliner();
-        
-        //Open Vacancies page from Contacts page
-        contactsPageOnliner.openVacanciesPageOnliner().pause(10.0);
+        homePageOnliner.getFastSearch().typeInFastSearchField("chairman 969"); 
+        homePageOnliner.getFastSearch().clickOnUsedGoodsButton();
 
     }    
+    
+//    @Test()
+//    @MethodOwner(owner = "qpsdemo")
+//    @TestPriority(Priority.P3)
+//    @TestLabel(name = "feature", value = {"web", "regression"})
+//    //testcase010 
+//    public void testFastSearch010() {
+//        
+//    	// Open Home page
+//        HomePageOnliner homePageOnliner = new HomePageOnliner(getDriver());
+//        homePageOnliner.open();
+//        Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
+//        
+//        homePageOnliner.getFastSearch().typeInFastSearchField("@#$%^&");
+//        homePageOnliner.getFastSearch().clickOnUsedGoodsButton();
+//
+//    } 
 
 }

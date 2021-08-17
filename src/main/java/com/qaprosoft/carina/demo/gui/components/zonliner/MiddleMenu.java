@@ -9,19 +9,22 @@ import com.qaprosoft.carina.core.gui.AbstractUIObject;
 //import com.qaprosoft.carina.demo.gui.pages.CompareModelsPage;
 //import com.qaprosoft.carina.demo.gui.pages.HomePage;
 //import com.qaprosoft.carina.demo.gui.pages.NewsPage;
+import com.qaprosoft.carina.demo.gui.pages.zonliner.VideoPageOnliner;
 
 public class MiddleMenu extends AbstractUIObject {
-    @FindBy(linkText = "Home")
-    private ExtendedWebElement homeLink;
 
-    @FindBy(xpath = "//div[@class='footer-inner']//a[contains(text(),'Compare')]")
-    private ExtendedWebElement compareLink;
-    
-    @FindBy(linkText = "News")
-    private ExtendedWebElement newsLink;
+	//!!!!!! List
+    @FindBy(xpath = "//i[@class='b-icon-3']//parent::span[@class='complementary-item video']//parent::span[@class='complementary-group']//parent::div//parent::figure//a")
+    private ExtendedWebElement videoPageLink;
 
     public MiddleMenu(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
+    }
+    
+    public VideoPageOnliner openVideoPageOnliner() {
+    	videoPageLink.scrollTo();
+        videoPageLink.click();
+        return new VideoPageOnliner(driver);
     }
 
 //    public HomePage openHomePage() {

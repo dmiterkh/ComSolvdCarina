@@ -40,7 +40,7 @@ public class HomePageOnliner extends AbstractPage {
     
 //	Video tests 017    
     @FindBy(xpath = "//i[@class='b-icon-3']//parent::span[@class='complementary-item video']//parent::span[@class='complementary-group']//parent::div//parent::figure//a")
-    private List<VideoElement> videoList;
+    private VideoElement videoElementLink;
       
 //	Footer links tests 018   
     @FindBy(xpath = "//footer[@class='g-bottom']")
@@ -78,8 +78,8 @@ public class HomePageOnliner extends AbstractPage {
         return middleMenuLink;
     }
     
-    public List<VideoElement> getVideoElement() {
-        return videoList;
+    public VideoElement getVideoElement() {
+        return videoElementLink;
     }
     
     public FooterMenu getFooterMenu() {

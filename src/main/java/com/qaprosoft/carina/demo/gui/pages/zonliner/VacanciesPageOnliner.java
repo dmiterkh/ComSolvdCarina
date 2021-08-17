@@ -2,6 +2,8 @@ package com.qaprosoft.carina.demo.gui.pages.zonliner;
 
 import java.lang.invoke.MethodHandles;
 
+import com.qaprosoft.carina.core.foundation.utils.Configuration;
+import com.qaprosoft.carina.core.foundation.utils.R;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
