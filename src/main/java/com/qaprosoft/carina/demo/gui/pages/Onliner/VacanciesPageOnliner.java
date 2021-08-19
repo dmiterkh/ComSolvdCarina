@@ -1,4 +1,4 @@
-package com.qaprosoft.carina.demo.gui.pages.zonliner;
+package com.qaprosoft.carina.demo.gui.pages.Onliner;
 
 import java.lang.invoke.MethodHandles;
 
@@ -11,11 +11,11 @@ import org.slf4j.LoggerFactory;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractPage;
-import com.qaprosoft.carina.demo.gui.pages.zonliner.HomePageOnliner;
-import com.qaprosoft.carina.demo.gui.pages.zonliner.ContactsPageOnliner;
+import com.qaprosoft.carina.demo.gui.pages.Onliner.ContactsPageOnliner;
+import com.qaprosoft.carina.demo.gui.pages.Onliner.HomePageOnliner;
 
 public class VacanciesPageOnliner extends AbstractPage {
-    private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger LOGGER = LoggerFactory.getLogger(VacanciesPageOnliner.class);
 	
     @FindBy(xpath = "//a[@href='https://people.onliner.by/contacts']")
     private ExtendedWebElement contactsLink;
@@ -41,4 +41,3 @@ public class VacanciesPageOnliner extends AbstractPage {
     }
     
 }
-

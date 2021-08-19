@@ -1,4 +1,4 @@
-package com.qaprosoft.carina.demo.gui.pages.zonliner;
+package com.qaprosoft.carina.demo.gui.pages.Onliner;
 
 import java.lang.invoke.MethodHandles;
 import java.util.List;
@@ -12,12 +12,11 @@ import org.slf4j.LoggerFactory;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractPage;
-import com.qaprosoft.carina.demo.gui.components.zonliner.AuthBar;
-import com.qaprosoft.carina.demo.gui.pages.zonliner.HomePageOnliner;
-import com.qaprosoft.carina.demo.gui.pages.zonliner.AuthorizedHomePageOnliner;
+import com.qaprosoft.carina.demo.gui.components.Onliner.TopHeaderBar;
+import com.qaprosoft.carina.demo.gui.pages.Onliner.AuthorizedPageOnliner;
 
 public class LoginPageOnliner extends AbstractPage {
-    private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger LOGGER = LoggerFactory.getLogger(LoginPageOnliner.class);
 	
     @FindBy(xpath = "//input[@placeholder='Ник или e-mail']")
     private ExtendedWebElement loginFieldLink;
@@ -35,9 +34,16 @@ public class LoginPageOnliner extends AbstractPage {
         
     public LoginPageOnliner(WebDriver driver) {
         super(driver);
-        setPageURL("https://www.onliner.by/");
     }
 
+    public ExtendedWebElement getLoginFieldLink() {
+    	return loginFieldLink;
+    }
+    
+    public ExtendedWebElement getPasswordFieldLink() {
+    	return passwordFieldLink;
+    }
+    
     public void typeInLoginField(String loginArg) {
     	loginFieldLink.click();
     	loginFieldLink.type(loginArg);
@@ -56,23 +62,28 @@ public class LoginPageOnliner extends AbstractPage {
         authHelperLink.click();
     }
     
-    public AuthorizedHomePageOnliner clickOnAuthButton() {
+    public AuthorizedPageOnliner clickOnAuthButton() {
         authButtonLink.click();
-        return new AuthorizedHomePageOnliner(driver);
+        return new AuthorizedPageOnliner(driver);
     }
     
-    public AuthorizedHomePageOnliner getAuthorizedHomePageOnliner(String loginArg, String passwordArg) {
+    public AuthorizedPageOnliner getAuthorizedPageOnliner(String loginArg, String passwordArg) {
     	loginFieldLink.click();
     	loginFieldLink.type(loginArg);
     	passwordFieldLink.click();
     	passwordFieldLink.type(passwordArg);
         authButtonLink.click();
-        return new AuthorizedHomePageOnliner(driver);
+        return new AuthorizedPageOnliner(driver);
+    }
+    
+    public LoginPageOnliner getNotAuthorizedLoginPageOnliner(String loginArg, String passwordArg) {
+    	loginFieldLink.click();
+    	loginFieldLink.type(loginArg);
+    	passwordFieldLink.click();
+    	passwordFieldLink.type(passwordArg);
+        authButtonLink.click();
+        return new LoginPageOnliner(driver);
     }
     
     
 }
-
-
-
-

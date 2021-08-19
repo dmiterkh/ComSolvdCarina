@@ -1,4 +1,4 @@
-package com.qaprosoft.carina.demo.zonliner;
+package com.qaprosoft.carina.demo.Onliner;
 
 import java.lang.invoke.MethodHandles;
 import java.util.List;
@@ -16,9 +16,9 @@ import com.zebrunner.agent.core.annotation.TestLabel;
 import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
 import com.qaprosoft.carina.core.foundation.utils.tag.Priority;
 import com.qaprosoft.carina.core.foundation.utils.tag.TestPriority;
-import com.qaprosoft.carina.demo.gui.pages.zonliner.HomePageOnliner;
-import com.qaprosoft.carina.demo.gui.pages.zonliner.ContactsPageOnliner;
-import com.qaprosoft.carina.demo.gui.pages.zonliner.VacanciesPageOnliner;
+import com.qaprosoft.carina.demo.gui.pages.Onliner.ContactsPageOnliner;
+import com.qaprosoft.carina.demo.gui.pages.Onliner.HomePageOnliner;
+import com.qaprosoft.carina.demo.gui.pages.Onliner.VacanciesPageOnliner;
 
 /**
  * @author Dmitry Kharevich
@@ -32,35 +32,46 @@ public class OnlinerFooterTest implements IAbstractTest {
     @MethodOwner(owner = "qpsdemo")
     @TestPriority(Priority.P3)
     @TestLabel(name = "feature", value = {"web", "regression"})
-    //testcase018 
-    public void testFooter018() {
+    
+    //testcase018 Verify that the user Is Being Redirected to the relevant page after clicking on any link in footer 
+    public void testUserRedirectedToRelevantPageClickingOnLinkInFooter() {
         
     	// Open Home page
         HomePageOnliner homePageOnliner = new HomePageOnliner(getDriver());
         homePageOnliner.open();
         Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
-                
+        
         // Open Vacancies page
         VacanciesPageOnliner vacanciesPageOnliner = homePageOnliner.getFooterMenu().openVacanciesPageOnliner();
+        Assert.assertTrue(vacanciesPageOnliner.isPageOpened(), "Vacancies page is not opened");
         
         // Return to Home page
-        vacanciesPageOnliner.openHomePageOnliner();
+        homePageOnliner = vacanciesPageOnliner.openHomePageOnliner();
+        Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
                
         // Open Contacts page
         ContactsPageOnliner contactsPageOnliner = homePageOnliner.getFooterMenu().openContactsPageOnliner();
+        Assert.assertTrue(contactsPageOnliner.isPageOpened(), "Contacts page is not opened");
         
         // Return to Home page
-        contactsPageOnliner.openHomePageOnliner();
+        homePageOnliner = contactsPageOnliner.openHomePageOnliner();
+        Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
         
         // Open Vacancies page from Home page
         vacanciesPageOnliner = homePageOnliner.getFooterMenu().openVacanciesPageOnliner();
-       
+        Assert.assertTrue(vacanciesPageOnliner.isPageOpened(), "Vacancies page is not opened");
+        
         //Open Contacts page from Vacancies page
         contactsPageOnliner = vacanciesPageOnliner.openContactsPageOnliner();
+        Assert.assertTrue(contactsPageOnliner.isPageOpened(), "Contacts page is not opened");
         
         //Open Vacancies page from Contacts page
-        contactsPageOnliner.openVacanciesPageOnliner().pause(10.0);
-
+        vacanciesPageOnliner = contactsPageOnliner.openVacanciesPageOnliner();
+        vacanciesPageOnliner.pause(10.0);
+        Assert.assertTrue(vacanciesPageOnliner.isPageOpened(), "Vacancies page is not opened");
+        
+        getDriver().close();
+        
     }    
 
 }

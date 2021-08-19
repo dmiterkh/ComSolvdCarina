@@ -1,4 +1,4 @@
-package com.qaprosoft.carina.demo.gui.pages.zonliner;
+package com.qaprosoft.carina.demo.gui.pages.Onliner;
 
 import java.lang.invoke.MethodHandles;
 import java.util.List;
@@ -12,11 +12,11 @@ import org.slf4j.LoggerFactory;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractPage;
-import com.qaprosoft.carina.demo.gui.components.zonliner.SectionsBar;
-import com.qaprosoft.carina.demo.gui.pages.zonliner.ShoppingCartPageOnliner;
+import com.qaprosoft.carina.demo.gui.components.Onliner.TopHeaderBar;
+import com.qaprosoft.carina.demo.gui.pages.Onliner.ShoppingCartPageOnliner;
 
-public class AuthorizedHomePageOnliner extends AbstractPage {
-    private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+public class AuthorizedPageOnliner extends AbstractPage {
+    private static final Logger LOGGER = LoggerFactory.getLogger(AuthorizedPageOnliner.class);
     
     // Additional link
     @FindBy(xpath = "//a[@href='https://blog.onliner.by/vacancy']")
@@ -29,12 +29,11 @@ public class AuthorizedHomePageOnliner extends AbstractPage {
     @FindBy(xpath = "//div[@id='cart-desktop']//a[@href='https://cart.onliner.by']")
     private ExtendedWebElement shoppingCartLink; 	
     
-    @FindBy(xpath = "//ul[@class='b-main-navigation']")
-    private SectionsBar sectionsBarLink;
+    @FindBy(xpath = "//header[@class='g-top']")
+    private TopHeaderBar topHeaderBarLink;
     
-    public AuthorizedHomePageOnliner(WebDriver driver) {
+    public AuthorizedPageOnliner(WebDriver driver) {
         super(driver);
-        setPageURL("https://www.onliner.by/");
     }
     
     // Additional method
@@ -47,18 +46,7 @@ public class AuthorizedHomePageOnliner extends AbstractPage {
     	homeLink.scrollTo();
     }
     
-    public ShoppingCartPageOnliner clickOnShoppingCartLink() {
-    	shoppingCartLink.scrollTo();
-    	shoppingCartLink.click();
-        return new ShoppingCartPageOnliner(driver);
-    }
-    
-    public SectionsBar getSectionsBar() {
-        return sectionsBarLink;
+    public TopHeaderBar getTopHeaderBar() {
+        return topHeaderBarLink;
     }
 }
-
-
-
-
-

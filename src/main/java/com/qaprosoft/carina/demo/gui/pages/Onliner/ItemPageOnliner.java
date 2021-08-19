@@ -1,6 +1,7 @@
-package com.qaprosoft.carina.demo.gui.pages.zonliner;
+package com.qaprosoft.carina.demo.gui.pages.Onliner;
 
 import java.lang.invoke.MethodHandles;
+import java.util.List;
 
 import com.qaprosoft.carina.core.foundation.utils.Configuration;
 import com.qaprosoft.carina.core.foundation.utils.R;
@@ -11,16 +12,15 @@ import org.slf4j.LoggerFactory;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractPage;
-import com.qaprosoft.carina.demo.gui.pages.zonliner.ItemPageOnliner;
+import com.qaprosoft.carina.demo.gui.pages.Onliner.ItemPageOnliner;
 
 public class ItemPageOnliner extends AbstractPage {
-	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+	private static final Logger LOGGER = LoggerFactory.getLogger(ItemPageOnliner.class);
  	  
-	//!!!!!!!!!! List
-    @FindBy(xpath = "//a[@class='button-style button-style_base-alter product-aside__item-button button-style_expletive' and contains(text(),'В корзину')]")
-    private ExtendedWebElement addToShoppingCartLink;
+    @FindBy(xpath = "//a[contains(@class,'product-aside__item-button') and contains(text(),'В корзину')]")
+    private List<ExtendedWebElement> addToShoppingCartListLink;
     
-    @FindBy(xpath = "//a[@class='button-style button-style_base-alter product-aside__item-button button-style_primary' and contains(text(),'В корзине')]")
+    @FindBy(xpath = "//a[contains(@class,'product-aside__item-button') and contains(text(),'В корзине')]")
     private ExtendedWebElement addedToShoppingCartLink;
     	    
     @FindBy(xpath = "//div[@id='cart-desktop']//a[@href='https://cart.onliner.by']")
@@ -28,15 +28,14 @@ public class ItemPageOnliner extends AbstractPage {
     
     public ItemPageOnliner(WebDriver driver) {
         super(driver);
-        setPageURL("https://catalog.onliner.by/notebook/lenovo/81ut00mlre");
     }
     
     public void addToShoppingCart(){
     	if (addedToShoppingCartLink.isElementPresent()) {
     		
     	} else {	    	
-    		addToShoppingCartLink.scrollTo();
-	    	addToShoppingCartLink.click();
+    		addToShoppingCartListLink.get(0).scrollTo();
+	    	addToShoppingCartListLink.get(0).click();
     	}
     }
     

@@ -1,4 +1,4 @@
-package com.qaprosoft.carina.demo.zonliner;
+package com.qaprosoft.carina.demo.Onliner;
 
 import java.lang.invoke.MethodHandles;
 import java.util.List;
@@ -17,11 +17,11 @@ import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
 import com.qaprosoft.carina.core.foundation.utils.tag.Priority;
 import com.qaprosoft.carina.core.foundation.utils.tag.TestPriority;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
-import com.qaprosoft.carina.demo.gui.pages.zonliner.HomePageOnliner;
-import com.qaprosoft.carina.demo.gui.pages.zonliner.CatalogPageOnliner;
-import com.qaprosoft.carina.demo.gui.pages.zonliner.AutomobilePageOnliner;
-import com.qaprosoft.carina.demo.gui.pages.zonliner.RealEstatePageOnliner;
-import com.qaprosoft.carina.demo.gui.pages.zonliner.LaptopPageOnliner;
+import com.qaprosoft.carina.demo.gui.pages.Onliner.AutomobilePageOnliner;
+import com.qaprosoft.carina.demo.gui.pages.Onliner.CatalogPageOnliner;
+import com.qaprosoft.carina.demo.gui.pages.Onliner.HomePageOnliner;
+import com.qaprosoft.carina.demo.gui.pages.Onliner.LaptopPageOnliner;
+import com.qaprosoft.carina.demo.gui.pages.Onliner.RealEstatePageOnliner;
 
 /**
  * @author Dmitry Kharevich
@@ -36,8 +36,9 @@ public class OnlinerSectionsBarTest implements IAbstractTest {
     @MethodOwner(owner = "qpsdemo")
     @TestPriority(Priority.P3)
     @TestLabel(name = "feature", value = {"web", "regression"})
-	//testcase011
-    public void testSectionsBar011() {
+    
+	//testcase011 Verify that the user Is Being Redirected to the list of all categories page with relevant categories of items of any section of the site after clicking on one of the links at the top of the home page
+    public void testUserRedirectedToListOfCategoriesWithRelevantCategoriesClickingOnLink() {
         
     	// Open Home page
         HomePageOnliner homePageOnliner = new HomePageOnliner(getDriver());
@@ -45,16 +46,20 @@ public class OnlinerSectionsBarTest implements IAbstractTest {
         Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
                 
         // Open Catalog page
-        CatalogPageOnliner catalogPageOnliner = homePageOnliner.getSectionsBar().openCatalogPageOnliner();
+        CatalogPageOnliner catalogPageOnliner = homePageOnliner.getTopHeaderBar().openCatalogPageOnliner();
     	catalogPageOnliner.pause(10);
+    	
+        getDriver().close();
+        
     }    
         
     @Test()
     @MethodOwner(owner = "qpsdemo")
     @TestPriority(Priority.P3)
     @TestLabel(name = "feature", value = {"web", "regression"})
-	//testcase012
-    public void testSectionsBar012() {
+    
+	//testcase012 Verify that the user Is Being Redirected to the search results page with relevant search results items after setting on certain options in the search filter for extremely detailed search on the certain section
+    public void testExtremelyDetailedSearchWorksCorrectlyForCatalogPage() {
         
     	// Open Home page
         HomePageOnliner homePageOnliner = new HomePageOnliner(getDriver());
@@ -62,7 +67,7 @@ public class OnlinerSectionsBarTest implements IAbstractTest {
         Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
                 
         // Open Catalog page
-        CatalogPageOnliner catalogPageOnliner = homePageOnliner.getSectionsBar().openCatalogPageOnliner();
+        CatalogPageOnliner catalogPageOnliner = homePageOnliner.getTopHeaderBar().openCatalogPageOnliner();
         
         // Open Computer techics subsection
         catalogPageOnliner.clickOnComputerTechnicsLink();
@@ -79,14 +84,18 @@ public class OnlinerSectionsBarTest implements IAbstractTest {
         // Set value of upper bound price field
         laptopPageOnliner.typeInUpperBoundPriceField("1000");            
         laptopPageOnliner.pause(10);
+        
+        getDriver().close();
+        
     }    
 
     @Test()
     @MethodOwner(owner = "qpsdemo")
     @TestPriority(Priority.P3)
     @TestLabel(name = "feature", value = {"web", "regression"})
-	//testcase013
-    public void testSectionsBar013() {
+    
+	//testcase013 Verify that the user Is Being Redirected to the search results page with relevant search results items after setting on certain options in the search filter for extremely detailed search on the certain section
+    public void testExtremelyDetailedSearchWorksCorrectlyForAutomobilePage() {
         
     	// Open Home page
         HomePageOnliner homePageOnliner = new HomePageOnliner(getDriver());
@@ -94,7 +103,7 @@ public class OnlinerSectionsBarTest implements IAbstractTest {
         Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
                 
         // Open Automobile catalog page
-        AutomobilePageOnliner automobilePageOnliner = homePageOnliner.getSectionsBar().openAutomobilePageOnliner();
+        AutomobilePageOnliner automobilePageOnliner = homePageOnliner.getTopHeaderBar().openAutomobilePageOnliner();
         
         // Click on Country dropdown
         automobilePageOnliner.clickOnCountryDropdownLink();
@@ -120,6 +129,9 @@ public class OnlinerSectionsBarTest implements IAbstractTest {
         // Choose lower year
         automobilePageOnliner.clickOnLowerYearChoiseLink();
         automobilePageOnliner.pause(10);
+        
+        getDriver().close();
+        
     }   
 
 
@@ -127,8 +139,9 @@ public class OnlinerSectionsBarTest implements IAbstractTest {
 	@MethodOwner(owner = "qpsdemo")
 	@TestPriority(Priority.P3)
 	@TestLabel(name = "feature", value = {"web", "regression"})
-	//testcase014
-	public void testSectionsBar014() {
+	
+	//testcase014 (Negative) Verify that the user Gets the message "No results found for this term" or is being redirected to the search results page with irrelevant search result items after setting on certain options in the search filter for extremely detailed search on the certain section
+	public void testExtremelyDetailedSearchWorksCorrectlyForRealEstatePage() {
     
 		// Open Home page
 	    HomePageOnliner homePageOnliner = new HomePageOnliner(getDriver());
@@ -136,7 +149,7 @@ public class OnlinerSectionsBarTest implements IAbstractTest {
 	    Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");          
 	    
 	    // Open Real estate page
-	    RealEstatePageOnliner realEstatePageOnliner = homePageOnliner.getSectionsBar().openRealEstatePageOnliner();
+	    RealEstatePageOnliner realEstatePageOnliner = homePageOnliner.getTopHeaderBar().openRealEstatePageOnliner();
 	
 	    // Click on number 1 button
 	    realEstatePageOnliner.clickOnNumberOfRoomsButton();
@@ -149,7 +162,10 @@ public class OnlinerSectionsBarTest implements IAbstractTest {
 //	    realEstatePageOnliner.pause(20.0);	
 	    
 	    realEstatePageOnliner.moveOnUpperYearSlider();	
-	    realEstatePageOnliner.moveOnUpperPriceSlider();	    
+	    realEstatePageOnliner.moveOnUpperPriceSlider();	 
+	    
+        getDriver().close();
+        
 	}
 	
 }	
