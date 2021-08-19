@@ -1,5 +1,6 @@
 package com.qaprosoft.carina.demo.gui.components.Onliner;
 
+import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
@@ -33,9 +34,8 @@ public class TopHeaderBar extends AbstractUIObject {
     @FindBy(xpath = "//html//body//div//div//div//div//div//div[text()='на барахолке']")
     private WebElement usedGoodsButtonLink2;
     
-    //!!!!!! List
     @FindBy(xpath = "//li[@class='search__result']")
-    private ExtendedWebElement firstFoundItemLink;
+    private List<ExtendedWebElement> foundItemListLink;
     
      
 //	OnlinerSectionsBarTest (testcases 011, 012, 013, 014)
@@ -74,6 +74,10 @@ public class TopHeaderBar extends AbstractUIObject {
     public void typeInFastSearchField(String queryArg) {
         fastSearchFieldLink.click();
         fastSearchFieldLink.type(queryArg);
+    }
+    
+    public ExtendedWebElement getFastSearchFieldLink() {
+        return fastSearchFieldLink;
     }
     
     public void clickOnUsedGoodsButton() {

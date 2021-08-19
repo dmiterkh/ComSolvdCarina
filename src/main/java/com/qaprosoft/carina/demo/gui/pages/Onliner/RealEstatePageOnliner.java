@@ -20,17 +20,17 @@ public class RealEstatePageOnliner extends AbstractPage {
     @FindBy(xpath = "//span[@class='filter__item-inner' and text()='1']//parent::label")
     private ExtendedWebElement numberOfRoomsButtonLink;
     
-    @FindBy(xpath = "//div[@id='search-filter-year-slider']//div//div//div[@class='noUi-handle noUi-handle-upper']")
+    @FindBy(xpath = "//div[@id='search-filter-year-slider']//div//div//div[contains(@class,'noUi-handle-upper')]")
     private UpperYearSlider upperYearSliderLinkUI;
     
-    @FindBy(xpath = "//div[@id='search-filter-price-slider']//div//div//div[@class='noUi-handle noUi-handle-upper']")
+    @FindBy(xpath = "//div[@id='search-filter-price-slider']//div//div//div[contains(@class,'noUi-handle-upper')]")
     private UpperPriceSlider upperPriceSliderLinkUI;
 
-    @FindBy(xpath = "//div[@id='search-filter-year-slider']//div//div//div[@class='noUi-handle noUi-handle-upper']")
+    @FindBy(xpath = "//div[@id='search-filter-year-slider']//div//div//div[contains(@class,'noUi-handle-upper')]")
     private ExtendedWebElement upperYearSliderLink;
     
     
-    @FindBy(xpath = "//div[@id='search-filter-price-slider']//div//div//div[@class='noUi-handle noUi-handle-upper']")
+    @FindBy(xpath = "//div[@id='search-filter-price-slider']//div//div//div[contains(@class,'noUi-handle-upper')]")
     private ExtendedWebElement upperPriceSliderLink;
 
     public RealEstatePageOnliner(WebDriver driver) {

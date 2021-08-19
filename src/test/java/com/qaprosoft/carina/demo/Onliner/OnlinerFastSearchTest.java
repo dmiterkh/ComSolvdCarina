@@ -30,8 +30,9 @@ public class OnlinerFastSearchTest implements IAbstractTest {
     @MethodOwner(owner = "qpsdemo")
     @TestPriority(Priority.P3)
     @TestLabel(name = "feature", value = {"web", "regression"})
-    //testcase009 
-    public void testFastSearch009() {
+    
+    //testcase009 Verify that the user Is Being Redirected to the search results page with relevant search result items after searching for a valid value in the Fast Search field
+    public void testUserRedirectedToRelevantItemsSearchingValidValueInFastSearch() {
         
     	// Open Home page
         HomePageOnliner homePageOnliner = new HomePageOnliner(getDriver());
@@ -39,7 +40,11 @@ public class OnlinerFastSearchTest implements IAbstractTest {
         Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
         
         homePageOnliner.getTopHeaderBar().typeInFastSearchField("chairman 969"); 
-        homePageOnliner.getTopHeaderBar().clickOnUsedGoodsButton();
+        Assert.assertTrue(homePageOnliner.getTopHeaderBar().getFastSearchFieldLink().isClickable(), "Fast Search field is not clickable");
+        
+//        homePageOnliner.getTopHeaderBar().clickOnUsedGoodsButton();
+        
+        getDriver().close();
 
     }    
     
@@ -47,8 +52,9 @@ public class OnlinerFastSearchTest implements IAbstractTest {
 //    @MethodOwner(owner = "qpsdemo")
 //    @TestPriority(Priority.P3)
 //    @TestLabel(name = "feature", value = {"web", "regression"})
-//    //testcase010 
-//    public void testFastSearch010() {
+    
+//    //testcase010 (Negative) Verify that the user Gets the message "No results found for this term" or should be redirected to the search results page with irrelevant search result items after searching for an invalid value in the Fast Search field. 
+//    public void testUserRedirectedToIrrelevantItemsSearchingInvalidValueInFastSearchOrGetsNoResultsFoundMsg() {
 //        
 //    	// Open Home page
 //        HomePageOnliner homePageOnliner = new HomePageOnliner(getDriver());
@@ -59,5 +65,7 @@ public class OnlinerFastSearchTest implements IAbstractTest {
 //        homePageOnliner.getTopHeaderBar().clickOnUsedGoodsButton();
 //
 //    } 
+    
+    
 
 }

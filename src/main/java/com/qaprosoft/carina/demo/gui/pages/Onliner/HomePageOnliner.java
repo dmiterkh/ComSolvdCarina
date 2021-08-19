@@ -52,15 +52,21 @@ public class HomePageOnliner extends AbstractPage {
     private ExtendedWebElement homeLink;
     
     
+    
     public HomePageOnliner(WebDriver driver) {
         super(driver);
         setPageAbsoluteURL(R.CONFIG.get(Configuration.Parameter.URL.getKey()));
     }
 
     
+    
+//	Tests (testcases 001, 002, 003, 007, 009, 010, 011, 012, 013, 014, 019)  
+    
     public TopHeaderBar getTopHeaderBar() {
         return topHeaderBar;
     }
+    
+//	OnlinerFooterTest (testcase 018)    
     
     public FooterMenu getFooterMenu() {
         return footerLink;
@@ -76,15 +82,15 @@ public class HomePageOnliner extends AbstractPage {
         return videoPageLink;
     }
     
-    public VideoPageOnliner openVideoPageOnliner() {
-    	videoPageLink.click();
-        return new VideoPageOnliner(driver);
-    }
-
     public VideoPageOnliner openVideoPageOnliner(ExtendedWebElement videoPageLinkArg) {
         videoPageLinkArg.click();
         return new VideoPageOnliner(driver);
     }
+    
+//    public VideoPageOnliner openVideoPageOnliner() {
+//    	videoPageLink.click();
+//    	return new VideoPageOnliner(driver);
+//    }
     
     // Additional method
     public void scrollToBottom() {

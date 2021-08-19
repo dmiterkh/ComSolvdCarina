@@ -34,38 +34,29 @@ public class OnlinerVideoTest implements IAbstractTest {
     @MethodOwner(owner = "qpsdemo")
     @TestPriority(Priority.P3)
     @TestLabel(name = "feature", value = {"web", "regression"})
-    //testcase017 
-    public void testVideo017() {
+    
+    //testcase017 Verify that the user Gets correct work of youtube video in any article with youtube video
+    public void testUserGetsCorrectWorkOfYoutubeVideo() {
     	
     	// Open Home page
         HomePageOnliner homePageOnliner = new HomePageOnliner(getDriver());
         homePageOnliner.open();
         Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
         
-//        // Open Video page 
-//        VideoPageOnliner videoPageOnliner = homePageOnliner.openVideoPageOnliner();
-//        Assert.assertTrue(videoPageOnliner.isPageOpened(), "Home page is not opened");
-//        videoPageOnliner.showVideoPageOperations();              
+        // Open Video page 
+        VideoPageOnliner videoPageOnliner = homePageOnliner.openVideoPageOnliner(homePageOnliner.getVideoPageLink());
+//        Assert.assertTrue(videoPageOnliner.isPageOpened(), "Video page is not opened");
+        
+        videoPageOnliner.showVideoPageOperations();          
+        
+        
+//        while (!(videoPageOnliner.getHomePageLink().isElementPresent())){
+//        	videoPageOnliner.refresh(); 
+//        	videoPageOnliner.pause(5.0);
+//        };
+//    	videoPageOnliner.returnToHomePage();
 
-//        int i = 0;
-//        VideoPageOnliner videoPageOnliner = new VideoPageOnliner(getDriver());
-//        while (i < 1) {
-//        	for (ExtendedWebElement videoPageLink : homePageOnliner.getVideoPageListLink()) {
-//        		videoPageOnliner = homePageOnliner.openVideoPageOnliner(videoPageLink);
-//        		if(videoPageOnliner.checkYoutubeVideoLink()) {
-//        			Assert.assertTrue(videoPageOnliner.getYoutubeVideoLink().isElementPresent(), "Youtube Frame on the page is not present");
-//            		videoPageOnliner.showVideoPageOperations();
-//            		Assert.assertTrue(videoPageOnliner.getYoutubeVideoLink().isChecked(), "Youtube Frame is not checked");
-//        			i++;
-//        		} else {
-//        			Assert.assertFalse(videoPageOnliner.getYoutubeVideoLink().isElementPresent(), "Youtube Frame on the page is present");
-//            		Assert.assertFalse(videoPageOnliner.getYoutubeVideoLink().isChecked(), "Youtube Frame is checked");
-//            		homePageOnliner.open();
-//        		}
-//        	}
-//        }	
-//        System.out.println(i);
-        	
+        
 //        int k = 0;
 //        VideoPageOnliner videoPageOnliner2 = new VideoPageOnliner(getDriver());
 //        if ((homePageOnliner.getVideoPageListLink() != null)&&(!homePageOnliner.getVideoPageListLink().isEmpty())) {
@@ -83,25 +74,33 @@ public class OnlinerVideoTest implements IAbstractTest {
 //        			videoPageOnliner2.returnToHomePage();
 //        		}
 //        	}	
+//      	System.out.println(k);
 //        } else {
-//			System.out.println("The required Storage is Null or Empty");	
+//			System.out.println("The required List of Extended Web Elements is Null or Empty");	
 //        }
         
 
-        int i = 0;
-        VideoPageOnliner videoPageOnliner3 = new VideoPageOnliner(getDriver());
-     	for (ExtendedWebElement videoPageLink : homePageOnliner.getVideoPageListLink()) {
-     		while(i < 1) {
-     			videoPageOnliner3 = homePageOnliner.openVideoPageOnliner(videoPageLink);
-     			if(videoPageOnliner3.checkYoutubeVideoLink()) {
-     				System.out.println("Ok");
-     				i++;
-     				System.out.println("i = " + i);
-     			} else {
-     			}
-     			videoPageOnliner3.returnToHomePage();
-     		}	
-      	}
-      	System.out.println(i);
+//        int k = 0;
+//        VideoPageOnliner videoPageOnliner3 = new VideoPageOnliner(getDriver());
+//        if ((homePageOnliner.getVideoPageListLink() != null)&&(!homePageOnliner.getVideoPageListLink().isEmpty())) {
+//        	for (ExtendedWebElement videoPageLink : homePageOnliner.getVideoPageListLink()) {
+//        		while(k < 1) {
+//        			videoPageOnliner3 = homePageOnliner.openVideoPageOnliner(videoPageLink);
+//        			if(videoPageOnliner3.checkYoutubeVideoLink()) {
+//        				System.out.println("Ok");
+//        				k++;
+//        				System.out.println("k = " + k);
+//        			} else {
+//        			}
+//        			videoPageOnliner3.returnToHomePage();
+//        		}	
+//        	}	
+//        	System.out.println(k);
+//    	} else {
+//    		System.out.println("The required List of Extended Web Elements is Null or Empty");	
+//    	}
+          
+        getDriver().close();
+        
     }
 }

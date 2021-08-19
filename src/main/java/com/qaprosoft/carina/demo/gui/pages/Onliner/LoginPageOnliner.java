@@ -36,6 +36,14 @@ public class LoginPageOnliner extends AbstractPage {
         super(driver);
     }
 
+    public ExtendedWebElement getLoginFieldLink() {
+    	return loginFieldLink;
+    }
+    
+    public ExtendedWebElement getPasswordFieldLink() {
+    	return passwordFieldLink;
+    }
+    
     public void typeInLoginField(String loginArg) {
     	loginFieldLink.click();
     	loginFieldLink.type(loginArg);

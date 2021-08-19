@@ -32,14 +32,15 @@ public class OnlinerFooterTest implements IAbstractTest {
     @MethodOwner(owner = "qpsdemo")
     @TestPriority(Priority.P3)
     @TestLabel(name = "feature", value = {"web", "regression"})
+    
     //testcase018 Verify that the user Is Being Redirected to the relevant page after clicking on any link in footer 
-    public void testUserRedirectedToRelevantPageClickingOnLinkInFooter () {
+    public void testUserRedirectedToRelevantPageClickingOnLinkInFooter() {
         
     	// Open Home page
         HomePageOnliner homePageOnliner = new HomePageOnliner(getDriver());
         homePageOnliner.open();
         Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
-                
+        
         // Open Vacancies page
         VacanciesPageOnliner vacanciesPageOnliner = homePageOnliner.getFooterMenu().openVacanciesPageOnliner();
         Assert.assertTrue(vacanciesPageOnliner.isPageOpened(), "Vacancies page is not opened");
@@ -68,6 +69,8 @@ public class OnlinerFooterTest implements IAbstractTest {
         vacanciesPageOnliner = contactsPageOnliner.openVacanciesPageOnliner();
         vacanciesPageOnliner.pause(10.0);
         Assert.assertTrue(vacanciesPageOnliner.isPageOpened(), "Vacancies page is not opened");
+        
+        getDriver().close();
         
     }    
 

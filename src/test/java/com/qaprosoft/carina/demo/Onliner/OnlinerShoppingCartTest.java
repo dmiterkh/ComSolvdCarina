@@ -37,8 +37,9 @@ public class OnlinerShoppingCartTest implements IAbstractTest {
     @MethodOwner(owner = "qpsdemo")
     @TestPriority(Priority.P3)
     @TestLabel(name = "feature", value = {"web", "regression"})
-    //testcase019
-    public void testShopCart019() {
+    
+    //testcase019 Verify that the user Gets correct work of Shopping Cart in Catalog section
+    public void testUserGetsCorrectWorkOfShoppingCartInCatalog() {
         
     	// Open Home page
         HomePageOnliner homePageOnliner = new HomePageOnliner(getDriver());
@@ -109,14 +110,18 @@ public class OnlinerShoppingCartTest implements IAbstractTest {
         // Return to Home page
         authorizedPageOnliner = shoppingCartPageOnliner.clickOnAutorizedPageLink();
         authorizedPageOnliner.pause(10);
+        
+        getDriver().close();
+        
     }
     
     @Test()
     @MethodOwner(owner = "qpsdemo")
     @TestPriority(Priority.P3)
     @TestLabel(name = "feature", value = {"web", "regression"})
-    //testcase019_short
-    public void testShopCart019Short() {
+    
+    //testcase019 short description
+    public void testtestUserGetsCorrectWorkOfShoppingCartInCatalogShort() {
         
         // Open Home page
         HomePageOnliner homePageOnliner = new HomePageOnliner(getDriver());
@@ -138,6 +143,9 @@ public class OnlinerShoppingCartTest implements IAbstractTest {
         // Do Shopping cart operations
         authorizedPageOnliner = shoppingCartPageOnliner.showShoppingCartOperations();
         authorizedPageOnliner.pause(10);
+        
+        getDriver().close();
+        
     }
 
 }    

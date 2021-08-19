@@ -1,6 +1,7 @@
 package com.qaprosoft.carina.demo.gui.pages.Onliner;
 
 import java.lang.invoke.MethodHandles;
+import java.util.List;
 
 import com.qaprosoft.carina.core.foundation.utils.Configuration;
 import com.qaprosoft.carina.core.foundation.utils.R;
@@ -16,32 +17,26 @@ import com.qaprosoft.carina.demo.gui.pages.Onliner.ItemPageOnliner;
 public class LaptopPageOnliner extends AbstractPage {
     private static final Logger LOGGER = LoggerFactory.getLogger(LaptopPageOnliner.class);
 	
-    //!!!!!!!!!! List
     @FindBy(xpath = "//input[@type='checkbox' and @value='lenovo']//parent::span//parent::label")
-    private ExtendedWebElement producerCheckboxLink;
+    private List<ExtendedWebElement> producerCheckboxListLink;
         
     //@FindBy(xpath = "//input[@type='text' and @placeholder='до']")
     @FindBy(xpath = "//input[contains(@class,'schema-filter-control__item') and @placeholder='до']")    
     private ExtendedWebElement upperBoundPriceFieldLink;
-    
-    //!!!!!!!!!! List
+   
     @FindBy(xpath = "//a[@data-bind='attr: {href: product.html_url}']")
-    private ExtendedWebElement itemLink;
-    
-    //a[@class="button-style button-style_base-alter product-aside__item-button button-style_expletive" and contains(text(),'В корзину')]
-
-    
+    private List<ExtendedWebElement> itemListLink;
+   
     
     public LaptopPageOnliner(WebDriver driver) {
         super(driver);
         setPageURL("https://catalog.onliner.by/notebook");
     }
            
-    
-    //!!!!!!!!!! List
+   
     public void clickOnProducerCheckboxLink() {
-    	producerCheckboxLink.scrollTo();
-    	producerCheckboxLink.click();
+    	producerCheckboxListLink.get(0).scrollTo();
+    	producerCheckboxListLink.get(0).click();
     }
     
     public void typeInUpperBoundPriceField(String upperBoundPriceArg) {
@@ -51,18 +46,18 @@ public class LaptopPageOnliner extends AbstractPage {
     }
     
     public ItemPageOnliner openItemPageOnliner() {
-    	itemLink.click();
+    	itemListLink.get(0).click();
         return new ItemPageOnliner(driver);
     }
     
     public ItemPageOnliner getItemPageOnliner(String upperBoundPriceArg) {
-    	producerCheckboxLink.scrollTo();
-    	producerCheckboxLink.click();
-    	producerCheckboxLink.scrollTo();
+    	producerCheckboxListLink.get(0).scrollTo();
+    	producerCheckboxListLink.get(0).click();
+    	producerCheckboxListLink.get(0).scrollTo();
        	upperBoundPriceFieldLink.scrollTo();
     	upperBoundPriceFieldLink.click();
     	upperBoundPriceFieldLink.type(upperBoundPriceArg);
-    	itemLink.click();
+    	itemListLink.get(0).click();
         return new ItemPageOnliner(driver);
     }
 }

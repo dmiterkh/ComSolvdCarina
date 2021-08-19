@@ -1,6 +1,7 @@
 package com.qaprosoft.carina.demo.gui.pages.Onliner;
 
 import java.lang.invoke.MethodHandles;
+import java.util.List;
 
 import com.qaprosoft.carina.core.foundation.utils.Configuration;
 import com.qaprosoft.carina.core.foundation.utils.R;
@@ -15,30 +16,26 @@ import com.qaprosoft.carina.core.gui.AbstractPage;
 public class AutomobilePageOnliner extends AbstractPage {
     private static final Logger LOGGER = LoggerFactory.getLogger(AutomobilePageOnliner.class);
 
-    //!!!!!!!! List
     @FindBy(xpath = "//div[@class='input-style__faux' and text()='Все страны']//parent::div//parent::div")
-    private ExtendedWebElement countryDropdownLink;
+    private List<ExtendedWebElement> countryDropdownListLink;
   
   	@FindBy(xpath = "//div[@class='dropdown-style__checkbox-sign' and text()='Беларусь']//parent::div//parent::div//parent::label//parent::li")
   	private ExtendedWebElement countryChoiseLink;
     
-    //!!!!!!!! List
     @FindBy(xpath = "//div[@class='input-style__faux' and text()='Марка']//parent::div//parent::div")
-    private ExtendedWebElement producerDropdownLink;
+    private List<ExtendedWebElement> producerDropdownListLink;
   
   	@FindBy(xpath = "//div[@class='dropdown-style__checkbox-sign' and text()='Renault']//parent::div//parent::div//parent::label//parent::li")
   	private ExtendedWebElement producerChoiseLink;
 
-    //!!!!!!!! List
     @FindBy(xpath = "//div[@class='input-style__faux' and text()='Модель']//parent::div//parent::div")
-    private ExtendedWebElement modelDropdownLink;
+    private List<ExtendedWebElement> modelDropdownListLink;
   
   	@FindBy(xpath = "//div[@class='dropdown-style__checkbox-sign' and text()='Scenic']//parent::div//parent::div//parent::label//parent::li")
   	private ExtendedWebElement modelChoiseLink;
 
-    //!!!!!!!! List
     @FindBy(xpath = "//div[@class='input-style__faux' and text()='с']//following-sibling::select")
-    private ExtendedWebElement lowerYearDropdownLink;
+    private List<ExtendedWebElement> lowerYearDropdownListLink;
     
     @FindBy(xpath = "//div[@class='input-style__faux' and text()='с']//following-sibling::select//option[@value=2011] ")
     private ExtendedWebElement lowerYearChoiseLink;
@@ -49,53 +46,49 @@ public class AutomobilePageOnliner extends AbstractPage {
         setPageURL("https://ab.onliner.by");
     }
   	
-    //!!!!!!!!!! List
     public void clickOnCountryDropdownLink() {
-    	countryDropdownLink.scrollTo();
-    	countryDropdownLink.click();
+    	countryDropdownListLink.get(0).scrollTo();
+    	countryDropdownListLink.get(0).click();
 
     }
     
     public void clickOnCountryChoiseLink() {
     	countryChoiseLink.scrollTo();
     	countryChoiseLink.click();
-    	countryDropdownLink.scrollTo();
+    	countryDropdownListLink.get(0).scrollTo();
     }
     
-    //!!!!!!!!!! List
     public void clickOnProducerDropdownLink() {
-    	producerDropdownLink.scrollTo();
-    	producerDropdownLink.click();
+    	producerDropdownListLink.get(0).scrollTo();
+    	producerDropdownListLink.get(0).click();
     }
     
     public void clickOnProducerChoiseLink() {
     	producerChoiseLink.scrollTo();
     	producerChoiseLink.click();
-    	producerDropdownLink.scrollTo();
+    	producerDropdownListLink.get(0).scrollTo();
     }
     
-    //!!!!!!!!!! List
     public void clickOnModelDropdownLink() {
-    	modelDropdownLink.scrollTo();
-    	modelDropdownLink.click();
+    	modelDropdownListLink.get(0).scrollTo();
+    	modelDropdownListLink.get(0).click();
     }
     
     public void clickOnModelChoiseLink() {
     	modelChoiseLink.scrollTo();
     	modelChoiseLink.click();
-    	modelDropdownLink.scrollTo();
+    	modelDropdownListLink.get(0).scrollTo();
     }
     
-    //!!!!!!!!!! List
     public void clickOnLowerYearDropdownLink() {
-    	lowerYearDropdownLink.scrollTo();
-    	lowerYearDropdownLink.click();
+    	lowerYearDropdownListLink.get(0).scrollTo();
+    	lowerYearDropdownListLink.get(0).click();
     }
     
     public void clickOnLowerYearChoiseLink() {
     	lowerYearChoiseLink.scrollTo();
     	lowerYearChoiseLink.click();
-    	lowerYearDropdownLink.scrollTo();
+    	lowerYearDropdownListLink.get(0).scrollTo();
     }
     
     

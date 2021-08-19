@@ -70,7 +70,7 @@ public class ShoppingCartPageOnliner extends AbstractPage {
     
     public AuthorizedPageOnliner showShoppingCartOperations() {
     	numberOfItemWindowLink.click();
-//    	numberOfItemWindowLink.clear();
+    	numberOfItemWindowLink.getElement().clear();
     	numberOfItemWindowLink.type("23");
     	numberOfItemWindowLink.click();
     	incrementButtonLink.scrollTo();

@@ -60,6 +60,10 @@ public class VideoPageOnliner extends AbstractPage {
     	return new HomePageOnliner(driver);
 	}
     
+    public ExtendedWebElement getHomePageLink() {
+    	return homeLink;
+	}
+    
     public boolean checkYoutubeVideoLink() {
     	if (youtubeVideoLink.isPresent()) {
     		return true;

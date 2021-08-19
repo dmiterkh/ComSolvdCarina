@@ -36,7 +36,8 @@ public class OnlinerLoginTest implements IAbstractTest {
     @MethodOwner(owner = "qpsdemo")
     @TestPriority(Priority.P3)
     @TestLabel(name = "feature", value = {"web", "regression"})
-    //testcase000 
+    
+    //testcase000 Verify that Login page is opened.
     public void testAuthBarIsOpened() {
         
     	// Open Home page
@@ -52,12 +53,16 @@ public class OnlinerLoginTest implements IAbstractTest {
         LoginPageOnliner loginPageOnliner = homePageOnliner.getTopHeaderBar().clickOnAuthLink();
         loginPageOnliner.pause(5.0);
         Assert.assertTrue(loginPageOnliner.isPageOpened(), "Login page is not opened");
+        
+        getDriver().close();
+        
     }    
     
     @Test()
     @MethodOwner(owner = "qpsdemo")
     @TestPriority(Priority.P3)
     @TestLabel(name = "feature", value = {"web", "regression"})
+    
     //testcase001 Verify that the user can Activate the login and password fields and can Type in it.
     public void testUserCanActivateFieldsAndCanTypeInIt() {
         
@@ -76,13 +81,17 @@ public class OnlinerLoginTest implements IAbstractTest {
         
         // Type in Login field
         loginPageOnliner.typeInLoginField("adaxdeaeca");
+        Assert.assertTrue(loginPageOnliner.getLoginFieldLink().isClickable(), "Login field is not clickable");  
         
         // Type in Password field
         loginPageOnliner.typeInPasswordField("adaxdeaeca");
+        Assert.assertTrue(loginPageOnliner.getPasswordFieldLink().isClickable(), "Password field is not clickable");
         
         // Password checking  
         loginPageOnliner.clickOnAuthHelperButton();
         loginPageOnliner.pause(5.0);
+        
+        getDriver().close();
 
     }        
     
@@ -90,6 +99,7 @@ public class OnlinerLoginTest implements IAbstractTest {
     @MethodOwner(owner = "qpsdemo")
     @TestPriority(Priority.P3)
     @TestLabel(name = "feature", value = {"web", "regression"})
+    
     //testcase002 Verify that the user can Enter letters in different cases, numbers and special symbols that are different from letters and numbers such as \, |, /,  <, >, *, ?, !, ', ", ~, `, :, ;, &, %, $, #, @, etc. into the login and password fields.
     public void testUserCanEnterLettersNumbersAndSpecialSymbols() {
         
@@ -108,13 +118,17 @@ public class OnlinerLoginTest implements IAbstractTest {
         
         // Type in Login field
         loginPageOnliner.typeInLoginField("SolvD_@#$%^&_2020");
+        Assert.assertTrue(loginPageOnliner.getLoginFieldLink().isClickable(), "Login field is not clickable");  
         
         // Type in Password field
         loginPageOnliner.typeInPasswordField("SolvD_@#$%^&_2020");
+        Assert.assertTrue(loginPageOnliner.getPasswordFieldLink().isClickable(), "Password field is not clickable");
         
         // Password checking
         loginPageOnliner.clickOnAuthHelperButton();
         loginPageOnliner.pause(5.0);
+        
+        getDriver().close();
         
     }    
         
@@ -122,6 +136,7 @@ public class OnlinerLoginTest implements IAbstractTest {
     @MethodOwner(owner = "qpsdemo")
     @TestPriority(Priority.P3)
     @TestLabel(name = "feature", value = {"web", "regression"})
+    
     //testcase003 Verify that the user can Access his registered personal account through the registration form entering correct login (email) and correct password.
     public void testUserCanAccessAccountThroughEnteringValidLogAndPas() {
         
@@ -134,15 +149,21 @@ public class OnlinerLoginTest implements IAbstractTest {
         };
         Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
                 
-        AuthorizedPageOnliner authorizedPageOnliner = homePageOnliner.getTopHeaderBar().clickOnAuthLink().getAuthorizedPageOnliner("dmiterkh@mail.ru", "3909091");
+        AuthorizedPageOnliner authorizedPageOnliner = homePageOnliner.getTopHeaderBar().clickOnAuthLink().getAuthorizedPageOnliner("dmiterkh@mail.ru", "111111");
         authorizedPageOnliner.pause(5.0);
         Assert.assertTrue(authorizedPageOnliner.isPageOpened(), "Authorized page is not opened");
+//        Assert.assertTrue(homePageOnliner.getTopHeaderBar().clickOnAuthLink().getLoginFieldLink().isClickable(), "Login field is not clickable"); 
+//        Assert.assertTrue(homePageOnliner.getTopHeaderBar().clickOnAuthLink().getPasswordFieldLink().isClickable(), "Password field is not clickable");
+        
+        getDriver().close();
+        
     }
     
     @Test()
     @MethodOwner(owner = "qpsdemo")
     @TestPriority(Priority.P3)
     @TestLabel(name = "feature", value = {"web", "regression"})
+    
     //testcase007 (Negative) Verify that the user Cannot Access his registered personal account through the registration form entering incorrect login (email) and correct password.
     public void testUserCanNotAccessAccountThroughEnteringInvalidLogValidPas() {
         
@@ -155,8 +176,14 @@ public class OnlinerLoginTest implements IAbstractTest {
         };
         Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
                 
-        LoginPageOnliner loginPageOnliner = homePageOnliner.getTopHeaderBar().clickOnAuthLink().getNotAuthorizedLoginPageOnliner("dmiterkh.mail.ru", "3909091");
+        LoginPageOnliner loginPageOnliner = homePageOnliner.getTopHeaderBar().clickOnAuthLink().getNotAuthorizedLoginPageOnliner("dmiterkh.mail.ru", "111111");
         loginPageOnliner.pause(5);  
         Assert.assertTrue(loginPageOnliner.isPageOpened(), "Not Authorized Login page is not opened");
+//        Assert.assertTrue(loginPageOnliner.getLoginFieldLink().isClickable(), "Login field is not clickable"); 
+//        Assert.assertTrue(loginPageOnliner.getPasswordFieldLink().isClickable(), "Password field is not clickable");
+
+        
+        getDriver().close();
+        
     }    
 }
