@@ -1,4 +1,4 @@
-package com.qaprosoft.carina.demo.zonliner;
+package com.qaprosoft.carina.demo.Onliner;
 
 import java.lang.invoke.MethodHandles;
 import java.util.List;
@@ -16,8 +16,7 @@ import com.zebrunner.agent.core.annotation.TestLabel;
 import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
 import com.qaprosoft.carina.core.foundation.utils.tag.Priority;
 import com.qaprosoft.carina.core.foundation.utils.tag.TestPriority;
-import com.qaprosoft.carina.demo.gui.pages.zonliner.HomePageOnliner;
-import com.qaprosoft.carina.demo.gui.components.zonliner.FastSearch;
+import com.qaprosoft.carina.demo.gui.pages.Onliner.HomePageOnliner;
 
 /**
  * @author Dmitry Kharevich
@@ -39,8 +38,8 @@ public class OnlinerFastSearchTest implements IAbstractTest {
         homePageOnliner.open();
         Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
         
-        homePageOnliner.getFastSearch().typeInFastSearchField("chairman 969"); 
-        homePageOnliner.getFastSearch().clickOnUsedGoodsButton();
+        homePageOnliner.getTopHeaderBar().typeInFastSearchField("chairman 969"); 
+        homePageOnliner.getTopHeaderBar().clickOnUsedGoodsButton();
 
     }    
     
@@ -56,8 +55,8 @@ public class OnlinerFastSearchTest implements IAbstractTest {
 //        homePageOnliner.open();
 //        Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
 //        
-//        homePageOnliner.getFastSearch().typeInFastSearchField("@#$%^&");
-//        homePageOnliner.getFastSearch().clickOnUsedGoodsButton();
+//        homePageOnliner.getTopHeaderBar().typeInFastSearchField("@#$%^&");
+//        homePageOnliner.getTopHeaderBar().clickOnUsedGoodsButton();
 //
 //    } 
 

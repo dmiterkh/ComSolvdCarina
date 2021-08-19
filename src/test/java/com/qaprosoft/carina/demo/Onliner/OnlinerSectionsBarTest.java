@@ -1,4 +1,4 @@
-package com.qaprosoft.carina.demo.zonliner;
+package com.qaprosoft.carina.demo.Onliner;
 
 import java.lang.invoke.MethodHandles;
 import java.util.List;
@@ -17,11 +17,11 @@ import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
 import com.qaprosoft.carina.core.foundation.utils.tag.Priority;
 import com.qaprosoft.carina.core.foundation.utils.tag.TestPriority;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
-import com.qaprosoft.carina.demo.gui.pages.zonliner.HomePageOnliner;
-import com.qaprosoft.carina.demo.gui.pages.zonliner.CatalogPageOnliner;
-import com.qaprosoft.carina.demo.gui.pages.zonliner.AutomobilePageOnliner;
-import com.qaprosoft.carina.demo.gui.pages.zonliner.RealEstatePageOnliner;
-import com.qaprosoft.carina.demo.gui.pages.zonliner.LaptopPageOnliner;
+import com.qaprosoft.carina.demo.gui.pages.Onliner.AutomobilePageOnliner;
+import com.qaprosoft.carina.demo.gui.pages.Onliner.CatalogPageOnliner;
+import com.qaprosoft.carina.demo.gui.pages.Onliner.HomePageOnliner;
+import com.qaprosoft.carina.demo.gui.pages.Onliner.LaptopPageOnliner;
+import com.qaprosoft.carina.demo.gui.pages.Onliner.RealEstatePageOnliner;
 
 /**
  * @author Dmitry Kharevich
@@ -45,7 +45,7 @@ public class OnlinerSectionsBarTest implements IAbstractTest {
         Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
                 
         // Open Catalog page
-        CatalogPageOnliner catalogPageOnliner = homePageOnliner.getSectionsBar().openCatalogPageOnliner();
+        CatalogPageOnliner catalogPageOnliner = homePageOnliner.getTopHeaderBar().openCatalogPageOnliner();
     	catalogPageOnliner.pause(10);
     }    
         
@@ -62,7 +62,7 @@ public class OnlinerSectionsBarTest implements IAbstractTest {
         Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
                 
         // Open Catalog page
-        CatalogPageOnliner catalogPageOnliner = homePageOnliner.getSectionsBar().openCatalogPageOnliner();
+        CatalogPageOnliner catalogPageOnliner = homePageOnliner.getTopHeaderBar().openCatalogPageOnliner();
         
         // Open Computer techics subsection
         catalogPageOnliner.clickOnComputerTechnicsLink();
@@ -94,7 +94,7 @@ public class OnlinerSectionsBarTest implements IAbstractTest {
         Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
                 
         // Open Automobile catalog page
-        AutomobilePageOnliner automobilePageOnliner = homePageOnliner.getSectionsBar().openAutomobilePageOnliner();
+        AutomobilePageOnliner automobilePageOnliner = homePageOnliner.getTopHeaderBar().openAutomobilePageOnliner();
         
         // Click on Country dropdown
         automobilePageOnliner.clickOnCountryDropdownLink();
@@ -136,7 +136,7 @@ public class OnlinerSectionsBarTest implements IAbstractTest {
 	    Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");          
 	    
 	    // Open Real estate page
-	    RealEstatePageOnliner realEstatePageOnliner = homePageOnliner.getSectionsBar().openRealEstatePageOnliner();
+	    RealEstatePageOnliner realEstatePageOnliner = homePageOnliner.getTopHeaderBar().openRealEstatePageOnliner();
 	
 	    // Click on number 1 button
 	    realEstatePageOnliner.clickOnNumberOfRoomsButton();

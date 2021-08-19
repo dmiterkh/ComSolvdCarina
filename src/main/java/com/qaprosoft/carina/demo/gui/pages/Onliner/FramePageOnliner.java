@@ -1,4 +1,4 @@
-package com.qaprosoft.carina.demo.gui.pages.zonliner;
+package com.qaprosoft.carina.demo.gui.pages.Onliner;
 
 import java.lang.invoke.MethodHandles;
 import java.util.List;
@@ -16,7 +16,7 @@ import com.qaprosoft.carina.core.gui.AbstractPage;
 
 public class FramePageOnliner extends AbstractPage {
 		
-    private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger LOGGER = LoggerFactory.getLogger(FramePageOnliner.class);
     
 //    @FindBy(xpath = "//iframe[@title='YouTube video player']")
 //    private ExtendedWebElement videoLink;
@@ -109,5 +109,3 @@ public class FramePageOnliner extends AbstractPage {
     }
 
 }
-
-

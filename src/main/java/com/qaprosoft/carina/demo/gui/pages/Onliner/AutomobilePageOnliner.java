@@ -1,4 +1,4 @@
-package com.qaprosoft.carina.demo.gui.pages.zonliner;
+package com.qaprosoft.carina.demo.gui.pages.Onliner;
 
 import java.lang.invoke.MethodHandles;
 
@@ -13,7 +13,7 @@ import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebEleme
 import com.qaprosoft.carina.core.gui.AbstractPage;
 
 public class AutomobilePageOnliner extends AbstractPage {
-    private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger LOGGER = LoggerFactory.getLogger(AutomobilePageOnliner.class);
 
     //!!!!!!!! List
     @FindBy(xpath = "//div[@class='input-style__faux' and text()='Все страны']//parent::div//parent::div")

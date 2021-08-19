@@ -1,4 +1,4 @@
-package com.qaprosoft.carina.demo.gui.pages.zonliner;
+package com.qaprosoft.carina.demo.gui.pages.Onliner;
 
 import java.lang.invoke.MethodHandles;
 import java.util.List;
@@ -12,10 +12,10 @@ import org.slf4j.LoggerFactory;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractPage;
-import com.qaprosoft.carina.demo.gui.pages.zonliner.AuthorizedHomePageOnliner;
+import com.qaprosoft.carina.demo.gui.pages.Onliner.AuthorizedPageOnliner;
 
 public class ShoppingCartPageOnliner extends AbstractPage {
-    private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger LOGGER = LoggerFactory.getLogger(ShoppingCartPageOnliner.class);
     
 	@FindBy(xpath = "//a[@href='https://www.onliner.by']")
     private ExtendedWebElement autorizedHomePageLink;
@@ -37,9 +37,9 @@ public class ShoppingCartPageOnliner extends AbstractPage {
         setPageURL("https://cart.onliner.by/");
     }    
     
-    public AuthorizedHomePageOnliner clickOnAutorizedHomePageLink() {
+    public AuthorizedPageOnliner clickOnAutorizedPageLink() {
     	autorizedHomePageLink.click();
-        return new AuthorizedHomePageOnliner(driver);
+        return new AuthorizedPageOnliner(driver);
     }
       
     public void typeInNumberOfItemWindowLink() {
@@ -68,7 +68,7 @@ public class ShoppingCartPageOnliner extends AbstractPage {
     	removeButtonLink.pause(5);
     }
     
-    public AuthorizedHomePageOnliner showShoppingCartOperations() {
+    public AuthorizedPageOnliner showShoppingCartOperations() {
     	numberOfItemWindowLink.click();
 //    	numberOfItemWindowLink.clear();
     	numberOfItemWindowLink.type("23");
@@ -85,7 +85,7 @@ public class ShoppingCartPageOnliner extends AbstractPage {
     	removeButtonLink.click();
     	removeButtonLink.pause(5);
     	autorizedHomePageLink.click();
-        return new AuthorizedHomePageOnliner(driver);
+        return new AuthorizedPageOnliner(driver);
     }
 
 }

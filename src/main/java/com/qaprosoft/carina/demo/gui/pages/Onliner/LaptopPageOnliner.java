@@ -1,4 +1,4 @@
-package com.qaprosoft.carina.demo.gui.pages.zonliner;
+package com.qaprosoft.carina.demo.gui.pages.Onliner;
 
 import java.lang.invoke.MethodHandles;
 
@@ -11,10 +11,10 @@ import org.slf4j.LoggerFactory;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractPage;
-import com.qaprosoft.carina.demo.gui.pages.zonliner.ItemPageOnliner;
+import com.qaprosoft.carina.demo.gui.pages.Onliner.ItemPageOnliner;
 
 public class LaptopPageOnliner extends AbstractPage {
-    private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+    private static final Logger LOGGER = LoggerFactory.getLogger(LaptopPageOnliner.class);
 	
     //!!!!!!!!!! List
     @FindBy(xpath = "//input[@type='checkbox' and @value='lenovo']//parent::span//parent::label")

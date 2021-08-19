@@ -1,4 +1,4 @@
-package com.qaprosoft.carina.demo.zonliner;
+package com.qaprosoft.carina.demo.Onliner;
 
 import java.lang.invoke.MethodHandles;
 import java.util.List;
@@ -16,13 +16,13 @@ import com.zebrunner.agent.core.annotation.TestLabel;
 import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
 import com.qaprosoft.carina.core.foundation.utils.tag.Priority;
 import com.qaprosoft.carina.core.foundation.utils.tag.TestPriority;
-import com.qaprosoft.carina.demo.gui.pages.zonliner.HomePageOnliner;
-import com.qaprosoft.carina.demo.gui.pages.zonliner.ItemPageOnliner;
-import com.qaprosoft.carina.demo.gui.pages.zonliner.LoginPageOnliner;
-import com.qaprosoft.carina.demo.gui.pages.zonliner.AuthorizedHomePageOnliner;
-import com.qaprosoft.carina.demo.gui.pages.zonliner.ShoppingCartPageOnliner;
-import com.qaprosoft.carina.demo.gui.pages.zonliner.CatalogPageOnliner;
-import com.qaprosoft.carina.demo.gui.pages.zonliner.LaptopPageOnliner;
+import com.qaprosoft.carina.demo.gui.pages.Onliner.AuthorizedPageOnliner;
+import com.qaprosoft.carina.demo.gui.pages.Onliner.CatalogPageOnliner;
+import com.qaprosoft.carina.demo.gui.pages.Onliner.HomePageOnliner;
+import com.qaprosoft.carina.demo.gui.pages.Onliner.ItemPageOnliner;
+import com.qaprosoft.carina.demo.gui.pages.Onliner.LaptopPageOnliner;
+import com.qaprosoft.carina.demo.gui.pages.Onliner.LoginPageOnliner;
+import com.qaprosoft.carina.demo.gui.pages.Onliner.ShoppingCartPageOnliner;
 
 /**
  * @author Dmitry Kharevich
@@ -46,7 +46,7 @@ public class OnlinerShoppingCartTest implements IAbstractTest {
         Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
                 
         // Open Authorization page
-        LoginPageOnliner loginPageOnliner = homePageOnliner.getAuthBar().clickOnAuthLink();
+        LoginPageOnliner loginPageOnliner = homePageOnliner.getTopHeaderBar().clickOnAuthLink();
         
         // Type in Login field
         loginPageOnliner.typeInLoginField("dmiterkh@mail.ru");
@@ -58,16 +58,16 @@ public class OnlinerShoppingCartTest implements IAbstractTest {
         loginPageOnliner.clickOnAuthHelperButton();
         
         // Click on Auth button
-        AuthorizedHomePageOnliner authorizedHomePageOnliner = loginPageOnliner.clickOnAuthButton();
+        AuthorizedPageOnliner authorizedPageOnliner = loginPageOnliner.clickOnAuthButton();
 
         // Click on (Enter to) Shopping Cart
-        ShoppingCartPageOnliner shoppingCartPageOnliner = authorizedHomePageOnliner.clickOnShoppingCartLink();        
+        ShoppingCartPageOnliner shoppingCartPageOnliner = authorizedPageOnliner.getTopHeaderBar().clickOnShoppingCartLink();        
         
         // Return to Home page
-        authorizedHomePageOnliner = shoppingCartPageOnliner.clickOnAutorizedHomePageLink();
+        authorizedPageOnliner = shoppingCartPageOnliner.clickOnAutorizedPageLink();
        
         // Open Catalog page
-        CatalogPageOnliner catalogPageOnliner = authorizedHomePageOnliner.getSectionsBar().openCatalogPageOnliner();
+        CatalogPageOnliner catalogPageOnliner = authorizedPageOnliner.getTopHeaderBar().openCatalogPageOnliner();
       
         // Open Computer techics subsection
         catalogPageOnliner.clickOnComputerTechnicsLink();
@@ -107,8 +107,8 @@ public class OnlinerShoppingCartTest implements IAbstractTest {
         shoppingCartPageOnliner.pause(5);
         
         // Return to Home page
-        authorizedHomePageOnliner = shoppingCartPageOnliner.clickOnAutorizedHomePageLink();
-        authorizedHomePageOnliner.pause(10);
+        authorizedPageOnliner = shoppingCartPageOnliner.clickOnAutorizedPageLink();
+        authorizedPageOnliner.pause(10);
     }
     
     @Test()
@@ -124,10 +124,10 @@ public class OnlinerShoppingCartTest implements IAbstractTest {
         Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
         
         // Enter to personal account
-        AuthorizedHomePageOnliner authorizedHomePageOnliner = homePageOnliner.getAuthBar().clickOnAuthLink().getAuthorizedHomePageOnliner("dmiterkh@mail.ru", "111111");
+        AuthorizedPageOnliner authorizedPageOnliner = homePageOnliner.getTopHeaderBar().clickOnAuthLink().getAuthorizedPageOnliner("dmiterkh@mail.ru", "111111");
 
         // Get Item (List of items)
-        ItemPageOnliner itemPageOnliner = authorizedHomePageOnliner.getSectionsBar().openCatalogPageOnliner().getLaptopPageOnliner().getItemPageOnliner("1000");
+        ItemPageOnliner itemPageOnliner = authorizedPageOnliner.getTopHeaderBar().openCatalogPageOnliner().getLaptopPageOnliner().getItemPageOnliner("1000");
         
         // Add to Shopping cart
         itemPageOnliner.addToShoppingCart();
@@ -136,8 +136,8 @@ public class OnlinerShoppingCartTest implements IAbstractTest {
         ShoppingCartPageOnliner shoppingCartPageOnliner = itemPageOnliner.clickOnShoppingCartLink();
         
         // Do Shopping cart operations
-        authorizedHomePageOnliner = shoppingCartPageOnliner.showShoppingCartOperations();
-        authorizedHomePageOnliner.pause(10);
+        authorizedPageOnliner = shoppingCartPageOnliner.showShoppingCartOperations();
+        authorizedPageOnliner.pause(10);
     }
 
 }    

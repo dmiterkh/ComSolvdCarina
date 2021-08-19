@@ -1,4 +1,4 @@
-package com.qaprosoft.carina.demo.gui.components.zonliner;
+package com.qaprosoft.carina.demo.gui.components.Onliner;
 
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
@@ -9,17 +9,9 @@ import com.qaprosoft.carina.core.gui.AbstractUIObject;
 
 
 public class UpperPriceSlider extends AbstractUIObject {
-	
-//    @FindBy(xpath = "//div[@id='search-filter-year-slider']//div//div//div[@class='noUi-handle noUi-handle-upper']")
-//    private ExtendedWebElement upperYearSliderLink;
   
     public UpperPriceSlider(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
     }
-    
-//    public ExtendedWebElement setUpperYearSliderLink() {
-//    	return upperYearSliderLink;
-//    }
-
 }
 
