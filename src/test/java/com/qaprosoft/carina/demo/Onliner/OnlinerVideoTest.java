@@ -44,40 +44,39 @@ public class OnlinerVideoTest implements IAbstractTest {
         Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
         
         // Open Video page 
-        VideoPageOnliner videoPageOnliner = homePageOnliner.openVideoPageOnliner(homePageOnliner.getVideoPageLink());
-//        Assert.assertTrue(videoPageOnliner.isPageOpened(), "Video page is not opened");
+
+         
+		
         
-        videoPageOnliner.showVideoPageOperations();          
-        
-        
-//        while (!(videoPageOnliner.getHomePageLink().isElementPresent())){
-//        	videoPageOnliner.refresh(); 
-//        	videoPageOnliner.pause(5.0);
-//        };
-//    	videoPageOnliner.returnToHomePage();
+		int k = 0;
+		VideoPageOnliner videoPageOnliner2;
+		if ((homePageOnliner.getVideoPageListLink() != null)&&(!homePageOnliner.getVideoPageListLink().isEmpty())) {
+			int j = homePageOnliner.getVideoPageListLink().size();
+			for (int i=0; i < j; i++) {
+		  		while(k < 1) {
+		  			videoPageOnliner2 = homePageOnliner.openVideoPageOnliner(homePageOnliner.getVideoPageListLink().get(i));
+		  			if(videoPageOnliner2.checkYoutubeVideoLink()) {
+		  				videoPageOnliner2.showVideoPageOperations(); 
+		  				k++;
+		  			} else {
+		  			}
+		  		    while (!(videoPageOnliner2.getHomePageLink().isElementPresent())){
+		  		    	videoPageOnliner2.refresh(); 
+		  		    	videoPageOnliner2.pause(5.0);
+		  		    };
+		  			videoPageOnliner2.returnToHomePage();
+		  		}
+		  	}	
+			System.out.println(k);
+		} else {
+			System.out.println("The required List of Extended Web Elements is Null or Empty");	
+		}
 
         
-//        int k = 0;
-//        VideoPageOnliner videoPageOnliner2 = new VideoPageOnliner(getDriver());
-//        if ((homePageOnliner.getVideoPageListLink() != null)&&(!homePageOnliner.getVideoPageListLink().isEmpty())) {
-//        	int j = homePageOnliner.getVideoPageListLink().size();
-//        	for (int i=0; i < j; i++) {
-//        		while(k < 1) {
-//        			videoPageOnliner2 = homePageOnliner.openVideoPageOnliner(homePageOnliner.getVideoPageListLink().get(i));
-//       		
-//        			if(videoPageOnliner2.checkYoutubeVideoLink()) {
-//        				System.out.println("Ok");
-//        				k++;
-//        				System.out.println("k = " + k);
-//        			} else {
-//        			}
-//        			videoPageOnliner2.returnToHomePage();
-//        		}
-//        	}	
-//      	System.out.println(k);
-//        } else {
-//			System.out.println("The required List of Extended Web Elements is Null or Empty");	
-//        }
+
+
+        
+
         
 
 //        int k = 0;

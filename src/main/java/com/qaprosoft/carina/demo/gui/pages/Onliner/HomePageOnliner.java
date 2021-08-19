@@ -87,10 +87,10 @@ public class HomePageOnliner extends AbstractPage {
         return new VideoPageOnliner(driver);
     }
     
-//    public VideoPageOnliner openVideoPageOnliner() {
-//    	videoPageLink.click();
-//    	return new VideoPageOnliner(driver);
-//    }
+    public VideoPageOnliner openVideoPageOnliner() {
+    	videoPageLink.click();
+    	return new VideoPageOnliner(driver);
+    }
     
     // Additional method
     public void scrollToBottom() {
