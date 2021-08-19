@@ -27,7 +27,7 @@ public class VideoPageOnliner extends AbstractPage {
     private WebElement youtubeVideoLink2;
         
     
-    @FindBy(xpath = "//body//div//div//div//div//div[@class='ytp-left-controls']//button[@aria-label='Пауза (k)']")
+    @FindBy(xpath = "//body//div//div//div//div//div[@class='ytp-left-controls']//button[contains(@aria-label,'(k)')]")
     private WebElement pauseButtonLink;
     
     @FindBy(xpath = "//body//div//div//div//div//div[@class='ytp-left-controls']//button[@aria-label='Смотреть (k)']")
@@ -44,15 +44,52 @@ public class VideoPageOnliner extends AbstractPage {
     public void showVideoPageOperations() {
     	youtubeVideoLink.scrollTo();
     	youtubeVideoLink.click();
-    	youtubeVideoLink.pause(5.0);
-
+    	youtubeVideoLink.pause(3.0);
+    	
+    	getDriver().switchTo().frame(0);
     	WebElement element;
-    	element = getDriver().switchTo().frame(0).findElement(By.xpath("//div[@class='ytp-left-controls']//button[contains(@aria-label,'(k)')]"));
+    	
+
+    	
+
+    	
+    	element = getDriver().findElement(By.xpath("//body//div//div//div//div//div[@class='ytp-left-controls']//button[contains(@aria-label,'(k)')]"));
     	element.click();
-    	youtubeVideoLink.pause(5.0);
-    	element = getDriver().switchTo().frame(0).findElement(By.xpath("//div[@class='ytp-left-controls']//button[contains(@aria-label,'(k)')]"));
+    	youtubeVideoLink.pause(3.0);
+    	element = getDriver().findElement(By.xpath("//body//div//div//div//div//div[@class='ytp-left-controls']//button[contains(@aria-label,'(k)')]"));
     	element.click();
-    	youtubeVideoLink.pause(5.0);
+    	youtubeVideoLink.pause(3.0);
+    	element = getDriver().findElement(By.xpath("//body//div//div//div//div//div[@class='ytp-left-controls']//button[contains(@aria-label,'(m)')]"));
+    	element.click();
+    	youtubeVideoLink.pause(3.0);
+    	element = getDriver().findElement(By.xpath("//body//div//div//div//div//div[@class='ytp-left-controls']//button[contains(@aria-label,'(m)')]"));
+    	element.click();
+    	youtubeVideoLink.pause(3.0);
+    	
+        //!!!!!!  slider  !!!!!!
+//    	element = getDriver().findElement(By.xpath("//body//div//div//div//div//div[@class='ytp-left-controls']//button[contains(@class,'ytp-volume-slider-handle')]"));
+//    	element.click();
+//    	youtubeVideoLink.pause(3.0);    	
+    	
+    	element = getDriver().findElement(By.xpath("//body//div//div//div//div//div[@class='ytp-right-controls']//button[contains(@title,'(c)') and contains(@class,'ytp-button')]"));
+    	element.click();
+    	youtubeVideoLink.pause(3.0);
+    	element = getDriver().findElement(By.xpath("//body//div//div//div//div//div[@class='ytp-right-controls']//button[contains(@title,'(f)') and contains(@class,'ytp-button')]"));
+    	element.click();
+    	youtubeVideoLink.pause(3.0);
+    	element = getDriver().findElement(By.xpath("//body//div//div//div//div//div[@class='ytp-right-controls']//button[contains(@title,'(f)') and contains(@class,'ytp-button')]"));
+    	element.click();
+    	youtubeVideoLink.pause(3.0);
+    	element = getDriver().findElement(By.xpath("//body//div//div//div//div//div[@class='ytp-right-controls']//button[contains(@title,'Settings') and contains(@class,'ytp-button')]"));
+    	element.click();
+    	youtubeVideoLink.pause(3.0);
+//    	element = getDriver().findElement(By.xpath("//body//div//div//div//div//div[@class='ytp-right-controls']//a[contains(@title,'Смотреть это видео на') and contains(@class,'ytp-button')]"));
+//    	element.click();
+    	youtubeVideoLink.pause(3.0);
+
+    	
+    	
+
     }
     
     public HomePageOnliner returnToHomePage() {
