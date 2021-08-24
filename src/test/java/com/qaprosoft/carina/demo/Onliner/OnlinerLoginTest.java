@@ -33,51 +33,10 @@ import com.qaprosoft.carina.demo.gui.pages.Onliner.LoginPageOnliner;
  * @author Dmitry Kharevich
  */
 
-public class OnlinerLoginTest implements IAbstractTest {
+public class OnlinerLoginTest extends LoginBaseTest implements IAbstractTest {
 	
-	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
-	
-	@BeforeSuite
-    public void initTestSuite() {
-		System.out.println("@@BeforeSuite");
-    }
-
-    @AfterSuite(alwaysRun = true)
-    public void tearDownTestSuite() {
-		System.out.println("@@AfterSuite");
-    }
-
-	@BeforeTest
-	public void beforeTest() {
-		System.out.println("@BeforeTest");
-	}
-
-	@AfterTest
-	public void afterTests() {
-		System.out.println("@AfterTest");
-	}
-	
-	@BeforeClass
-	public void beforeClass() {
-		System.out.println("@BeforeClass");
-	}
-
-	@AfterClass
-	public void afterClass() {
-		System.out.println("@AfterClass");
-	}
-
-	@BeforeMethod
-	public void beforeMethod() {
-		System.out.println("@BeforeMethod");
-	}
-
-	@AfterMethod
-	public void afterMethod() {
-		System.out.println("@AfterMethod");
-	}	
-	
-  
+	private static final Logger LOGGER = LoggerFactory.getLogger(OnlinerLoginTest.class);
+	  
     @Test()
     @MethodOwner(owner = "qpsdemo")
     @TestPriority(Priority.P3)
