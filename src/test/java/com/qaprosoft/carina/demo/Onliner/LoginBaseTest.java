@@ -72,5 +72,10 @@ public class LoginBaseTest implements IAbstractTest {
 	public void afterMethod() {
 		System.out.println("@AfterMethod");
 	}	
+	
+	
+	
+	
+	
 	   
 }
