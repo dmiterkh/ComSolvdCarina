@@ -1,3 +1,5 @@
+package com.qaprosoft.carina.demo.api;
+
 /*
  * Copyright 2013-2021 QAPROSOFT (http://qaprosoft.com/).
  *
@@ -13,16 +15,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.qaprosoft.carina.demo.api;
 
 import com.qaprosoft.carina.core.foundation.api.AbstractApiMethodV2;
 import com.qaprosoft.carina.core.foundation.utils.Configuration;
 
 import java.util.Properties;
 
-public class GetUserMethods extends AbstractApiMethodV2 {
-    public GetUserMethods() {
-        super(null, "api/users/_getweather/rs.json", new Properties());
+public class GetWeatherMethod extends AbstractApiMethodV2 {
+	public GetWeatherMethod() {
+        super(null, "api/openweather/_getweather/rs.json", new Properties());
         replaceUrlPlaceholder("base_url", Configuration.getEnvArg("api_url"));
     }
 }

@@ -31,6 +31,7 @@ import com.qaprosoft.carina.core.foundation.utils.tag.TestPriority;
 import com.qaprosoft.carina.demo.api.DeleteUserMethod;
 import com.qaprosoft.carina.demo.api.GetUserMethods;
 import com.qaprosoft.carina.demo.api.PostUserMethod;
+import com.qaprosoft.carina.demo.api.GetWeatherMethod;
 
 /**
  * This sample shows how create REST API tests.
@@ -41,46 +42,60 @@ public class APISampleTest implements IAbstractTest {
     private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 
 
+//    @Test()
+//    @MethodOwner(owner = "qpsdemo")
+//    public void testCreateUser() throws Exception {
+//        LOGGER.info("test");
+//        setCases("4555,54545");
+//        PostUserMethod api = new PostUserMethod();
+//        api.expectResponseStatus(HttpResponseStatusType.CREATED_201);
+//        api.callAPI();
+//        api.validateResponse();
+//    }
+//
+//    @Test()
+//    @MethodOwner(owner = "qpsdemo")
+//    public void testCreateUserMissingSomeFields() throws Exception {
+//        PostUserMethod api = new PostUserMethod();
+//        api.getProperties().remove("name");
+//        api.getProperties().remove("username");
+//        api.expectResponseStatus(HttpResponseStatusType.CREATED_201);
+//        api.callAPI();
+//        api.validateResponse();
+//    }
+//
+//    @Test()
+//    @MethodOwner(owner = "qpsdemo")
+//    public void testGetUsers() {
+//        GetUserMethods getUsersMethods = new GetUserMethods();
+//        getUsersMethods.expectResponseStatus(HttpResponseStatusType.OK_200);
+//        getUsersMethods.callAPI();
+//        getUsersMethods.validateResponse(JSONCompareMode.STRICT, JsonCompareKeywords.ARRAY_CONTAINS.getKey());
+//        getUsersMethods.validateResponseAgainstSchema("api/users/_get/rs.schema");
+//    }
+//
+//    @Test()
+//    @MethodOwner(owner = "qpsdemo")
+//    @TestPriority(Priority.P1)
+//    public void testDeleteUsers() {
+//        DeleteUserMethod deleteUserMethod = new DeleteUserMethod();
+//        deleteUserMethod.expectResponseStatus(HttpResponseStatusType.OK_200);
+//        deleteUserMethod.callAPI();
+//        deleteUserMethod.validateResponse();
+//    }
+    
     @Test()
     @MethodOwner(owner = "qpsdemo")
-    public void testCreateUser() throws Exception {
-        LOGGER.info("test");
-        setCases("4555,54545");
-        PostUserMethod api = new PostUserMethod();
-        api.expectResponseStatus(HttpResponseStatusType.CREATED_201);
-        api.callAPI();
-        api.validateResponse();
-    }
+    public void testGetWeather() {
+        GetWeatherMethod getWeatherMethod = new GetWeatherMethod();
+        getWeatherMethod.addParameter("q", "Minsk");
+        getWeatherMethod.addParameter("appid", "cefb78b4ff8ef92994c1f20445ba028d");
+        getWeatherMethod.expectResponseStatus(HttpResponseStatusType.OK_200);
+        getWeatherMethod.callAPI();
+        
+ //       getWeatherMethod.validateResponse(JSONCompareMode.STRICT, JsonCompareKeywords.ARRAY_CONTAINS.getKey());
 
-    @Test()
-    @MethodOwner(owner = "qpsdemo")
-    public void testCreateUserMissingSomeFields() throws Exception {
-        PostUserMethod api = new PostUserMethod();
-        api.getProperties().remove("name");
-        api.getProperties().remove("username");
-        api.expectResponseStatus(HttpResponseStatusType.CREATED_201);
-        api.callAPI();
-        api.validateResponse();
-    }
-
-    @Test()
-    @MethodOwner(owner = "qpsdemo")
-    public void testGetUsers() {
-        GetUserMethods getUsersMethods = new GetUserMethods();
-        getUsersMethods.expectResponseStatus(HttpResponseStatusType.OK_200);
-        getUsersMethods.callAPI();
-        getUsersMethods.validateResponse(JSONCompareMode.STRICT, JsonCompareKeywords.ARRAY_CONTAINS.getKey());
-        getUsersMethods.validateResponseAgainstSchema("api/users/_get/rs.schema");
-    }
-
-    @Test()
-    @MethodOwner(owner = "qpsdemo")
-    @TestPriority(Priority.P1)
-    public void testDeleteUsers() {
-        DeleteUserMethod deleteUserMethod = new DeleteUserMethod();
-        deleteUserMethod.expectResponseStatus(HttpResponseStatusType.OK_200);
-        deleteUserMethod.callAPI();
-        deleteUserMethod.validateResponse();
+        getWeatherMethod.validateResponseAgainstSchema("api/openweather/_get/rs.schema");
     }
 
 }
