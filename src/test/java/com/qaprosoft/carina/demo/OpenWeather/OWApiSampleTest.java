@@ -12,35 +12,67 @@ import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
 import com.qaprosoft.carina.demo.api.OpenWeather.GetWeatherMethod;
 import com.qaprosoft.carina.demo.api.OpenWeather.GetWeatherMethodById;
 import com.qaprosoft.carina.demo.api.OpenWeather.GetWeatherMethodByLonLat;
-import com.qaprosoft.carina.demo.api.OpenWeather.GetWeatherBboxMethod;
-import com.qaprosoft.carina.demo.api.OpenWeather.GetWeatherCircleMethod;
-import com.qaprosoft.carina.demo.api.OpenWeather.GetWeatherOneApiCallMethod;
-import com.qaprosoft.carina.demo.api.OpenWeather.GetForecastMethod;
+import com.qaprosoft.carina.demo.api.OpenWeather.GetWeatherAlgoMethod;
 
+import io.restassured.path.json.JsonPath;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
 public class OWApiSampleTest implements IAbstractTest {
-    private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
-
+    private static final Logger LOGGER = LoggerFactory.getLogger(OWApiSampleTest.class);
 	
     @Test()
     @MethodOwner(owner = "dkharevich")
     //Verify, that the user gets valid data for today for Minsk, Belarus,
+    //{
+    //    "id": 625144,
+    //    "name": "Minsk",
+    //    "state": "",
+    //    "country": "BY",
+    //    "coord": {
+    //        "lon": 27.566668,
+    //        "lat": 53.900002
+    //    }
+    //} 
+    // "timezone": 10800,
     // testcase 1
     public void testUserGetsValidWeatherDataForMinskBelarus() {
         GetWeatherMethod getWeatherMethod = new GetWeatherMethod();
         getWeatherMethod.addParameter("q", "Minsk");
+        getWeatherMethod.addParameter("units", "metric");
         getWeatherMethod.addParameter("appid", "cefb78b4ff8ef92994c1f20445ba028d");
         getWeatherMethod.expectResponseStatus(HttpResponseStatusType.OK_200);
         getWeatherMethod.callAPI();
         
-//      getWeatherMethod.validateResponse(JSONCompareMode.STRICT, JsonCompareKeywords.ARRAY_CONTAINS.getKey());
-
-        getWeatherMethod.validateResponseAgainstSchema("api/openweather/_getweather/rs.schema");
+        String rs = getWeatherMethod.callAPI().asString();
+        Assert.assertEquals(new JsonPath(rs).getString("sys.country"), "BY", "Country name is incorrect!");
+        Assert.assertEquals(new JsonPath(rs).getString("name"), "Minsk", "City name is incorrect!");
+        Assert.assertEquals(new JsonPath(rs).getInt("id"), 625144, "Id is incorrect!");
+        Assert.assertEquals(new JsonPath(rs).getInt("timezone"), 10800, "Time zone is incorrect!");
+        Assert.assertTrue(new JsonPath(rs).getDouble("main.temp_min") > 11, "Minimal temperature is incorrect!");
+        Assert.assertTrue(new JsonPath(rs).getDouble("main.temp_max") < 33, "Maximal temperature is incorrect!");        
+        Assert.assertTrue(new JsonPath(rs).getDouble("coord.lon") > 27, "Longitude is incorrect!");
+        Assert.assertTrue(new JsonPath(rs).getDouble("coord.lat") < 54, "Latitude is incorrect!");        
+ 
+        getWeatherMethod.validateResponseAgainstSchema("api/openweather/_getweather/rs_weather.schema");
+        getWeatherMethod.validateResponse();
+        
     }
 
     @Test()
     @MethodOwner(owner = "dkharevich")
     //Verify, that the user gets valid data in celsium degrees and in Russian language for today for London, GB,
+    //{
+    //    "id": 2643743,
+    //    "name": "London",
+    //    "state": "",
+    //    "country": "GB",
+    //    "coord": {
+    //        "lon": -0.12574,
+    //        "lat": 51.50853
+    //    }
+    //}
+    // "timezone": 3600,
     // testcase 2
     public void testUserGetsValidWeatherDataForLondonBritainInCelsiumInRussian() {
         GetWeatherMethod getWeatherMethod = new GetWeatherMethod();
@@ -51,9 +83,19 @@ public class OWApiSampleTest implements IAbstractTest {
         getWeatherMethod.expectResponseStatus(HttpResponseStatusType.OK_200);
         getWeatherMethod.callAPI();
         
-//        getWeatherMethod.validateResponse(JSONCompareMode.STRICT, JsonCompareKeywords.ARRAY_CONTAINS.getKey());
+        String rs = getWeatherMethod.callAPI().asString();
+        Assert.assertEquals(new JsonPath(rs).getString("sys.country"), "GB", "Country name is incorrect!");
+        Assert.assertEquals(new JsonPath(rs).getString("name"), "Лондон", "City name is incorrect!");
+        Assert.assertEquals(new JsonPath(rs).getInt("id"), 2643743, "Id is incorrect!");
+        Assert.assertEquals(new JsonPath(rs).getInt("timezone"), 3600, "Time zone is incorrect!");
+        Assert.assertTrue(new JsonPath(rs).getDouble("main.temp_min") > 11, "Minimal temperature is incorrect!");
+        Assert.assertTrue(new JsonPath(rs).getDouble("main.temp_max") < 33, "Maximal temperature is incorrect!");
+        Assert.assertTrue(new JsonPath(rs).getDouble("coord.lon") > -0.5, "Longitude is incorrect!");
+        Assert.assertTrue(new JsonPath(rs).getDouble("coord.lat") < 51.6, "Latitude is incorrect!");
 
-        getWeatherMethod.validateResponseAgainstSchema("api/openweather/_getweather/rs.schema");
+        getWeatherMethod.validateResponseAgainstSchema("api/openweather/_getweather/rs_weather.schema");
+//        getWeatherMethod.validateResponse();        
+   
     }
 
     
@@ -70,17 +112,30 @@ public class OWApiSampleTest implements IAbstractTest {
     //        "lat": 40.489349
     //    }
     //}    
+    //"timezone": 7200,
     // testcase 3
     public void testUserGetsValidWeatherDataById() {
         GetWeatherMethodById getWeatherMethodById = new GetWeatherMethodById(6359304);
+        getWeatherMethodById.addParameter("units", "metric");
         getWeatherMethodById.addParameter("appid", "cefb78b4ff8ef92994c1f20445ba028d");
         getWeatherMethodById.expectResponseStatus(HttpResponseStatusType.OK_200);
         getWeatherMethodById.callAPI();
         
-//        getWeatherMethod.validateResponse(JSONCompareMode.STRICT, JsonCompareKeywords.ARRAY_CONTAINS.getKey());
+        String rs = getWeatherMethodById.callAPI().asString();
+        Assert.assertEquals(new JsonPath(rs).getString("sys.country"), "ES", "Country name is incorrect!");
+        Assert.assertEquals(new JsonPath(rs).getString("name"), "Madrid", "City name is incorrect!");
+        Assert.assertEquals(new JsonPath(rs).getInt("id"), 6359304, "Id is incorrect!");
+        Assert.assertEquals(new JsonPath(rs).getInt("timezone"), 7200, "Time zone is incorrect!");
+        Assert.assertTrue(new JsonPath(rs).getDouble("main.temp_min") > 11, "Minimal temperature is incorrect!");
+        Assert.assertTrue(new JsonPath(rs).getDouble("main.temp_max") < 33, "Maximal temperature is incorrect!");        
+        Assert.assertTrue(new JsonPath(rs).getDouble("coord.lon") > -4.1, "Longitude is incorrect!");
+        Assert.assertTrue(new JsonPath(rs).getDouble("coord.lat") < 40.6, "Latitude is incorrect!");
 
-        getWeatherMethodById.validateResponseAgainstSchema("api/openweather/_getweather/rs.schema");
+        getWeatherMethodById.validateResponseAgainstSchema("api/openweather/_getweather/rs_weather.schema");
+//        getWeatherMethodById.validateResponse();  
+        
     }
+    
     
     @Test()
     @MethodOwner(owner = "dkharevich")
@@ -95,114 +150,71 @@ public class OWApiSampleTest implements IAbstractTest {
     //        "lat": 34.52813
     //    }
     //}    
+    // "timezone": 16200,
     // testcase 4
     public void testUserGetsValidWeatherDataByLatAndLon() {
         GetWeatherMethodByLonLat getWeatherMethodByLonLat = new GetWeatherMethodByLonLat(69.172333, 34.52813);
+        getWeatherMethodByLonLat.addParameter("units", "metric");
         getWeatherMethodByLonLat.addParameter("appid", "cefb78b4ff8ef92994c1f20445ba028d");
         getWeatherMethodByLonLat.expectResponseStatus(HttpResponseStatusType.OK_200);
         getWeatherMethodByLonLat.callAPI();
         
-//        getWeatherMethod.validateResponse(JSONCompareMode.STRICT, JsonCompareKeywords.ARRAY_CONTAINS.getKey());
+        String rs = getWeatherMethodByLonLat.callAPI().asString();
+        Assert.assertEquals(new JsonPath(rs).getString("sys.country"), "AF", "Country name is incorrect!");
+        Assert.assertEquals(new JsonPath(rs).getString("name"), "Kabul", "City name is incorrect!");
+        Assert.assertEquals(new JsonPath(rs).getInt("id"), 1138958, "Id is incorrect!");
+        Assert.assertEquals(new JsonPath(rs).getInt("timezone"), 16200, "Time zone is incorrect!");
+        Assert.assertTrue(new JsonPath(rs).getDouble("main.temp_min") > 15, "Minimal temperature is incorrect!");
+        Assert.assertTrue(new JsonPath(rs).getDouble("main.temp_max") < 42, "Maximal temperature is incorrect!");        
+        Assert.assertTrue(new JsonPath(rs).getDouble("coord.lon") > 69.1, "Longitude is incorrect!");
+        Assert.assertTrue(new JsonPath(rs).getDouble("coord.lat") < 34.7, "Latitude is incorrect!");
 
-        getWeatherMethodByLonLat.validateResponseAgainstSchema("api/openweather/_getweather/rs.schema");
+        getWeatherMethodByLonLat.validateResponseAgainstSchema("api/openweather/_getweather/rs_weather.schema");
+//        getWeatherMethodByLonLat.validateResponse();   
+        
+    }
+    
+    @Test()
+    @MethodOwner(owner = "dkharevich")
+    //{
+    //    "id": 625144,
+    //    "name": "Minsk",
+    //    "state": "",
+    //    "country": "BY",
+    //    "coord": {
+    //        "lon": 27.566668,
+    //        "lat": 53.900002
+    //    }
+    //} 
+    // "timezone": 10800,
+    public void testUserGetsValidWeatherDataAlgo() {
+        GetWeatherAlgoMethod getWeatherAlgoMethod = new GetWeatherAlgoMethod();
+        getWeatherAlgoMethod.addParameter("q", "Minsk");
+        getWeatherAlgoMethod.addParameter("units", "metric");
+        getWeatherAlgoMethod.addParameter("appid", "cefb78b4ff8ef92994c1f20445ba028d");
+        getWeatherAlgoMethod.expectResponseStatus(HttpResponseStatusType.OK_200);
+        getWeatherAlgoMethod.getProperties().replace("sysId", "skip", 625144);
+        getWeatherAlgoMethod.getProperties().replace("countryId", "skip", "BY");
+        getWeatherAlgoMethod.getProperties().replace("timeZone", "skip", 10800);
+        getWeatherAlgoMethod.getProperties().replace("cityName", "skip", "Minsk");
+        getWeatherAlgoMethod.callAPI();
+        
+        String rs = getWeatherAlgoMethod.callAPI().asString();
+        Assert.assertEquals(new JsonPath(rs).getString("sys.country"), "BY", "Country name is incorrect!");
+        Assert.assertEquals(new JsonPath(rs).getString("name"), "Minsk", "City name is incorrect!");
+        Assert.assertEquals(new JsonPath(rs).getInt("id"), 625144, "Id is incorrect!");
+        Assert.assertEquals(new JsonPath(rs).getInt("timezone"), 10800, "Time zone is incorrect!");
+        Assert.assertTrue(new JsonPath(rs).getDouble("main.temp_min") > 11, "Minimal temperature is incorrect!");
+        Assert.assertTrue(new JsonPath(rs).getDouble("main.temp_max") < 33, "Maximal temperature is incorrect!");        
+        Assert.assertTrue(new JsonPath(rs).getDouble("coord.lon") > 27, "Longitude is incorrect!");
+        Assert.assertTrue(new JsonPath(rs).getDouble("coord.lat") < 54, "Latitude is incorrect!");        
+
+        getWeatherAlgoMethod.validateResponseAgainstSchema("api/openweather/_getweatheralgo/rs_weatheralgo2.schema");
+        getWeatherAlgoMethod.validateResponse();
+        
+
     }
    
-//    @Test()
-//    @MethodOwner(owner = "dkharevich")
-//    //Verify, that the user gets valid data by bbox ex. Minsk
-//    //{
-//    //    "id": 625144,
-//    //    "name": "Minsk",
-//    //    "state": "",
-//    //    "country": "BY",
-//    //    "coord": {
-//    //        "lon": 27.566668,
-//    //        "lat": 53.900002
-//    //    }
-//    //}    
-//    // 27,53,29,56,20
-//    // testcase 5
-//    public void testUserGetsValidWeatherDataByBbox() {
-//        GetWeatherBboxMethod getWeatherBboxMethod = new GetWeatherBboxMethod(27,53,29,56,20);
-//        getWeatherBboxMethod.addParameter("appid", "cefb78b4ff8ef92994c1f20445ba028d");
-//        getWeatherBboxMethod.expectResponseStatus(HttpResponseStatusType.OK_200);
-//        getWeatherBboxMethod.callAPI();
-//        
-////      getWeatherMethod.validateResponse(JSONCompareMode.STRICT, JsonCompareKeywords.ARRAY_CONTAINS.getKey());
-//
-//      getWeatherBboxMethod.validateResponseAgainstSchema("api/openweather/_getbbox/rs.schema");
-//  }
-
-    
-    @Test()
-    @MethodOwner(owner = "dkharevich")
-    //Verify, that the user gets valid data by circle ex. Minsk
-    //{
-    //    "id": 625144,
-    //    "name": "Minsk",
-    //    "state": "",
-    //    "country": "BY",
-    //    "coord": {
-    //        "lon": 27.566668,
-    //        "lat": 53.900002
-    //    }
-    //}    
-    // 27.566668, 53.90002, 50
-    // testcase 6
-    public void testUserGetsValidWeatherDataByCircle() {
-        GetWeatherCircleMethod getWeatherCircleMethod = new GetWeatherCircleMethod(27.566668, 53.90002, 50);
-        getWeatherCircleMethod.addParameter("appid", "cefb78b4ff8ef92994c1f20445ba028d");
-        getWeatherCircleMethod.expectResponseStatus(HttpResponseStatusType.OK_200);
-        getWeatherCircleMethod.callAPI();
-        
-//      getWeatherMethod.validateResponse(JSONCompareMode.STRICT, JsonCompareKeywords.ARRAY_CONTAINS.getKey());
-
-        getWeatherCircleMethod.validateResponseAgainstSchema("api/openweather/_getcircle/rs.schema");
-  }
-    
-    @Test()
-    @MethodOwner(owner = "dkharevich")
-    //One Api Call
-    //Verify, that the user gets data for forecast for Minsk, Belarus
-    //{
-    //    "id": 625144,
-    //    "name": "Minsk",
-    //    "state": "",
-    //    "country": "BY",
-    //    "coord": {
-    //        "lon": 27.566668,
-    //        "lat": 53.900002
-    //    }
-    //}    
-    // testcase 7
-    public void testUserGetsValidWeatherDataByOneApiCall() {
-        GetWeatherOneApiCallMethod getWeatherOneApiCallMethod = new GetWeatherOneApiCallMethod(27.566668, 53.900002, "hourly,daily");
-        getWeatherOneApiCallMethod.addParameter("appid", "cefb78b4ff8ef92994c1f20445ba028d");
-        getWeatherOneApiCallMethod.expectResponseStatus(HttpResponseStatusType.OK_200);
-        getWeatherOneApiCallMethod.callAPI();
-        
-//      getWeatherMethod.validateResponse(JSONCompareMode.STRICT, JsonCompareKeywords.ARRAY_CONTAINS.getKey());
-
-      getWeatherOneApiCallMethod.validateResponseAgainstSchema("api/openweather/_getoneapicall/rs.schema");
-  }
-    
-    
-    @Test()
-    @MethodOwner(owner = "dkharevich")
-    //Verify, that the user gets data for forecast for Moscow, Russia    
-    // testcase 8
-    public void testUserGetsValidForecastData() {
-        GetForecastMethod getForecastMethod = new GetForecastMethod();
-        getForecastMethod.addParameter("q", "Moscow");
-        getForecastMethod.addParameter("appid", "cefb78b4ff8ef92994c1f20445ba028d");
-        getForecastMethod.expectResponseStatus(HttpResponseStatusType.OK_200);
-        getForecastMethod.callAPI();
-        
-//      getWeatherMethod.validateResponse(JSONCompareMode.STRICT, JsonCompareKeywords.ARRAY_CONTAINS.getKey());
-
-      getForecastMethod.validateResponseAgainstSchema("api/openweather/_getforecast/rs.schema");
-  }
-
     
     
 }

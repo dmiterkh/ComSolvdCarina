@@ -7,7 +7,7 @@ import java.util.Properties;
 
 public class GetForecastMethod extends AbstractApiMethodV2 {
 	public GetForecastMethod() {
-        super(null, "api/openweather/_getforecast/rs.json", new Properties());
+        super(null, "api/openweather/_getforecast/rs_forecast.json", new Properties());
         replaceUrlPlaceholder("base_url", Configuration.getEnvArg("api_url"));
     }
 }

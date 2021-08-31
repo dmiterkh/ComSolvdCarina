@@ -101,12 +101,6 @@
               "deg"
             ]
           },
-          "rain": {
-            "type": "null"
-          },
-          "snow": {
-            "type": "null"
-          },
           "clouds": {
             "type": "object",
             "properties": {
@@ -156,8 +150,6 @@
           "coord",
           "main",
           "visibility",
-          "wind",
-          "snow",
           "clouds",
           "weather"
         ]
