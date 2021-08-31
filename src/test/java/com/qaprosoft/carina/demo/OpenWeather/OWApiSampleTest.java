@@ -9,7 +9,14 @@ import org.testng.annotations.Test;
 import com.qaprosoft.carina.core.foundation.IAbstractTest;
 import com.qaprosoft.carina.core.foundation.api.http.HttpResponseStatusType;
 import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
-import com.qaprosoft.carina.demo.api.GetWeatherMethod;
+import com.qaprosoft.carina.demo.api.OpenWeather.GetWeatherMethod;
+import com.qaprosoft.carina.demo.api.OpenWeather.GetWeatherMethodById;
+import com.qaprosoft.carina.demo.api.OpenWeather.GetWeatherMethodByLonLat;
+import com.qaprosoft.carina.demo.api.OpenWeather.GetWeatherBboxMethod;
+import com.qaprosoft.carina.demo.api.OpenWeather.GetWeatherCircleMethod;
+import com.qaprosoft.carina.demo.api.OpenWeather.GetWeatherOneApiCallMethod;
+import com.qaprosoft.carina.demo.api.OpenWeather.GetForecastMethod;
+
 
 public class OWApiSampleTest implements IAbstractTest {
     private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
@@ -50,57 +57,55 @@ public class OWApiSampleTest implements IAbstractTest {
     }
 
     
-//    @Test()
-//    @MethodOwner(owner = "dkharevich")
-//    //Verify, that the user gets valid data by city id, ex Madrid
-//    //{
-//    //    "id": 6359304,
-//    //    "name": "Madrid",
-//    //    "state": "",
-//    //    "country": "ES",
-//    //    "coord": {
-//    //        "lon": -3.68275,
-//    //        "lat": 40.489349
-//    //    }
-//    //}    
-//    // testcase 3
-//    public void testUserGetsValidWeatherDataById() {
-//        GetWeatherMethod getWeatherMethod = new GetWeatherMethod();
-////        getWeatherMethod.addParameter("q", "Minsk");
-////        getWeatherMethod.addParameter("appid", "cefb78b4ff8ef92994c1f20445ba028d");
-////        getWeatherMethod.expectResponseStatus(HttpResponseStatusType.OK_200);
-////        getWeatherMethod.callAPI();
-//        
-////        getWeatherMethod.validateResponse(JSONCompareMode.STRICT, JsonCompareKeywords.ARRAY_CONTAINS.getKey());
-//
-//        getWeatherMethod.validateResponseAgainstSchema("api/openweather/_get/rs.schema");
-//    }
-//    
-//    @Test()
-//    @MethodOwner(owner = "dkharevich")
-//    //Verify, that the user gets valid data by lat and lon ex. Kabul 
-//    //{
-//    //    "id": 1138958,
-//    //    "name": "Kabul",
-//    //    "state": "",
-//    //    "country": "AF",
-//    //    "coord": {
-//    //        "lon": 69.172333,
-//    //        "lat": 34.52813
-//    //    }
-//    //}    
-//    // testcase 4
-//    public void testUserGetsValidWeatherDataByLatAndLon() {
-//        GetWeatherMethod getWeatherMethod = new GetWeatherMethod();
-////        getWeatherMethod.addParameter("q", "Minsk");
-////        getWeatherMethod.addParameter("appid", "cefb78b4ff8ef92994c1f20445ba028d");
-////        getWeatherMethod.expectResponseStatus(HttpResponseStatusType.OK_200);
-////        getWeatherMethod.callAPI();
-//        
-////        getWeatherMethod.validateResponse(JSONCompareMode.STRICT, JsonCompareKeywords.ARRAY_CONTAINS.getKey());
-//
-//        getWeatherMethod.validateResponseAgainstSchema("api/openweather/_get/rs.schema");
-//    }
+    @Test()
+    @MethodOwner(owner = "dkharevich")
+    //Verify, that the user gets valid data by city id, ex Madrid
+    //{
+    //    "id": 6359304,
+    //    "name": "Madrid",
+    //    "state": "",
+    //    "country": "ES",
+    //    "coord": {
+    //        "lon": -3.68275,
+    //        "lat": 40.489349
+    //    }
+    //}    
+    // testcase 3
+    public void testUserGetsValidWeatherDataById() {
+        GetWeatherMethodById getWeatherMethodById = new GetWeatherMethodById(6359304);
+        getWeatherMethodById.addParameter("appid", "cefb78b4ff8ef92994c1f20445ba028d");
+        getWeatherMethodById.expectResponseStatus(HttpResponseStatusType.OK_200);
+        getWeatherMethodById.callAPI();
+        
+//        getWeatherMethod.validateResponse(JSONCompareMode.STRICT, JsonCompareKeywords.ARRAY_CONTAINS.getKey());
+
+        getWeatherMethodById.validateResponseAgainstSchema("api/openweather/_getweather/rs.schema");
+    }
+    
+    @Test()
+    @MethodOwner(owner = "dkharevich")
+    //Verify, that the user gets valid data by lat and lon ex. Kabul 
+    //{
+    //    "id": 1138958,
+    //    "name": "Kabul",
+    //    "state": "",
+    //    "country": "AF",
+    //    "coord": {
+    //        "lon": 69.172333,
+    //        "lat": 34.52813
+    //    }
+    //}    
+    // testcase 4
+    public void testUserGetsValidWeatherDataByLatAndLon() {
+        GetWeatherMethodByLonLat getWeatherMethodByLonLat = new GetWeatherMethodByLonLat(69.172333, 34.52813);
+        getWeatherMethodByLonLat.addParameter("appid", "cefb78b4ff8ef92994c1f20445ba028d");
+        getWeatherMethodByLonLat.expectResponseStatus(HttpResponseStatusType.OK_200);
+        getWeatherMethodByLonLat.callAPI();
+        
+//        getWeatherMethod.validateResponse(JSONCompareMode.STRICT, JsonCompareKeywords.ARRAY_CONTAINS.getKey());
+
+        getWeatherMethodByLonLat.validateResponseAgainstSchema("api/openweather/_getweather/rs.schema");
+    }
 //   
 //    @Test()
 //    @MethodOwner(owner = "dkharevich")
@@ -181,23 +186,23 @@ public class OWApiSampleTest implements IAbstractTest {
 //
 //      getWeatherMethod.validateResponseAgainstSchema("api/openweather/_get/rs.schema");
 //  }
-//    
-//    
-//    @Test()
-//    @MethodOwner(owner = "dkharevich")
-//    //Verify, that the user gets data for forecast for Moscow, Russia    
-//    // testcase 8
-//    public void testUserGetsValidWeatherDataByCircle() {
-//        GetWeatherMethod getWeatherMethod = new GetWeatherMethod();
-////        getWeatherMethod.addParameter("q", "Minsk");
-////        getWeatherMethod.addParameter("appid", "cefb78b4ff8ef92994c1f20445ba028d");
-////        getWeatherMethod.expectResponseStatus(HttpResponseStatusType.OK_200);
-////        getWeatherMethod.callAPI();
-//        
-////      getWeatherMethod.validateResponse(JSONCompareMode.STRICT, JsonCompareKeywords.ARRAY_CONTAINS.getKey());
-//
-//      getWeatherMethod.validateResponseAgainstSchema("api/openweather/_get/rs.schema");
-//  }
+    
+    
+    @Test()
+    @MethodOwner(owner = "dkharevich")
+    //Verify, that the user gets data for forecast for Moscow, Russia    
+    // testcase 8
+    public void testUserGetsValidForecastData() {
+        GetForecastMethod getForecastMethod = new GetForecastMethod();
+        getForecastMethod.addParameter("q", "Moscow");
+        getForecastMethod.addParameter("appid", "cefb78b4ff8ef92994c1f20445ba028d");
+        getForecastMethod.expectResponseStatus(HttpResponseStatusType.OK_200);
+        getForecastMethod.callAPI();
+        
+//      getWeatherMethod.validateResponse(JSONCompareMode.STRICT, JsonCompareKeywords.ARRAY_CONTAINS.getKey());
+
+      getForecastMethod.validateResponseAgainstSchema("api/openweather/_getforecast/rs.schema");
+  }
 
     
     
