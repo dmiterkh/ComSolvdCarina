@@ -82,9 +82,7 @@
         "temp_min",
         "temp_max",
         "pressure",
-        "humidity",
-        "sea_level",
-        "grnd_level"
+        "humidity"
       ]
     },
     "visibility": {
@@ -105,8 +103,7 @@
       },
       "required": [
         "speed",
-        "deg",
-        "gust"
+        "deg"
       ]
     },
     "clouds": {
