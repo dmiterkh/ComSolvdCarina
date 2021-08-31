@@ -106,7 +106,7 @@ public class OWApiSampleTest implements IAbstractTest {
 
         getWeatherMethodByLonLat.validateResponseAgainstSchema("api/openweather/_getweather/rs.schema");
     }
-//   
+   
 //    @Test()
 //    @MethodOwner(owner = "dkharevich")
 //    //Verify, that the user gets valid data by bbox ex. Minsk
@@ -120,72 +120,71 @@ public class OWApiSampleTest implements IAbstractTest {
 //    //        "lat": 53.900002
 //    //    }
 //    //}    
+//    // 27,53,29,56,20
 //    // testcase 5
 //    public void testUserGetsValidWeatherDataByBbox() {
-//        GetWeatherMethod getWeatherMethod = new GetWeatherMethod();
-////        getWeatherMethod.addParameter("q", "Minsk");
-////        getWeatherMethod.addParameter("appid", "cefb78b4ff8ef92994c1f20445ba028d");
-////        getWeatherMethod.expectResponseStatus(HttpResponseStatusType.OK_200);
-////        getWeatherMethod.callAPI();
+//        GetWeatherBboxMethod getWeatherBboxMethod = new GetWeatherBboxMethod(27,53,29,56,20);
+//        getWeatherBboxMethod.addParameter("appid", "cefb78b4ff8ef92994c1f20445ba028d");
+//        getWeatherBboxMethod.expectResponseStatus(HttpResponseStatusType.OK_200);
+//        getWeatherBboxMethod.callAPI();
 //        
 ////      getWeatherMethod.validateResponse(JSONCompareMode.STRICT, JsonCompareKeywords.ARRAY_CONTAINS.getKey());
 //
-//      getWeatherMethod.validateResponseAgainstSchema("api/openweather/_get/rs.schema");
+//      getWeatherBboxMethod.validateResponseAgainstSchema("api/openweather/_getbbox/rs.schema");
 //  }
-//
-//    
-//    @Test()
-//    @MethodOwner(owner = "dkharevich")
-//    //Verify, that the user gets valid data by circle ex. Minsk
-//    //{
-//    //    "id": 625144,
-//    //    "name": "Minsk",
-//    //    "state": "",
-//    //    "country": "BY",
-//    //    "coord": {
-//    //        "lon": 27.566668,
-//    //        "lat": 53.900002
-//    //    }
-//    //}    
-//    // testcase 6
-//    public void testUserGetsValidWeatherDataByCircle() {
-//        GetWeatherMethod getWeatherMethod = new GetWeatherMethod();
-////        getWeatherMethod.addParameter("q", "Minsk");
-////        getWeatherMethod.addParameter("appid", "cefb78b4ff8ef92994c1f20445ba028d");
-////        getWeatherMethod.expectResponseStatus(HttpResponseStatusType.OK_200);
-////        getWeatherMethod.callAPI();
-//        
-////      getWeatherMethod.validateResponse(JSONCompareMode.STRICT, JsonCompareKeywords.ARRAY_CONTAINS.getKey());
-//
-//      getWeatherMethod.validateResponseAgainstSchema("api/openweather/_get/rs.schema");
-//  }
-//    
-//    @Test()
-//    @MethodOwner(owner = "dkharevich")
-//    //One Api Call
-//    //Verify, that the user gets data for forecast for Minsk, Belarus
-//    //{
-//    //    "id": 625144,
-//    //    "name": "Minsk",
-//    //    "state": "",
-//    //    "country": "BY",
-//    //    "coord": {
-//    //        "lon": 27.566668,
-//    //        "lat": 53.900002
-//    //    }
-//    //}    
-//    // testcase 7
-//    public void testUserGetsValidWeatherDataByCircle() {
-//        GetWeatherMethod getWeatherMethod = new GetWeatherMethod();
-////        getWeatherMethod.addParameter("q", "Minsk");
-////        getWeatherMethod.addParameter("appid", "cefb78b4ff8ef92994c1f20445ba028d");
-////        getWeatherMethod.expectResponseStatus(HttpResponseStatusType.OK_200);
-////        getWeatherMethod.callAPI();
-//        
-////      getWeatherMethod.validateResponse(JSONCompareMode.STRICT, JsonCompareKeywords.ARRAY_CONTAINS.getKey());
-//
-//      getWeatherMethod.validateResponseAgainstSchema("api/openweather/_get/rs.schema");
-//  }
+
+    
+    @Test()
+    @MethodOwner(owner = "dkharevich")
+    //Verify, that the user gets valid data by circle ex. Minsk
+    //{
+    //    "id": 625144,
+    //    "name": "Minsk",
+    //    "state": "",
+    //    "country": "BY",
+    //    "coord": {
+    //        "lon": 27.566668,
+    //        "lat": 53.900002
+    //    }
+    //}    
+    // 27.566668, 53.90002, 50
+    // testcase 6
+    public void testUserGetsValidWeatherDataByCircle() {
+        GetWeatherCircleMethod getWeatherCircleMethod = new GetWeatherCircleMethod(27.566668, 53.90002, 50);
+        getWeatherCircleMethod.addParameter("appid", "cefb78b4ff8ef92994c1f20445ba028d");
+        getWeatherCircleMethod.expectResponseStatus(HttpResponseStatusType.OK_200);
+        getWeatherCircleMethod.callAPI();
+        
+//      getWeatherMethod.validateResponse(JSONCompareMode.STRICT, JsonCompareKeywords.ARRAY_CONTAINS.getKey());
+
+        getWeatherCircleMethod.validateResponseAgainstSchema("api/openweather/_getcircle/rs.schema");
+  }
+    
+    @Test()
+    @MethodOwner(owner = "dkharevich")
+    //One Api Call
+    //Verify, that the user gets data for forecast for Minsk, Belarus
+    //{
+    //    "id": 625144,
+    //    "name": "Minsk",
+    //    "state": "",
+    //    "country": "BY",
+    //    "coord": {
+    //        "lon": 27.566668,
+    //        "lat": 53.900002
+    //    }
+    //}    
+    // testcase 7
+    public void testUserGetsValidWeatherDataByOneApiCall() {
+        GetWeatherOneApiCallMethod getWeatherOneApiCallMethod = new GetWeatherOneApiCallMethod(27.566668, 53.900002, "hourly,daily");
+        getWeatherOneApiCallMethod.addParameter("appid", "cefb78b4ff8ef92994c1f20445ba028d");
+        getWeatherOneApiCallMethod.expectResponseStatus(HttpResponseStatusType.OK_200);
+        getWeatherOneApiCallMethod.callAPI();
+        
+//      getWeatherMethod.validateResponse(JSONCompareMode.STRICT, JsonCompareKeywords.ARRAY_CONTAINS.getKey());
+
+      getWeatherOneApiCallMethod.validateResponseAgainstSchema("api/openweather/_getoneapicall/rs.schema");
+  }
     
     
     @Test()

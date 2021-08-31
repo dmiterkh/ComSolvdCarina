@@ -6,8 +6,10 @@ import com.qaprosoft.carina.core.foundation.utils.Configuration;
 import java.util.Properties;
 
 public class GetWeatherBboxMethod extends AbstractApiMethodV2 {
-	public GetWeatherBboxMethod() {
-        super(null, "api/openweather/_getweather/rs.json", new Properties());
+	public GetWeatherBboxMethod(double lonLeftArg, double latBottomArg, double lonRightArg, double latTopArg, int zoomArg) {
+        super(null, "api/openweather/_getbbox/rs.json", new Properties());
         replaceUrlPlaceholder("base_url", Configuration.getEnvArg("api_url"));
+        addParameterIfNotNull("bbox", String.valueOf(lonLeftArg) + "," + String.valueOf(latBottomArg) + "," + String.valueOf(lonRightArg) + "," + String.valueOf(latTopArg) + "," + String.valueOf(zoomArg));        
+        
     }
 }
