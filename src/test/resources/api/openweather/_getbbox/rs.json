@@ -1,0 +1,523 @@
+{
+    "cod": 200,
+    "calctime": 0.006511226,
+    "cnt": 14,
+    "list": [
+        {
+            "id": 630376,
+            "dt": 1630411746,
+            "name": "Borisov",
+            "coord": {
+                "Lon": 28.5049,
+                "Lat": 54.2312
+            },
+            "main": {
+                "temp": 19.16,
+                "feels_like": 19.27,
+                "temp_min": 19.16,
+                "temp_max": 19.16,
+                "pressure": 1008,
+                "sea_level": 1008,
+                "grnd_level": 988,
+                "humidity": 82
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 3.26,
+                "deg": 259
+            },
+            "rain": null,
+            "snow": null,
+            "clouds": {
+                "today": 95
+            },
+            "weather": [
+                {
+                    "id": 804,
+                    "main": "Clouds",
+                    "description": "overcast clouds",
+                    "icon": "04d"
+                }
+            ]
+        },
+        {
+            "id": 618800,
+            "dt": 1630411745,
+            "name": "Zhodzina",
+            "coord": {
+                "Lon": 28.3325,
+                "Lat": 54.0983
+            },
+            "main": {
+                "temp": 19.15,
+                "feels_like": 19.37,
+                "temp_min": 19.15,
+                "temp_max": 19.15,
+                "pressure": 1008,
+                "sea_level": 1008,
+                "grnd_level": 988,
+                "humidity": 86
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 1.69,
+                "deg": 286
+            },
+            "rain": null,
+            "snow": null,
+            "clouds": {
+                "today": 99
+            },
+            "weather": [
+                {
+                    "id": 804,
+                    "main": "Clouds",
+                    "description": "overcast clouds",
+                    "icon": "04d"
+                }
+            ]
+        },
+        {
+            "id": 625743,
+            "dt": 1630411746,
+            "name": "Lyepyel'",
+            "coord": {
+                "Lon": 28.6932,
+                "Lat": 54.8814
+            },
+            "main": {
+                "temp": 18.74,
+                "feels_like": 19.02,
+                "temp_min": 18.74,
+                "temp_max": 18.74,
+                "pressure": 1008,
+                "sea_level": 1008,
+                "grnd_level": 990,
+                "humidity": 90
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 1.63,
+                "deg": 233
+            },
+            "rain": null,
+            "snow": null,
+            "clouds": {
+                "today": 100
+            },
+            "weather": [
+                {
+                    "id": 804,
+                    "main": "Clouds",
+                    "description": "overcast clouds",
+                    "icon": "04d"
+                }
+            ]
+        },
+        {
+            "id": 627083,
+            "dt": 1630411745,
+            "name": "Kolodishchi",
+            "coord": {
+                "Lon": 27.7823,
+                "Lat": 53.944
+            },
+            "main": {
+                "temp": 18.73,
+                "feels_like": 18.8,
+                "temp_min": 18.73,
+                "temp_max": 18.73,
+                "pressure": 1008,
+                "humidity": 82
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 3,
+                "deg": 240
+            },
+            "rain": null,
+            "snow": null,
+            "clouds": {
+                "today": 75
+            },
+            "weather": [
+                {
+                    "id": 803,
+                    "main": "Clouds",
+                    "description": "broken clouds",
+                    "icon": "04d"
+                }
+            ]
+        },
+        {
+            "id": 625144,
+            "dt": 1630411745,
+            "name": "Minsk",
+            "coord": {
+                "Lon": 27.5667,
+                "Lat": 53.9
+            },
+            "main": {
+                "temp": 18.86,
+                "feels_like": 18.68,
+                "temp_min": 18.86,
+                "temp_max": 18.86,
+                "pressure": 1008,
+                "sea_level": 1008,
+                "grnd_level": 983,
+                "humidity": 72
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 3.8,
+                "deg": 232
+            },
+            "rain": null,
+            "snow": null,
+            "clouds": {
+                "today": 93
+            },
+            "weather": [
+                {
+                    "id": 804,
+                    "main": "Clouds",
+                    "description": "overcast clouds",
+                    "icon": "04d"
+                }
+            ]
+        },
+        {
+            "id": 627908,
+            "dt": 1630411745,
+            "name": "Hlybokaye",
+            "coord": {
+                "Lon": 27.6879,
+                "Lat": 55.1382
+            },
+            "main": {
+                "temp": 16.18,
+                "feels_like": 16.36,
+                "temp_min": 16.18,
+                "temp_max": 16.18,
+                "pressure": 1008,
+                "sea_level": 1008,
+                "grnd_level": 990,
+                "humidity": 96
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 2.25,
+                "deg": 333
+            },
+            "rain": null,
+            "snow": null,
+            "clouds": {
+                "today": 100
+            },
+            "weather": [
+                {
+                    "id": 804,
+                    "main": "Clouds",
+                    "description": "overcast clouds",
+                    "icon": "04d"
+                }
+            ]
+        },
+        {
+            "id": 624400,
+            "dt": 1630411745,
+            "name": "Novoye Medvezhino",
+            "coord": {
+                "Lon": 27.45,
+                "Lat": 53.8833
+            },
+            "main": {
+                "temp": 18.68,
+                "feels_like": 18.46,
+                "temp_min": 18.68,
+                "temp_max": 18.68,
+                "pressure": 1008,
+                "sea_level": 1008,
+                "grnd_level": 980,
+                "humidity": 71
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 3.86,
+                "deg": 231
+            },
+            "rain": null,
+            "snow": null,
+            "clouds": {
+                "today": 93
+            },
+            "weather": [
+                {
+                    "id": 804,
+                    "main": "Clouds",
+                    "description": "overcast clouds",
+                    "icon": "04d"
+                }
+            ]
+        },
+        {
+            "id": 8020218,
+            "dt": 1630408146,
+            "name": "Malinovka",
+            "coord": {
+                "Lon": 27.4374,
+                "Lat": 53.8579
+            },
+            "main": {
+                "temp": 16.72,
+                "feels_like": 16.43,
+                "temp_min": 16.72,
+                "temp_max": 16.72,
+                "pressure": 1008,
+                "sea_level": 1008,
+                "grnd_level": 981,
+                "humidity": 76
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 2.61,
+                "deg": 238
+            },
+            "rain": null,
+            "snow": null,
+            "clouds": {
+                "today": 96
+            },
+            "weather": [
+                {
+                    "id": 804,
+                    "main": "Clouds",
+                    "description": "overcast clouds",
+                    "icon": "04d"
+                }
+            ]
+        },
+        {
+            "id": 628634,
+            "dt": 1630411745,
+            "name": "Dzyarzhynsk",
+            "coord": {
+                "Lon": 27.138,
+                "Lat": 53.6832
+            },
+            "main": {
+                "temp": 18.99,
+                "feels_like": 18.56,
+                "temp_min": 18.99,
+                "temp_max": 18.99,
+                "pressure": 1008,
+                "sea_level": 1008,
+                "grnd_level": 986,
+                "humidity": 62
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 4.13,
+                "deg": 231
+            },
+            "rain": null,
+            "snow": null,
+            "clouds": {
+                "today": 87
+            },
+            "weather": [
+                {
+                    "id": 804,
+                    "main": "Clouds",
+                    "description": "overcast clouds",
+                    "icon": "04d"
+                }
+            ]
+        },
+        {
+            "id": 625409,
+            "dt": 1630411746,
+            "name": "Mar''ina Horka",
+            "coord": {
+                "Lon": 28.147,
+                "Lat": 53.509
+            },
+            "main": {
+                "temp": 19.12,
+                "feels_like": 18.47,
+                "temp_min": 19.12,
+                "temp_max": 19.12,
+                "pressure": 1008,
+                "sea_level": 1008,
+                "grnd_level": 988,
+                "humidity": 53
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 4.17,
+                "deg": 239
+            },
+            "rain": null,
+            "snow": null,
+            "clouds": {
+                "today": 72
+            },
+            "weather": [
+                {
+                    "id": 803,
+                    "main": "Clouds",
+                    "description": "broken clouds",
+                    "icon": "04d"
+                }
+            ]
+        },
+        {
+            "id": 623317,
+            "dt": 1630411745,
+            "name": "Polatsk",
+            "coord": {
+                "Lon": 28.7756,
+                "Lat": 55.4859
+            },
+            "main": {
+                "temp": 18.4,
+                "feels_like": 18.7,
+                "temp_min": 18.4,
+                "temp_max": 18.4,
+                "pressure": 1008,
+                "sea_level": 1008,
+                "grnd_level": 993,
+                "humidity": 92
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 1.11,
+                "deg": 225
+            },
+            "rain": null,
+            "snow": null,
+            "clouds": {
+                "today": 98
+            },
+            "weather": [
+                {
+                    "id": 804,
+                    "main": "Clouds",
+                    "description": "overcast clouds",
+                    "icon": "04d"
+                }
+            ]
+        },
+        {
+            "id": 624784,
+            "dt": 1630411746,
+            "name": "Navapolatsk",
+            "coord": {
+                "Lon": 28.6424,
+                "Lat": 55.5363
+            },
+            "main": {
+                "temp": 17.94,
+                "feels_like": 18.27,
+                "temp_min": 17.94,
+                "temp_max": 17.94,
+                "pressure": 1008,
+                "sea_level": 1008,
+                "grnd_level": 993,
+                "humidity": 95
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 0.87,
+                "deg": 229
+            },
+            "rain": null,
+            "snow": null,
+            "clouds": {
+                "today": 98
+            },
+            "weather": [
+                {
+                    "id": 804,
+                    "main": "Clouds",
+                    "description": "overcast clouds",
+                    "icon": "04d"
+                }
+            ]
+        },
+        {
+            "id": 624034,
+            "dt": 1630411745,
+            "name": "Asipovichy",
+            "coord": {
+                "Lon": 28.6422,
+                "Lat": 53.2933
+            },
+            "main": {
+                "temp": 22.29,
+                "feels_like": 21.88,
+                "temp_min": 22.29,
+                "temp_max": 22.29,
+                "pressure": 1008,
+                "sea_level": 1008,
+                "grnd_level": 990,
+                "humidity": 50
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 4.05,
+                "deg": 240
+            },
+            "rain": null,
+            "snow": null,
+            "clouds": {
+                "today": 63
+            },
+            "weather": [
+                {
+                    "id": 803,
+                    "main": "Clouds",
+                    "description": "broken clouds",
+                    "icon": "04d"
+                }
+            ]
+        },
+        {
+            "id": 621741,
+            "dt": 1630411745,
+            "name": "Slutsk",
+            "coord": {
+                "Lon": 27.5597,
+                "Lat": 53.0274
+            },
+            "main": {
+                "temp": 20.88,
+                "feels_like": 20.43,
+                "temp_min": 20.88,
+                "temp_max": 20.88,
+                "pressure": 1009,
+                "sea_level": 1009,
+                "grnd_level": 991,
+                "humidity": 54
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 4.6,
+                "deg": 222
+            },
+            "rain": null,
+            "snow": null,
+            "clouds": {
+                "today": 16
+            },
+            "weather": [
+                {
+                    "id": 801,
+                    "main": "Clouds",
+                    "description": "few clouds",
+                    "icon": "02d"
+                }
+            ]
+        }
+    ]
+}
