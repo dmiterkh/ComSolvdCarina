@@ -2,6 +2,7 @@ package com.qaprosoft.carina.demo.OpenWeather;
 
 import java.lang.invoke.MethodHandles;
 
+import org.apache.velocity.runtime.directive.Parse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.Test;
@@ -18,6 +19,8 @@ import io.restassured.path.json.JsonPath;
 import org.testng.Assert;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+
 import java.util.Collections;
 import java.util.List;
 
@@ -120,6 +123,7 @@ public class OWApiSampleTestLists implements IAbstractTest {
     public void testUserGetsValidForecastData() {
         GetForecastMethod getForecastMethod = new GetForecastMethod();
         getForecastMethod.addParameter("q", "Moscow");
+        getForecastMethod.addParameter("units", "metric");        
         getForecastMethod.addParameter("appid", "cefb78b4ff8ef92994c1f20445ba028d");
         getForecastMethod.expectResponseStatus(HttpResponseStatusType.OK_200);
         getForecastMethod.callAPI();
@@ -129,12 +133,52 @@ public class OWApiSampleTestLists implements IAbstractTest {
       
         String rs = getForecastMethod.callAPI().asString();
       
-        List<Float> list = new JsonPath(rs).getList("list.dt");
-        int number = (intValue(list.get(list.size()-1)) - intValue(list.get(0))) / 10800;
+        List<Float> listDt = new JsonPath(rs).getList("list.dt");
+        int number = (intValue(listDt.get(listDt.size()-1)) - intValue(listDt.get(0))) / 10800;
         Assert.assertEquals(number, 39, "Forecast is not on 5 days!");
-        System.out.println("!!!!");
-        System.out.println(number);
-        System.out.println("!!!!");
+        
+        LOGGER.info("!!!!");
+        LOGGER.info("!!!!");
+        LOGGER.info(String.valueOf(number));
+        LOGGER.info("!!!!");
+        LOGGER.info("!!!!");
+        
+        List<Double> listTempMax = new JsonPath(rs).getList("list.main.temp_max");
+        
+        LOGGER.info("!!!!");
+        LOGGER.info("!!!!");
+        LOGGER.info(String.valueOf(listTempMax));
+        LOGGER.info("!!!!");
+        LOGGER.info("!!!!");
+        
+//        Double arrayTempMax = new Double[listTempMax.size()];
+//        for(int i = 0; i<listTempMax.size(); i++)
+//        {
+//        	arrayTempMax[i] = listTempMax.get(i);
+//        }
+        
+        ArrayList<Double> arrayListTempMax = new ArrayList<Double>();
+	    for(int i = 0; i<listTempMax.size(); i++)
+	    {
+	    	arrayListTempMax.set(i, listTempMax.get(i));
+	    }
+//	    Double max = arrayListTempMax.
+	    Double maxTempMax = -100.1;
+	    for(int i = 0; i<listTempMax.size(); i++)
+	    {
+	    	if(maxTempMax<listTempMax.get(i)) 
+	    	{
+//	    		maxTempMax = Double.parseDouble();
+	    	}
+	    }
+
+        LOGGER.info("!!!!");
+        LOGGER.info("!!!!");
+        LOGGER.info(String.valueOf(maxTempMax));
+        LOGGER.info("!!!!");
+        LOGGER.info("!!!!");
+        
+        
   }
 
     

@@ -94,7 +94,7 @@ public class OWApiSampleTest implements IAbstractTest {
         Assert.assertTrue(new JsonPath(rs).getDouble("coord.lat") < 51.6, "Latitude is incorrect!");
 
         getWeatherMethod.validateResponseAgainstSchema("api/openweather/_getweather/rs_weather.schema");
-        getWeatherMethod.validateResponse();        
+//        getWeatherMethod.validateResponse();        
    
     }
 
@@ -132,7 +132,7 @@ public class OWApiSampleTest implements IAbstractTest {
         Assert.assertTrue(new JsonPath(rs).getDouble("coord.lat") < 40.6, "Latitude is incorrect!");
 
         getWeatherMethodById.validateResponseAgainstSchema("api/openweather/_getweather/rs_weather.schema");
-        getWeatherMethodById.validateResponse();  
+//        getWeatherMethodById.validateResponse();  
         
     }
     
@@ -170,7 +170,7 @@ public class OWApiSampleTest implements IAbstractTest {
         Assert.assertTrue(new JsonPath(rs).getDouble("coord.lat") < 34.7, "Latitude is incorrect!");
 
         getWeatherMethodByLonLat.validateResponseAgainstSchema("api/openweather/_getweather/rs_weather.schema");
-        getWeatherMethodByLonLat.validateResponse();   
+//        getWeatherMethodByLonLat.validateResponse();   
         
     }
     
