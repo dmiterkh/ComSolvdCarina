@@ -123,7 +123,7 @@
             ]
           },
           "rain": {
-            "type": "null"
+            "type": "skip"
           },
           "snow": {
             "type": "null"
@@ -178,7 +178,6 @@
           "dt",
           "wind",
           "sys",
-          "rain",
           "snow",
           "clouds",
           "weather"

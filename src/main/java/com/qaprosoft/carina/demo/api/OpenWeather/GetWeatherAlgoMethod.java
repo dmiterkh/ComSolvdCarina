@@ -10,6 +10,7 @@ public class GetWeatherAlgoMethod extends AbstractApiMethodV2 {
 	public GetWeatherAlgoMethod() {
         super(null, "api/openweather/_getweatheralgo/rs_weatheralgo.json", "api/openweather/_getweatheralgo/weatheralgo.properties");
         replaceUrlPlaceholder("base_url", Configuration.getEnvArg("api_url"));
-//        addParameter("appId", Key.getApiKey());
+        addParameter("appid", Key.getApiKey());
+
     }
 }

@@ -28,7 +28,7 @@
             "sys": {
                 "country": "BY"
             },
-            "rain": null,
+            "rain": "type: String",
             "snow": null,
             "clouds": {
                 "all": 93

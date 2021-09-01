@@ -174,6 +174,8 @@ public class OWApiSampleTest implements IAbstractTest {
         
     }
     
+    
+    
     @Test()
     @MethodOwner(owner = "dkharevich")
     //{
@@ -191,13 +193,13 @@ public class OWApiSampleTest implements IAbstractTest {
         GetWeatherAlgoMethod getWeatherAlgoMethod = new GetWeatherAlgoMethod();
         getWeatherAlgoMethod.addParameter("q", "Minsk");
         getWeatherAlgoMethod.addParameter("units", "metric");
-        getWeatherAlgoMethod.addParameter("appid", "cefb78b4ff8ef92994c1f20445ba028d");
         getWeatherAlgoMethod.expectResponseStatus(HttpResponseStatusType.OK_200);
+        getWeatherAlgoMethod.callAPI();
         getWeatherAlgoMethod.getProperties().replace("sysId", "skip", 625144);
         getWeatherAlgoMethod.getProperties().replace("countryId", "skip", "BY");
         getWeatherAlgoMethod.getProperties().replace("timeZone", "skip", 10800);
         getWeatherAlgoMethod.getProperties().replace("cityName", "skip", "Minsk");
-        getWeatherAlgoMethod.callAPI();
+
         
         String rs = getWeatherAlgoMethod.callAPI().asString();
         Assert.assertEquals(new JsonPath(rs).getString("sys.country"), "BY", "Country name is incorrect!");
