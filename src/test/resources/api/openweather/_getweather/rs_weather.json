@@ -41,6 +41,6 @@
   },
   "timezone": "regex:[\\d]+",
   "id": "regex:[\\d]+",
-  "name": "regex:[a-zA-z]+",
+  "name": "type:String",
   "cod": "regex:[\\d]+"
 }

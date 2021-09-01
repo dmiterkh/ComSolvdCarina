@@ -113,7 +113,7 @@
         "type": "object",
         "properties": {
           "dt": {
-            "type": "integer"
+            "type": "number"
           },
           "precipitation": {
             "type": "integer"

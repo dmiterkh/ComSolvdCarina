@@ -94,7 +94,7 @@ public class OWApiSampleTest implements IAbstractTest {
         Assert.assertTrue(new JsonPath(rs).getDouble("coord.lat") < 51.6, "Latitude is incorrect!");
 
         getWeatherMethod.validateResponseAgainstSchema("api/openweather/_getweather/rs_weather.schema");
-//        getWeatherMethod.validateResponse();        
+        getWeatherMethod.validateResponse();        
    
     }
 
@@ -132,7 +132,7 @@ public class OWApiSampleTest implements IAbstractTest {
         Assert.assertTrue(new JsonPath(rs).getDouble("coord.lat") < 40.6, "Latitude is incorrect!");
 
         getWeatherMethodById.validateResponseAgainstSchema("api/openweather/_getweather/rs_weather.schema");
-//        getWeatherMethodById.validateResponse();  
+        getWeatherMethodById.validateResponse();  
         
     }
     
@@ -170,7 +170,7 @@ public class OWApiSampleTest implements IAbstractTest {
         Assert.assertTrue(new JsonPath(rs).getDouble("coord.lat") < 34.7, "Latitude is incorrect!");
 
         getWeatherMethodByLonLat.validateResponseAgainstSchema("api/openweather/_getweather/rs_weather.schema");
-//        getWeatherMethodByLonLat.validateResponse();   
+        getWeatherMethodByLonLat.validateResponse();   
         
     }
     
@@ -193,13 +193,13 @@ public class OWApiSampleTest implements IAbstractTest {
         GetWeatherAlgoMethod getWeatherAlgoMethod = new GetWeatherAlgoMethod();
         getWeatherAlgoMethod.addParameter("q", "Minsk");
         getWeatherAlgoMethod.addParameter("units", "metric");
-        getWeatherAlgoMethod.addParameter("appid", "cefb78b4ff8ef92994c1f20445ba028d");
         getWeatherAlgoMethod.expectResponseStatus(HttpResponseStatusType.OK_200);
+        getWeatherAlgoMethod.callAPI();
         getWeatherAlgoMethod.getProperties().replace("sysId", "skip", 625144);
         getWeatherAlgoMethod.getProperties().replace("countryId", "skip", "BY");
         getWeatherAlgoMethod.getProperties().replace("timeZone", "skip", 10800);
         getWeatherAlgoMethod.getProperties().replace("cityName", "skip", "Minsk");
-        getWeatherAlgoMethod.callAPI();
+
         
         String rs = getWeatherAlgoMethod.callAPI().asString();
         Assert.assertEquals(new JsonPath(rs).getString("sys.country"), "BY", "Country name is incorrect!");
