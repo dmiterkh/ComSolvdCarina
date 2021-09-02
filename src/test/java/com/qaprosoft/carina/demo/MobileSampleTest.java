@@ -17,6 +17,8 @@ package com.qaprosoft.carina.demo;
 
 import com.zebrunner.agent.core.annotation.TestLabel;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -34,12 +36,19 @@ import com.qaprosoft.carina.demo.utils.MobileContextUtils;
 import com.qaprosoft.carina.demo.utils.MobileContextUtils.View;
 
 
-public class MobileSampleTest implements IAbstractTest, IMobileUtils {
+public class MobileSampleTest extends MobileBaseTest implements IAbstractTest, IMobileUtils {
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(MobileSampleTest.class);
+	
     @Test()
     @MethodOwner(owner = "qpsdemo")
     @TestLabel(name = "feature", value = {"mobile", "regression"})
     public void testLoginUser() {
+    	
+    	LOGGER.info("!!!!!!!!!!");
+    	LOGGER.info("!!!!!!!!!!testLoginUser");
+    	LOGGER.info("!!!!!!!!!!");
+    	
         String username = "Test user";
         String password = RandomStringUtils.randomAlphabetic(10);
         WelcomePageBase welcomePage = initPage(getDriver(), WelcomePageBase.class);
@@ -52,13 +61,22 @@ public class MobileSampleTest implements IAbstractTest, IMobileUtils {
         loginPage.checkPrivacyPolicyCheckbox();
         CarinaDescriptionPageBase carinaDescriptionPage = loginPage.clickLoginBtn();
         Assert.assertTrue(carinaDescriptionPage.isPageOpened(), "Carina description page isn't opened");
+
+        LOGGER.info("!!!!!!!!!!");
+    	LOGGER.info("!!!!!!!!!!testLoginUser");
+    	LOGGER.info("!!!!!!!!!!");
     }
 
 	@Test()
     @MethodOwner(owner = "qpsdemo")
     @TestLabel(name = "feature", value = {"mobile", "regression"})
     public void testWebView() {
-        WelcomePageBase welcomePage = initPage(getDriver(), WelcomePageBase.class);
+        
+    	LOGGER.info("!!!!!!!!!!");
+    	LOGGER.info("!!!!!!!!!!testWebView");
+    	LOGGER.info("!!!!!!!!!!");
+		
+		WelcomePageBase welcomePage = initPage(getDriver(), WelcomePageBase.class);
         LoginPageBase loginPage = welcomePage.clickNextBtn();
         loginPage.login();
         WebViewPageBase webViewPageBase = initPage(getDriver(), WebViewPageBase.class);
@@ -73,12 +91,22 @@ public class MobileSampleTest implements IAbstractTest, IMobileUtils {
         contactUsPage.submit();
         Assert.assertTrue(contactUsPage.isErrorMessagePresent() || contactUsPage.isRecaptchaPresent(),
                 "Error message or captcha was not displayed");
+        
+    	LOGGER.info("!!!!!!!!!!");
+    	LOGGER.info("!!!!!!!!!!testUIElements");
+    	LOGGER.info("!!!!!!!!!!");
+    	
     }
 
     @Test()
     @MethodOwner(owner = "qpsdemo")
     @TestLabel(name = "feature", value = {"mobile", "acceptance"})
     public void testUIElements() {
+    	
+    	LOGGER.info("!!!!!!!!!!");
+    	LOGGER.info("!!!!!!!!!!testUIElements");
+    	LOGGER.info("!!!!!!!!!!");
+    	
         WelcomePageBase welcomePage = initPage(getDriver(), WelcomePageBase.class);
         LoginPageBase loginPage = welcomePage.clickNextBtn();
         CarinaDescriptionPageBase carinaDescriptionPage = loginPage.login();
@@ -99,6 +127,10 @@ public class MobileSampleTest implements IAbstractTest, IMobileUtils {
         Assert.assertTrue(uiElements.isFemaleRadioButtonSelected(), "Female radio button was not selected!");
         uiElements.clickOnOtherRadioButton();
         Assert.assertTrue(uiElements.isOthersRadioButtonSelected(), "Others radio button was not selected!");
+        
+    	LOGGER.info("!!!!!!!!!!");
+    	LOGGER.info("!!!!!!!!!!testWebView");
+    	LOGGER.info("!!!!!!!!!!");
     }
 
 }
