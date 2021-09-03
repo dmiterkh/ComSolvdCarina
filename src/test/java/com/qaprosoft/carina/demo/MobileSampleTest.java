@@ -52,6 +52,10 @@ public class MobileSampleTest extends MobileBaseTest implements IAbstractTest, I
     	
     	
     	
+    	
+    	
+    	
+    	
         String username = "Test user";
         String password = RandomStringUtils.randomAlphabetic(10);
         WelcomePageBase welcomePage = initPage(getDriver(), WelcomePageBase.class);
