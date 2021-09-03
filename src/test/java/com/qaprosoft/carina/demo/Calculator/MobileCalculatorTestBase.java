@@ -1,4 +1,4 @@
-package com.qaprosoft.carina.demo;
+package com.qaprosoft.carina.demo.Calculator;
 
 import java.lang.invoke.MethodHandles;
 import java.util.List;
@@ -16,22 +16,17 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
+
 
 import com.qaprosoft.carina.core.foundation.IAbstractTest;
-import com.zebrunner.agent.core.annotation.TestLabel;
-import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
-import com.qaprosoft.carina.core.foundation.utils.tag.Priority;
-import com.qaprosoft.carina.core.foundation.utils.tag.TestPriority;
 
 /**
  * @author Dmitry Kharevich
  */
 
-public class MobileBaseTest implements IAbstractTest {
+public class MobileCalculatorTestBase implements IAbstractTest {
 	
-	private static final Logger LOGGER = LoggerFactory.getLogger(MobileBaseTest.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(MobileCalculatorTestBase.class);
 	
 	@BeforeSuite
     public void initTestSuite() {
@@ -72,10 +67,5 @@ public class MobileBaseTest implements IAbstractTest {
 	public void afterMethod() {
 		System.out.println("@AfterMethod");
 	}	
-	
-	
-	
-	
-	
-	   
+		   
 }
