@@ -45,9 +45,9 @@ public class MobileSampleTest extends MobileBaseTest implements IAbstractTest, I
     @TestLabel(name = "feature", value = {"mobile", "regression"})
     public void testLoginUser() {
     	
-    	LOGGER.info("!!!!!!!!!!");
-    	LOGGER.info("!!!!!!!!!!testLoginUser");
-    	LOGGER.info("!!!!!!!!!!");
+    	LOGGER.info("!!!!!!!!!!!!!");
+    	LOGGER.info("!!!!!!!!!!!!!testLoginUser");
+    	LOGGER.info("!!!!!!!!!!!!!");
     	
         String username = "Test user";
         String password = RandomStringUtils.randomAlphabetic(10);
