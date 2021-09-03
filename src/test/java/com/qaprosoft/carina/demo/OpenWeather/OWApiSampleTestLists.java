@@ -180,6 +180,9 @@ public class OWApiSampleTestLists implements IAbstractTest {
         
         
   }
+    
+//    float f1 = 96.67f;  
+//    Double d1= f1.doubleValue();
 
     
     

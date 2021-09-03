@@ -17,6 +17,8 @@ package com.qaprosoft.carina.demo;
 
 import com.zebrunner.agent.core.annotation.TestLabel;
 import org.apache.commons.lang3.RandomStringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -34,12 +36,19 @@ import com.qaprosoft.carina.demo.utils.MobileContextUtils;
 import com.qaprosoft.carina.demo.utils.MobileContextUtils.View;
 
 
-public class MobileSampleTest implements IAbstractTest, IMobileUtils {
+public class MobileSampleTest extends MobileBaseTest implements IAbstractTest, IMobileUtils {
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(MobileSampleTest.class);
+	
     @Test()
     @MethodOwner(owner = "qpsdemo")
     @TestLabel(name = "feature", value = {"mobile", "regression"})
     public void testLoginUser() {
+    	
+    	LOGGER.info("!!!!!!!!!!");
+    	LOGGER.info("!!!!!!!!!!testLoginUser");
+    	LOGGER.info("!!!!!!!!!!");
+    	
         String username = "Test user";
         String password = RandomStringUtils.randomAlphabetic(10);
         WelcomePageBase welcomePage = initPage(getDriver(), WelcomePageBase.class);
@@ -52,53 +61,84 @@ public class MobileSampleTest implements IAbstractTest, IMobileUtils {
         loginPage.checkPrivacyPolicyCheckbox();
         CarinaDescriptionPageBase carinaDescriptionPage = loginPage.clickLoginBtn();
         Assert.assertTrue(carinaDescriptionPage.isPageOpened(), "Carina description page isn't opened");
+
+        LOGGER.info("!!!!!!!!!!");
+    	LOGGER.info("!!!!!!!!!!testLoginUser");
+    	LOGGER.info("!!!!!!!!!!");
     }
 
 	@Test()
     @MethodOwner(owner = "qpsdemo")
     @TestLabel(name = "feature", value = {"mobile", "regression"})
     public void testWebView() {
-        WelcomePageBase welcomePage = initPage(getDriver(), WelcomePageBase.class);
+        
+    	LOGGER.info("!!!!!!!!!!");
+    	LOGGER.info("!!!!!!!!!!testWebView");
+    	LOGGER.info("!!!!!!!!!!");
+		
+		WelcomePageBase welcomePage = initPage(getDriver(), WelcomePageBase.class);
         LoginPageBase loginPage = welcomePage.clickNextBtn();
         loginPage.login();
         WebViewPageBase webViewPageBase = initPage(getDriver(), WebViewPageBase.class);
         MobileContextUtils contextHelper = new MobileContextUtils();
         contextHelper.switchMobileContext(View.WEB);
+        
+        LOGGER.info("!!!!!!!!!!");
+    	LOGGER.info(View.WEB.getView());
+    	LOGGER.info("!!!!!!!!!!");
+        
         ContactUsPageBase contactUsPage = webViewPageBase.goToContactUsPage();
-        contactUsPage.typeName("John Doe");
+        contactUsPage.typeName("John");
+        contactUsPage.pause(5);
         contactUsPage.typeEmail("some@email.com");
+        contactUsPage.pause(5);
         contactUsPage.typeQuestion("This is a message");
+        contactUsPage.pause(5);
         //TODO: [VD] move page driver related action outside from test class!
         hideKeyboard();
         contactUsPage.submit();
         Assert.assertTrue(contactUsPage.isErrorMessagePresent() || contactUsPage.isRecaptchaPresent(),
                 "Error message or captcha was not displayed");
+        
+    	LOGGER.info("!!!!!!!!!!");
+    	LOGGER.info("!!!!!!!!!!testWebView");
+    	LOGGER.info("!!!!!!!!!!");
+    	
     }
 
-    @Test()
-    @MethodOwner(owner = "qpsdemo")
-    @TestLabel(name = "feature", value = {"mobile", "acceptance"})
-    public void testUIElements() {
-        WelcomePageBase welcomePage = initPage(getDriver(), WelcomePageBase.class);
-        LoginPageBase loginPage = welcomePage.clickNextBtn();
-        CarinaDescriptionPageBase carinaDescriptionPage = loginPage.login();
-        UIElementsPageBase uiElements = carinaDescriptionPage.navigateToUIElementsPage();
-        final String text = "some text";
-        final String date = "22/10/2018";
-        final String email = "some@email.com";
-        uiElements.typeText(text);
-        Assert.assertEquals(uiElements.getText(), text, "Text was not typed");
-        uiElements.typeDate(date);
-        Assert.assertEquals(uiElements.getDate(), date, "Date was not typed");
-        uiElements.typeEmail(email);
-        Assert.assertEquals(uiElements.getEmail(), email, "Email was not typed");
-        uiElements.swipeToFemaleRadioButton();
-        uiElements.checkCopy();
-        Assert.assertTrue(uiElements.isCopyChecked(), "Copy checkbox was not checked");
-        uiElements.clickOnFemaleRadioButton();
-        Assert.assertTrue(uiElements.isFemaleRadioButtonSelected(), "Female radio button was not selected!");
-        uiElements.clickOnOtherRadioButton();
-        Assert.assertTrue(uiElements.isOthersRadioButtonSelected(), "Others radio button was not selected!");
-    }
+//    @Test()
+//    @MethodOwner(owner = "qpsdemo")
+//    @TestLabel(name = "feature", value = {"mobile", "acceptance"})
+//    public void testUIElements() {
+//    	
+//    	LOGGER.info("!!!!!!!!!!");
+//    	LOGGER.info("!!!!!!!!!!testUIElements");
+//    	LOGGER.info("!!!!!!!!!!");
+//    	
+//        WelcomePageBase welcomePage = initPage(getDriver(), WelcomePageBase.class);
+//        LoginPageBase loginPage = welcomePage.clickNextBtn();
+//        CarinaDescriptionPageBase carinaDescriptionPage = loginPage.login();
+//        UIElementsPageBase uiElements = carinaDescriptionPage.navigateToUIElementsPage();
+//        final String text = "some text";
+//        final String date = "22/10/2018";
+//        final String email = "some@email.com";
+//        uiElements.typeText(text);
+//        Assert.assertEquals(uiElements.getText(), text, "Text was not typed");
+//        uiElements.typeDate(date);
+//        Assert.assertEquals(uiElements.getDate(), date, "Date was not typed");
+//        uiElements.typeEmail(email);
+//        Assert.assertEquals(uiElements.getEmail(), email, "Email was not typed");
+//        uiElements.swipeToFemaleRadioButton();
+//        uiElements.checkCopy();
+//        Assert.assertTrue(uiElements.isCopyChecked(), "Copy checkbox was not checked");
+//        uiElements.clickOnFemaleRadioButton();
+//        Assert.assertTrue(uiElements.isFemaleRadioButtonSelected(), "Female radio button was not selected!");
+//        uiElements.clickOnOtherRadioButton();
+//        Assert.assertTrue(uiElements.isOthersRadioButtonSelected(), "Others radio button was not selected!");
+//        
+//    	LOGGER.info("!!!!!!!!!!");
+//    	LOGGER.info("!!!!!!!!!!testUIElements");
+//    	LOGGER.info("!!!!!!!!!!");
+//    }
 
 }
