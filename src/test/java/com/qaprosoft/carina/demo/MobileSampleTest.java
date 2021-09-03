@@ -36,7 +36,7 @@ import com.qaprosoft.carina.demo.utils.MobileContextUtils;
 import com.qaprosoft.carina.demo.utils.MobileContextUtils.View;
 
 
-public class MobileSampleTest extends MobileBaseTest implements IAbstractTest, IMobileUtils {
+public class MobileSampleTest extends MobileSimpleTestBase implements IAbstractTest, IMobileUtils {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(MobileSampleTest.class);
 	
@@ -48,13 +48,6 @@ public class MobileSampleTest extends MobileBaseTest implements IAbstractTest, I
     	LOGGER.info("!!!!!!!!!!!!!");
     	LOGGER.info("!!!!!!!!!!!!!testLoginUser");
     	LOGGER.info("!!!!!!!!!!!!!");
-    	
-    	
-    	
-    	
-    	
-    	
-    	
     	
         String username = "Test user";
         String password = RandomStringUtils.randomAlphabetic(10);
