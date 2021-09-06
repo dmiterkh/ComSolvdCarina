@@ -163,7 +163,7 @@ public class MathPanel extends AbstractUIObject {
     	rightParBtn.click();
     }
 
-    public void clickOnRightFactBtn() {
+    public void clickOnFactBtn() {
     	factBtn.click();
     }
 }
