@@ -332,167 +332,289 @@ public class MobileCalculatorTest extends MobileCalculatorTestBase implements IA
 //				
 //	}		
 //	
+//	@Test()
+//	public void testCalculatorMathPanelTriginometricInverse() {
+//		
+//		MathPanel function = new MathPanel(getDriver());
+//		function.clickOnInvBtn();
+//		function.clickOnArcSinBtn();
+//		
+//	    NumberPanel number = new NumberPanel(getDriver());
+//		number.clickOnDigitBtn("0");
+//		number.clickOnPointBtn();
+//		number.clickOnDigitBtn("5");
+//				
+//		SymbolPanel symbol = new SymbolPanel(getDriver());
+//      	symbol.clickOnEqualBtn();     	
+//      	
+//		DisplayPanel display = new DisplayPanel(getDriver());		
+//	    Double actualNum = Double.parseDouble(display.getInfoFromResultField());
+//		Double checkNum = Math.asin(0.5);				
+//		
+//	    LOGGER.info(String.valueOf(actualNum));
+//	    LOGGER.info(String.valueOf(checkNum));	    
+//		
+//		String ModeDegRad = ""; 
+//		
+//		if(actualNum == checkNum) {
+//			ModeDegRad = "Rad";			
+//		} else {
+//			ModeDegRad = "Rad";
+//			function.clickOnRadDegBtn();
+//		}
+//		
+//		function.clickOnArcSinBtn();
+//		number.clickOnDigitBtn("0");
+//		number.clickOnPointBtn();
+//		number.clickOnDigitBtn("5");
+//		symbol.clickOnEqualBtn();
+//		actualNum = Double.parseDouble(display.getInfoFromResultField());	 
+//	    
+//		actualNum=actualNum*1000000;
+//	    int result = (int)Math.floor(actualNum);
+//	    actualNum = (double) result/1000000;
+//		
+//		checkNum=checkNum*1000000;
+//	    result = (int)Math.floor(checkNum);
+//	    checkNum = (double) result/1000000;
+//		
+//	    LOGGER.info(String.valueOf(actualNum));
+//	    LOGGER.info(String.valueOf(checkNum));	 
+//	    LOGGER.info(ModeDegRad);
+//		Assert.assertEquals(actualNum, checkNum, "Function arcsin in " + ModeDegRad + " Mode does not work correctly");
+//		
+//		symbol.clickOnClearBtn();
+//		function.clickOnArcCosBtn();
+//		number.clickOnDigitBtn("0");
+//		number.clickOnPointBtn();
+//		number.clickOnDigitBtn("5");
+//		symbol.clickOnEqualBtn();
+//		actualNum = Double.parseDouble(display.getInfoFromResultField());	 
+//		checkNum = Math.acos(0.5);	
+//		
+//		actualNum=actualNum*1000000;
+//	    result = (int)Math.floor(actualNum);
+//	    actualNum = (double) result/1000000;
+//		
+//		checkNum=checkNum*1000000;
+//	    result = (int)Math.floor(checkNum);
+//	    checkNum = (double) result/1000000;
+//	    
+//	    LOGGER.info(String.valueOf(actualNum));
+//	    LOGGER.info(String.valueOf(checkNum));
+//	    LOGGER.info(ModeDegRad);
+//		Assert.assertEquals(actualNum, checkNum, "Function arccos in " + ModeDegRad + " Mode does not work correctly");
+//		
+//		symbol.clickOnClearBtn();	
+//		function.clickOnArcTanBtn();
+//		number.clickOnDigitBtn("0");
+//		number.clickOnPointBtn();
+//		number.clickOnDigitBtn("5");
+//		symbol.clickOnEqualBtn();
+//		actualNum = Double.parseDouble(display.getInfoFromResultField());	 
+//		checkNum = Math.atan(0.5);	
+//		
+//		actualNum=actualNum*1000000;
+//	    result = (int)Math.floor(actualNum);
+//	    actualNum = (double) result/1000000;
+//		
+//		checkNum=checkNum*1000000;
+//	    result = (int)Math.floor(checkNum);
+//	    checkNum = (double) result/1000000;
+//	    
+//	    LOGGER.info(String.valueOf(actualNum));
+//	    LOGGER.info(String.valueOf(checkNum));
+//	    LOGGER.info(ModeDegRad);
+//		Assert.assertEquals(actualNum, checkNum, "Function arctan in " + ModeDegRad + " Mode does not work correctly");
+//	
+//		
+//		
+//		function.clickOnRadDegBtn();
+//		ModeDegRad = "Deg";
+//
+//		symbol.clickOnClearBtn();	
+//		function.clickOnArcSinBtn();
+//		number.clickOnDigitBtn("0");
+//		number.clickOnPointBtn();
+//		number.clickOnDigitBtn("5");
+//		symbol.clickOnEqualBtn();
+//		actualNum = Double.parseDouble(display.getInfoFromResultField());	 
+//		checkNum = Math.toDegrees(Math.asin(0.5));	
+//		
+//		actualNum=actualNum*10;
+//	    result = (int)Math.floor(actualNum);
+//	    actualNum = (double) result/10;
+//		
+//		checkNum=checkNum*10;
+//	    result = (int)Math.floor(checkNum);
+//	    checkNum = (double) result/10;
+//		
+//	    LOGGER.info(String.valueOf(actualNum));
+//	    LOGGER.info(String.valueOf(checkNum));	 
+//	    LOGGER.info(ModeDegRad);
+//		Assert.assertEquals(actualNum, checkNum, "Function arcsin in " + ModeDegRad + " Mode does not work correctly");
+//
+//		symbol.clickOnClearBtn();	
+//		function.clickOnArcCosBtn();
+//		number.clickOnDigitBtn("0");
+//		number.clickOnPointBtn();
+//		number.clickOnDigitBtn("5");
+//		symbol.clickOnEqualBtn();
+//		actualNum = Double.parseDouble(display.getInfoFromResultField());	 
+//		checkNum = Math.toDegrees(Math.acos(0.5));	
+//		
+//		actualNum=actualNum*10;
+//	    result = (int)Math.floor(actualNum);
+//	    actualNum = (double) result/10;
+//		
+//		checkNum=checkNum*10;
+//	    result = (int)Math.floor(checkNum);
+//	    checkNum = (double) result/10;
+//		
+//	    LOGGER.info(String.valueOf(actualNum));
+//	    LOGGER.info(String.valueOf(checkNum));	 
+//	    LOGGER.info(ModeDegRad);
+//		Assert.assertEquals(actualNum, checkNum, "Function arcsin in " + ModeDegRad + " Mode does not work correctly");
+//
+//		symbol.clickOnClearBtn();	
+//		function.clickOnArcTanBtn();
+//		number.clickOnDigitBtn("0");
+//		number.clickOnPointBtn();
+//		number.clickOnDigitBtn("5");
+//		symbol.clickOnEqualBtn();
+//		actualNum = Double.parseDouble(display.getInfoFromResultField());	 
+//		checkNum = Math.toDegrees(Math.atan(0.5));	
+//		
+//		actualNum=actualNum*10;
+//	    result = (int)Math.floor(actualNum);
+//	    actualNum = (double) result/10;
+//		
+//		checkNum=checkNum*10;
+//	    result = (int)Math.floor(checkNum);
+//	    checkNum = (double) result/10;
+//		
+//	    LOGGER.info(String.valueOf(actualNum));
+//	    LOGGER.info(String.valueOf(checkNum));	 
+//	    LOGGER.info(ModeDegRad);
+//		Assert.assertEquals(actualNum, checkNum, "Function arcsin in " + ModeDegRad + " Mode does not work correctly");
+//
+//	}				
+//	
+//	@Test()
+//	public void testCalculatorMathPanelLogarithmic() {
+//		
+//		MathPanel function = new MathPanel(getDriver());
+//		function.clickOnLnBtn();
+//
+//		NumberPanel number = new NumberPanel(getDriver());
+//		number.clickOnDigitBtn("5");
+//		
+//		SymbolPanel symbol = new SymbolPanel(getDriver());
+//		symbol.clickOnEqualBtn();
+//		
+//		DisplayPanel display = new DisplayPanel(getDriver());
+//		Double actualNum = Double.parseDouble(display.getInfoFromResultField());	 
+//		Double checkNum = Math.log(5.0);
+//	    
+//		actualNum=actualNum*10000000;
+//	    int result = (int)Math.round(actualNum);
+//	    actualNum = (double) result/10000000;
+//		
+//		checkNum=checkNum*10000000;
+//	    result = (int)Math.round(checkNum);
+//	    checkNum = (double) result/10000000;
+//	   
+//	    LOGGER.info(String.valueOf(actualNum));
+//	    LOGGER.info(String.valueOf(checkNum));	
+//		Assert.assertEquals(actualNum, checkNum, "Function Ln does not work correctly");
+//
+//		symbol.clickOnClearBtn();
+//		function.clickOnLogBtn();
+//		number.clickOnDigitBtn("5");
+//		symbol.clickOnEqualBtn();
+//		
+//		actualNum = Double.parseDouble(display.getInfoFromResultField());	 
+//		checkNum = Math.log10(5.0);
+//	    
+//		actualNum=actualNum*10000000;
+//	    result = (int)Math.round(actualNum);
+//	    actualNum = (double) result/10000000;
+//		
+//		checkNum=checkNum*10000000;
+//	    result = (int)Math.round(checkNum);
+//	    checkNum = (double) result/10000000;
+//	   
+//	    LOGGER.info(String.valueOf(actualNum));
+//	    LOGGER.info(String.valueOf(checkNum));	
+//		Assert.assertEquals(actualNum, checkNum, "Function Log does not work correctly");
+//		
+//		symbol.clickOnClearBtn();
+//		function.clickOnSqrtBtn();
+//		number.clickOnDigitBtn("9");
+//		symbol.clickOnEqualBtn();
+//		
+//		actualNum = Double.parseDouble(display.getInfoFromResultField());	 
+//		checkNum = 3.0;
+//	   
+//	    LOGGER.info(String.valueOf(actualNum));
+//		Assert.assertEquals(actualNum, checkNum, "Function Log does not work correctly");
+//		
+//
+//	}	
+	
 	@Test()
-	public void testCalculatorMathPanelTriginometricInverse() {
+	public void testCalculatorMathPanelLogarithmicInverse() {
 		
 		MathPanel function = new MathPanel(getDriver());
 		function.clickOnInvBtn();
-		function.clickOnArcSinBtn();
+		function.clickOnExpPowBtn();
+
+		NumberPanel number = new NumberPanel(getDriver());
+		number.clickOnDigitBtn("2");
 		
-	    NumberPanel number = new NumberPanel(getDriver());
-		number.clickOnDigitBtn("0");
-		number.clickOnPointBtn();
-		number.clickOnDigitBtn("5");
-				
 		SymbolPanel symbol = new SymbolPanel(getDriver());
-      	symbol.clickOnEqualBtn();     	
-      	
-		DisplayPanel display = new DisplayPanel(getDriver());		
-	    Double actualNum = Double.parseDouble(display.getInfoFromResultField());
-		Double checkNum = Math.asin(0.5);				
-		
-	    LOGGER.info(String.valueOf(actualNum));
-	    LOGGER.info(String.valueOf(checkNum));	    
-		
-		String ModeDegRad = ""; 
-		
-		if(actualNum == checkNum) {
-			ModeDegRad = "Rad";			
-		} else {
-			ModeDegRad = "Rad";
-			function.clickOnRadDegBtn();
-		}
-		
-		function.clickOnArcSinBtn();
-		number.clickOnDigitBtn("0");
-		number.clickOnPointBtn();
-		number.clickOnDigitBtn("5");
 		symbol.clickOnEqualBtn();
-		actualNum = Double.parseDouble(display.getInfoFromResultField());	 
+		
+		DisplayPanel display = new DisplayPanel(getDriver());
+		Double actualNum = Double.parseDouble(display.getInfoFromResultField());	 
+		Double checkNum = Math.exp(2.0);
 	    
-		actualNum=actualNum*1000000;
-	    int result = (int)Math.floor(actualNum);
-	    actualNum = (double) result/1000000;
+		actualNum=actualNum*10000000;
+	    int result = (int)Math.round(actualNum);
+	    actualNum = (double) result/10000000;
 		
-		checkNum=checkNum*1000000;
-	    result = (int)Math.floor(checkNum);
-	    checkNum = (double) result/1000000;
-		
+		checkNum=checkNum*10000000;
+	    result = (int)Math.round(checkNum);
+	    checkNum = (double) result/10000000;
+	   
 	    LOGGER.info(String.valueOf(actualNum));
-	    LOGGER.info(String.valueOf(checkNum));	 
-	    LOGGER.info(ModeDegRad);
-		Assert.assertEquals(actualNum, checkNum, "Function arcsin in " + ModeDegRad + " Mode does not work correctly");
+	    LOGGER.info(String.valueOf(checkNum));	
+		Assert.assertEquals(actualNum, checkNum, "Function e^x does not work correctly");
 		
-		function.clickOnArcCosBtn();
-		number.clickOnDigitBtn("0");
-		number.clickOnPointBtn();
-		number.clickOnDigitBtn("5");
+		symbol.clickOnClearBtn();
+		function.clickOnTenPowBtn();
+		number.clickOnDigitBtn("2");
 		symbol.clickOnEqualBtn();
+		
 		actualNum = Double.parseDouble(display.getInfoFromResultField());	 
-		checkNum = Math.acos(0.5);	
-		
-		actualNum=actualNum*1000000;
-	    result = (int)Math.floor(actualNum);
-	    actualNum = (double) result/1000000;
-		
-		checkNum=checkNum*1000000;
-	    result = (int)Math.floor(checkNum);
-	    checkNum = (double) result/1000000;
-	    
+		checkNum = Math.pow(10.0, 2.0);
+	   
 	    LOGGER.info(String.valueOf(actualNum));
-	    LOGGER.info(String.valueOf(checkNum));
-	    LOGGER.info(ModeDegRad);
-		Assert.assertEquals(actualNum, checkNum, "Function arccos in " + ModeDegRad + " Mode does not work correctly");
+	    LOGGER.info(String.valueOf(checkNum));	
+		Assert.assertEquals(actualNum, checkNum, "Function 10^x does not work correctly");
 		
-		function.clickOnArcTanBtn();
-		number.clickOnDigitBtn("0");
-		number.clickOnPointBtn();
-		number.clickOnDigitBtn("5");
+		symbol.clickOnClearBtn();		
+		number.clickOnDigitBtn("9");
+		function.clickOnNumberSqrBtn();
 		symbol.clickOnEqualBtn();
+		
 		actualNum = Double.parseDouble(display.getInfoFromResultField());	 
-		checkNum = Math.atan(0.5);	
-		
-		actualNum=actualNum*1000000;
-	    result = (int)Math.floor(actualNum);
-	    actualNum = (double) result/1000000;
-		
-		checkNum=checkNum*1000000;
-	    result = (int)Math.floor(checkNum);
-	    checkNum = (double) result/1000000;
-	    
+		checkNum = Math.pow(9.0, 2.0);
+	   
 	    LOGGER.info(String.valueOf(actualNum));
-	    LOGGER.info(String.valueOf(checkNum));
-	    LOGGER.info(ModeDegRad);
-		Assert.assertEquals(actualNum, checkNum, "Function arctan in " + ModeDegRad + " Mode does not work correctly");
-	
+		Assert.assertEquals(actualNum, checkNum, "Function Sqr does not work correctly");
 		
-		
-		function.clickOnRadDegBtn();
-		ModeDegRad = "Deg";
-		
-		function.clickOnArcSinBtn();
-		number.clickOnDigitBtn("0");
-		number.clickOnPointBtn();
-		number.clickOnDigitBtn("5");
-		symbol.clickOnEqualBtn();
-		actualNum = Double.parseDouble(display.getInfoFromResultField());	 
-		checkNum = Math.toDegrees(Math.asin(0.5));	
-		
-		actualNum=actualNum*10;
-	    result = (int)Math.floor(actualNum);
-	    actualNum = (double) result/10;
-		
-		checkNum=checkNum*10;
-	    result = (int)Math.floor(checkNum);
-	    checkNum = (double) result/10;
-		
-	    LOGGER.info(String.valueOf(actualNum));
-	    LOGGER.info(String.valueOf(checkNum));	 
-	    LOGGER.info(ModeDegRad);
-		Assert.assertEquals(actualNum, checkNum, "Function arcsin in " + ModeDegRad + " Mode does not work correctly");
 
-		function.clickOnArcCosBtn();
-		number.clickOnDigitBtn("0");
-		number.clickOnPointBtn();
-		number.clickOnDigitBtn("5");
-		symbol.clickOnEqualBtn();
-		actualNum = Double.parseDouble(display.getInfoFromResultField());	 
-		checkNum = Math.toDegrees(Math.acos(0.5));	
-		
-		actualNum=actualNum*10;
-	    result = (int)Math.floor(actualNum);
-	    actualNum = (double) result/10;
-		
-		checkNum=checkNum*10;
-	    result = (int)Math.floor(checkNum);
-	    checkNum = (double) result/10;
-		
-	    LOGGER.info(String.valueOf(actualNum));
-	    LOGGER.info(String.valueOf(checkNum));	 
-	    LOGGER.info(ModeDegRad);
-		Assert.assertEquals(actualNum, checkNum, "Function arcsin in " + ModeDegRad + " Mode does not work correctly");
-
-		function.clickOnArcTanBtn();
-		number.clickOnDigitBtn("0");
-		number.clickOnPointBtn();
-		number.clickOnDigitBtn("5");
-		symbol.clickOnEqualBtn();
-		actualNum = Double.parseDouble(display.getInfoFromResultField());	 
-		checkNum = Math.toDegrees(Math.atan(0.5));	
-		
-		actualNum=actualNum*10;
-	    result = (int)Math.floor(actualNum);
-	    actualNum = (double) result/10;
-		
-		checkNum=checkNum*10;
-	    result = (int)Math.floor(checkNum);
-	    checkNum = (double) result/10;
-		
-	    LOGGER.info(String.valueOf(actualNum));
-	    LOGGER.info(String.valueOf(checkNum));	 
-	    LOGGER.info(ModeDegRad);
-		Assert.assertEquals(actualNum, checkNum, "Function arcsin in " + ModeDegRad + " Mode does not work correctly");
-
-	}				
+	}
 
 }
