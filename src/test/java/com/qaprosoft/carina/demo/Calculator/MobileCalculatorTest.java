@@ -114,61 +114,282 @@ public class MobileCalculatorTest extends MobileCalculatorTestBase implements IA
 //        Assert.assertEquals(display.getInfoFromEntryField(), "1", "Delete button does not work correctly");
 //
 //    }
-	
+//	
+//	@Test()
+//	public void testCalculatorMathPanelTriginometric() {
+//		
+//		MathPanel function = new MathPanel(getDriver());
+//		function.clickOnSinBtn();
+//		
+//	    NumberPanel number = new NumberPanel(getDriver());
+//		number.clickOnDigitBtn("3");
+//		
+//		SymbolPanel symbol = new SymbolPanel(getDriver());
+//      	symbol.clickOnEqualBtn();
+//		
+//		DisplayPanel display = new DisplayPanel(getDriver());		
+//	    Double actualNum = Double.parseDouble(display.getInfoFromResultField());
+//		Double checkNum = Math.sin(3);				
+//		
+//		actualNum=actualNum*10000000;
+//	    int result = (int)Math.round(actualNum);
+//	    actualNum = (double) result/10000000;
+//		
+//		checkNum=checkNum*10000000;
+//	    result = (int)Math.round(checkNum);
+//	    checkNum = (double) result/10000000;
+//	    
+//	    LOGGER.info(String.valueOf(actualNum));
+//	    LOGGER.info(String.valueOf(checkNum));
+//		
+//		String ModeDegRad = ""; 
+//		
+//		if(actualNum == checkNum) {
+//			ModeDegRad = "Deg";			
+//		} else {
+//			ModeDegRad = "Rad";
+//			function.clickOnRadDegBtn();
+//		}	
+//		
+//	    LOGGER.info("Sin 4 radians");
+//        symbol.clickOnClearBtn();
+//		function.clickOnSinBtn();
+//		number.clickOnDigitBtn("4");
+//		symbol.clickOnEqualBtn();
+//		
+//		String firstString = display.getInfoFromResultField();
+//		String resultString = ""; 
+//		if(firstString.contains("−")) {
+//			resultString = "-" + firstString.substring(1);
+//		} else {
+//			resultString = firstString; 
+//		}
+//		
+//		actualNum = Double.parseDouble(resultString);
+//		checkNum = Math.sin(4);				
+//		
+//		actualNum=actualNum*1000000;
+//	    result = (int)Math.floor(actualNum);
+//	    actualNum = (double) result/1000000;
+//		
+//		checkNum=checkNum*1000000;
+//	    result = (int)Math.floor(checkNum);
+//	    checkNum = (double) result/1000000;
+//	    
+//	    LOGGER.info(String.valueOf(actualNum));
+//	    LOGGER.info(String.valueOf(checkNum));
+//	    LOGGER.info(ModeDegRad);
+//		Assert.assertEquals(actualNum, checkNum, "Function sin in " + ModeDegRad + " Mode does not work correctly");
+//	    
+//	    LOGGER.info("Cos 2 radians");
+//		symbol.clickOnClearBtn();
+//		function.clickOnCosBtn();
+//		number.clickOnDigitBtn("2");
+//		symbol.clickOnEqualBtn();
+//		
+//		firstString = display.getInfoFromResultField();
+//		resultString = ""; 
+//		if(firstString.contains("−")) {
+//			resultString = "-" + firstString.substring(1);
+//		} else {
+//			resultString = firstString; 
+//		}
+//		actualNum = Double.parseDouble(resultString);
+//		checkNum = Math.cos(2);	
+//		
+//		actualNum=actualNum*1000000;
+//	    result = (int)Math.round(actualNum);
+//	    actualNum = (double) result/1000000;		
+//		
+//		checkNum=checkNum*1000000;
+//		result = (int)Math.round(checkNum);
+//	    checkNum = (double) result/1000000;
+//				
+//	    LOGGER.info(String.valueOf(actualNum));
+//	    LOGGER.info(String.valueOf(checkNum));	 
+//	    LOGGER.info(ModeDegRad);
+//	    Assert.assertEquals(actualNum, checkNum, "Function cos in " + ModeDegRad + " Mode does not work correctly");
+//        
+//	    LOGGER.info("Tan 2 radians");
+//	    symbol.clickOnClearBtn();
+//		function.clickOnTanBtn();
+//		number.clickOnDigitBtn("2");
+//		symbol.clickOnEqualBtn();
+//		
+//		firstString = display.getInfoFromResultField();
+//		resultString = ""; 
+//		if(firstString.contains("−")) {
+//			resultString = "-" + firstString.substring(1);
+//		} else {
+//			resultString = firstString; 
+//		}
+//		actualNum = Double.parseDouble(resultString);
+//		checkNum = Math.tan(2);	
+//		
+//		
+//		actualNum=actualNum*1000000;
+//	    result = (int)Math.round(actualNum);
+//	    actualNum = (double) result/1000000;		
+//		
+//		checkNum=checkNum*1000000;
+//		result = (int)Math.round(checkNum);
+//	    checkNum = (double) result/1000000;
+//				
+//	    LOGGER.info(String.valueOf(actualNum));
+//	    LOGGER.info(String.valueOf(checkNum));	 
+//	    LOGGER.info(ModeDegRad);
+//		Assert.assertEquals(actualNum, checkNum, "Function tan in " + ModeDegRad + " Mode does not work correctly");
+//		
+//
+//		
+//		function.clickOnRadDegBtn();
+//		ModeDegRad = "Deg";
+//		
+//        symbol.clickOnClearBtn();
+//		function.clickOnSinBtn();
+//		number.clickOnDigitBtn("3");
+//		symbol.clickOnEqualBtn();
+//		
+//		firstString = display.getInfoFromResultField();
+//		resultString = ""; 
+//		if(firstString.contains("−")) {
+//			resultString = "-" + firstString.substring(1);
+//		} else {
+//			resultString = firstString; 
+//		}
+//		
+//		actualNum = Double.parseDouble(resultString);
+//		checkNum = Math.sin(Math.toRadians(3));	
+//		
+//		actualNum=actualNum*1000000;
+//	    result = (int)Math.floor(actualNum);
+//	    actualNum = (double) result/1000000;
+//		
+//		checkNum=actualNum*1000000;
+//	    result = (int)Math.floor(checkNum);
+//	    checkNum = (double) result/1000000;
+//		
+//	    LOGGER.info(String.valueOf(actualNum));
+//	    LOGGER.info(String.valueOf(checkNum));	 
+//	    LOGGER.info(ModeDegRad);
+//		Assert.assertEquals(actualNum, checkNum, "Function sin in " + ModeDegRad + " Mode does not work correctly");
+//		
+//        symbol.clickOnClearBtn();
+//		function.clickOnCosBtn();
+//		number.clickOnDigitBtn("1");
+//		symbol.clickOnEqualBtn();
+//		
+//		firstString = display.getInfoFromResultField();
+//		resultString = ""; 
+//		if(firstString.contains("−")) {
+//			resultString = "-" + firstString.substring(1);
+//		} else {
+//			resultString = firstString; 
+//		}
+//		actualNum = Double.parseDouble(resultString);
+//		checkNum = Math.cos(Math.toRadians(1));	
+//		
+//		actualNum=actualNum*1000000;
+//	    result = (int)Math.round(actualNum);
+//	    actualNum = (double) result/1000000;		
+//		
+//		checkNum=checkNum*1000000;
+//		result = (int)Math.round(checkNum);
+//	    checkNum = (double) result/1000000;
+//				
+//	    LOGGER.info(String.valueOf(actualNum));
+//	    LOGGER.info(String.valueOf(checkNum));	 
+//	    LOGGER.info(ModeDegRad);
+//	    Assert.assertEquals(actualNum, checkNum, "Function cos in " + ModeDegRad + " Mode does not work correctly");
+//	    
+//        symbol.clickOnClearBtn();
+//		function.clickOnTanBtn();
+//		number.clickOnDigitBtn("1");
+//		symbol.clickOnEqualBtn();
+//		
+//		firstString = display.getInfoFromResultField();
+//		resultString = ""; 
+//		if(firstString.contains("−")) {
+//			resultString = "-" + firstString.substring(1);
+//		} else {
+//			resultString = firstString; 
+//		}
+//		actualNum = Double.parseDouble(resultString);
+//		checkNum = Math.tan(Math.toRadians(1));
+//		
+//		actualNum=actualNum*1000000;
+//	    result = (int)Math.round(actualNum);
+//	    actualNum = (double) result/1000000;		
+//		
+//		checkNum=checkNum*1000000;
+//		result = (int)Math.round(checkNum);
+//	    checkNum = (double) result/1000000;
+//				
+//	    LOGGER.info(String.valueOf(actualNum));
+//	    LOGGER.info(String.valueOf(checkNum));	 
+//	    LOGGER.info(ModeDegRad);
+//		Assert.assertEquals(actualNum, checkNum, "Function tan in " + ModeDegRad + " Mode does not work correctly");	
+//				
+//	}		
+//	
 	@Test()
-	public void testCalculatorMathPanelTriginometric() {
+	public void testCalculatorMathPanelTriginometricInverse() {
 		
 		MathPanel function = new MathPanel(getDriver());
-		function.clickOnSinBtn();
+		function.clickOnInvBtn();
+		function.clickOnArcSinBtn();
 		
 	    NumberPanel number = new NumberPanel(getDriver());
-		number.clickOnDigitBtn("3");
-		
+		number.clickOnDigitBtn("0");
+		number.clickOnPointBtn();
+		number.clickOnDigitBtn("5");
+				
 		SymbolPanel symbol = new SymbolPanel(getDriver());
-      	symbol.clickOnEqualBtn();
-		
+      	symbol.clickOnEqualBtn();     	
+      	
 		DisplayPanel display = new DisplayPanel(getDriver());		
 	    Double actualNum = Double.parseDouble(display.getInfoFromResultField());
-		Double checkNum = Math.sin(3);				
+		Double checkNum = Math.asin(0.5);				
 		
-		actualNum=actualNum*10000000;
-	    int result = (int)Math.round(actualNum);
-	    actualNum = (double) result/10000000;
-		
-		checkNum=checkNum*10000000;
-	    result = (int)Math.round(checkNum);
-	    checkNum = (double) result/10000000;
-	    
 	    LOGGER.info(String.valueOf(actualNum));
-	    LOGGER.info(String.valueOf(checkNum));
+	    LOGGER.info(String.valueOf(checkNum));	    
 		
 		String ModeDegRad = ""; 
 		
 		if(actualNum == checkNum) {
-			ModeDegRad = "Deg";			
+			ModeDegRad = "Rad";			
 		} else {
 			ModeDegRad = "Rad";
 			function.clickOnRadDegBtn();
-		}	
-		
-	    LOGGER.info("!!!");
-	    LOGGER.info("Sin 4 radians");
-	    LOGGER.info("!!!");
-        symbol.clickOnClearBtn();
-		function.clickOnSinBtn();
-		number.clickOnDigitBtn("4");
-		symbol.clickOnEqualBtn();
-		
-		String firstString = display.getInfoFromResultField();
-		String resultString = ""; 
-		if(firstString.contains("−")) {
-			resultString = "-" + firstString.substring(1);
-		} else {
-			resultString = firstString; 
 		}
 		
-		actualNum = Double.parseDouble(resultString);
-		checkNum = Math.sin(4);				
+		function.clickOnArcSinBtn();
+		number.clickOnDigitBtn("0");
+		number.clickOnPointBtn();
+		number.clickOnDigitBtn("5");
+		symbol.clickOnEqualBtn();
+		actualNum = Double.parseDouble(display.getInfoFromResultField());	 
+	    
+		actualNum=actualNum*1000000;
+	    int result = (int)Math.floor(actualNum);
+	    actualNum = (double) result/1000000;
+		
+		checkNum=checkNum*1000000;
+	    result = (int)Math.floor(checkNum);
+	    checkNum = (double) result/1000000;
+		
+	    LOGGER.info(String.valueOf(actualNum));
+	    LOGGER.info(String.valueOf(checkNum));	 
+	    LOGGER.info(ModeDegRad);
+		Assert.assertEquals(actualNum, checkNum, "Function arcsin in " + ModeDegRad + " Mode does not work correctly");
+		
+		function.clickOnArcCosBtn();
+		number.clickOnDigitBtn("0");
+		number.clickOnPointBtn();
+		number.clickOnDigitBtn("5");
+		symbol.clickOnEqualBtn();
+		actualNum = Double.parseDouble(display.getInfoFromResultField());	 
+		checkNum = Math.acos(0.5);	
 		
 		actualNum=actualNum*1000000;
 	    result = (int)Math.floor(actualNum);
@@ -181,167 +402,97 @@ public class MobileCalculatorTest extends MobileCalculatorTestBase implements IA
 	    LOGGER.info(String.valueOf(actualNum));
 	    LOGGER.info(String.valueOf(checkNum));
 	    LOGGER.info(ModeDegRad);
-		Assert.assertEquals(actualNum, checkNum, "Function sin in " + ModeDegRad + " Mode does not work correctly");
+		Assert.assertEquals(actualNum, checkNum, "Function arccos in " + ModeDegRad + " Mode does not work correctly");
+		
+		function.clickOnArcTanBtn();
+		number.clickOnDigitBtn("0");
+		number.clickOnPointBtn();
+		number.clickOnDigitBtn("5");
+		symbol.clickOnEqualBtn();
+		actualNum = Double.parseDouble(display.getInfoFromResultField());	 
+		checkNum = Math.atan(0.5);	
+		
+		actualNum=actualNum*1000000;
+	    result = (int)Math.floor(actualNum);
+	    actualNum = (double) result/1000000;
+		
+		checkNum=checkNum*1000000;
+	    result = (int)Math.floor(checkNum);
+	    checkNum = (double) result/1000000;
 	    
-		LOGGER.info("!!!");
-	    LOGGER.info("Cos 2 radians");
-	    LOGGER.info("!!!");
-		symbol.clickOnClearBtn();
-		function.clickOnCosBtn();
-		number.clickOnDigitBtn("2");
-		symbol.clickOnEqualBtn();
-		
-		firstString = display.getInfoFromResultField();
-		resultString = ""; 
-		if(firstString.contains("−")) {
-			resultString = "-" + firstString.substring(1);
-		} else {
-			resultString = firstString; 
-		}
-		actualNum = Double.parseDouble(resultString);
-		checkNum = Math.cos(2);	
-		
-		actualNum=actualNum*1000000;
-	    result = (int)Math.round(actualNum);
-	    actualNum = (double) result/1000000;		
-		
-		checkNum=checkNum*1000000;
-		result = (int)Math.round(checkNum);
-	    checkNum = (double) result/1000000;
-				
 	    LOGGER.info(String.valueOf(actualNum));
-	    LOGGER.info(String.valueOf(checkNum));	 
+	    LOGGER.info(String.valueOf(checkNum));
 	    LOGGER.info(ModeDegRad);
-	    Assert.assertEquals(actualNum, checkNum, "Function cos in " + ModeDegRad + " Mode does not work correctly");
-        
-	    LOGGER.info("!!!");
-	    LOGGER.info("Tan 2 radians");
-	    LOGGER.info("!!!");
-	    symbol.clickOnClearBtn();
-		function.clickOnTanBtn();
-		number.clickOnDigitBtn("2");
-		symbol.clickOnEqualBtn();
-		
-		firstString = display.getInfoFromResultField();
-		resultString = ""; 
-		if(firstString.contains("−")) {
-			resultString = "-" + firstString.substring(1);
-		} else {
-			resultString = firstString; 
-		}
-		actualNum = Double.parseDouble(resultString);
-		checkNum = Math.tan(2);	
-		
-		
-		actualNum=actualNum*1000000;
-	    result = (int)Math.round(actualNum);
-	    actualNum = (double) result/1000000;		
-		
-		checkNum=checkNum*1000000;
-		result = (int)Math.round(checkNum);
-	    checkNum = (double) result/1000000;
-				
-	    LOGGER.info(String.valueOf(actualNum));
-	    LOGGER.info(String.valueOf(checkNum));	 
-	    LOGGER.info(ModeDegRad);
-		Assert.assertEquals(actualNum, checkNum, "Function tan in " + ModeDegRad + " Mode does not work correctly");
-		
-		
-		
-		
+		Assert.assertEquals(actualNum, checkNum, "Function arctan in " + ModeDegRad + " Mode does not work correctly");
+	
 		
 		
 		function.clickOnRadDegBtn();
 		ModeDegRad = "Deg";
 		
-        symbol.clickOnClearBtn();
-		function.clickOnSinBtn();
-		number.clickOnDigitBtn("3");
+		function.clickOnArcSinBtn();
+		number.clickOnDigitBtn("0");
+		number.clickOnPointBtn();
+		number.clickOnDigitBtn("5");
 		symbol.clickOnEqualBtn();
+		actualNum = Double.parseDouble(display.getInfoFromResultField());	 
+		checkNum = Math.toDegrees(Math.asin(0.5));	
 		
-		firstString = display.getInfoFromResultField();
-		resultString = ""; 
-		if(firstString.contains("−")) {
-			resultString = "-" + firstString.substring(1);
-		} else {
-			resultString = firstString; 
-		}
-		
-		actualNum = Double.parseDouble(resultString);
-		checkNum = Math.sin(Math.toRadians(3));	
-		
-		actualNum=actualNum*1000000;
+		actualNum=actualNum*10;
 	    result = (int)Math.floor(actualNum);
-	    actualNum = (double) result/1000000;
+	    actualNum = (double) result/10;
 		
-		checkNum=actualNum*1000000;
+		checkNum=checkNum*10;
 	    result = (int)Math.floor(checkNum);
-	    checkNum = (double) result/1000000;
+	    checkNum = (double) result/10;
 		
 	    LOGGER.info(String.valueOf(actualNum));
 	    LOGGER.info(String.valueOf(checkNum));	 
 	    LOGGER.info(ModeDegRad);
-		Assert.assertEquals(actualNum, checkNum, "Function sin in " + ModeDegRad + " Mode does not work correctly");
-		
-        symbol.clickOnClearBtn();
-		function.clickOnCosBtn();
-		number.clickOnDigitBtn("1");
+		Assert.assertEquals(actualNum, checkNum, "Function arcsin in " + ModeDegRad + " Mode does not work correctly");
+
+		function.clickOnArcCosBtn();
+		number.clickOnDigitBtn("0");
+		number.clickOnPointBtn();
+		number.clickOnDigitBtn("5");
 		symbol.clickOnEqualBtn();
+		actualNum = Double.parseDouble(display.getInfoFromResultField());	 
+		checkNum = Math.toDegrees(Math.acos(0.5));	
 		
-		firstString = display.getInfoFromResultField();
-		resultString = ""; 
-		if(firstString.contains("−")) {
-			resultString = "-" + firstString.substring(1);
-		} else {
-			resultString = firstString; 
-		}
-		actualNum = Double.parseDouble(resultString);
-		checkNum = Math.cos(Math.toRadians(1));	
+		actualNum=actualNum*10;
+	    result = (int)Math.floor(actualNum);
+	    actualNum = (double) result/10;
 		
-		actualNum=actualNum*1000000;
-	    result = (int)Math.round(actualNum);
-	    actualNum = (double) result/1000000;		
+		checkNum=checkNum*10;
+	    result = (int)Math.floor(checkNum);
+	    checkNum = (double) result/10;
 		
-		checkNum=checkNum*1000000;
-		result = (int)Math.round(checkNum);
-	    checkNum = (double) result/1000000;
-				
 	    LOGGER.info(String.valueOf(actualNum));
 	    LOGGER.info(String.valueOf(checkNum));	 
 	    LOGGER.info(ModeDegRad);
-	    Assert.assertEquals(actualNum, checkNum, "Function cos in " + ModeDegRad + " Mode does not work correctly");
-	    
-        symbol.clickOnClearBtn();
-		function.clickOnTanBtn();
-		number.clickOnDigitBtn("1");
+		Assert.assertEquals(actualNum, checkNum, "Function arcsin in " + ModeDegRad + " Mode does not work correctly");
+
+		function.clickOnArcTanBtn();
+		number.clickOnDigitBtn("0");
+		number.clickOnPointBtn();
+		number.clickOnDigitBtn("5");
 		symbol.clickOnEqualBtn();
+		actualNum = Double.parseDouble(display.getInfoFromResultField());	 
+		checkNum = Math.toDegrees(Math.atan(0.5));	
 		
-		firstString = display.getInfoFromResultField();
-		resultString = ""; 
-		if(firstString.contains("−")) {
-			resultString = "-" + firstString.substring(1);
-		} else {
-			resultString = firstString; 
-		}
-		actualNum = Double.parseDouble(resultString);
-		checkNum = Math.tan(Math.toRadians(1));
+		actualNum=actualNum*10;
+	    result = (int)Math.floor(actualNum);
+	    actualNum = (double) result/10;
 		
-		actualNum=actualNum*1000000;
-	    result = (int)Math.round(actualNum);
-	    actualNum = (double) result/1000000;		
+		checkNum=checkNum*10;
+	    result = (int)Math.floor(checkNum);
+	    checkNum = (double) result/10;
 		
-		checkNum=checkNum*1000000;
-		result = (int)Math.round(checkNum);
-	    checkNum = (double) result/1000000;
-				
 	    LOGGER.info(String.valueOf(actualNum));
 	    LOGGER.info(String.valueOf(checkNum));	 
 	    LOGGER.info(ModeDegRad);
-		Assert.assertEquals(actualNum, checkNum, "Function tan in " + ModeDegRad + " Mode does not work correctly");
-		
-		
-		
-		
-  }		 
+		Assert.assertEquals(actualNum, checkNum, "Function arcsin in " + ModeDegRad + " Mode does not work correctly");
+
+	}				
 
 }

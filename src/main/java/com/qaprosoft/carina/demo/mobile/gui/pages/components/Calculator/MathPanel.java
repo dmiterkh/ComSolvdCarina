@@ -101,15 +101,15 @@ public class MathPanel extends AbstractUIObject {
         tanBtn.click();
     }
     
-    public void clickOnArcsinBtn() {
+    public void clickOnArcSinBtn() {
         arcsinBtn.click();
     }
 
-    public void clickOnArccosBtn() {
+    public void clickOnArcCosBtn() {
         arccosBtn.click();
     }
 
-    public void clickOnArctanBtn() {
+    public void clickOnArcTanBtn() {
         arctanBtn.click();
     }
     
