@@ -6,6 +6,10 @@ import com.qaprosoft.carina.demo.mobile.gui.pages.components.Calculator.MathPane
 import com.qaprosoft.carina.demo.mobile.gui.pages.components.Calculator.NumberPanel;
 import com.qaprosoft.carina.demo.mobile.gui.pages.components.Calculator.SymbolPanel;
 
+
+import com.qaprosoft.carina.demo.mobile.gui.pages.common.Calculator.CalculatorPageBase;
+
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
@@ -19,99 +23,77 @@ public class MobileCalculatorTest extends MobileCalculatorTestBase implements IA
 	@Test()
     public void testCalculatorNumberPanel() {
     	
-    	DisplayPanel display = new DisplayPanel(getDriver());
-        display.getInfoFromEntryField();
-        Assert.assertEquals(display.getInfoFromEntryField(), "", "Display Panel does not work correctly");
+		
+        CalculatorPageBase calc = initPage(getDriver(), CalculatorPageBase.class);
+        calc.getInfoFromEntryField();
+        Assert.assertEquals(calc.getInfoFromEntryField(), "", "Display Panel does not work correctly");
         
-        NumberPanel number = new NumberPanel(getDriver());
-        number.clickOnDigitBtn("0");
-        number.clickOnPointBtn();
-        number.clickOnDigitBtn("9");
-        number.clickOnDigitBtn("8");
-        number.clickOnDigitBtn("7");
-        number.clickOnDigitBtn("6");
-        number.clickOnDigitBtn("5");
-        number.clickOnDigitBtn("4");
-        number.clickOnDigitBtn("3");
-        number.clickOnDigitBtn("2");
-        number.clickOnDigitBtn("1");
+        calc.clickOnDigitBtn("0");
+        calc.clickOnPointBtn();
+        calc.clickOnDigitBtn("9");
+        calc.clickOnDigitBtn("8");
+        calc.clickOnDigitBtn("7");
+        calc.clickOnDigitBtn("6");
+        calc.clickOnDigitBtn("5");
+        calc.clickOnDigitBtn("4");
+        calc.clickOnDigitBtn("3");
+        calc.clickOnDigitBtn("2");
+        calc.clickOnDigitBtn("1");
  
-        display.getInfoFromEntryField();
-        Assert.assertEquals(display.getInfoFromEntryField(), "0.987654321", "Number Panel does not work correctly");
+        Assert.assertEquals(calc.getInfoFromEntryField(), "0.987654321", "Number Panel does not work correctly");
         
     }	
  
     @Test()
     public void testCalculatorSymbolPanel() {
     	        
-        NumberPanel number = new NumberPanel(getDriver());
-        number.clickOnDigitBtn("9");
-        number.clickOnPointBtn();
-        number.clickOnDigitBtn("0");
-
-        SymbolPanel symbol = new SymbolPanel(getDriver());
-        symbol.clickOnAddBtn();
-
-        number.clickOnDigitBtn("7");
-        number.clickOnPointBtn();
-        number.clickOnDigitBtn("8");
+    	CalculatorPageBase calc = initPage(getDriver(), CalculatorPageBase.class);
+        calc.clickOnDigitBtn("9");
+        calc.clickOnPointBtn();
+        calc.clickOnDigitBtn("0");
+        calc.clickOnAddBtn();
+        calc.clickOnDigitBtn("7");
+        calc.clickOnPointBtn();
+        calc.clickOnDigitBtn("8");
+        Assert.assertEquals(calc.getInfoFromPreviewField(), "16.8", "Addition button does not work correctly");
         
-        DisplayPanel display = new DisplayPanel(getDriver());
-        display.getInfoFromPreviewField();
-        Assert.assertEquals(display.getInfoFromPreviewField(), "16.8", "Addition button does not work correctly");
+        calc.clickOnEqualBtn();
+        Assert.assertEquals(calc.getInfoFromResultField(), "16.8", "Equality button does not work correctly");
         
-        symbol.clickOnEqualBtn();
-        display.getInfoFromResultField();
-        Assert.assertEquals(display.getInfoFromResultField(), "16.8", "Equality button does not work correctly");
-        
-        symbol.clickOnSubtractBtn();
-        
-        number.clickOnDigitBtn("6");
-        number.clickOnPointBtn();
-        number.clickOnDigitBtn("6");
-        
-        display.getInfoFromPreviewField();
-        Assert.assertEquals(display.getInfoFromPreviewField(), "10.2", "Subtraction button does not work correctly");
+        calc.clickOnSubtractBtn();
+        calc.clickOnDigitBtn("6");
+        calc.clickOnPointBtn();
+        calc.clickOnDigitBtn("6");
+        Assert.assertEquals(calc.getInfoFromPreviewField(), "10.2", "Subtraction button does not work correctly");
                 
-        symbol.clickOnEqualBtn();
-        display.getInfoFromResultField();
-        Assert.assertEquals(display.getInfoFromResultField(), "10.2", "Equality button does not work correctly");
+        calc.clickOnEqualBtn();
+        Assert.assertEquals(calc.getInfoFromResultField(), "10.2", "Equality button does not work correctly");
         
-        symbol.clickOnDivideBtn();
+        calc.clickOnDivideBtn();
+        calc.clickOnDigitBtn("3");
+        calc.clickOnPointBtn();
+        calc.clickOnDigitBtn("4");
+        Assert.assertEquals(calc.getInfoFromPreviewField(), "3", "Division button does not work correctly");
         
-        number.clickOnDigitBtn("3");
-        number.clickOnPointBtn();
-        number.clickOnDigitBtn("4");
-
-        display.getInfoFromPreviewField();
-        Assert.assertEquals(display.getInfoFromPreviewField(), "3", "Division button does not work correctly");
+        calc.clickOnEqualBtn();
+        Assert.assertEquals(calc.getInfoFromResultField(), "3", "Equality button does not work correctly");
         
-        symbol.clickOnEqualBtn();
-        display.getInfoFromResultField();
-        Assert.assertEquals(display.getInfoFromResultField(), "3", "Equality button does not work correctly");
+        calc.clickOnMultiplyBtn();
+        calc.clickOnDigitBtn("2");
+        calc.clickOnPointBtn();
+        calc.clickOnDigitBtn("5");
+        Assert.assertEquals(calc.getInfoFromPreviewField(), "7.5", "Multiplication button does not work correctly");
         
-        symbol.clickOnMultiplyBtn();
-        
-        number.clickOnDigitBtn("2");
-        number.clickOnPointBtn();
-        number.clickOnDigitBtn("5");
-
-        display.getInfoFromPreviewField();
-        Assert.assertEquals(display.getInfoFromPreviewField(), "7.5", "Multiplication button does not work correctly");
-        
-        symbol.clickOnEqualBtn();
-        display.getInfoFromResultField();
-        Assert.assertEquals(display.getInfoFromResultField(), "7.5", "Equality button does not work correctly");
+        calc.clickOnEqualBtn();
+        Assert.assertEquals(calc.getInfoFromResultField(), "7.5", "Equality button does not work correctly");
          
-        symbol.clickOnClearBtn();
-        display.getInfoFromEntryField();
-        Assert.assertEquals(display.getInfoFromEntryField(), "", "Clear button does not work correctly");
+        calc.clickOnClearBtn();
+        Assert.assertEquals(calc.getInfoFromEntryField(), "", "Clear button does not work correctly");
         
-        number.clickOnDigitBtn("1");
-        number.clickOnDigitBtn("2");
-        symbol.clickOnDeleteBtn();
-        display.getInfoFromEntryField();
-        Assert.assertEquals(display.getInfoFromEntryField(), "1", "Delete button does not work correctly");
+        calc.clickOnDigitBtn("1");
+        calc.clickOnDigitBtn("2");
+        calc.clickOnDeleteBtn();
+        Assert.assertEquals(calc.getInfoFromEntryField(), "1", "Delete button does not work correctly");
 
     }
 	
