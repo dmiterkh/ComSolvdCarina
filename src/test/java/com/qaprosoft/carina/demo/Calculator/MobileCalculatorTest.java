@@ -123,6 +123,7 @@ public class MobileCalculatorTest extends MobileCalculatorTestBase implements IA
 		
 	    NumberPanel number = new NumberPanel(getDriver());
 		number.clickOnDigitBtn("3");
+		function.clickOnRightParBtn();
 		
 		SymbolPanel symbol = new SymbolPanel(getDriver());
       	symbol.clickOnEqualBtn();
@@ -155,6 +156,7 @@ public class MobileCalculatorTest extends MobileCalculatorTestBase implements IA
         symbol.clickOnClearBtn();
 		function.clickOnSinBtn();
 		number.clickOnDigitBtn("4");
+		function.clickOnRightParBtn();
 		symbol.clickOnEqualBtn();
 		
 		String firstString = display.getInfoFromResultField();
@@ -185,6 +187,7 @@ public class MobileCalculatorTest extends MobileCalculatorTestBase implements IA
 		symbol.clickOnClearBtn();
 		function.clickOnCosBtn();
 		number.clickOnDigitBtn("2");
+		function.clickOnRightParBtn();
 		symbol.clickOnEqualBtn();
 		
 		firstString = display.getInfoFromResultField();
@@ -214,6 +217,7 @@ public class MobileCalculatorTest extends MobileCalculatorTestBase implements IA
 	    symbol.clickOnClearBtn();
 		function.clickOnTanBtn();
 		number.clickOnDigitBtn("2");
+		function.clickOnRightParBtn();
 		symbol.clickOnEqualBtn();
 		
 		firstString = display.getInfoFromResultField();
@@ -248,6 +252,7 @@ public class MobileCalculatorTest extends MobileCalculatorTestBase implements IA
         symbol.clickOnClearBtn();
 		function.clickOnSinBtn();
 		number.clickOnDigitBtn("3");
+		function.clickOnRightParBtn();
 		symbol.clickOnEqualBtn();
 		
 		firstString = display.getInfoFromResultField();
@@ -277,6 +282,7 @@ public class MobileCalculatorTest extends MobileCalculatorTestBase implements IA
         symbol.clickOnClearBtn();
 		function.clickOnCosBtn();
 		number.clickOnDigitBtn("1");
+		function.clickOnRightParBtn();
 		symbol.clickOnEqualBtn();
 		
 		firstString = display.getInfoFromResultField();
@@ -305,6 +311,7 @@ public class MobileCalculatorTest extends MobileCalculatorTestBase implements IA
         symbol.clickOnClearBtn();
 		function.clickOnTanBtn();
 		number.clickOnDigitBtn("1");
+		function.clickOnRightParBtn();
 		symbol.clickOnEqualBtn();
 		
 		firstString = display.getInfoFromResultField();
@@ -343,6 +350,7 @@ public class MobileCalculatorTest extends MobileCalculatorTestBase implements IA
 		number.clickOnDigitBtn("0");
 		number.clickOnPointBtn();
 		number.clickOnDigitBtn("5");
+		function.clickOnRightParBtn();
 				
 		SymbolPanel symbol = new SymbolPanel(getDriver());
       	symbol.clickOnEqualBtn();     	
@@ -367,6 +375,7 @@ public class MobileCalculatorTest extends MobileCalculatorTestBase implements IA
 		number.clickOnDigitBtn("0");
 		number.clickOnPointBtn();
 		number.clickOnDigitBtn("5");
+		function.clickOnRightParBtn();
 		symbol.clickOnEqualBtn();
 		actualNum = Double.parseDouble(display.getInfoFromResultField());	 
 	    
@@ -388,6 +397,7 @@ public class MobileCalculatorTest extends MobileCalculatorTestBase implements IA
 		number.clickOnDigitBtn("0");
 		number.clickOnPointBtn();
 		number.clickOnDigitBtn("5");
+		function.clickOnRightParBtn();
 		symbol.clickOnEqualBtn();
 		actualNum = Double.parseDouble(display.getInfoFromResultField());	 
 		checkNum = Math.acos(0.5);	
@@ -410,6 +420,7 @@ public class MobileCalculatorTest extends MobileCalculatorTestBase implements IA
 		number.clickOnDigitBtn("0");
 		number.clickOnPointBtn();
 		number.clickOnDigitBtn("5");
+		function.clickOnRightParBtn();
 		symbol.clickOnEqualBtn();
 		actualNum = Double.parseDouble(display.getInfoFromResultField());	 
 		checkNum = Math.atan(0.5);	
@@ -437,6 +448,7 @@ public class MobileCalculatorTest extends MobileCalculatorTestBase implements IA
 		number.clickOnDigitBtn("0");
 		number.clickOnPointBtn();
 		number.clickOnDigitBtn("5");
+		function.clickOnRightParBtn();
 		symbol.clickOnEqualBtn();
 		actualNum = Double.parseDouble(display.getInfoFromResultField());	 
 		checkNum = Math.toDegrees(Math.asin(0.5));	
@@ -459,6 +471,7 @@ public class MobileCalculatorTest extends MobileCalculatorTestBase implements IA
 		number.clickOnDigitBtn("0");
 		number.clickOnPointBtn();
 		number.clickOnDigitBtn("5");
+		function.clickOnRightParBtn();
 		symbol.clickOnEqualBtn();
 		actualNum = Double.parseDouble(display.getInfoFromResultField());	 
 		checkNum = Math.toDegrees(Math.acos(0.5));	
@@ -481,6 +494,7 @@ public class MobileCalculatorTest extends MobileCalculatorTestBase implements IA
 		number.clickOnDigitBtn("0");
 		number.clickOnPointBtn();
 		number.clickOnDigitBtn("5");
+		function.clickOnRightParBtn();
 		symbol.clickOnEqualBtn();
 		actualNum = Double.parseDouble(display.getInfoFromResultField());	 
 		checkNum = Math.toDegrees(Math.atan(0.5));	
@@ -508,6 +522,7 @@ public class MobileCalculatorTest extends MobileCalculatorTestBase implements IA
 
 		NumberPanel number = new NumberPanel(getDriver());
 		number.clickOnDigitBtn("5");
+		function.clickOnRightParBtn();
 		
 		SymbolPanel symbol = new SymbolPanel(getDriver());
 		symbol.clickOnEqualBtn();
@@ -531,6 +546,7 @@ public class MobileCalculatorTest extends MobileCalculatorTestBase implements IA
 		symbol.clickOnClearBtn();
 		function.clickOnLogBtn();
 		number.clickOnDigitBtn("5");
+		function.clickOnRightParBtn();
 		symbol.clickOnEqualBtn();
 		
 		actualNum = Double.parseDouble(display.getInfoFromResultField());	 
@@ -571,6 +587,7 @@ public class MobileCalculatorTest extends MobileCalculatorTestBase implements IA
 
 		NumberPanel number = new NumberPanel(getDriver());
 		number.clickOnDigitBtn("2");
+		function.clickOnRightParBtn();
 		
 		SymbolPanel symbol = new SymbolPanel(getDriver());
 		symbol.clickOnEqualBtn();
