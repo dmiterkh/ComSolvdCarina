@@ -129,7 +129,9 @@ public class CalculatorPage extends CalculatorPageBase {
         super(driver);
     }
     
+    
 
+    
 //  DISPLAY PANEL  
     public String getInfoFromResultField(){
         return resultField.getText();
@@ -162,6 +164,12 @@ public class CalculatorPage extends CalculatorPageBase {
     public void clickOnPointBtn(){
         point.click();
     }
+    
+    public void enterDoubleNumber(String aDigitArg, String bDigitArg) {
+    	clickOnDigitBtn(aDigitArg);
+    	clickOnPointBtn();
+    	clickOnDigitBtn(bDigitArg);    	
+    };
     
     
 //  SYMBOL PANEL      
@@ -280,5 +288,195 @@ public class CalculatorPage extends CalculatorPageBase {
     public void clickOnFactBtn() {
     	factBtn.click();
     }
+    
+    public String checkSinFunction (String digitArg) {
+		clickOnSinBtn();
+	    clickOnDigitBtn(digitArg);
+		clickOnRightParBtn();
+		clickOnEqualBtn();
+		return getInfoFromResultField();
+    }
+    
+    public String checkCosFunction(String digitArg) {
+		clickOnCosBtn();
+	    clickOnDigitBtn(digitArg);
+		clickOnRightParBtn();
+		clickOnEqualBtn();
+		return getInfoFromResultField();
+    }
+   
+    public String checkTanFunction(String digitArg) {
+		clickOnTanBtn();
+	    clickOnDigitBtn(digitArg);
+		clickOnRightParBtn();
+		clickOnEqualBtn();
+		return getInfoFromResultField();
+    }
+    
+    public String checkArcSinFunction (String aDigitArg, String bDigitArg) {
+		clickOnArcSinBtn();
+		enterDoubleNumber(aDigitArg, bDigitArg);
+		clickOnRightParBtn();
+		clickOnEqualBtn();
+		return getInfoFromResultField();
+    }
+    
+    public String checkArcCosFunction(String aDigitArg, String bDigitArg) {
+		clickOnArcCosBtn();
+		enterDoubleNumber(aDigitArg, bDigitArg);
+		clickOnRightParBtn();
+		clickOnEqualBtn();
+		return getInfoFromResultField();
+    }
+   
+    public String checkArcTanFunction(String aDigitArg, String bDigitArg) {
+		clickOnArcTanBtn();
+		enterDoubleNumber(aDigitArg, bDigitArg);
+		clickOnRightParBtn();
+		clickOnEqualBtn();
+		return getInfoFromResultField();
+    }
+   
+    
+    public Double returnRoundedActualNumber(String stringArg) {
+		
+    	String firstString = stringArg;
+		String resultString = ""; 
+		if(firstString.contains("−")) {
+			resultString = "-" + firstString.substring(1);
+		} else {
+			resultString = firstString; 
+		}
+		
+		double actualNum = Double.parseDouble(resultString);
+		actualNum=actualNum*1000000;
+	    int result = (int) Math.floor(actualNum);
+	    actualNum = (double) result/1000000;
+    	return actualNum;
+    	
+    }
+    
+    public Double returnRoundedCheckNumber(Double doubleArg) {
+		
+		doubleArg=doubleArg*1000000;
+	    int result = (int)Math.floor(doubleArg);
+	    doubleArg = (double) result/1000000;
+    	return doubleArg;
+    	
+    }
+    
+    public String returnModeDegRad(Double actualNumArg, Double checkNumArg) {
+    	
+    	String ModeDegRad = "";
+    	if(actualNumArg == checkNumArg) {
+			ModeDegRad = "Deg";			
+		} else {
+			ModeDegRad = "Rad";
+			clickOnRadDegBtn();
+		}
+    	return ModeDegRad;
+	
+    }
+    
+    public String checkLnFunction (String digitArg) {
+		clickOnLnBtn();
+	    clickOnDigitBtn(digitArg);
+		clickOnRightParBtn();
+		clickOnEqualBtn();
+		return getInfoFromResultField();
+    }
+    
+    public String checkLogFunction(String digitArg) {
+		clickOnLogBtn();
+	    clickOnDigitBtn(digitArg);
+		clickOnRightParBtn();
+		clickOnEqualBtn();
+		return getInfoFromResultField();
+    }
+   
+    public Double checkSqrtFunction(String digitArg) {
+		clickOnSqrtBtn();
+	    clickOnDigitBtn(digitArg);
+		clickOnEqualBtn();
+		return Double.parseDouble(getInfoFromResultField());
+    }
+    
+    public String checkExpPowFunction(String digitArg) {    
+    	clickOnExpPowBtn();
+    	clickOnDigitBtn(digitArg);
+    	clickOnRightParBtn();
+		clickOnEqualBtn();
+		return getInfoFromResultField();    
+    }
+    
+    public Double checkTenPowFunction(String digitArg) {    
+    	clickOnTenPowBtn();
+    	clickOnDigitBtn(digitArg);
+		clickOnEqualBtn();
+		return Double.parseDouble(getInfoFromResultField());    
+    }
+
+    public Double checkSqrFunction(String digitArg) {
+	    clickOnDigitBtn(digitArg);
+		clickOnNumberSqrBtn();
+		clickOnEqualBtn();	
+		return Double.parseDouble(getInfoFromResultField());
+    }
+    
+    public Double checkPercentFunction(String digitArg) {
+		clickOnDigitBtn(digitArg);
+	    clickOnPerBtn();
+	    clickOnEqualBtn();	
+		return Double.parseDouble(getInfoFromResultField());
+    }
+    
+    public Double checkPowerFunction(String aDigitArg, String bDigitArg) {
+		clickOnDigitBtn(aDigitArg);
+		clickOnPowBtn();
+		clickOnDigitBtn(bDigitArg);
+	    clickOnEqualBtn();	
+		return Double.parseDouble(getInfoFromResultField());
+    }
+    
+    public String checkPiFunction() {
+	    clickOnPiBtn();
+	    clickOnEqualBtn();	
+		return getInfoFromResultField();
+    }
+    
+    public String checkEFunction() {
+	    clickOnEBtn();
+	    clickOnEqualBtn();	
+		return getInfoFromResultField();
+    }
+
+    public Double checkParenthesisFunction(String aDigitArg, String bDigitArg, String cDigitArg) {    
+		clickOnLeftParBtn();
+		clickOnDigitBtn(aDigitArg);
+		clickOnAddBtn();
+		clickOnDigitBtn(bDigitArg);
+		clickOnRightParBtn();
+		clickOnMultiplyBtn();
+		clickOnDigitBtn(cDigitArg);
+		clickOnEqualBtn();
+		return Double.parseDouble(getInfoFromResultField());
+	}
+	
+    public Double checkFactorialFunction(String digitArg) {
+		clickOnDigitBtn(digitArg);
+	    clickOnFactBtn();
+	    clickOnEqualBtn();	
+		return Double.parseDouble(getInfoFromResultField());
+    }
+    
+    public Double checkInnerFactorialFunction(String digitArg) {
+    	int k = Integer.parseInt(digitArg);
+    	int i = 1;
+    	while(k>0) {
+    		i = i * k;
+    		k--;   		
+    	}
+		return (double) i;
+    }    
     
 }
