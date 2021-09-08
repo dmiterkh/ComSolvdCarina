@@ -27,6 +27,9 @@ public abstract class CalculatorPageBase extends AbstractPage {
 
     public abstract void clickOnPointBtn();
     
+    public abstract void enterDoubleNumber(String aDigitArg, String bDigitArg);
+    
+    
     
 //  SYMBOL PANEL      
     public abstract void clickOnAddBtn();
@@ -86,5 +89,49 @@ public abstract class CalculatorPageBase extends AbstractPage {
     public abstract void clickOnRightParBtn();
 
     public abstract void clickOnFactBtn();
+    
+    public abstract String checkSinFunction(String digitArg);
+    
+    public abstract String checkCosFunction(String digitArg);
+    
+    public abstract String checkTanFunction(String digitArg);
+    
+    public abstract String checkArcSinFunction(String aDigitArg, String bDigitArg);
+    
+    public abstract String checkArcCosFunction(String aDigitArg, String bDigitArg);
+    
+    public abstract String checkArcTanFunction(String aDigitArg, String bDigitArg);
+
+    public abstract Double returnRoundedActualNumber(String stringArg);
+    
+    public abstract Double returnRoundedCheckNumber(Double doubleArg);
+    
+    public abstract String returnModeDegRad(Double actualNumArg, Double checkNumArg);
+    
+    public abstract String checkLnFunction(String digitArg);
+    
+    public abstract String checkLogFunction(String digitArg);
+    
+    public abstract Double checkSqrtFunction(String digitArg);
+    
+    public abstract String checkExpPowFunction(String digitArg);
+    
+    public abstract Double checkTenPowFunction(String digitArg);
+    
+    public abstract Double checkSqrFunction(String digitArg);
+    
+    public abstract Double checkPercentFunction(String digitArg);
+    
+    public abstract Double checkPowerFunction(String aDigitArg, String bDigitArg);  
+    
+    public abstract String checkPiFunction();  
+    
+    public abstract String checkEFunction(); 
+    
+    public abstract Double checkParenthesisFunction(String aDigitArg, String bDigitArg, String cDigitArg);     
+    
+    public abstract Double checkFactorialFunction(String digitArg);   
+    
+    public abstract Double checkInnerFactorialFunction(String digitArg);   
     
 }
