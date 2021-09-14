@@ -1,4 +1,4 @@
-package com.qaprosoft.carina.demo.Calculator;
+package com.qaprosoft.carina.demo.calculator;
 
 import java.lang.invoke.MethodHandles;
 import java.util.List;

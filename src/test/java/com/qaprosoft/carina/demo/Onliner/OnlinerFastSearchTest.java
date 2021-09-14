@@ -44,7 +44,7 @@ public class OnlinerFastSearchTest implements IAbstractTest {
         
 //        homePageOnliner.getTopHeaderBar().clickOnUsedGoodsButton();
         
-        getDriver().close();
+
 
     }    
     

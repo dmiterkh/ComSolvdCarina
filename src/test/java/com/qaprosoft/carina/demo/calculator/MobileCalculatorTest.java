@@ -1,8 +1,8 @@
-package com.qaprosoft.carina.demo.Calculator;
+package com.qaprosoft.carina.demo.calculator;
 
 import com.qaprosoft.carina.core.foundation.IAbstractTest;
+import com.qaprosoft.carina.demo.calculator.MobileCalculatorTestBase;
 import com.qaprosoft.carina.demo.mobile.gui.pages.common.Calculator.CalculatorPageBase;
-
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,6 +34,9 @@ public class MobileCalculatorTest extends MobileCalculatorTestBase implements IA
         calc.clickOnDigitBtn("2");
         calc.clickOnDigitBtn("1");
         Assert.assertEquals(calc.getInfoFromEntryField(), "0.987654321", "Number Panel does not work correctly");
+
+        
+        
         
     }	
  

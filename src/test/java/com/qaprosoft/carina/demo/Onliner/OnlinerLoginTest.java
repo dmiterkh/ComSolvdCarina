@@ -48,9 +48,10 @@ public class OnlinerLoginTest extends LoginBaseTest implements IAbstractTest {
     	// Open Home page
         HomePageOnliner homePageOnliner = new HomePageOnliner(getDriver());
         homePageOnliner.open();
+        pause(3.0);
         while (!(homePageOnliner.getTopHeaderBar().getAuthLink().isElementPresent())){
         	homePageOnliner.refresh(); 
-        	homePageOnliner.pause(5.0);
+        	pause(3.0);
         };
         Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
                 
@@ -58,8 +59,6 @@ public class OnlinerLoginTest extends LoginBaseTest implements IAbstractTest {
         LoginPageOnliner loginPageOnliner = homePageOnliner.getTopHeaderBar().clickOnAuthLink();
         loginPageOnliner.pause(5.0);
         Assert.assertTrue(loginPageOnliner.isPageOpened(), "Login page is not opened");
-        
-        getDriver().close();
         
     }    
     
@@ -74,9 +73,10 @@ public class OnlinerLoginTest extends LoginBaseTest implements IAbstractTest {
     	// Open Home page
         HomePageOnliner homePageOnliner = new HomePageOnliner(getDriver());
         homePageOnliner.open();
+        pause(3.0);
         while (!(homePageOnliner.getTopHeaderBar().getAuthLink().isElementPresent())){
         	homePageOnliner.refresh(); 
-        	homePageOnliner.pause(5.0);
+        	pause(3.0);
         };
         Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
                 
@@ -95,8 +95,6 @@ public class OnlinerLoginTest extends LoginBaseTest implements IAbstractTest {
         // Password checking  
         loginPageOnliner.clickOnAuthHelperButton();
         loginPageOnliner.pause(5.0);
-        
-        getDriver().close();
 
     }        
     
@@ -111,9 +109,10 @@ public class OnlinerLoginTest extends LoginBaseTest implements IAbstractTest {
     	// Open Home page
         HomePageOnliner homePageOnliner = new HomePageOnliner(getDriver());
         homePageOnliner.open();
+        pause(3.0);
         while (!(homePageOnliner.getTopHeaderBar().getAuthLink().isElementPresent())){
         	homePageOnliner.refresh(); 
-        	homePageOnliner.pause(5.0);
+        	pause(3.0);
         };
         Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
                 
@@ -133,8 +132,6 @@ public class OnlinerLoginTest extends LoginBaseTest implements IAbstractTest {
         loginPageOnliner.clickOnAuthHelperButton();
         loginPageOnliner.pause(5.0);
         
-        getDriver().close();
-        
     }    
         
     @Test()
@@ -148,9 +145,10 @@ public class OnlinerLoginTest extends LoginBaseTest implements IAbstractTest {
     	// Open Home page
         HomePageOnliner homePageOnliner = new HomePageOnliner(getDriver());
         homePageOnliner.open();
+        pause(3.0);
         while (!(homePageOnliner.getTopHeaderBar().getAuthLink().isElementPresent())){
         	homePageOnliner.refresh(); 
-        	homePageOnliner.pause(5.0);
+        	pause(3.0);
         };
         Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
                 
@@ -159,8 +157,6 @@ public class OnlinerLoginTest extends LoginBaseTest implements IAbstractTest {
         Assert.assertTrue(authorizedPageOnliner.isPageOpened(), "Authorized page is not opened");
 //        Assert.assertTrue(homePageOnliner.getTopHeaderBar().clickOnAuthLink().getLoginFieldLink().isClickable(), "Login field is not clickable"); 
 //        Assert.assertTrue(homePageOnliner.getTopHeaderBar().clickOnAuthLink().getPasswordFieldLink().isClickable(), "Password field is not clickable");
-        
-        getDriver().close();
         
     }
     
@@ -175,9 +171,10 @@ public class OnlinerLoginTest extends LoginBaseTest implements IAbstractTest {
     	// Open Home page
         HomePageOnliner homePageOnliner = new HomePageOnliner(getDriver());
         homePageOnliner.open();
+        pause(3.0);
         while (!(homePageOnliner.getTopHeaderBar().getAuthLink().isElementPresent())){
-        	homePageOnliner.refresh();    
-        	homePageOnliner.pause(5.0);
+        	homePageOnliner.refresh(); 
+        	pause(3.0);
         };
         Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
                 
@@ -187,8 +184,6 @@ public class OnlinerLoginTest extends LoginBaseTest implements IAbstractTest {
 //        Assert.assertTrue(loginPageOnliner.getLoginFieldLink().isClickable(), "Login field is not clickable"); 
 //        Assert.assertTrue(loginPageOnliner.getPasswordFieldLink().isClickable(), "Password field is not clickable");
 
-        
-        getDriver().close();
         
     }    
 }

@@ -70,7 +70,7 @@ public class OnlinerFooterTest implements IAbstractTest {
         vacanciesPageOnliner.pause(10.0);
         Assert.assertTrue(vacanciesPageOnliner.isPageOpened(), "Vacancies page is not opened");
         
-        getDriver().close();
+
         
     }    
 
