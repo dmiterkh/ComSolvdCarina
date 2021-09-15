@@ -110,8 +110,7 @@ public class OnlinerShoppingCartTest implements IAbstractTest {
         // Return to Home page
         authorizedPageOnliner = shoppingCartPageOnliner.clickOnAutorizedPageLink();
         authorizedPageOnliner.pause(10);
-        
-        getDriver().close();
+
         
     }
     
@@ -144,7 +143,6 @@ public class OnlinerShoppingCartTest implements IAbstractTest {
         authorizedPageOnliner = shoppingCartPageOnliner.showShoppingCartOperations();
         authorizedPageOnliner.pause(10);
         
-        getDriver().close();
         
     }
 

@@ -48,8 +48,7 @@ public class OnlinerSectionsBarTest implements IAbstractTest {
         // Open Catalog page
         CatalogPageOnliner catalogPageOnliner = homePageOnliner.getTopHeaderBar().openCatalogPageOnliner();
     	catalogPageOnliner.pause(10);
-    	
-        getDriver().close();
+
         
     }    
         
@@ -84,8 +83,7 @@ public class OnlinerSectionsBarTest implements IAbstractTest {
         // Set value of upper bound price field
         laptopPageOnliner.typeInUpperBoundPriceField("1000");            
         laptopPageOnliner.pause(10);
-        
-        getDriver().close();
+
         
     }    
 
@@ -129,8 +127,7 @@ public class OnlinerSectionsBarTest implements IAbstractTest {
         // Choose lower year
         automobilePageOnliner.clickOnLowerYearChoiseLink();
         automobilePageOnliner.pause(10);
-        
-        getDriver().close();
+
         
     }   
 
@@ -164,7 +161,6 @@ public class OnlinerSectionsBarTest implements IAbstractTest {
 	    realEstatePageOnliner.moveOnUpperYearSlider();	
 	    realEstatePageOnliner.moveOnUpperPriceSlider();	 
 	    
-        getDriver().close();
         
 	}
 	

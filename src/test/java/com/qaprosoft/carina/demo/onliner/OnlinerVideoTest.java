@@ -99,7 +99,6 @@ public class OnlinerVideoTest implements IAbstractTest {
 //    		System.out.println("The required List of Extended Web Elements is Null or Empty");	
 //    	}
           
-        getDriver().close();
         
     }
 }
