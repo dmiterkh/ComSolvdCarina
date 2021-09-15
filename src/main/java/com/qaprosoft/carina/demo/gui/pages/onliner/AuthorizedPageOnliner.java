@@ -14,6 +14,7 @@ import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebEleme
 import com.qaprosoft.carina.core.gui.AbstractPage;
 import com.qaprosoft.carina.demo.gui.components.onliner.TopHeaderBar;
 import com.qaprosoft.carina.demo.gui.pages.onliner.ShoppingCartPageOnliner;
+import com.qaprosoft.carina.demo.gui.components.onliner.PopupProfile;
 
 public class AuthorizedPageOnliner extends AbstractPage {
     private static final Logger LOGGER = LoggerFactory.getLogger(AuthorizedPageOnliner.class);
@@ -32,8 +33,17 @@ public class AuthorizedPageOnliner extends AbstractPage {
     @FindBy(xpath = "//header[@class='g-top']")
     private TopHeaderBar topHeaderBarLink;
     
+    @FindBy(xpath = "//a[@href='https://profile.onliner.by']")
+    private  ExtendedWebElement profileLink;
+    
+    @FindBy(xpath = "//div[@class='b-top-profile__link b-top-profile__link_secondary']")
+    private PopupProfile popupProfileExitLink;
+    
+    
     public AuthorizedPageOnliner(WebDriver driver) {
         super(driver);
+        
+        
     }
     
     // Additional method
@@ -49,4 +59,11 @@ public class AuthorizedPageOnliner extends AbstractPage {
     public TopHeaderBar getTopHeaderBar() {
         return topHeaderBarLink;
     }
+    
+    public PopupProfile returnProfilePopupLink() {
+        return popupProfileExitLink;
+        
+    }
+    
+
 }
