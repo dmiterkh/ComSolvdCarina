@@ -20,8 +20,8 @@ import com.qaprosoft.carina.demo.gui.pages.onliner.ShoppingCartPageOnliner;
 public class TopHeaderBar extends AbstractUIObject {
 	
 //	OnlinerLoginTest (testcases 001, 002, 003, 007)
-	@FindBy(xpath = "//div[@class='g-top-i']//div//div[@id='userbar']//div//div//div//div[text()='Вход']")
-    private ExtendedWebElement authLink;
+	@FindBy(xpath ="//body[@class='no-touch']//div//div//div//div//header[@class='g-top']//div[@class='b-top-actions']//div[@class='g-top-i']//div//div//div//div//div//div[contains(@class,'auth-bar__item--text')]")
+	private ExtendedWebElement authLink;
 	
 	
 //	OnlinerFastSearchTest (testcases 009, 010)
@@ -42,7 +42,7 @@ public class TopHeaderBar extends AbstractUIObject {
     @FindBy(xpath = "//a[@href='https://catalog.onliner.by/']")
     private ExtendedWebElement catalogLink;
 
-    @FindBy(xpath = "//li[@class='header-style__item']//a[@href='https://ab.onliner.by']")
+    @FindBy(xpath = "//li[contains(@class,'b-main-navigation__item')]//a[contains(@href,'https://ab.onliner.by') and contains(@class, 'b-main-navigation__link')]")
     private ExtendedWebElement automobileLink;
         
     @FindBy(xpath = "//a[@href='https://r.onliner.by/pk']")
@@ -75,6 +75,16 @@ public class TopHeaderBar extends AbstractUIObject {
         fastSearchFieldLink.click();
         fastSearchFieldLink.type(queryArg);
     }
+    
+    
+//  OnlinerAllTestsWithLogin
+    
+    @FindBy(xpath = "//img[@class='onliner_logo']")
+    private ExtendedWebElement homeLink;
+    
+    @FindBy(xpath = "//div//div//a[contains(@class,'b-top-profile__link') and contains(text(),'Выйти')]")
+    private ExtendedWebElement popupProfileExitLink;
+    
     
     public ExtendedWebElement getFastSearchFieldLink() {
         return fastSearchFieldLink;
@@ -121,4 +131,14 @@ public class TopHeaderBar extends AbstractUIObject {
     	shoppingCartLink.click();
         return new ShoppingCartPageOnliner(driver);
     }
+    
+
+//  OnlinerAllTestsWithLogin
+    public HomePageOnliner openHomePageOnliner() {
+        popupProfileExitLink.click();
+        pause(5);
+        homeLink.click();
+        return new HomePageOnliner(driver);
+    }
+    
 }

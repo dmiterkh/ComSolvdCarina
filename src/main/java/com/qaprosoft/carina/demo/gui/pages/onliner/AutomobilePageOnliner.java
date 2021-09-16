@@ -16,13 +16,16 @@ import com.qaprosoft.carina.core.gui.AbstractPage;
 public class AutomobilePageOnliner extends AbstractPage {
     private static final Logger LOGGER = LoggerFactory.getLogger(AutomobilePageOnliner.class);
 
-    @FindBy(xpath = "//div[@class='input-style__faux' and text()='Все страны']//parent::div//parent::div")
+//    @FindBy(xpath = "//div[@class='input-style__faux' and text()='Все страны']//parent::div//parent::div")
+    @FindBy(xpath = "//div[@class='vehicle-form__row'][1]//div//div//div//div//div//div//div//div//div[@class='input-style__faux' and text()='Все страны']//parent::div//parent::div")
     private List<ExtendedWebElement> countryDropdownListLink;
   
   	@FindBy(xpath = "//div[@class='dropdown-style__checkbox-sign' and text()='Беларусь']//parent::div//parent::div//parent::label//parent::li")
   	private ExtendedWebElement countryChoiseLink;
     
-    @FindBy(xpath = "//div[@class='input-style__faux' and text()='Марка']//parent::div//parent::div")
+//    @FindBy(xpath = "//div[@class='input-style__faux' and text()='Марка']//parent::div//parent::div")
+//    @FindBy(xpath = "//div[@class='vehicle-form__label-title' and text()='Марка']//parent::div//parent::div//parent::div//parent::div//div[@class='vehicle-form__field']//div/div/div//div//div/div//div[text()='Марка']//parent::div//parent::div[contains(@class,'input-style__wrapper')]")
+    @FindBy(xpath = "//div[@class='vehicle-form__row'][2]//div//div//div//div//div//div//div//div//div[@class='input-style__faux' and text()='Марка']//parent::div//parent::div")
     private List<ExtendedWebElement> producerDropdownListLink;
   
   	@FindBy(xpath = "//div[@class='dropdown-style__checkbox-sign' and text()='Renault']//parent::div//parent::div//parent::label//parent::li")
@@ -47,51 +50,84 @@ public class AutomobilePageOnliner extends AbstractPage {
     }
   	
     public void clickOnCountryDropdownLink() {
-    	countryDropdownListLink.get(0).scrollTo();
+//    	countryDropdownListLink.get(0).scrollTo();
     	countryDropdownListLink.get(0).click();
 
     }
     
     public void clickOnCountryChoiseLink() {
-    	countryChoiseLink.scrollTo();
+ //   	countryChoiseLink.scrollTo();
     	countryChoiseLink.click();
-    	countryDropdownListLink.get(0).scrollTo();
+ //   	countryDropdownListLink.get(0).scrollTo();
     }
     
     public void clickOnProducerDropdownLink() {
-    	producerDropdownListLink.get(0).scrollTo();
+ //   	countryDropdownListLink.get(0).scrollTo();
+ //   	producerDropdownListLink.get(0).scrollTo();
     	producerDropdownListLink.get(0).click();
+    	
     }
     
     public void clickOnProducerChoiseLink() {
-    	producerChoiseLink.scrollTo();
+//    	producerChoiseLink.scrollTo();
     	producerChoiseLink.click();
-    	producerDropdownListLink.get(0).scrollTo();
+//    	producerDropdownListLink.get(0).scrollTo();
     }
     
     public void clickOnModelDropdownLink() {
-    	modelDropdownListLink.get(0).scrollTo();
+//    	modelDropdownListLink.get(0).scrollTo();
     	modelDropdownListLink.get(0).click();
     }
     
     public void clickOnModelChoiseLink() {
-    	modelChoiseLink.scrollTo();
+//    	modelChoiseLink.scrollTo();
     	modelChoiseLink.click();
-    	modelDropdownListLink.get(0).scrollTo();
+//    	modelDropdownListLink.get(0).scrollTo();
     }
     
     public void clickOnLowerYearDropdownLink() {
-    	lowerYearDropdownListLink.get(0).scrollTo();
+//    	lowerYearDropdownListLink.get(0).scrollTo();
     	lowerYearDropdownListLink.get(0).click();
     }
     
     public void clickOnLowerYearChoiseLink() {
-    	lowerYearChoiseLink.scrollTo();
+//    	lowerYearChoiseLink.scrollTo();
     	lowerYearChoiseLink.click();
-    	lowerYearDropdownListLink.get(0).scrollTo();
+//    	lowerYearDropdownListLink.get(0).scrollTo();
+    }
+    
+    public ExtendedWebElement returnCountryDropdownLink() {
+    	return countryDropdownListLink.get(0);
+    }
+    
+    public ExtendedWebElement returnCountryChoiseLink() {
+    	return countryChoiseLink;
+    }
+           
+    public ExtendedWebElement  returnProducerDropdownLink() {
+    	return producerDropdownListLink.get(0); 	
+    }
+    
+    public ExtendedWebElement returnProducerChoiseLink() {
+    	return producerChoiseLink;
+    }
+    
+    public ExtendedWebElement  returnModelDropdownLink() {
+    	return modelDropdownListLink.get(0);
+    }
+    
+    public ExtendedWebElement returnModelChoiseLink() {
+    	return modelChoiseLink;
+    }
+    
+    public ExtendedWebElement returnLowerYearDropdownLink() {
+    	return lowerYearDropdownListLink.get(0);
+    }
+    
+    public ExtendedWebElement returnLowerYearChoiseLink() {
+    	return lowerYearChoiseLink;
     }
     
     
-           
     
 }

@@ -20,7 +20,6 @@ import com.qaprosoft.carina.core.foundation.utils.tag.TestPriority;
 import com.qaprosoft.carina.demo.gui.pages.onliner.AuthorizedPageOnliner;
 import com.qaprosoft.carina.demo.gui.pages.onliner.HomePageOnliner;
 import com.qaprosoft.carina.demo.gui.pages.onliner.LoginPageOnliner;
-import com.qaprosoft.carina.demo.gui.components.onliner.PopupProfile;
 import com.zebrunner.agent.core.annotation.TestLabel;
 
 import org.openqa.selenium.Dimension;
@@ -32,22 +31,25 @@ public class OnlinerAllTestsWithLogin extends LoginBaseTest implements IAbstract
 	
 	private HomePageOnliner homePageOnliner;  
 	
-	
-	
-	
-	@BeforeSuite
-    public void initTestSuite() {
-		LOGGER.info("@LoginTest-BeforeSuite-Child");
-    }
-
-	@BeforeTest
-	public void beforeTest() {
-		LOGGER.info("@LoginTest-BeforeTest-Child");
-	}
+//	@BeforeSuite
+//    public void beforeSuite() {
+//		LOGGER.info("!!!");
+//		LOGGER.info("@@@_LoginTest-BeforeSuite-Child");
+//		LOGGER.info("!!!");
+//    }
+//
+//	@BeforeTest
+//	public void beforeTest() {
+//		LOGGER.info("!!!");
+//		LOGGER.info("@@@_LoginTest-BeforeTest-Child");
+//		LOGGER.info("!!!");
+//	}
 
 	@BeforeClass
 	public void beforeClass() {
-		LOGGER.info("@LoginTest-BeforeClass-Child");
+		LOGGER.info("!!!");
+		LOGGER.info("@@@_LoginTest-BeforeClass-Child");
+		LOGGER.info("!!!");
 		
     	// Open Home page
 		homePageOnliner = new HomePageOnliner(getDriver());
@@ -73,14 +75,18 @@ public class OnlinerAllTestsWithLogin extends LoginBaseTest implements IAbstract
         
         getDriver().manage().window().fullscreen();
         pause(1);
-        Assert.assertTrue(homePageOnliner.getTopHeaderBar().isUIObjectPresent());     
+        Assert.assertTrue(homePageOnliner.getTopHeaderBar().isUIObjectPresent());
         
+        getDriver().manage().window().setSize(new Dimension(1100, 768));
+        pause(1);
+        Assert.assertTrue(homePageOnliner.getTopHeaderBar().isUIObjectPresent());        
 	}
-	
 
 	@BeforeMethod
 	public void beforeMethod() {
-		LOGGER.info("@LoginTest-BeforeMethod-Child");
+		LOGGER.info("!!!");
+		LOGGER.info("@@@_LoginTest-BeforeMethod-Child");
+		LOGGER.info("!!!");
 		
 		//Refresh Home Page
         homePageOnliner.open();
@@ -92,7 +98,8 @@ public class OnlinerAllTestsWithLogin extends LoginBaseTest implements IAbstract
         	pause(0.5);
         };
 	}
-
+	
+	
 	
 	@Test()
     @MethodOwner(owner = "qpsdemo")
@@ -174,7 +181,7 @@ public class OnlinerAllTestsWithLogin extends LoginBaseTest implements IAbstract
         Assert.assertTrue(authorizedPageOnliner.isPageOpened(), "Authorized page is not opened");
         
         
-        homePageOnliner = authorizedPageOnliner.returnProfilePopupLink().openHomePageOnliner();
+        homePageOnliner = authorizedPageOnliner.returnPopupProfileLink().openHomePageOnliner();
         pause(5.0);
         Assert.assertTrue(authorizedPageOnliner.isPageOpened(), "Authorized page is not opened");
         
@@ -195,23 +202,33 @@ public class OnlinerAllTestsWithLogin extends LoginBaseTest implements IAbstract
         
     }    
     
+    
+    
 	@AfterMethod
 	public void afterMethod() {
-		LOGGER.info("@LoginTest-AfterMethod-Child");
+		LOGGER.info("!!!");		
+		LOGGER.info("@@@_LoginTest-AfterMethod-Child");
+		LOGGER.info("!!!");
 	}	
 	
 	@AfterClass
 	public void afterClass() {
-		LOGGER.info("@LoginTest-AfterClass-Child");
+		LOGGER.info("!!!");		
+		LOGGER.info("@@@_LoginTest-AfterClass-Child");
+		LOGGER.info("!!!");		
 	}
 
-	@AfterTest
-	public void afterTests() {
-		LOGGER.info("@LoginTest-AfterTest-Child");
-	}
-	
-    @AfterSuite(alwaysRun = true)
-    public void tearDownTestSuite() {
-    	LOGGER.info("@LoginTest-AfterSuite-Child");
-    }
+//	@AfterTest
+//	public void afterTest() {
+//		LOGGER.info("!!!");		
+//		LOGGER.info("@@@_LoginTest-AfterTest-Child");
+//		LOGGER.info("!!!");		
+//	}
+//	
+//    @AfterSuite
+//    public void afterSuite() {
+//		LOGGER.info("!!!");		
+//    	LOGGER.info("@@@_LoginTest-AfterSuite-Child");
+//		LOGGER.info("!!!");		
+//    }
 }

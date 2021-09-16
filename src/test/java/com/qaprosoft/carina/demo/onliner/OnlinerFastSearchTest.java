@@ -22,7 +22,7 @@ import com.qaprosoft.carina.demo.gui.pages.onliner.HomePageOnliner;
  * @author Dmitry Kharevich
  */
 
-public class OnlinerFastSearchTest implements IAbstractTest {
+public class OnlinerFastSearchTest extends ParentBaseTest implements IAbstractTest {
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 	
