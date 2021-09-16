@@ -33,11 +33,11 @@ public class AuthorizedPageOnliner extends AbstractPage {
     @FindBy(xpath = "//header[@class='g-top']")
     private TopHeaderBar topHeaderBarLink;
     
-    @FindBy(xpath = "//a[@href='https://profile.onliner.by']")
+    @FindBy(xpath = "//a[contains(@href,'https://profile.onliner.by') and contains(@class,'b-top-profile__preview')]")
     private  ExtendedWebElement profileLink;
     
     @FindBy(xpath = "//div[@class='b-top-profile__link b-top-profile__link_secondary']")
-    private PopupProfile popupProfileExitLink;
+    private TopHeaderBar popupProfileExitLink;
     
     
     public AuthorizedPageOnliner(WebDriver driver) {
@@ -60,7 +60,7 @@ public class AuthorizedPageOnliner extends AbstractPage {
         return topHeaderBarLink;
     }
     
-    public PopupProfile returnProfilePopupLink() {
+    public TopHeaderBar returnPopupProfileLink() {
         return popupProfileExitLink;
         
     }

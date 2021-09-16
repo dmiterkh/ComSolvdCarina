@@ -26,7 +26,7 @@ import com.qaprosoft.carina.demo.gui.pages.onliner.VideoPageOnliner;
  * @author Dmitry Kharevich
  */
 
-public class OnlinerVideoTest implements IAbstractTest {
+public class OnlinerVideoTest extends ParentBaseTest implements IAbstractTest {
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 	
@@ -58,8 +58,7 @@ public class OnlinerVideoTest implements IAbstractTest {
 		  			if(videoPageOnliner2.checkYoutubeVideoLink()) {
 		  				videoPageOnliner2.showVideoPageOperations(); 
 		  				k++;
-		  			} else {
-		  			}
+		  			} 
 		  		    while (!(videoPageOnliner2.getHomePageLink().isElementPresent())){
 		  		    	videoPageOnliner2.refresh(); 
 		  		    	videoPageOnliner2.pause(5.0);
@@ -89,8 +88,7 @@ public class OnlinerVideoTest implements IAbstractTest {
 //        				System.out.println("Ok");
 //        				k++;
 //        				System.out.println("k = " + k);
-//        			} else {
-//        			}
+//        			} 
 //        			videoPageOnliner3.returnToHomePage();
 //        		}	
 //        	}	

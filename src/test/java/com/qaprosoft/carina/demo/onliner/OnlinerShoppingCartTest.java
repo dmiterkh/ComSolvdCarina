@@ -28,7 +28,7 @@ import com.qaprosoft.carina.demo.gui.pages.onliner.ShoppingCartPageOnliner;
  * @author Dmitry Kharevich
  */
 
-public class OnlinerShoppingCartTest implements IAbstractTest {
+public class OnlinerShoppingCartTest extends ParentBaseTest implements IAbstractTest {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 	
@@ -53,7 +53,7 @@ public class OnlinerShoppingCartTest implements IAbstractTest {
         loginPageOnliner.typeInLoginField("dmiterkh@mail.ru");
         
         // Type in Password field
-        loginPageOnliner.typeInPasswordField("111111");
+        loginPageOnliner.typeInPasswordField("3909091");
         
         // Password checking
         loginPageOnliner.clickOnAuthHelperButton();
@@ -120,7 +120,7 @@ public class OnlinerShoppingCartTest implements IAbstractTest {
     @TestLabel(name = "feature", value = {"web", "regression"})
     
     //testcase019 short description
-    public void testtestUserGetsCorrectWorkOfShoppingCartInCatalogShort() {
+    public void testUserGetsCorrectWorkOfShoppingCartInCatalogShort() {
         
         // Open Home page
         HomePageOnliner homePageOnliner = new HomePageOnliner(getDriver());
@@ -128,7 +128,7 @@ public class OnlinerShoppingCartTest implements IAbstractTest {
         Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
         
         // Enter to personal account
-        AuthorizedPageOnliner authorizedPageOnliner = homePageOnliner.getTopHeaderBar().clickOnAuthLink().getAuthorizedPageOnliner("dmiterkh@mail.ru", "111111");
+        AuthorizedPageOnliner authorizedPageOnliner = homePageOnliner.getTopHeaderBar().clickOnAuthLink().getAuthorizedPageOnliner("dmiterkh@mail.ru", "3909091");
 
         // Get Item (List of items)
         ItemPageOnliner itemPageOnliner = authorizedPageOnliner.getTopHeaderBar().openCatalogPageOnliner().getLaptopPageOnliner().getItemPageOnliner("1000");

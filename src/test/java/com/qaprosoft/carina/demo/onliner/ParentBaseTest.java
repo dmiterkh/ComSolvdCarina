@@ -29,9 +29,9 @@ import com.qaprosoft.carina.core.foundation.utils.tag.TestPriority;
  * @author Dmitry Kharevich
  */
 
-public class LoginBaseTest implements IAbstractTest {
+public class ParentBaseTest implements IAbstractTest {
 	
-	private static final Logger LOGGER = LoggerFactory.getLogger(LoginBaseTest.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(ParentBaseTest.class);
 	
 	@BeforeSuite
     public void beforeSuite() {

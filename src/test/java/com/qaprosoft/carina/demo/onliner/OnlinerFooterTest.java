@@ -24,7 +24,7 @@ import com.qaprosoft.carina.demo.gui.pages.onliner.VacanciesPageOnliner;
  * @author Dmitry Kharevich
  */
 
-public class OnlinerFooterTest implements IAbstractTest {
+public class OnlinerFooterTest extends ParentBaseTest implements IAbstractTest {
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
 	
