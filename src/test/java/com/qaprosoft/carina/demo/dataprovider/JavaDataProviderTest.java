@@ -27,7 +27,7 @@ import org.testng.annotations.BeforeTest;
 
 import com.qaprosoft.carina.demo.onliner.OnlinerAllTestsWithLoginParentAnnotation;
 
-public class JavaDataProviderTest extends ParentBaseTest implements IAbstractTest{
+public class JavaDataProviderTest extends ParentDataProviderBaseTest implements IAbstractTest{
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(JavaDataProviderTest.class);    
  

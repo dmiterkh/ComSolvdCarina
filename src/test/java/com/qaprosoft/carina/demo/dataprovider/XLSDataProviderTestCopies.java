@@ -27,9 +27,9 @@ import org.testng.annotations.BeforeTest;
 
 import com.qaprosoft.carina.demo.onliner.OnlinerAllTestsWithLoginParentAnnotation;
 
-public class XLSDataProviderTest extends ParentDataProviderBaseTest implements IAbstractTest{
+public class XLSDataProviderTestCopies extends ParentDataProviderBaseTest implements IAbstractTest{
 	
-	private static final Logger LOGGER = LoggerFactory.getLogger(XLSDataProviderTest.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(XLSDataProviderTestCopies.class);
 	
 	/**
 	* Parametrization using external XLS/XLSX: every row in spreadsheet provides tests arguments set for 1 test.
@@ -52,7 +52,7 @@ public class XLSDataProviderTest extends ParentDataProviderBaseTest implements I
 	@Test(dataProvider = "DataProvider")
 	@MethodOwner(owner = "dkharevich")
 	@TestRailCases(testCasesId = "1")
-	@XlsDataSourceParameters(path = "xls/dkharevich.xlsx", sheet = "Addition", dsUid = "TUID", dsArgs = "a,b,c", testRailColumn = "a")
+	@XlsDataSourceParameters(path = "xls/dkharevich2.xlsx", sheet = "Addition", dsUid = "TUID", dsArgs = "a,b,c", testRailColumn = "a")
 	public void testAddOperation(String a, String b, String c) {
 		int actual = Integer.valueOf(a) + Integer.valueOf(b);
 		int expected = Integer.valueOf(c);
@@ -65,7 +65,7 @@ public class XLSDataProviderTest extends ParentDataProviderBaseTest implements I
 	@Test(dataProvider = "DataProvider")
 	@MethodOwner(owner = "dkharevich")
 	@TestRailCases(testCasesId = "1")
-	@XlsDataSourceParameters(path = "xls/dkharevich.xlsx", sheet = "Subtraction", dsUid = "TUID", dsArgs = "a,b,c", testRailColumn = "a")
+	@XlsDataSourceParameters(path = "xls/dkharevich2.xlsx", sheet = "Subtraction", dsUid = "TUID", dsArgs = "a,b,c", testRailColumn = "a")
 	public void testSubtractOperation(String a, String b, String c) {
 		int actual = Integer.valueOf(a) - Integer.valueOf(b);
 		int expected = Integer.valueOf(c);
@@ -78,7 +78,7 @@ public class XLSDataProviderTest extends ParentDataProviderBaseTest implements I
 	@Test(dataProvider = "DataProvider")
 	@MethodOwner(owner = "dkharevich")
 	@TestRailCases(testCasesId = "1")
-	@XlsDataSourceParameters(path = "xls/dkharevich.xlsx", sheet = "Multiplication", dsUid = "TUID", dsArgs = "a,b,c", testRailColumn = "a")
+	@XlsDataSourceParameters(path = "xls/dkharevich2.xlsx", sheet = "Multiplication", dsUid = "TUID", dsArgs = "a,b,c", testRailColumn = "a")
 	public void testMultiplyOperation(String a, String b, String c) {
 		int actual = Integer.valueOf(a) * Integer.valueOf(b);
 		int expected = Integer.valueOf(c);
@@ -91,7 +91,7 @@ public class XLSDataProviderTest extends ParentDataProviderBaseTest implements I
 	@Test(dataProvider = "DataProvider")
 	@MethodOwner(owner = "dkharevich")
 	@TestRailCases(testCasesId = "1")
-	@XlsDataSourceParameters(path = "xls/dkharevich.xlsx", sheet = "Division", dsUid = "TUID", dsArgs = "a,b,c", testRailColumn = "a")
+	@XlsDataSourceParameters(path = "xls/dkharevich2.xlsx", sheet = "Division", dsUid = "TUID", dsArgs = "a,b,c", testRailColumn = "a")
 	public void testDivideOperation(String a, String b, String c) {
 		int actual = Integer.valueOf(a) / Integer.valueOf(b);
 		int expected = Integer.valueOf(c);
@@ -104,7 +104,7 @@ public class XLSDataProviderTest extends ParentDataProviderBaseTest implements I
 	@Test(dataProvider = "DataProvider")
 	@MethodOwner(owner = "dkharevich")
 	@TestRailCases(testCasesId = "1")
-	@XlsDataSourceParameters(path = "xls/dkharevich.xlsx", sheet = "Power", dsUid = "TUID", dsArgs = "a,b,c", testRailColumn = "a")
+	@XlsDataSourceParameters(path = "xls/dkharevich2.xlsx", sheet = "Power", dsUid = "TUID", dsArgs = "a,b,c", testRailColumn = "a")
 	public void testPowerOperation(String a, String b, String c) {
 		int actual = (int) Math.pow(Double.valueOf(a), Double.valueOf(b));
 		int expected = Integer.valueOf(c);
