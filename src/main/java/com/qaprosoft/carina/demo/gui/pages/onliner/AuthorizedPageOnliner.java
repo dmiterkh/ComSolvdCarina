@@ -14,9 +14,9 @@ import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebEleme
 import com.qaprosoft.carina.core.gui.AbstractPage;
 import com.qaprosoft.carina.demo.gui.components.onliner.TopHeaderBar;
 import com.qaprosoft.carina.demo.gui.pages.onliner.ShoppingCartPageOnliner;
-import com.qaprosoft.carina.demo.gui.components.onliner.PopupProfile;
 
 public class AuthorizedPageOnliner extends AbstractPage {
+	
     private static final Logger LOGGER = LoggerFactory.getLogger(AuthorizedPageOnliner.class);
     
     // Additional link
