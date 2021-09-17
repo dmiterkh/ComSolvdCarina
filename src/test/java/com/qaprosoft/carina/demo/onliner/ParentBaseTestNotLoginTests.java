@@ -29,36 +29,32 @@ import com.qaprosoft.carina.core.foundation.utils.tag.TestPriority;
  * @author Dmitry Kharevich
  */
 
-public class ParentBaseTest implements IAbstractTest {
+public class ParentBaseTestNotLoginTests implements IAbstractTest {
 	
-	private static final Logger LOGGER = LoggerFactory.getLogger(ParentBaseTest.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(ParentBaseTestNotLoginTests.class);
 	
 	@BeforeSuite
-    public void beforeSuite() {
+    public void beforeSuiteNotLoginParent() {
 		LOGGER.info("!!!");		
-		LOGGER.info("@LoginTest-BeforeSuite-Parent");
-		LOGGER.info("!!!");		
+		LOGGER.info("@LoginTest-BeforeSuite-Parent");	
     }
 	
 	@BeforeTest
-	public void beforeTest() {
+	public void beforeTestNotLoginParent() {
 		LOGGER.info("!!!");		
-		LOGGER.info("@LoginTest-BeforeTest-Parent");
-		LOGGER.info("!!!");		
+		LOGGER.info("@LoginTest-BeforeTest-Parent");	
 	}
 	
 	@BeforeClass
-	public void beforeClass() {
+	public void beforeClassNotLoginParent() {
 		LOGGER.info("!!!");	
 		LOGGER.info("@LoginTest-BeforeClass-Parent");
-		LOGGER.info("!!!");	
 	}
 	
 	@BeforeMethod
-	public void beforeMethod() {
+	public void beforeMethodNotLoginParent() {
 		LOGGER.info("!!!");	
 		LOGGER.info("@LoginTest-BeforeMethod-Parent");
-		LOGGER.info("!!!");	
 	}
 	
 	
@@ -68,31 +64,27 @@ public class ParentBaseTest implements IAbstractTest {
 	
 	
 	@AfterMethod
-	public void afterMethod() {
+	public void afterMethodNotLoginParent() {
 		LOGGER.info("!!!");	
 		LOGGER.info("@LoginTest-AfterMethod-Parent");
-		LOGGER.info("!!!");	
 	}
 
 	@AfterClass
-	public void afterClass() {
+	public void afterClassNotLoginParent() {
 		LOGGER.info("!!!");	
 		LOGGER.info("@LoginTest-AfterClass-Parent");
-		LOGGER.info("!!!");	
 	}
 
 	@AfterTest
-	public void afterTest() {
+	public void afterTestNotLoginParent() {
 		LOGGER.info("!!!");		
-		LOGGER.info("@LoginTest-AfterTest-Parent");
-		LOGGER.info("!!!");		
+		LOGGER.info("@LoginTest-AfterTest-Parent");		
 	}
 	
     @AfterSuite
-    public void afterSuite() {
+    public void afterSuiteNotLoginParent() {
 		LOGGER.info("!!!");		
-    	LOGGER.info("@LoginTest-AfterSuite-Parent");
-		LOGGER.info("!!!");		
+    	LOGGER.info("@LoginTest-AfterSuite-Parent");		
     }
 
 		

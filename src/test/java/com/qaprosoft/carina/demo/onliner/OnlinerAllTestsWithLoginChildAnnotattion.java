@@ -25,30 +25,30 @@ import com.zebrunner.agent.core.annotation.TestLabel;
 import org.openqa.selenium.Dimension;
 
 
-public class OnlinerAllTestsWithLogin extends LoginBaseTest implements IAbstractTest {
+public class OnlinerAllTestsWithLoginChildAnnotattion extends LoginBaseTestChildAnnotation implements IAbstractTest {
 	
-	private static final Logger LOGGER = LoggerFactory.getLogger(OnlinerAllTestsWithLogin.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(OnlinerAllTestsWithLoginChildAnnotattion.class);
 	
 	private HomePageOnliner homePageOnliner;  
 	
-//	@BeforeSuite
-//    public void beforeSuite() {
-//		LOGGER.info("!!!");
-//		LOGGER.info("@@@_LoginTest-BeforeSuite-Child");
-//		LOGGER.info("!!!");
-//    }
-//
-//	@BeforeTest
-//	public void beforeTest() {
-//		LOGGER.info("!!!");
-//		LOGGER.info("@@@_LoginTest-BeforeTest-Child");
-//		LOGGER.info("!!!");
-//	}
+	@BeforeSuite
+    public void beforeSuiteLoginChild() {
+		LOGGER.info("!!!");
+		LOGGER.info("@@@_LoginTest-BeforeSuite-Child-(Child-Annotation)");
+		LOGGER.info("!!!");
+    }
+
+	@BeforeTest
+	public void beforeTestLoginChild() {
+		LOGGER.info("!!!");
+		LOGGER.info("@@@_LoginTest-BeforeTest-Child-(Child-Annotation)");
+		LOGGER.info("!!!");
+	}
 
 	@BeforeClass
-	public void beforeClass() {
+	public void beforeClassLoginChild() {
 		LOGGER.info("!!!");
-		LOGGER.info("@@@_LoginTest-BeforeClass-Child");
+		LOGGER.info("@@@_LoginTest-BeforeClass-Child-(Child-Annotation)");
 		LOGGER.info("!!!");
 		
     	// Open Home page
@@ -83,9 +83,9 @@ public class OnlinerAllTestsWithLogin extends LoginBaseTest implements IAbstract
 	}
 
 	@BeforeMethod
-	public void beforeMethod() {
+	public void beforeMethodLoginChild() {
 		LOGGER.info("!!!");
-		LOGGER.info("@@@_LoginTest-BeforeMethod-Child");
+		LOGGER.info("@@@_LoginTest-BeforeMethod-Child-(Child-Annotation)");
 		LOGGER.info("!!!");
 		
 		//Refresh Home Page
@@ -102,7 +102,7 @@ public class OnlinerAllTestsWithLogin extends LoginBaseTest implements IAbstract
 	
 	
 	@Test()
-    @MethodOwner(owner = "qpsdemo")
+    @MethodOwner(owner = "dkharevich")
     @TestPriority(Priority.P3)
     @TestLabel(name = "feature", value = {"web", "regression"})
     
@@ -117,7 +117,7 @@ public class OnlinerAllTestsWithLogin extends LoginBaseTest implements IAbstract
     }    
     
     @Test()
-    @MethodOwner(owner = "qpsdemo")
+    @MethodOwner(owner = "dkharevich")
     @TestPriority(Priority.P3)
     @TestLabel(name = "feature", value = {"web", "regression"})
     
@@ -143,7 +143,7 @@ public class OnlinerAllTestsWithLogin extends LoginBaseTest implements IAbstract
     }        
     
     @Test()
-    @MethodOwner(owner = "qpsdemo")
+    @MethodOwner(owner = "dkharevich")
     @TestPriority(Priority.P3)
     @TestLabel(name = "feature", value = {"web", "regression"})
     
@@ -169,7 +169,7 @@ public class OnlinerAllTestsWithLogin extends LoginBaseTest implements IAbstract
     }    
         
     @Test()
-    @MethodOwner(owner = "qpsdemo")
+    @MethodOwner(owner = "dkharevich")
     @TestPriority(Priority.P3)
     @TestLabel(name = "feature", value = {"web", "regression"})
     
@@ -189,7 +189,7 @@ public class OnlinerAllTestsWithLogin extends LoginBaseTest implements IAbstract
     }
     
     @Test()
-    @MethodOwner(owner = "qpsdemo")
+    @MethodOwner(owner = "dkharevich")
     @TestPriority(Priority.P3)
     @TestLabel(name = "feature", value = {"web", "regression"})
     
@@ -205,30 +205,30 @@ public class OnlinerAllTestsWithLogin extends LoginBaseTest implements IAbstract
     
     
 	@AfterMethod
-	public void afterMethod() {
+	public void afterMethodLoginChild() {
 		LOGGER.info("!!!");		
-		LOGGER.info("@@@_LoginTest-AfterMethod-Child");
+		LOGGER.info("@@@_LoginTest-AfterMethod-Child-(Child-Annotation)");
 		LOGGER.info("!!!");
 	}	
 	
 	@AfterClass
-	public void afterClass() {
+	public void afterClassLoginChild() {
 		LOGGER.info("!!!");		
-		LOGGER.info("@@@_LoginTest-AfterClass-Child");
+		LOGGER.info("@@@_LoginTest-AfterClass-Child-(Child-Annotation)");
 		LOGGER.info("!!!");		
 	}
 
-//	@AfterTest
-//	public void afterTest() {
-//		LOGGER.info("!!!");		
-//		LOGGER.info("@@@_LoginTest-AfterTest-Child");
-//		LOGGER.info("!!!");		
-//	}
-//	
-//    @AfterSuite
-//    public void afterSuite() {
-//		LOGGER.info("!!!");		
-//    	LOGGER.info("@@@_LoginTest-AfterSuite-Child");
-//		LOGGER.info("!!!");		
-//    }
+	@AfterTest
+	public void afterTestLoginChild() {
+		LOGGER.info("!!!");		
+		LOGGER.info("@@@_LoginTest-AfterTest-Child-(Child-Annotation)");
+		LOGGER.info("!!!");		
+	}
+	
+    @AfterSuite
+    public void afterSuiteLoginChild() {
+		LOGGER.info("!!!");		
+    	LOGGER.info("@@@_LoginTest-AfterSuite-Child-(Child-Annotation)");
+		LOGGER.info("!!!");		
+    }
 }

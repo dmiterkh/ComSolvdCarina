@@ -29,33 +29,33 @@ import com.qaprosoft.carina.core.foundation.utils.tag.TestPriority;
  * @author Dmitry Kharevich
  */
 
-public class LoginBaseTest implements IAbstractTest {
+public class LoginBaseTestChildAnnotation implements IAbstractTest {
 	
-	private static final Logger LOGGER = LoggerFactory.getLogger(LoginBaseTest.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(LoginBaseTestChildAnnotation.class);
 	
 	@BeforeSuite
-    public void beforeSuite() {
+    public void beforeSuiteLoginParent() {
 		LOGGER.info("!!!");		
 		LOGGER.info("@LoginTest-BeforeSuite-Parent");
 		LOGGER.info("!!!");		
     }
 	
 	@BeforeTest
-	public void beforeTest() {
+	public void beforeTestLoginParent() {
 		LOGGER.info("!!!");		
 		LOGGER.info("@LoginTest-BeforeTest-Parent");
 		LOGGER.info("!!!");		
 	}
 	
 	@BeforeClass
-	public void beforeClass() {
+	public void beforeClassLoginParent() {
 		LOGGER.info("!!!");	
 		LOGGER.info("@LoginTest-BeforeClass-Parent");
 		LOGGER.info("!!!");	
 	}
 	
 	@BeforeMethod
-	public void beforeMethod() {
+	public void beforeMethodloginParent() {
 		LOGGER.info("!!!");	
 		LOGGER.info("@LoginTest-BeforeMethod-Parent");
 		LOGGER.info("!!!");	
@@ -68,28 +68,28 @@ public class LoginBaseTest implements IAbstractTest {
 	
 	
 	@AfterMethod
-	public void afterMethod() {
+	public void afterMethodLoginParent() {
 		LOGGER.info("!!!");	
 		LOGGER.info("@LoginTest-AfterMethod-Parent");
 		LOGGER.info("!!!");	
 	}
 
 	@AfterClass
-	public void afterClass() {
+	public void afterClassLoginParent() {
 		LOGGER.info("!!!");	
 		LOGGER.info("@LoginTest-AfterClass-Parent");
 		LOGGER.info("!!!");	
 	}
 
 	@AfterTest
-	public void afterTest() {
+	public void afterTestLoginParent() {
 		LOGGER.info("!!!");		
 		LOGGER.info("@LoginTest-AfterTest-Parent");
 		LOGGER.info("!!!");		
 	}
 	
     @AfterSuite
-    public void afterSuite() {
+    public void afterSuiteLoginParent() {
 		LOGGER.info("!!!");		
     	LOGGER.info("@LoginTest-AfterSuite-Parent");
 		LOGGER.info("!!!");		

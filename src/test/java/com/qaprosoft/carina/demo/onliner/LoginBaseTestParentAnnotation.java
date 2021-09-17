@@ -31,26 +31,30 @@ import com.qaprosoft.carina.demo.gui.pages.onliner.HomePageOnliner;
  * @author Dmitry Kharevich
  */
 
-public class LoginBaseTest2 implements IAbstractTest {
+public class LoginBaseTestParentAnnotation implements IAbstractTest {
 	
-	private static final Logger LOGGER = LoggerFactory.getLogger(LoginBaseTest2.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(LoginBaseTestParentAnnotation.class);
 	
 	public HomePageOnliner homePageOnliner; 
 	
 	@BeforeSuite
-    public void beforeSuite() {
-		LOGGER.info("@LoginTest-BeforeSuite-Parent");
+    public void beforeSuiteLoginParent() {
+		LOGGER.info("!!!");
+		LOGGER.info("@LoginTest-BeforeSuite-Parent-(Parent-Annotation)");
+		LOGGER.info("!!!");
     }
 
 	@BeforeTest
-	public void beforeTest() {
-		LOGGER.info("@LoginTest-BeforeTest-Parent");
+	public void beforeTestLoginParent() {
+		LOGGER.info("!!!");
+		LOGGER.info("@LoginTest-BeforeTest-Parent-(Parent-Annotation)");
+		LOGGER.info("!!!");	
 	}
 	
 	@BeforeClass
-	public void beforeClass() {
+	public void beforeClassLoginParent() {
 		LOGGER.info("!!!");
-		LOGGER.info("@@@_LoginTest-BeforeClass-Parent");
+		LOGGER.info("@@@_LoginTest-BeforeClass-Parent-(Parent-Annotation)");
 		LOGGER.info("!!!");
 		
     	// Open Home page
@@ -85,9 +89,9 @@ public class LoginBaseTest2 implements IAbstractTest {
 	}
 
 	@BeforeMethod
-	public void beforeMethod() {
+	public void beforeMethoLoginParent() {
 		LOGGER.info("!!!");
-		LOGGER.info("@@@_LoginTest-BeforeMethod-Parent");
+		LOGGER.info("@@@_LoginTest-BeforeMethod-Parent-(Parent-Annotation)");
 		LOGGER.info("!!!");
 		
 		//Refresh Home Page
@@ -108,23 +112,31 @@ public class LoginBaseTest2 implements IAbstractTest {
 	
 	
 	@AfterMethod
-	public void afterMethod() {
-		LOGGER.info("@LoginTest-AfterMethod-Parent");
+	public void afterMethodLoginParent() {
+		LOGGER.info("!!!");
+		LOGGER.info("@LoginTest-AfterMethod-Parent-(Parent-Annotation)");
+		LOGGER.info("!!!");
 	}		
 	
 	@AfterClass
-	public void afterClass() {
-		LOGGER.info("@LoginTest-AfterClass-Parent");
+	public void afterClassLoginParent() {
+		LOGGER.info("!!!");
+		LOGGER.info("@LoginTest-AfterClass-Parent-(Parent-Annotation)");
+		LOGGER.info("!!!");
 	}
 	
 	@AfterTest
-	public void afterTests() {
-		LOGGER.info("@LoginTest-AfterTest-Parent");
+	public void afterTestsLoginParent() {
+		LOGGER.info("!!!");
+		LOGGER.info("@LoginTest-AfterTest-Parent-(Parent-Annotation)");
+		LOGGER.info("!!!");
 	}
 	
     @AfterSuite()
-    public void afterSuite() {
-    	LOGGER.info("@LoginTest-AfterSuite-Parent");
+    public void afterSuiteLoginParent() {
+		LOGGER.info("!!!");
+    	LOGGER.info("@LoginTest-AfterSuite-Parent-(Parent-Annotation)");
+		LOGGER.info("!!!");
     }
 	   
 }

@@ -25,33 +25,33 @@ import com.zebrunner.agent.core.annotation.TestLabel;
 import org.openqa.selenium.Dimension;
 
 
-public class OnlinerAllTestsWithLogin2 extends LoginBaseTest2 implements IAbstractTest {
+public class OnlinerAllTestsWithLoginParentAnnotation extends LoginBaseTestParentAnnotation implements IAbstractTest {
 	
-	private static final Logger LOGGER = LoggerFactory.getLogger(OnlinerAllTestsWithLogin2.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(OnlinerAllTestsWithLoginParentAnnotation.class);
 
 	@BeforeSuite
-    public void beforeSuite() {
+    public void beforeSuiteLoginChild() {
 		LOGGER.info("!!!");
 		LOGGER.info("@@@_LoginTest-BeforeSuite-Child");
 		LOGGER.info("!!!");
     }
 
 	@BeforeTest
-	public void beforeTest() {
+	public void beforeTestLoginChild() {
 		LOGGER.info("!!!");
 		LOGGER.info("@@@_LoginTest-BeforeTest-Child");
 		LOGGER.info("!!!");
 	}
 
 	@BeforeClass
-	public void beforeClass() {
+	public void beforeClassLoginChild() {
 		LOGGER.info("!!!");
 		LOGGER.info("@@@_LoginTest-BeforeClass-Child");
 		LOGGER.info("!!!");        
 	}
 
 	@BeforeMethod
-	public void beforeMethod() {
+	public void beforeMethodLoginChild() {
 		LOGGER.info("!!!");
 		LOGGER.info("@@@_LoginTest-BeforeMethod-Child");
 		LOGGER.info("!!!");
@@ -59,7 +59,7 @@ public class OnlinerAllTestsWithLogin2 extends LoginBaseTest2 implements IAbstra
 
 	
 	@Test()
-    @MethodOwner(owner = "qpsdemo")
+    @MethodOwner(owner = "dkharevich")
     @TestPriority(Priority.P3)
     @TestLabel(name = "feature", value = {"web", "regression"})
     
@@ -74,7 +74,7 @@ public class OnlinerAllTestsWithLogin2 extends LoginBaseTest2 implements IAbstra
     }    
     
     @Test()
-    @MethodOwner(owner = "qpsdemo")
+    @MethodOwner(owner = "dkharevich")
     @TestPriority(Priority.P3)
     @TestLabel(name = "feature", value = {"web", "regression"})
     
@@ -100,7 +100,7 @@ public class OnlinerAllTestsWithLogin2 extends LoginBaseTest2 implements IAbstra
     }        
     
     @Test()
-    @MethodOwner(owner = "qpsdemo")
+    @MethodOwner(owner = "dkharevich")
     @TestPriority(Priority.P3)
     @TestLabel(name = "feature", value = {"web", "regression"})
     
@@ -126,7 +126,7 @@ public class OnlinerAllTestsWithLogin2 extends LoginBaseTest2 implements IAbstra
     }    
         
     @Test()
-    @MethodOwner(owner = "qpsdemo")
+    @MethodOwner(owner = "dkharevich")
     @TestPriority(Priority.P3)
     @TestLabel(name = "feature", value = {"web", "regression"})
     
@@ -146,7 +146,7 @@ public class OnlinerAllTestsWithLogin2 extends LoginBaseTest2 implements IAbstra
     }
     
     @Test()
-    @MethodOwner(owner = "qpsdemo")
+    @MethodOwner(owner = "dkharevich")
     @TestPriority(Priority.P3)
     @TestLabel(name = "feature", value = {"web", "regression"})
     
@@ -160,28 +160,28 @@ public class OnlinerAllTestsWithLogin2 extends LoginBaseTest2 implements IAbstra
     }    
     
 	@AfterMethod
-	public void afterMethod() {
+	public void afterMethodLoginChild() {
 		LOGGER.info("!!!");		
 		LOGGER.info("@@@_LoginTest-AfterMethod-Child");
 		LOGGER.info("!!!");
 	}	
 	
 	@AfterClass
-	public void afterClass() {
+	public void afterClassLoginChild() {
 		LOGGER.info("!!!");		
 		LOGGER.info("@@@_LoginTest-AfterClass-Child");
 		LOGGER.info("!!!");		
 	}
 
 	@AfterTest
-	public void afterTest() {
+	public void afterTestLoginChild() {
 		LOGGER.info("!!!");		
 		LOGGER.info("@@@_LoginTest-AfterTest-Child");
 		LOGGER.info("!!!");		
 	}
 	
     @AfterSuite
-    public void afterSuite() {
+    public void afterSuiteLoginChild() {
 		LOGGER.info("!!!");		
     	LOGGER.info("@@@_LoginTest-AfterSuite-Child");
 		LOGGER.info("!!!");		
