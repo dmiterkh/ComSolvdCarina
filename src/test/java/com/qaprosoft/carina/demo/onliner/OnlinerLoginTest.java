@@ -4,6 +4,10 @@ package com.qaprosoft.carina.demo.onliner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import com.qaprosoft.carina.core.foundation.IAbstractTest;
@@ -19,12 +23,40 @@ import com.qaprosoft.carina.demo.gui.pages.onliner.LoginPageOnliner;
  * @author Dmitry Kharevich
  */
 
-public class OnlinerLoginTest extends LoginBaseTest implements IAbstractTest {
+public class OnlinerLoginTest extends LoginBaseTestChildAnnotation implements IAbstractTest {
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(OnlinerLoginTest.class);
-	  
+	
+	@BeforeSuite
+    public void beforeSuiteLoginChild() {
+		LOGGER.info("!!!");
+		LOGGER.info("@@@_LoginTest-BeforeSuite-Child");
+		LOGGER.info("!!!");
+    }
+
+	@BeforeTest
+	public void beforeTestLoginChild() {
+		LOGGER.info("!!!");
+		LOGGER.info("@@@_LoginTest-BeforeTest-Child");
+		LOGGER.info("!!!");
+	}
+
+	@BeforeClass
+	public void beforeClassLoginChild() {
+		LOGGER.info("!!!");
+		LOGGER.info("@@@_LoginTest-BeforeClass-Child");
+		LOGGER.info("!!!");        
+	}
+
+	@BeforeMethod
+	public void beforeMethodLoginChild() {
+		LOGGER.info("!!!");
+		LOGGER.info("@@@_LoginTest-BeforeMethod-Child");
+		LOGGER.info("!!!");
+	}
+	
     @Test()
-    @MethodOwner(owner = "qpsdemo")
+    @MethodOwner(owner = "dkharevich")
     @TestPriority(Priority.P3)
     @TestLabel(name = "feature", value = {"web", "regression"})
     
@@ -49,7 +81,7 @@ public class OnlinerLoginTest extends LoginBaseTest implements IAbstractTest {
     }    
     
     @Test()
-    @MethodOwner(owner = "qpsdemo")
+    @MethodOwner(owner = "dkharevich")
     @TestPriority(Priority.P3)
     @TestLabel(name = "feature", value = {"web", "regression"})
     
@@ -85,7 +117,7 @@ public class OnlinerLoginTest extends LoginBaseTest implements IAbstractTest {
     }        
     
     @Test()
-    @MethodOwner(owner = "qpsdemo")
+    @MethodOwner(owner = "dkharevich")
     @TestPriority(Priority.P3)
     @TestLabel(name = "feature", value = {"web", "regression"})
     
@@ -121,7 +153,7 @@ public class OnlinerLoginTest extends LoginBaseTest implements IAbstractTest {
     }    
         
     @Test()
-    @MethodOwner(owner = "qpsdemo")
+    @MethodOwner(owner = "dkharevich")
     @TestPriority(Priority.P3)
     @TestLabel(name = "feature", value = {"web", "regression"})
     
@@ -147,7 +179,7 @@ public class OnlinerLoginTest extends LoginBaseTest implements IAbstractTest {
     }
     
     @Test()
-    @MethodOwner(owner = "qpsdemo")
+    @MethodOwner(owner = "dkharevich")
     @TestPriority(Priority.P3)
     @TestLabel(name = "feature", value = {"web", "regression"})
     

@@ -8,6 +8,10 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -24,12 +28,40 @@ import com.qaprosoft.carina.demo.gui.pages.onliner.VacanciesPageOnliner;
  * @author Dmitry Kharevich
  */
 
-public class OnlinerFooterTest extends ParentBaseTest implements IAbstractTest {
+public class OnlinerFooterTest extends ParentBaseTestNotLoginTests implements IAbstractTest {
 	
-	private static final Logger LOGGER = LoggerFactory.getLogger(MethodHandles.lookup().lookupClass());
+	private static final Logger LOGGER = LoggerFactory.getLogger(OnlinerFooterTest.class);
+	
+	@BeforeSuite
+    public void beforeSuiteLoginChild() {
+		LOGGER.info("!!!");
+		LOGGER.info("@@@_LoginTest-BeforeSuite-Child");
+		LOGGER.info("!!!");
+    }
+
+	@BeforeTest
+	public void beforeTestLoginChild() {
+		LOGGER.info("!!!");
+		LOGGER.info("@@@_LoginTest-BeforeTest-Child");
+		LOGGER.info("!!!");
+	}
+
+	@BeforeClass
+	public void beforeClassLoginChild() {
+		LOGGER.info("!!!");
+		LOGGER.info("@@@_LoginTest-BeforeClass-Child");
+		LOGGER.info("!!!");        
+	}
+
+	@BeforeMethod
+	public void beforeMethodLoginChild() {
+		LOGGER.info("!!!");
+		LOGGER.info("@@@_LoginTest-BeforeMethod-Child");
+		LOGGER.info("!!!");
+	}
 	
     @Test()
-    @MethodOwner(owner = "qpsdemo")
+    @MethodOwner(owner = "dkharevich")
     @TestPriority(Priority.P3)
     @TestLabel(name = "feature", value = {"web", "regression"})
     
