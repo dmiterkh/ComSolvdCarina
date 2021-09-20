@@ -9,23 +9,12 @@ import org.testng.annotations.Test;
 
 import com.qaprosoft.carina.core.foundation.IAbstractTest;
 import com.qaprosoft.carina.core.foundation.dataprovider.annotations.XlsDataSourceParameters;
-import com.qaprosoft.carina.core.foundation.report.testrail.TestRailCases;
 import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
 import com.qaprosoft.carina.core.foundation.utils.tag.Priority;
 import com.qaprosoft.carina.core.foundation.utils.tag.TestPriority;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.BeforeTest;
-
-import com.qaprosoft.carina.demo.onliner.OnlinerAllTestsWithLoginParentAnnotation;
 
 public class TUIDJavaDataProviderTest extends ParentDataProviderBaseTest implements IAbstractTest{
 	
@@ -52,13 +41,10 @@ public class TUIDJavaDataProviderTest extends ParentDataProviderBaseTest impleme
     @Test(dataProvider = "DP1")
     @MethodOwner(owner = "dkharevich")
     @Parameters({"a", "b", "c"})
-    @TestRailCases(testCasesId = "55")
     public void testAddOperation(String TUID, String testRailColumn, int a, int b, int c) {
         int actual = Integer.valueOf(a) + Integer.valueOf(b);
         int expected = Integer.valueOf(c);
-        LOGGER.info("@@@");
         LOGGER.info(String.valueOf(a)+","+String.valueOf(b)+","+String.valueOf(c)+"--->>>"+String.valueOf(actual)+","+String.valueOf(expected));	
-        LOGGER.info("@@@");
         Assert.assertEquals(actual, expected, "Invalid addition result!");
     } 
     
@@ -75,13 +61,10 @@ public class TUIDJavaDataProviderTest extends ParentDataProviderBaseTest impleme
     @Test(dataProvider = "DP2")
     @MethodOwner(owner = "dkharevich")
     @Parameters({"a", "b", "c"})
-    @TestRailCases(testCasesId = "55")
     public void testSubtractOperation(String TUID, String testRailColumn, int a, int b, int c) {
         int actual = Integer.valueOf(a) - Integer.valueOf(b);
         int expected = Integer.valueOf(c);
-        LOGGER.info("@@@");
         LOGGER.info(String.valueOf(a)+","+String.valueOf(b)+","+String.valueOf(c)+"--->>>"+String.valueOf(actual)+","+String.valueOf(expected));	
-        LOGGER.info("@@@");
         Assert.assertEquals(actual, expected, "Invalid subtraction result!");
     } 
     
@@ -98,13 +81,10 @@ public class TUIDJavaDataProviderTest extends ParentDataProviderBaseTest impleme
     @Test(dataProvider = "DP3")
     @MethodOwner(owner = "dkharevich")
     @Parameters({"a", "b", "c"})
-    @TestRailCases(testCasesId = "55")
     public void testMultiplyOperation(String TUID, String testRailColumn, int a, int b, int c) {
         int actual = Integer.valueOf(a) * Integer.valueOf(b);
         int expected = Integer.valueOf(c);
-        LOGGER.info("@@@");
         LOGGER.info(String.valueOf(a)+","+String.valueOf(b)+","+String.valueOf(c)+"--->>>"+String.valueOf(actual)+","+String.valueOf(expected));	
-        LOGGER.info("@@@");
         Assert.assertEquals(actual, expected, "Invalid multiplication result!");
     } 
     
@@ -121,13 +101,10 @@ public class TUIDJavaDataProviderTest extends ParentDataProviderBaseTest impleme
     @Test(dataProvider = "DP4")
     @MethodOwner(owner = "dkharevich")
     @Parameters({"a", "b", "c"})
-    @TestRailCases(testCasesId = "55")
     public void testDivideOperation(String TUID, String testRailColumn, int a, int b, int c) {
         int actual = Integer.valueOf(a) / Integer.valueOf(b);
         int expected = Integer.valueOf(c);
-        LOGGER.info("@@@");
         LOGGER.info(String.valueOf(a)+","+String.valueOf(b)+","+String.valueOf(c)+"--->>>"+String.valueOf(actual)+","+String.valueOf(expected));	
-        LOGGER.info("@@@");
         Assert.assertEquals(actual, expected, "Invalid division result!");
     } 
     
@@ -144,13 +121,10 @@ public class TUIDJavaDataProviderTest extends ParentDataProviderBaseTest impleme
     @Test(dataProvider = "DP5")
     @MethodOwner(owner = "dkharevich")
     @Parameters({"a", "b", "c"})
-    @TestRailCases(testCasesId = "55")
     public void testPowerOperation(String TUID, String testRailColumn, int a, int b, int c) {
         int actual = (int) Math.pow(Double.valueOf(a), Double.valueOf(b));
         int expected = Integer.valueOf(c);
-        LOGGER.info("@@@");
         LOGGER.info(String.valueOf(a)+","+String.valueOf(b)+","+String.valueOf(c)+"--->>>"+String.valueOf(actual)+","+String.valueOf(expected));	
-        LOGGER.info("@@@");
         Assert.assertEquals(actual, expected, "Invalid power result!");
     } 
     
