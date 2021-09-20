@@ -35,22 +35,22 @@ public class ParentDataProviderBaseTest implements IAbstractTest {
 	
 	@BeforeSuite
     public void beforeSuiteNotLoginParent() {
-		LOGGER.info("@@@@@ --->>> @DataProviderTest-BeforeSuite-Parent");	
+		LOGGER.info("@DataProviderTest-BeforeSuite-Parent");	
     }
 	
 	@BeforeTest
 	public void beforeTestNotLoginParent() {
-		LOGGER.info("@@@@@ --->>> @DataProviderTest-BeforeTest-Parent");	
+		LOGGER.info("@DataProviderTest-BeforeTest-Parent");	
 	}
 	
 	@BeforeClass
 	public void beforeClassNotLoginParent() {
-		LOGGER.info("@@@@@ --->>> @DataProviderTest-BeforeClass-Parent");
+		LOGGER.info("@DataProviderTest-BeforeClass-Parent");
 	}
 	
 	@BeforeMethod
 	public void beforeMethodNotLoginParent() {
-		LOGGER.info("@@@@@ --->>> @DataProviderTest-BeforeMethod-Parent");	}
+		LOGGER.info("@DataProviderTest-BeforeMethod-Parent");	}
 	
 	
 	
@@ -60,22 +60,22 @@ public class ParentDataProviderBaseTest implements IAbstractTest {
 	
 	@AfterMethod
 	public void afterMethodNotLoginParent() {
-		LOGGER.info("@@@@@ --->>> @DataProviderTest-AfterMethod-Parent");
+		LOGGER.info("@DataProviderTest-AfterMethod-Parent");
 	}
 
 	@AfterClass
 	public void afterClassNotLoginParent() {
-		LOGGER.info("@@@@@ --->>> @DataProviderTest-AfterClass-Parent");
+		LOGGER.info("@DataProviderTest-AfterClass-Parent");
 	}
 
 	@AfterTest
 	public void afterTestNotLoginParent() {
-		LOGGER.info("@@@@@ --->>> @DataProviderTest-AfterTest-Parent");		
+		LOGGER.info("@DataProviderTest-AfterTest-Parent");		
 	}
 	
     @AfterSuite
     public void afterSuiteNotLoginParent() {
-    	LOGGER.info("@@@@@ --->>> @DataProviderTest-AfterSuite-Parent");		
+    	LOGGER.info("@DataProviderTest-AfterSuite-Parent");		
     }
 
 		
