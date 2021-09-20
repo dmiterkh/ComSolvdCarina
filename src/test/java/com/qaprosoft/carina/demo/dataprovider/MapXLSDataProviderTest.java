@@ -44,7 +44,7 @@ public class MapXLSDataProviderTest extends ParentDataProviderBaseTest implement
 	public void testAddOperationEx(HashMap<String, String> args) {
 		int actual = Integer.valueOf(args.get("a")) + Integer.valueOf(args.get("b"));
 		int expected = Integer.valueOf(args.get("c"));
-        LOGGER.info(args.get("a")+","+args.get("b")+","+args.get("c")+"--->>>"+String.valueOf(actual)+","+String.valueOf(expected));	
+        LOGGER.info("arguments   " + String.valueOf(args.get("a")) + "," + String.valueOf(args.get("b")) + "," + String.valueOf(args.get("c")) + "   result   " + String.valueOf(actual) + "," + String.valueOf(expected));	
  		Assert.assertEquals(actual, expected, "Invalid addition result!");
 	}
 	
@@ -54,7 +54,7 @@ public class MapXLSDataProviderTest extends ParentDataProviderBaseTest implement
 	public void testSubtractOperationEx(HashMap<String, String> args) {
 		int actual = Integer.valueOf(args.get("a")) - Integer.valueOf(args.get("b"));
 		int expected = Integer.valueOf(args.get("c"));
-        LOGGER.info(args.get("a")+","+args.get("b")+","+args.get("c")+"--->>>"+String.valueOf(actual)+","+String.valueOf(expected));	
+        LOGGER.info("arguments   " + String.valueOf(args.get("a")) + "," + String.valueOf(args.get("b")) + "," + String.valueOf(args.get("c")) + "   result   " + String.valueOf(actual) + "," + String.valueOf(expected));	
  		Assert.assertEquals(actual, expected, "Invalid subtraction result!");
 	}
 	
@@ -64,7 +64,7 @@ public class MapXLSDataProviderTest extends ParentDataProviderBaseTest implement
 	public void testMultiplyOperationEx(HashMap<String, String> args) {
 		int actual = Integer.valueOf(args.get("a")) * Integer.valueOf(args.get("b"));
 		int expected = Integer.valueOf(args.get("c"));
-        LOGGER.info(args.get("a")+","+args.get("b")+","+args.get("c")+"--->>>"+String.valueOf(actual)+","+String.valueOf(expected));	
+        LOGGER.info("arguments   " + String.valueOf(args.get("a")) + "," + String.valueOf(args.get("b")) + "," + String.valueOf(args.get("c")) + "   result   " + String.valueOf(actual) + "," + String.valueOf(expected));	
  		Assert.assertEquals(actual, expected, "Invalid multiplication result!");
 	}
 	
@@ -74,7 +74,7 @@ public class MapXLSDataProviderTest extends ParentDataProviderBaseTest implement
 	public void testDivideOperationEx(HashMap<String, String> args) {
 		int actual = Integer.valueOf(args.get("a")) / Integer.valueOf(args.get("b"));
 		int expected = Integer.valueOf(args.get("c"));
-        LOGGER.info(args.get("a")+","+args.get("b")+","+args.get("c")+"--->>>"+String.valueOf(actual)+","+String.valueOf(expected));	
+        LOGGER.info("arguments   " + String.valueOf(args.get("a")) + "," + String.valueOf(args.get("b")) + "," + String.valueOf(args.get("c")) + "   result   " + String.valueOf(actual) + "," + String.valueOf(expected));	
  		Assert.assertEquals(actual, expected, "Invalid division result!");
 	}
 	
@@ -84,7 +84,7 @@ public class MapXLSDataProviderTest extends ParentDataProviderBaseTest implement
 	public void testPowerOperationEx(HashMap<String, String> args) {
         int actual = (int) Math.pow(Double.valueOf(args.get("a")), Double.valueOf(args.get("b")));
 		int expected = Integer.valueOf(args.get("c"));
-        LOGGER.info(args.get("a")+","+args.get("b")+","+args.get("c")+"--->>>"+String.valueOf(actual)+","+String.valueOf(expected));	
+        LOGGER.info("arguments   " + String.valueOf(args.get("a")) + "," + String.valueOf(args.get("b")) + "," + String.valueOf(args.get("c")) + "   result   " + String.valueOf(actual) + "," + String.valueOf(expected));	
  		Assert.assertEquals(actual, expected, "Invalid power result!");
 	}
 	

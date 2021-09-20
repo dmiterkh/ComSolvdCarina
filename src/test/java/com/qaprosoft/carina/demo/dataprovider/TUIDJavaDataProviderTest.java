@@ -44,7 +44,7 @@ public class TUIDJavaDataProviderTest extends ParentDataProviderBaseTest impleme
     public void testAddOperation(String TUID, String testRailColumn, int a, int b, int c) {
         int actual = Integer.valueOf(a) + Integer.valueOf(b);
         int expected = Integer.valueOf(c);
-        LOGGER.info(String.valueOf(a)+","+String.valueOf(b)+","+String.valueOf(c)+"--->>>"+String.valueOf(actual)+","+String.valueOf(expected));	
+        LOGGER.info("arguments   " + String.valueOf(a) + "," + String.valueOf(b) + "," + String.valueOf(c) + "   result   " + String.valueOf(actual) + "," + String.valueOf(expected));	
         Assert.assertEquals(actual, expected, "Invalid addition result!");
     } 
     
@@ -64,7 +64,7 @@ public class TUIDJavaDataProviderTest extends ParentDataProviderBaseTest impleme
     public void testSubtractOperation(String TUID, String testRailColumn, int a, int b, int c) {
         int actual = Integer.valueOf(a) - Integer.valueOf(b);
         int expected = Integer.valueOf(c);
-        LOGGER.info(String.valueOf(a)+","+String.valueOf(b)+","+String.valueOf(c)+"--->>>"+String.valueOf(actual)+","+String.valueOf(expected));	
+        LOGGER.info("arguments   " + String.valueOf(a) + "," + String.valueOf(b) + "," + String.valueOf(c) + "   result   " + String.valueOf(actual) + "," + String.valueOf(expected));	
         Assert.assertEquals(actual, expected, "Invalid subtraction result!");
     } 
     
@@ -84,7 +84,7 @@ public class TUIDJavaDataProviderTest extends ParentDataProviderBaseTest impleme
     public void testMultiplyOperation(String TUID, String testRailColumn, int a, int b, int c) {
         int actual = Integer.valueOf(a) * Integer.valueOf(b);
         int expected = Integer.valueOf(c);
-        LOGGER.info(String.valueOf(a)+","+String.valueOf(b)+","+String.valueOf(c)+"--->>>"+String.valueOf(actual)+","+String.valueOf(expected));	
+        LOGGER.info("arguments   " + String.valueOf(a) + "," + String.valueOf(b) + "," + String.valueOf(c) + "   result   " + String.valueOf(actual) + "," + String.valueOf(expected));	
         Assert.assertEquals(actual, expected, "Invalid multiplication result!");
     } 
     
@@ -104,7 +104,7 @@ public class TUIDJavaDataProviderTest extends ParentDataProviderBaseTest impleme
     public void testDivideOperation(String TUID, String testRailColumn, int a, int b, int c) {
         int actual = Integer.valueOf(a) / Integer.valueOf(b);
         int expected = Integer.valueOf(c);
-        LOGGER.info(String.valueOf(a)+","+String.valueOf(b)+","+String.valueOf(c)+"--->>>"+String.valueOf(actual)+","+String.valueOf(expected));	
+        LOGGER.info("arguments   " + String.valueOf(a) + "," + String.valueOf(b) + "," + String.valueOf(c) + "   result   " + String.valueOf(actual) + "," + String.valueOf(expected));	
         Assert.assertEquals(actual, expected, "Invalid division result!");
     } 
     

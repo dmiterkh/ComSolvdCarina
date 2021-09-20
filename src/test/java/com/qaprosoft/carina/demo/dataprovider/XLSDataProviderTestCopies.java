@@ -46,7 +46,7 @@ public class XLSDataProviderTestCopies extends ParentDataProviderBaseTest implem
 	public void testAddOperation(String a, String b, String c) {
 		int actual = Integer.valueOf(a) + Integer.valueOf(b);
 		int expected = Integer.valueOf(c);
-		LOGGER.info(String.valueOf(a)+","+String.valueOf(b)+","+String.valueOf(c)+"--->>>"+String.valueOf(actual)+","+String.valueOf(expected));	
+        LOGGER.info("arguments   " + String.valueOf(a) + "," + String.valueOf(b) + "," + String.valueOf(c) + "   result   " + String.valueOf(actual) + "," + String.valueOf(expected));	
 		Assert.assertEquals(actual, expected, "Invalid addition result!");
 	}
 
@@ -56,7 +56,7 @@ public class XLSDataProviderTestCopies extends ParentDataProviderBaseTest implem
 	public void testSubtractOperation(String a, String b, String c) {
 		int actual = Integer.valueOf(a) - Integer.valueOf(b);
 		int expected = Integer.valueOf(c);
-		LOGGER.info(String.valueOf(a)+","+String.valueOf(b)+","+String.valueOf(c)+"--->>>"+String.valueOf(actual)+","+String.valueOf(expected));	
+        LOGGER.info("arguments   " + String.valueOf(a) + "," + String.valueOf(b) + "," + String.valueOf(c) + "   result   " + String.valueOf(actual) + "," + String.valueOf(expected));	
 		Assert.assertEquals(actual, expected, "Invalid subtraction result!");
 	}
 	
@@ -66,7 +66,7 @@ public class XLSDataProviderTestCopies extends ParentDataProviderBaseTest implem
 	public void testMultiplyOperation(String a, String b, String c) {
 		int actual = Integer.valueOf(a) * Integer.valueOf(b);
 		int expected = Integer.valueOf(c);
-		LOGGER.info(String.valueOf(a)+","+String.valueOf(b)+","+String.valueOf(c)+"--->>>"+String.valueOf(actual)+","+String.valueOf(expected));	
+        LOGGER.info("arguments   " + String.valueOf(a) + "," + String.valueOf(b) + "," + String.valueOf(c) + "   result   " + String.valueOf(actual) + "," + String.valueOf(expected));	
 		Assert.assertEquals(actual, expected, "Invalid multiplication result!");
 	}
 	
@@ -76,7 +76,7 @@ public class XLSDataProviderTestCopies extends ParentDataProviderBaseTest implem
 	public void testDivideOperation(String a, String b, String c) {
 		int actual = Integer.valueOf(a) / Integer.valueOf(b);
 		int expected = Integer.valueOf(c);
-		LOGGER.info(String.valueOf(a)+","+String.valueOf(b)+","+String.valueOf(c)+"--->>>"+String.valueOf(actual)+","+String.valueOf(expected));	
+        LOGGER.info("arguments   " + String.valueOf(a) + "," + String.valueOf(b) + "," + String.valueOf(c) + "   result   " + String.valueOf(actual) + "," + String.valueOf(expected));	
 		Assert.assertEquals(actual, expected, "Invalid division result!");
 	}
 	
@@ -86,7 +86,7 @@ public class XLSDataProviderTestCopies extends ParentDataProviderBaseTest implem
 	public void testPowerOperation(String a, String b, String c) {
 		int actual = (int) Math.pow(Double.valueOf(a), Double.valueOf(b));
 		int expected = Integer.valueOf(c);
-		LOGGER.info(String.valueOf(a)+","+String.valueOf(b)+","+String.valueOf(c)+"--->>>"+String.valueOf(actual)+","+String.valueOf(expected));	
+        LOGGER.info("arguments   " + String.valueOf(a) + "," + String.valueOf(b) + "," + String.valueOf(c) + "   result   " + String.valueOf(actual) + "," + String.valueOf(expected));	
 		Assert.assertEquals(actual, expected, "Invalid power result!");
 	}
 }
