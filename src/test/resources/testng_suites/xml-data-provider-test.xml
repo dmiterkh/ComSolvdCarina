@@ -1,2 +1,64 @@
-{
-}
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="XMLDataProviderTests">
+    <parameter name="suiteOwner" value="dkharevich"/>   
+	<test name="Add Operation Test">
+      	<parameter name="a1" value="12"/>
+	    <parameter name="b1" value="13"/>
+	    <parameter name="c1" value="25"/>
+        <classes>   	
+            <class name="com.qaprosoft.carina.demo.dataprovider.XMLDataProviderTest">
+                <methods>
+                    <include name="testAddOperation"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+<!--     <test name="Subtract Operation Test">
+ 	    <parameter name="a2" value="17"/>
+	    <parameter name="b2" value="8"/>
+	    <parameter name="c2" value="9"/>
+        <classes>   	
+            <class name="com.qaprosoft.carina.demo.dataprovider.XMLDataProviderTest">
+                <methods>
+                    <include name="testSubtractOperation"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test name="Multiply Operation Test">
+	    <parameter name="a3" value="3"/>
+	    <parameter name="b3" value="4"/>
+	    <parameter name="c3" value="12"/>
+        <classes>   	
+            <class name="com.qaprosoft.carina.demo.dataprovider.XMLDataProviderTest">
+                <methods>
+                    <include name="testMultiplyOperation"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+   <test name="Divide Operation Test">
+	    <parameter name="a4" value="25"/>
+	    <parameter name="b4" value="5"/>
+	    <parameter name="c4" value="5"/>
+        <classes>   	
+            <class name="com.qaprosoft.carina.demo.dataprovider.XMLDataProviderTest">
+                <methods>
+                    <include name="testDivideOperation"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+	<test name="Power Operation Test">
+	    <parameter name="a5" value="3"/>
+	    <parameter name="b5" value="5"/>
+	    <parameter name="c5" value="243"/>
+        <classes>   	
+            <class name="com.qaprosoft.carina.demo.dataprovider.XMLDataProviderTest">
+                <methods>
+                    <include name="testPowerOperation"/>
+                </methods>
+            </class>
+        </classes>
+    </test> -->
+</suite>
