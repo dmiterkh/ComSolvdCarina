@@ -8,6 +8,10 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
@@ -36,35 +40,24 @@ public class OnlinerSectionsBarTest extends ParentBaseTestNotLoginTests implemen
 	private static final Logger LOGGER = LoggerFactory.getLogger(OnlinerSectionsBarTest.class);
 	
 	@BeforeSuite
-    public void beforeSuiteLoginChild() {
-		LOGGER.info("!!!");
-		LOGGER.info("@@@_LoginTest-BeforeSuite-Child");
-		LOGGER.info("!!!");
+    public void beforeSuiteSectionsBarTestChild() {
+		LOGGER.info("@SectionsBarTest-BeforeSuite-Child");
     }
 
 	@BeforeTest
-	public void beforeTestLoginChild() {
-		LOGGER.info("!!!");
-		LOGGER.info("@@@_LoginTest-BeforeTest-Child");
-		LOGGER.info("!!!");
+	public void beforeTestSectionsBarTestChild() {
+		LOGGER.info("@SectionsBarTest-BeforeTest-Child");
 	}
 
 	@BeforeClass
-	public void beforeClassLoginChild() {
-		LOGGER.info("!!!");
-		LOGGER.info("@@@_LoginTest-BeforeClass-Child");
-		LOGGER.info("!!!");        
+	public void beforeClassSectionsBarTestChild() {
+		LOGGER.info("@SectionsBarTest-BeforeClass-Child");
 	}
 
 	@BeforeMethod
-	public void beforeMethodLoginChild() {
-		LOGGER.info("!!!");
-		LOGGER.info("@@@_LoginTest-BeforeMethod-Child");
-		LOGGER.info("!!!");
+	public void beforeMethodSectionsBarTestChild() {
+		LOGGER.info("@SectionsBarTest-BeforeMethod-Child");
 	}
-	
-	
-	
 	
 	
 	
@@ -270,4 +263,26 @@ public class OnlinerSectionsBarTest extends ParentBaseTestNotLoginTests implemen
 //        
 //	}
 	
+    
+    
+	@AfterMethod
+	public void afterMethodSectionsBarTestChild() {
+		LOGGER.info("@SectionsBarTest-AfterMethod-Child");
+	}
+
+	@AfterClass
+	public void afterClassSectionsBarTestChild() {
+		LOGGER.info("@SectionsBarTest-AfterClass-Child");
+	}
+
+	@AfterTest
+	public void afterTestSectionsBarTestChild() {
+		LOGGER.info("@SectionsBarTest-AfterTest-Child");
+	}
+	
+	@AfterSuite
+    public void afterSuiteSectionsBarTestChild() {
+		LOGGER.info("@SectionsBarTest-AfterSuite-Child");
+    }
+    
 }	

@@ -25,36 +25,28 @@ import com.zebrunner.agent.core.annotation.TestLabel;
 import org.openqa.selenium.Dimension;
 
 
-public class OnlinerAllTestsWithLoginParentAnnotation extends LoginBaseTestParentAnnotation implements IAbstractTest {
+public class OnlinerAllTestsWithLoginCodeInParentAnnotation extends LoginBaseTestCodeInParentAnnotation implements IAbstractTest {
 	
-	private static final Logger LOGGER = LoggerFactory.getLogger(OnlinerAllTestsWithLoginParentAnnotation.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(OnlinerAllTestsWithLoginCodeInParentAnnotation.class);
 
 	@BeforeSuite
     public void beforeSuiteLoginChild() {
-		LOGGER.info("!!!");
-		LOGGER.info("@@@_LoginTest-BeforeSuite-Child");
-		LOGGER.info("!!!");
+		LOGGER.info("@LoginTest-BeforeSuite-Child");
     }
 
 	@BeforeTest
 	public void beforeTestLoginChild() {
-		LOGGER.info("!!!");
-		LOGGER.info("@@@_LoginTest-BeforeTest-Child");
-		LOGGER.info("!!!");
+		LOGGER.info("@LoginTest-BeforeTest-Child");
 	}
 
 	@BeforeClass
 	public void beforeClassLoginChild() {
-		LOGGER.info("!!!");
-		LOGGER.info("@@@_LoginTest-BeforeClass-Child");
-		LOGGER.info("!!!");        
+		LOGGER.info("@LoginTest-BeforeClass-Child");
 	}
 
 	@BeforeMethod
 	public void beforeMethodLoginChild() {
-		LOGGER.info("!!!");
-		LOGGER.info("@@@_LoginTest-BeforeMethod-Child");
-		LOGGER.info("!!!");
+		LOGGER.info("@LoginTest-BeforeMethod-Child");
 	}
 
 	
@@ -94,7 +86,7 @@ public class OnlinerAllTestsWithLoginParentAnnotation extends LoginBaseTestParen
         Assert.assertTrue(loginPageOnliner.getPasswordFieldLink().isClickable(), "Password field is not clickable");
         
         // Password checking  
-        loginPageOnliner.clickOnAuthHelperButton();
+        loginPageOnliner.showPasswordInPasswordField();;
         loginPageOnliner.pause(5.0);
 
     }        
@@ -120,7 +112,7 @@ public class OnlinerAllTestsWithLoginParentAnnotation extends LoginBaseTestParen
         Assert.assertTrue(loginPageOnliner.getPasswordFieldLink().isClickable(), "Password field is not clickable");
         
         // Password checking
-        loginPageOnliner.clickOnAuthHelperButton();
+        loginPageOnliner.showPasswordInPasswordField();;
         loginPageOnliner.pause(5.0);
         
     }    
@@ -161,29 +153,21 @@ public class OnlinerAllTestsWithLoginParentAnnotation extends LoginBaseTestParen
     
 	@AfterMethod
 	public void afterMethodLoginChild() {
-		LOGGER.info("!!!");		
-		LOGGER.info("@@@_LoginTest-AfterMethod-Child");
-		LOGGER.info("!!!");
+		LOGGER.info("@LoginTest-AfterMethod-Child");
 	}	
 	
 	@AfterClass
 	public void afterClassLoginChild() {
-		LOGGER.info("!!!");		
-		LOGGER.info("@@@_LoginTest-AfterClass-Child");
-		LOGGER.info("!!!");		
+		LOGGER.info("@LoginTest-AfterClass-Child");
 	}
 
 	@AfterTest
 	public void afterTestLoginChild() {
-		LOGGER.info("!!!");		
-		LOGGER.info("@@@_LoginTest-AfterTest-Child");
-		LOGGER.info("!!!");		
+		LOGGER.info("@LoginTest-AfterTest-Child");
 	}
 	
     @AfterSuite
     public void afterSuiteLoginChild() {
-		LOGGER.info("!!!");		
-    	LOGGER.info("@@@_LoginTest-AfterSuite-Child");
-		LOGGER.info("!!!");		
+    	LOGGER.info("@LoginTest-AfterSuite-Child");
     }
 }

@@ -16,39 +16,28 @@ import com.qaprosoft.carina.demo.gui.components.onliner.FooterMenu;
 import com.qaprosoft.carina.demo.gui.components.onliner.TopHeaderBar;
 
 public class HomePageOnliner extends AbstractPage {
+	
     private static final Logger LOGGER = LoggerFactory.getLogger(HomePageOnliner.class);
 
-//	OnlinerLoginTest (testcases 001, 002, 003, 007)  
-//	OnlinerFastSearchTest (testcases 009, 010)
-//	OnlinerSectionsBarTest (testcases 011, 012, 013, 014)
-//	OnlinerShoppingCartTest (testcase 019)
+    @FindBy(xpath = "//img[@class='onliner_logo']")
+    private ExtendedWebElement homeLink;
+    
+    @FindBy(xpath = "//footer[@class='g-bottom']")
+    private FooterMenu footerLink; 
+    
+    @FindBy(xpath = "//a[@href='https://blog.onliner.by/vacancy']")
+    private ExtendedWebElement vacanciesLink;
     
     @FindBy(xpath = "//header[@class='g-top']")
-    private TopHeaderBar topHeaderBar;    		
+    private TopHeaderBar topHeaderBarLink;
     
-    
-//	OnlinerVideoTest (testcase 017)  
-//	Subsections test (testcase 015) ???   
+    private boolean authLinkPresent = false;   		
     
     @FindBy(xpath = "//i[@class='b-icon-3']//parent::span[@class='complementary-item video']//parent::span[@class='complementary-group']//parent::div//parent::figure//a")
     private List<ExtendedWebElement> videoPageListLink;
     
     @FindBy(xpath = "//i[@class='b-icon-3']//parent::span[@class='complementary-item video']//parent::span[@class='complementary-group']//parent::div//parent::figure//a")
     private ExtendedWebElement videoPageLink;
-      
-    
-//	OnlinerFooterTest (testcase 018)   
-    @FindBy(xpath = "//footer[@class='g-bottom']")
-    private FooterMenu footerLink;
-    
-    
-    // Additional link
-    @FindBy(xpath = "//a[@href='https://blog.onliner.by/vacancy']")
-    private ExtendedWebElement vacanciesLink;
-    
-    // Additional link
-    @FindBy(xpath = "//img[@class='onliner_logo']")
-    private ExtendedWebElement homeLink;
     
     
     
@@ -59,26 +48,64 @@ public class HomePageOnliner extends AbstractPage {
 
     
     
-//	Tests (testcases 001, 002, 003, 007, 009, 010, 011, 012, 013, 014, 019)  
-    
-    public TopHeaderBar getTopHeaderBar() {
-        return topHeaderBar;
-    }
-    
-//	OnlinerFooterTest (testcase 018)    
-    
     public FooterMenu getFooterMenu() {
         return footerLink;
     }
     
-//	OnlinerVideoTest (testcase 017)  
-
-    public List<ExtendedWebElement> getVideoPageListLink() {
-        return videoPageListLink;
+    public VacanciesPageOnliner openVacanciesPageOnlinerThroughFooter() {
+    	return getFooterMenu().openVacanciesPageOnliner();
     }
     
-    public ExtendedWebElement getVideoPageLink() {
-        return videoPageLink;
+    public ContactsPageOnliner openContactsPageOnlinerThroughFooter() {
+    	return getFooterMenu().openContactsPageOnliner();
+    }
+    
+    public TopHeaderBar getTopHeaderBar() {
+        return topHeaderBarLink;
+    }
+    
+    public LoginPageOnliner clickOnAuthLinkThroughTopHeader() {
+        getTopHeaderBar().getAuthLink().click();
+        return new LoginPageOnliner(driver);
+    }
+    
+    public boolean isAuthLinkElementPresent() {
+        return getTopHeaderBar().getAuthLink().isElementPresent();
+    }
+
+    public void refreshPageIfAuthLinkIsNotPresent() {
+    	int k=20;
+    	LOGGER.trace(String.valueOf(k));
+        while(!(isAuthLinkElementPresent()) && k>0){
+        	LOGGER.trace(String.valueOf(k));
+        	refresh(); 
+        	k--;
+        };
+        if (getTopHeaderBar().getAuthLink().isElementPresent()) {
+        	authLinkPresent = true; 
+        }
+    }
+
+    public boolean returnAuthLinkPresent() {
+    	return authLinkPresent;	
+    }
+    
+    public AuthorizedPageOnliner getAuthorizedPageOnliner(String loginArg, String passwordArg) {
+    	getTopHeaderBar().getAuthLink().click();
+    	
+        return new AuthorizedPageOnliner(driver);
+    }
+    
+    public LoginPageOnliner getNotAuthorizedLoginPageOnliner(String loginArg, String passwordArg) {
+    	return getTopHeaderBar().clickOnAuthLink().getNotAuthorizedLoginPageOnliner(loginArg, passwordArg);
+    }
+    
+    public AuthorizedPageOnliner getAuthorizedLoginPageOnliner(String loginArg, String passwordArg) {
+    	return getTopHeaderBar().clickOnAuthLink().getAuthorizedPageOnliner(loginArg, passwordArg);
+    }
+    
+    public List<ExtendedWebElement> getVideoPageListLink() {
+        return videoPageListLink;
     }
     
     public VideoPageOnliner openVideoPageOnliner(ExtendedWebElement videoPageLinkArg) {
@@ -86,20 +113,50 @@ public class HomePageOnliner extends AbstractPage {
         return new VideoPageOnliner(driver);
     }
     
-    public VideoPageOnliner openVideoPageOnliner() {
-    	videoPageLink.click();
-    	return new VideoPageOnliner(driver);
+
+    
+    public VideoPageOnliner openVideoPageOnlinerUsualFor() {
+    	int k=0;
+    	if ((getVideoPageListLink() != null)&&(!getVideoPageListLink().isEmpty())) {
+			int j = getVideoPageListLink().size();
+			for (int i=0; i < j; i++) {
+		  		while(k < 1) {
+		  			if(openVideoPageOnliner(getVideoPageListLink().get(i)).checkYoutubeVideoLink()) {
+		  			k++;
+		  			} 
+		  		}
+			}
+    	}	
+		return new VideoPageOnliner(driver);    	    	
     }
     
-    // Additional method
+
+//  int k = 0;
+//  VideoPageOnliner videoPageOnliner3 = new VideoPageOnliner(getDriver());
+//  if ((homePageOnliner.getVideoPageListLink() != null)&&(!homePageOnliner.getVideoPageListLink().isEmpty())) {
+//  	for (ExtendedWebElement videoPageLink : homePageOnliner.getVideoPageListLink()) {
+//  		while(k < 1) {
+//  			videoPageOnliner3 = homePageOnliner.openVideoPageOnliner(videoPageLink);
+//  			if(videoPageOnliner3.checkYoutubeVideoLink()) {
+//  				System.out.println("Ok");
+//  				k++;
+//  				System.out.println("k = " + k);
+//  			} 
+//  			videoPageOnliner3.returnToHomePage();
+//  		}	
+//  	}	
+//  	System.out.println(k);
+//	} else {
+//		System.out.println("The required List of Extended Web Elements is Null or Empty");	
+//	}
+    
+    
     public void scrollToBottom() {
     	vacanciesLink.scrollTo();
     }
     
-    // Additional method
     public void scrollToTop() {
     	homeLink.scrollTo();
-    }
-    
+    }  
     
 }

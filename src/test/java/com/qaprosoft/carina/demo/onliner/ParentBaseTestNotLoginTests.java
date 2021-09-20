@@ -34,26 +34,22 @@ public class ParentBaseTestNotLoginTests implements IAbstractTest {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ParentBaseTestNotLoginTests.class);
 	
 	@BeforeSuite
-    public void beforeSuiteNotLoginParent() {
-		LOGGER.info("!!!");		
+    public void beforeSuiteNotLoginTestParent() {
 		LOGGER.info("@LoginTest-BeforeSuite-Parent");	
     }
 	
 	@BeforeTest
-	public void beforeTestNotLoginParent() {
-		LOGGER.info("!!!");		
+	public void beforeTestNotLoginTestParent() {
 		LOGGER.info("@LoginTest-BeforeTest-Parent");	
 	}
 	
 	@BeforeClass
-	public void beforeClassNotLoginParent() {
-		LOGGER.info("!!!");	
+	public void beforeClassNotLoginTestParent() {
 		LOGGER.info("@LoginTest-BeforeClass-Parent");
 	}
 	
 	@BeforeMethod
-	public void beforeMethodNotLoginParent() {
-		LOGGER.info("!!!");	
+	public void beforeMethodNotLoginTestParent() {
 		LOGGER.info("@LoginTest-BeforeMethod-Parent");
 	}
 	
@@ -64,26 +60,22 @@ public class ParentBaseTestNotLoginTests implements IAbstractTest {
 	
 	
 	@AfterMethod
-	public void afterMethodNotLoginParent() {
-		LOGGER.info("!!!");	
+	public void afterMethodNotLoginTestParent() {
 		LOGGER.info("@LoginTest-AfterMethod-Parent");
 	}
 
 	@AfterClass
-	public void afterClassNotLoginParent() {
-		LOGGER.info("!!!");	
+	public void afterClassNotLoginTestParent() {
 		LOGGER.info("@LoginTest-AfterClass-Parent");
 	}
 
 	@AfterTest
-	public void afterTestNotLoginParent() {
-		LOGGER.info("!!!");		
+	public void afterTestNotLoginTestParent() {
 		LOGGER.info("@LoginTest-AfterTest-Parent");		
 	}
 	
     @AfterSuite
-    public void afterSuiteNotLoginParent() {
-		LOGGER.info("!!!");		
+    public void afterSuiteNotLoginTestParent() {
     	LOGGER.info("@LoginTest-AfterSuite-Parent");		
     }
 

@@ -8,10 +8,14 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -37,32 +41,26 @@ public class OnlinerShoppingCartTest extends ParentBaseTestNotLoginTests impleme
 	private static final Logger LOGGER = LoggerFactory.getLogger(OnlinerShoppingCartTest.class);
 	
 	@BeforeSuite
-    public void beforeSuiteLoginChild() {
-		LOGGER.info("!!!");
-		LOGGER.info("@@@_LoginTest-BeforeSuite-Child");
-		LOGGER.info("!!!");
+    public void beforeSuiteShoppingCartTestChild() {
+		LOGGER.info("@ShoppingCartTest-BeforeSuite-Child");
     }
 
 	@BeforeTest
-	public void beforeTestLoginChild() {
-		LOGGER.info("!!!");
-		LOGGER.info("@@@_LoginTest-BeforeTest-Child");
-		LOGGER.info("!!!");
+	public void beforeTestShoppingCartTestChild() {
+		LOGGER.info("@ShoppingCartTest-BeforeTest-Child");
 	}
 
 	@BeforeClass
-	public void beforeClassLoginChild() {
-		LOGGER.info("!!!");
-		LOGGER.info("@@@_LoginTest-BeforeClass-Child");
-		LOGGER.info("!!!");        
+	public void beforeClassShoppingCartTestChild() {
+		LOGGER.info("@ShoppingCartTest-BeforeClass-Child");
 	}
 
 	@BeforeMethod
-	public void beforeMethodLoginChild() {
-		LOGGER.info("!!!");
-		LOGGER.info("@@@_LoginTest-BeforeMethod-Child");
-		LOGGER.info("!!!");
+	public void beforeMethodShoppingCartTestChild() {
+		LOGGER.info("@ShoppingCartTest-BeforeMethod-Child");
 	}
+	
+	
        
     @Test()
     @MethodOwner(owner = "dkharevich")
@@ -87,7 +85,7 @@ public class OnlinerShoppingCartTest extends ParentBaseTestNotLoginTests impleme
         loginPageOnliner.typeInPasswordField("3909091");
         
         // Password checking
-        loginPageOnliner.clickOnAuthHelperButton();
+        loginPageOnliner.showPasswordInPasswordField();;
         
         // Click on Auth button
         AuthorizedPageOnliner authorizedPageOnliner = loginPageOnliner.clickOnAuthButton();
@@ -173,8 +171,31 @@ public class OnlinerShoppingCartTest extends ParentBaseTestNotLoginTests impleme
         // Do Shopping cart operations
         authorizedPageOnliner = shoppingCartPageOnliner.showShoppingCartOperations();
         authorizedPageOnliner.pause(10);
-        
-        
+            
     }
+    
+    
+    
+	@BeforeMethod
+	public void afterMethodShoppingCartTestChild() {
+		LOGGER.info("@ShoppingCartTest-AfterMethod-Child");
+	}
+	
+	@BeforeClass
+	public void afterClassShoppingCartTestChild() {
+		LOGGER.info("@ShoppingCartTest-AfterClass-Child");
+	}
+
+	@BeforeTest
+	public void afterTestShoppingCartTestChild() {
+		LOGGER.info("@ShoppingCartTest-AfterTest-Child");
+	}
+
+	@BeforeSuite
+    public void afterSuiteShoppingCartTestChild() {
+		LOGGER.info("@ShoppingCartTest-AfterSuite-Child");
+    }
+
+
 
 }    

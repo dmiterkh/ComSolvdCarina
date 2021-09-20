@@ -26,6 +26,7 @@ import com.qaprosoft.carina.demo.gui.pages.HomePage;
 import com.qaprosoft.carina.demo.gui.pages.NewsPage;
 
 public class FooterMenu extends AbstractUIObject {
+	
     @FindBy(linkText = "Home")
     private ExtendedWebElement homeLink;
 
@@ -35,10 +36,14 @@ public class FooterMenu extends AbstractUIObject {
     @FindBy(linkText = "News")
     private ExtendedWebElement newsLink;
 
+    
+    
     public FooterMenu(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
     }
 
+    
+    
     public HomePage openHomePage() {
         homeLink.click();
         return new HomePage(driver);

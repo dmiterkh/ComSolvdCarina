@@ -19,12 +19,10 @@ import com.qaprosoft.carina.demo.gui.pages.onliner.ShoppingCartPageOnliner;
 
 public class TopHeaderBar extends AbstractUIObject {
 	
-//	OnlinerLoginTest (testcases 001, 002, 003, 007)
+	
 	@FindBy(xpath ="//body[@class='no-touch']//div//div//div//div//header[@class='g-top']//div[@class='b-top-actions']//div[@class='g-top-i']//div//div//div//div//div//div[contains(@class,'auth-bar__item--text')]")
 	private ExtendedWebElement authLink;
 	
-	
-//	OnlinerFastSearchTest (testcases 009, 010)
 	@FindBy(xpath = "//input[@class='fast-search__input']")
 	private ExtendedWebElement fastSearchFieldLink;
 
@@ -37,8 +35,6 @@ public class TopHeaderBar extends AbstractUIObject {
     @FindBy(xpath = "//li[@class='search__result']")
     private List<ExtendedWebElement> foundItemListLink;
     
-     
-//	OnlinerSectionsBarTest (testcases 011, 012, 013, 014)
     @FindBy(xpath = "//a[@href='https://catalog.onliner.by/']")
     private ExtendedWebElement catalogLink;
 
@@ -48,18 +44,23 @@ public class TopHeaderBar extends AbstractUIObject {
     @FindBy(xpath = "//a[@href='https://r.onliner.by/pk']")
     private ExtendedWebElement realEstateLink;
     
-    
-//	OnlinerShoppingCartTest (testcase 019)
     @FindBy(xpath = "//div[@id='cart-desktop']//a[@href='https://cart.onliner.by']")
     private ExtendedWebElement shoppingCartLink; 
+        
+    @FindBy(xpath = "//img[@class='onliner_logo']")
+    private ExtendedWebElement homeLink;
+    
+    @FindBy(xpath = "//div//div//a[contains(@class,'b-top-profile__link') and contains(text(),'Выйти')]")
+    private ExtendedWebElement popupProfileExitLink;
 
+    
     
     public TopHeaderBar(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
     }
     
     
-//	OnlinerLoginTest (testcases 001, 002, 003, 007)
+    
     public ExtendedWebElement getAuthLink() {
         return authLink;
     }
@@ -69,22 +70,10 @@ public class TopHeaderBar extends AbstractUIObject {
         return new LoginPageOnliner(driver);
     }
     
-    
-//	OnlinerFastSearchTest (testcases 009, 010)
     public void typeInFastSearchField(String queryArg) {
         fastSearchFieldLink.click();
         fastSearchFieldLink.type(queryArg);
     }
-    
-    
-//  OnlinerAllTestsWithLogin
-    
-    @FindBy(xpath = "//img[@class='onliner_logo']")
-    private ExtendedWebElement homeLink;
-    
-    @FindBy(xpath = "//div//div//a[contains(@class,'b-top-profile__link') and contains(text(),'Выйти')]")
-    private ExtendedWebElement popupProfileExitLink;
-    
     
     public ExtendedWebElement getFastSearchFieldLink() {
         return fastSearchFieldLink;
@@ -104,8 +93,6 @@ public class TopHeaderBar extends AbstractUIObject {
     	fastSearchFieldLink.pause(5.0);
     }
     
-    
-//	OnlinerSectionsBarTest (testcases 011, 012, 013, 014)
     public CatalogPageOnliner openCatalogPageOnliner() {
     	catalogLink.scrollTo();
         catalogLink.click();
@@ -124,16 +111,12 @@ public class TopHeaderBar extends AbstractUIObject {
         return new RealEstatePageOnliner(driver);
     }
 
-    
-//	OnlinerShoppingCartTest (testcase 019)
     public ShoppingCartPageOnliner clickOnShoppingCartLink() {
     	shoppingCartLink.scrollTo();
     	shoppingCartLink.click();
         return new ShoppingCartPageOnliner(driver);
     }
     
-
-//  OnlinerAllTestsWithLogin
     public HomePageOnliner openHomePageOnliner() {
         popupProfileExitLink.click();
         pause(5);
