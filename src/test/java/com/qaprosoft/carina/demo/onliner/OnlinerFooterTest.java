@@ -8,6 +8,10 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
@@ -33,32 +37,26 @@ public class OnlinerFooterTest extends ParentBaseTestNotLoginTests implements IA
 	private static final Logger LOGGER = LoggerFactory.getLogger(OnlinerFooterTest.class);
 	
 	@BeforeSuite
-    public void beforeSuiteLoginChild() {
-		LOGGER.info("!!!");
-		LOGGER.info("@@@_LoginTest-BeforeSuite-Child");
-		LOGGER.info("!!!");
+    public void beforeSuiteFooterTestChild() {
+		LOGGER.info("@FooterTest-BeforeSuite-Child");
     }
 
 	@BeforeTest
-	public void beforeTestLoginChild() {
-		LOGGER.info("!!!");
-		LOGGER.info("@@@_LoginTest-BeforeTest-Child");
-		LOGGER.info("!!!");
+	public void beforeTestFooterTestChild() {
+		LOGGER.info("@FooterTest-BeforeTest-Child");
 	}
 
 	@BeforeClass
-	public void beforeClassLoginChild() {
-		LOGGER.info("!!!");
-		LOGGER.info("@@@_LoginTest-BeforeClass-Child");
-		LOGGER.info("!!!");        
+	public void beforeClassFooterTestChild() {
+		LOGGER.info("@FooterTest-BeforeClass-Child");
 	}
 
 	@BeforeMethod
-	public void beforeMethodLoginChild() {
-		LOGGER.info("!!!");
-		LOGGER.info("@@@_LoginTest-BeforeMethod-Child");
-		LOGGER.info("!!!");
+	public void beforeMethodFooterTestChild() {
+		LOGGER.info("@FooterTest-BeforeMethod-Child");
 	}
+	
+	
 	
     @Test()
     @MethodOwner(owner = "dkharevich")
@@ -74,23 +72,20 @@ public class OnlinerFooterTest extends ParentBaseTestNotLoginTests implements IA
         Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
         
         // Open Vacancies page
-        VacanciesPageOnliner vacanciesPageOnliner = homePageOnliner.getFooterMenu().openVacanciesPageOnliner();
+        VacanciesPageOnliner vacanciesPageOnliner = homePageOnliner.openVacanciesPageOnlinerThroughFooter();
         Assert.assertTrue(vacanciesPageOnliner.isPageOpened(), "Vacancies page is not opened");
         
-        // Return to Home page
         homePageOnliner = vacanciesPageOnliner.openHomePageOnliner();
         Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
                
         // Open Contacts page
-        ContactsPageOnliner contactsPageOnliner = homePageOnliner.getFooterMenu().openContactsPageOnliner();
+        ContactsPageOnliner contactsPageOnliner = homePageOnliner.openContactsPageOnlinerThroughFooter();
         Assert.assertTrue(contactsPageOnliner.isPageOpened(), "Contacts page is not opened");
         
-        // Return to Home page
         homePageOnliner = contactsPageOnliner.openHomePageOnliner();
         Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
         
-        // Open Vacancies page from Home page
-        vacanciesPageOnliner = homePageOnliner.getFooterMenu().openVacanciesPageOnliner();
+        vacanciesPageOnliner = homePageOnliner.openVacanciesPageOnlinerThroughFooter();
         Assert.assertTrue(vacanciesPageOnliner.isPageOpened(), "Vacancies page is not opened");
         
         //Open Contacts page from Vacancies page
@@ -99,11 +94,31 @@ public class OnlinerFooterTest extends ParentBaseTestNotLoginTests implements IA
         
         //Open Vacancies page from Contacts page
         vacanciesPageOnliner = contactsPageOnliner.openVacanciesPageOnliner();
-        vacanciesPageOnliner.pause(10.0);
+        pause(10.0);
         Assert.assertTrue(vacanciesPageOnliner.isPageOpened(), "Vacancies page is not opened");
         
-
-        
     }    
+    
+    
+    
+	@AfterMethod
+	public void afterMethodFooterTestChild() {
+		LOGGER.info("@FooterTest-AfterMethod-Child");
+	}
+
+	@AfterClass
+	public void afterClassFooterTestChild() {
+		LOGGER.info("@FooterTest-AfterClass-Child");
+	}
+
+	@AfterTest
+	public void afterTestFooterTestChild() {
+		LOGGER.info("@FooterTest-AfterTest-Child");
+	}
+	
+	@AfterSuite
+    public void afterSuiteFooterTestChild() {
+		LOGGER.info("@FooterTest-AfterSuite-Child");
+    }
 
 }

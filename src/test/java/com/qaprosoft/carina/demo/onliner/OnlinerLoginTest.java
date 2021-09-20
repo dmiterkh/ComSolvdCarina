@@ -4,6 +4,10 @@ package com.qaprosoft.carina.demo.onliner;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
@@ -23,37 +27,44 @@ import com.qaprosoft.carina.demo.gui.pages.onliner.LoginPageOnliner;
  * @author Dmitry Kharevich
  */
 
-public class OnlinerLoginTest extends LoginBaseTestChildAnnotation implements IAbstractTest {
+public class OnlinerLoginTest extends LoginBaseTestCodeInChildAnnotation implements IAbstractTest {
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(OnlinerLoginTest.class);
 	
+	private HomePageOnliner homePageOnliner;
+	
 	@BeforeSuite
-    public void beforeSuiteLoginChild() {
-		LOGGER.info("!!!");
-		LOGGER.info("@@@_LoginTest-BeforeSuite-Child");
-		LOGGER.info("!!!");
+    public void beforeSuiteLoginTestChild() {
+		LOGGER.info("@LoginTest-BeforeSuite-Child");	
     }
-
+	
 	@BeforeTest
-	public void beforeTestLoginChild() {
-		LOGGER.info("!!!");
-		LOGGER.info("@@@_LoginTest-BeforeTest-Child");
-		LOGGER.info("!!!");
+	public void beforeTestLoginTestChild() {
+		LOGGER.info("@LoginTest-BeforeTest-Child");	
 	}
-
+	
 	@BeforeClass
-	public void beforeClassLoginChild() {
-		LOGGER.info("!!!");
-		LOGGER.info("@@@_LoginTest-BeforeClass-Child");
-		LOGGER.info("!!!");        
+	public void beforeClassLoginTestChild() {
+		LOGGER.info("@LoginTest-BeforeClass-Child");
 	}
-
+	
 	@BeforeMethod
-	public void beforeMethodLoginChild() {
-		LOGGER.info("!!!");
-		LOGGER.info("@@@_LoginTest-BeforeMethod-Child");
-		LOGGER.info("!!!");
+	public void beforeMethodLoginTestChild() {
+		LOGGER.info("@LoginTest-BeforeMethod-Child");
+		
+		// Open Home page
+		homePageOnliner = new HomePageOnliner(getDriver());
+        homePageOnliner.open();
+        Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
+        
+        // Authorization Link is present
+        homePageOnliner.refreshPageIfAuthLinkIsNotPresent();
+        Assert.assertTrue(homePageOnliner.returnAuthLinkPresent(), "Element has not been found after 20 attempts");
+
+                	
 	}
+	
+	
 	
     @Test()
     @MethodOwner(owner = "dkharevich")
@@ -62,22 +73,11 @@ public class OnlinerLoginTest extends LoginBaseTestChildAnnotation implements IA
     
     //testcase000 Verify that Login page is opened.
     public void testAuthBarIsOpened() {
-        
-    	// Open Home page
-        HomePageOnliner homePageOnliner = new HomePageOnliner(getDriver());
-        homePageOnliner.open();
-        pause(3.0);
-        while (!(homePageOnliner.getTopHeaderBar().getAuthLink().isElementPresent())){
-        	homePageOnliner.refresh(); 
-        	pause(3.0);
-        };
-        Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
-                
+    
         // Open Authorization page
-        LoginPageOnliner loginPageOnliner = homePageOnliner.getTopHeaderBar().clickOnAuthLink();
-        loginPageOnliner.pause(5.0);
+        LoginPageOnliner loginPageOnliner = homePageOnliner.clickOnAuthLinkThroughTopHeader();
         Assert.assertTrue(loginPageOnliner.isPageOpened(), "Login page is not opened");
-        
+
     }    
     
     @Test()
@@ -87,33 +87,21 @@ public class OnlinerLoginTest extends LoginBaseTestChildAnnotation implements IA
     
     //testcase001 Verify that the user can Activate the login and password fields and can Type in it.
     public void testUserCanActivateFieldsAndCanTypeInIt() {
-        
-    	// Open Home page
-        HomePageOnliner homePageOnliner = new HomePageOnliner(getDriver());
-        homePageOnliner.open();
-        pause(3.0);
-        while (!(homePageOnliner.getTopHeaderBar().getAuthLink().isElementPresent())){
-        	homePageOnliner.refresh(); 
-        	pause(3.0);
-        };
-        Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
-                
+                        
         // Open Authorization page
-        LoginPageOnliner loginPageOnliner = homePageOnliner.getTopHeaderBar().clickOnAuthLink();
-        Assert.assertTrue(loginPageOnliner.isPageOpened(), "Login page is not opened");
+        LoginPageOnliner loginPageOnliner = homePageOnliner.clickOnAuthLinkThroughTopHeader();
+        Assert.assertTrue(loginPageOnliner.isPageOpened(), "Not Authorized Login page is not opened");
         
         // Type in Login field
         loginPageOnliner.typeInLoginField("adaxdeaeca");
-        Assert.assertTrue(loginPageOnliner.getLoginFieldLink().isClickable(), "Login field is not clickable");  
+        Assert.assertTrue(loginPageOnliner.isLoginFieldClickable(), "Login field is not clickable");  
         
         // Type in Password field
         loginPageOnliner.typeInPasswordField("adaxdeaeca");
-        Assert.assertTrue(loginPageOnliner.getPasswordFieldLink().isClickable(), "Password field is not clickable");
-        
-        // Password checking  
-        loginPageOnliner.clickOnAuthHelperButton();
-        loginPageOnliner.pause(5.0);
+        Assert.assertTrue(loginPageOnliner.isPasswordFieldClickable(), "Password field is not clickable");
 
+        loginPageOnliner.showPasswordInPasswordField();
+  
     }        
     
     @Test()
@@ -124,32 +112,20 @@ public class OnlinerLoginTest extends LoginBaseTestChildAnnotation implements IA
     //testcase002 Verify that the user can Enter letters in different cases, numbers and special symbols that are different from letters and numbers such as \, |, /,  <, >, *, ?, !, ', ", ~, `, :, ;, &, %, $, #, @, etc. into the login and password fields.
     public void testUserCanEnterLettersNumbersAndSpecialSymbols() {
         
-    	// Open Home page
-        HomePageOnliner homePageOnliner = new HomePageOnliner(getDriver());
-        homePageOnliner.open();
-        pause(3.0);
-        while (!(homePageOnliner.getTopHeaderBar().getAuthLink().isElementPresent())){
-        	homePageOnliner.refresh(); 
-        	pause(3.0);
-        };
-        Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
-                
         // Open Authorization page
-        LoginPageOnliner loginPageOnliner = homePageOnliner.getTopHeaderBar().clickOnAuthLink();
+        LoginPageOnliner loginPageOnliner = homePageOnliner.clickOnAuthLinkThroughTopHeader();
         Assert.assertTrue(loginPageOnliner.isPageOpened(), "Login page is not opened");
         
         // Type in Login field
         loginPageOnliner.typeInLoginField("SolvD_@#$%^&_2020");
-        Assert.assertTrue(loginPageOnliner.getLoginFieldLink().isClickable(), "Login field is not clickable");  
+        Assert.assertTrue(loginPageOnliner.isLoginFieldClickable(), "Login field is not clickable");  
         
         // Type in Password field
         loginPageOnliner.typeInPasswordField("SolvD_@#$%^&_2020");
-        Assert.assertTrue(loginPageOnliner.getPasswordFieldLink().isClickable(), "Password field is not clickable");
-        
-        // Password checking
-        loginPageOnliner.clickOnAuthHelperButton();
-        loginPageOnliner.pause(5.0);
-        
+        Assert.assertTrue(loginPageOnliner.isPasswordFieldClickable(), "Password field is not clickable");
+
+        loginPageOnliner.showPasswordInPasswordField();
+
     }    
         
     @Test()
@@ -160,22 +136,10 @@ public class OnlinerLoginTest extends LoginBaseTestChildAnnotation implements IA
     //testcase003 Verify that the user can Access his registered personal account through the registration form entering correct login (email) and correct password.
     public void testUserCanAccessAccountThroughEnteringValidLogAndPas() {
         
-    	// Open Home page
-        HomePageOnliner homePageOnliner = new HomePageOnliner(getDriver());
-        homePageOnliner.open();
-        pause(3.0);
-        while (!(homePageOnliner.getTopHeaderBar().getAuthLink().isElementPresent())){
-        	homePageOnliner.refresh(); 
-        	pause(3.0);
-        };
-        Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
-                
-        AuthorizedPageOnliner authorizedPageOnliner = homePageOnliner.getTopHeaderBar().clickOnAuthLink().getAuthorizedPageOnliner("dmiterkh@mail.ru", "111111");
-        authorizedPageOnliner.pause(5.0);
+    	//Open Authorized Page
+        AuthorizedPageOnliner authorizedPageOnliner = homePageOnliner.getAuthorizedPageOnliner("dmiterkh@mail.ru", "3909091");
         Assert.assertTrue(authorizedPageOnliner.isPageOpened(), "Authorized page is not opened");
-//        Assert.assertTrue(homePageOnliner.getTopHeaderBar().clickOnAuthLink().getLoginFieldLink().isClickable(), "Login field is not clickable"); 
-//        Assert.assertTrue(homePageOnliner.getTopHeaderBar().clickOnAuthLink().getPasswordFieldLink().isClickable(), "Password field is not clickable");
-        
+
     }
     
     @Test()
@@ -186,22 +150,31 @@ public class OnlinerLoginTest extends LoginBaseTestChildAnnotation implements IA
     //testcase007 (Negative) Verify that the user Cannot Access his registered personal account through the registration form entering incorrect login (email) and correct password.
     public void testUserCanNotAccessAccountThroughEnteringInvalidLogValidPas() {
         
-    	// Open Home page
-        HomePageOnliner homePageOnliner = new HomePageOnliner(getDriver());
-        homePageOnliner.open();
-        pause(3.0);
-        while (!(homePageOnliner.getTopHeaderBar().getAuthLink().isElementPresent())){
-        	homePageOnliner.refresh(); 
-        	pause(3.0);
-        };
-        Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
-                
-        LoginPageOnliner loginPageOnliner = homePageOnliner.getTopHeaderBar().clickOnAuthLink().getNotAuthorizedLoginPageOnliner("dmiterkh.mail.ru", "111111");
-        loginPageOnliner.pause(5);  
+    	//Open Not Authorized Page        
+        LoginPageOnliner loginPageOnliner = homePageOnliner.getNotAuthorizedLoginPageOnliner("dmiterkh.mail.ru", "111111");
         Assert.assertTrue(loginPageOnliner.isPageOpened(), "Not Authorized Login page is not opened");
-//        Assert.assertTrue(loginPageOnliner.getLoginFieldLink().isClickable(), "Login field is not clickable"); 
-//        Assert.assertTrue(loginPageOnliner.getPasswordFieldLink().isClickable(), "Password field is not clickable");
-
-        
+    
     }    
+    
+    
+    
+	@AfterMethod
+	public void afterMethodLoginTestChild() {
+		LOGGER.info("@LoginTest-AfterMethod-Child");
+	}
+
+	@AfterClass
+	public void afterClassLoginTestChild() {
+		LOGGER.info("@LoginTest-AfterClass-Child");
+	}
+
+	@AfterTest
+	public void afterTestLoginTestChild() {
+		LOGGER.info("@LoginTest-AfterTest-Child");		
+	}
+	
+    @AfterSuite
+    public void afterSuiteLoginTestChild() {
+    	LOGGER.info("@LoginTest-AfterSuite-Child");		
+    }
 }

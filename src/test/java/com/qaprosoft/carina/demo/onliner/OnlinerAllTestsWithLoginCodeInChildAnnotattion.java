@@ -25,31 +25,25 @@ import com.zebrunner.agent.core.annotation.TestLabel;
 import org.openqa.selenium.Dimension;
 
 
-public class OnlinerAllTestsWithLoginChildAnnotattion extends LoginBaseTestChildAnnotation implements IAbstractTest {
+public class OnlinerAllTestsWithLoginCodeInChildAnnotattion extends LoginBaseTestCodeInChildAnnotation implements IAbstractTest {
 	
-	private static final Logger LOGGER = LoggerFactory.getLogger(OnlinerAllTestsWithLoginChildAnnotattion.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(OnlinerAllTestsWithLoginCodeInChildAnnotattion.class);
 	
 	private HomePageOnliner homePageOnliner;  
 	
 	@BeforeSuite
     public void beforeSuiteLoginChild() {
-		LOGGER.info("!!!");
-		LOGGER.info("@@@_LoginTest-BeforeSuite-Child-(Child-Annotation)");
-		LOGGER.info("!!!");
+		LOGGER.info("@LoginTest-BeforeSuite-Child-(Code-In-Child-Annotation)");
     }
 
 	@BeforeTest
 	public void beforeTestLoginChild() {
-		LOGGER.info("!!!");
-		LOGGER.info("@@@_LoginTest-BeforeTest-Child-(Child-Annotation)");
-		LOGGER.info("!!!");
+		LOGGER.info("@LoginTest-BeforeTest-Child-(Code-In-Child-Annotation)");
 	}
 
 	@BeforeClass
 	public void beforeClassLoginChild() {
-		LOGGER.info("!!!");
-		LOGGER.info("@@@_LoginTest-BeforeClass-Child-(Child-Annotation)");
-		LOGGER.info("!!!");
+		LOGGER.info("@LoginTest-BeforeClass-Child-(Code-In-Child-Annotation)");
 		
     	// Open Home page
 		homePageOnliner = new HomePageOnliner(getDriver());
@@ -84,9 +78,7 @@ public class OnlinerAllTestsWithLoginChildAnnotattion extends LoginBaseTestChild
 
 	@BeforeMethod
 	public void beforeMethodLoginChild() {
-		LOGGER.info("!!!");
-		LOGGER.info("@@@_LoginTest-BeforeMethod-Child-(Child-Annotation)");
-		LOGGER.info("!!!");
+		LOGGER.info("@LoginTest-BeforeMethod-Child-(Code-In-Child-Annotation)");
 		
 		//Refresh Home Page
         homePageOnliner.open();
@@ -137,7 +129,7 @@ public class OnlinerAllTestsWithLoginChildAnnotattion extends LoginBaseTestChild
         Assert.assertTrue(loginPageOnliner.getPasswordFieldLink().isClickable(), "Password field is not clickable");
         
         // Password checking  
-        loginPageOnliner.clickOnAuthHelperButton();
+        loginPageOnliner.showPasswordInPasswordField();;
         loginPageOnliner.pause(5.0);
 
     }        
@@ -163,7 +155,7 @@ public class OnlinerAllTestsWithLoginChildAnnotattion extends LoginBaseTestChild
         Assert.assertTrue(loginPageOnliner.getPasswordFieldLink().isClickable(), "Password field is not clickable");
         
         // Password checking
-        loginPageOnliner.clickOnAuthHelperButton();
+        loginPageOnliner.showPasswordInPasswordField();;
         loginPageOnliner.pause(5.0);
         
     }    
@@ -206,29 +198,21 @@ public class OnlinerAllTestsWithLoginChildAnnotattion extends LoginBaseTestChild
     
 	@AfterMethod
 	public void afterMethodLoginChild() {
-		LOGGER.info("!!!");		
-		LOGGER.info("@@@_LoginTest-AfterMethod-Child-(Child-Annotation)");
-		LOGGER.info("!!!");
+		LOGGER.info("@LoginTest-AfterMethod-Child-(Code-In-Child-Annotation)");
 	}	
 	
 	@AfterClass
 	public void afterClassLoginChild() {
-		LOGGER.info("!!!");		
-		LOGGER.info("@@@_LoginTest-AfterClass-Child-(Child-Annotation)");
-		LOGGER.info("!!!");		
+		LOGGER.info("@LoginTest-AfterClass-Child-(Code-In-Child-Annotation)");
 	}
 
 	@AfterTest
 	public void afterTestLoginChild() {
-		LOGGER.info("!!!");		
-		LOGGER.info("@@@_LoginTest-AfterTest-Child-(Child-Annotation)");
-		LOGGER.info("!!!");		
+		LOGGER.info("@LoginTest-AfterTest-Child-(Code-In-Child-Annotation)");
 	}
 	
     @AfterSuite
     public void afterSuiteLoginChild() {
-		LOGGER.info("!!!");		
-    	LOGGER.info("@@@_LoginTest-AfterSuite-Child-(Child-Annotation)");
-		LOGGER.info("!!!");		
+    	LOGGER.info("@LoginTest-AfterSuite-Child-(Code-In-Child-Annotation)");
     }
 }

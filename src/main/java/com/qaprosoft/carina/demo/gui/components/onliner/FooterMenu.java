@@ -12,7 +12,7 @@ import com.qaprosoft.carina.demo.gui.pages.onliner.VacanciesPageOnliner;
 
 public class FooterMenu extends AbstractUIObject {
     
-//	OnlinerFooterTest (testcase 018) 	
+	
     @FindBy(xpath = "//a[@href='https://blog.onliner.by/vacancy']")
     private ExtendedWebElement vacanciesLink;
 
@@ -22,10 +22,14 @@ public class FooterMenu extends AbstractUIObject {
     @FindBy(xpath = "//img[@class='onliner_logo']")
     private ExtendedWebElement homeLink;
 
+    
+    
     public FooterMenu(WebDriver driver, SearchContext searchContext) {
         super(driver, searchContext);
     }
 
+    
+    
     public HomePageOnliner openHomePageOnliner() {
     	homeLink.scrollTo();
         homeLink.click();
@@ -44,12 +48,10 @@ public class FooterMenu extends AbstractUIObject {
         return new ContactsPageOnliner(driver);
     }
     
-    // Additional method
     public void scrollToBottom() {
     	vacanciesLink.scrollTo();
     }
     
-    // Additional method
     public void scrollToTop() {
     	homeLink.scrollTo();
     }

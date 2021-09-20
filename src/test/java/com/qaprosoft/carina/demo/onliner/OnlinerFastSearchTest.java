@@ -8,6 +8,10 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
@@ -31,32 +35,26 @@ public class OnlinerFastSearchTest extends ParentBaseTestNotLoginTests implement
 	private static final Logger LOGGER = LoggerFactory.getLogger(OnlinerFastSearchTest.class);
 	
 	@BeforeSuite
-    public void beforeSuiteLoginChild() {
-		LOGGER.info("!!!");
-		LOGGER.info("@@@_LoginTest-BeforeSuite-Child");
-		LOGGER.info("!!!");
+    public void beforeSuiteFastSearchTestChild() {
+		LOGGER.info("@FastSearchTest-BeforeSuite-Child");
     }
 
 	@BeforeTest
-	public void beforeTestLoginChild() {
-		LOGGER.info("!!!");
-		LOGGER.info("@@@_LoginTest-BeforeTest-Child");
-		LOGGER.info("!!!");
+	public void beforeTestFastSearchTestChild() {
+		LOGGER.info("@FastSearchTest-BeforeTest-Child");
 	}
 
 	@BeforeClass
-	public void beforeClassLoginChild() {
-		LOGGER.info("!!!");
-		LOGGER.info("@@@_LoginTest-BeforeClass-Child");
-		LOGGER.info("!!!");        
+	public void beforeClassFastSearchTestChild() {
+		LOGGER.info("@FastSearchTest-BeforeClass-Child");
 	}
 
 	@BeforeMethod
-	public void beforeMethodLoginChild() {
-		LOGGER.info("!!!");
-		LOGGER.info("@@@_LoginTest-BeforeMethod-Child");
-		LOGGER.info("!!!");
+	public void beforeMethodFastSearchTestChild() {
+		LOGGER.info("@FastSearchTest-BeforeMethod-Child");
 	}
+	
+	
 	
     @Test()
     @MethodOwner(owner = "dkharevich")
@@ -97,6 +95,28 @@ public class OnlinerFastSearchTest extends ParentBaseTestNotLoginTests implement
 //        homePageOnliner.getTopHeaderBar().clickOnUsedGoodsButton();
 //
 //    } 
+    
+    
+    
+	@AfterMethod
+	public void afterMethodFastSearchTestChild() {
+		LOGGER.info("@FastSearchTest-AfterMethod-Child");
+	}
+
+	@AfterClass
+	public void afterClassFastSearchTestChild() {
+		LOGGER.info("@FastSearchTest-AfterClass-Child");
+	}
+
+	@AfterTest
+	public void afterTestFastSearchTestChild() {
+		LOGGER.info("@FastSearchTest-AfterTest-Child");
+	}
+	
+	@AfterSuite
+    public void afterSuiteFastSearchTestChild() {
+		LOGGER.info("@FastSearchTest-AfterSuite-Child");
+    }
     
     
 

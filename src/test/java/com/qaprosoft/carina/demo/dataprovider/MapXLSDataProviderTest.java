@@ -16,7 +16,7 @@ import com.qaprosoft.carina.core.foundation.utils.tag.TestPriority;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.qaprosoft.carina.demo.onliner.OnlinerAllTestsWithLoginParentAnnotation;
+import com.qaprosoft.carina.demo.onliner.OnlinerAllTestsWithLoginCodeInParentAnnotation;
 
 public class MapXLSDataProviderTest extends ParentDataProviderBaseTest implements IAbstractTest{
 	

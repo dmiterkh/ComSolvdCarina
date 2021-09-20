@@ -16,7 +16,9 @@ import com.qaprosoft.carina.demo.gui.pages.onliner.HomePageOnliner;
 import com.qaprosoft.carina.demo.gui.pages.onliner.VacanciesPageOnliner;
 
 public class ContactsPageOnliner extends AbstractPage {
-    private static final Logger LOGGER = LoggerFactory.getLogger(ContactsPageOnliner.class);
+    
+	private static final Logger LOGGER = LoggerFactory.getLogger(ContactsPageOnliner.class);
+	
 	
     @FindBy(xpath = "//a[@href='https://blog.onliner.by/vacancy']")
     private ExtendedWebElement vacanciesLink;
@@ -24,11 +26,15 @@ public class ContactsPageOnliner extends AbstractPage {
     @FindBy(xpath = "//img[@class='onliner_logo']")
     private ExtendedWebElement homeLink;
 
+    
+    
     public ContactsPageOnliner(WebDriver driver) {
         super(driver);
         setPageURL("https://people.onliner.by/contacts");
     }
 
+    
+    
     public HomePageOnliner openHomePageOnliner() {
     	homeLink.scrollTo();
         homeLink.click();
