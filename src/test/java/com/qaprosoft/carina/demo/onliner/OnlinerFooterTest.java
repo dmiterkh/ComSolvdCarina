@@ -72,20 +72,20 @@ public class OnlinerFooterTest extends ParentBaseTestNotLoginTests implements IA
         Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
         
         // Open Vacancies page
-        VacanciesPageOnliner vacanciesPageOnliner = homePageOnliner.openVacanciesPageOnlinerThroughFooter();
+        VacanciesPageOnliner vacanciesPageOnliner = homePageOnliner.openVacanciesPageOnliner();
         Assert.assertTrue(vacanciesPageOnliner.isPageOpened(), "Vacancies page is not opened");
         
         homePageOnliner = vacanciesPageOnliner.openHomePageOnliner();
         Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
                
         // Open Contacts page
-        ContactsPageOnliner contactsPageOnliner = homePageOnliner.openContactsPageOnlinerThroughFooter();
+        ContactsPageOnliner contactsPageOnliner = homePageOnliner.openContactsPageOnliner();
         Assert.assertTrue(contactsPageOnliner.isPageOpened(), "Contacts page is not opened");
         
         homePageOnliner = contactsPageOnliner.openHomePageOnliner();
         Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
         
-        vacanciesPageOnliner = homePageOnliner.openVacanciesPageOnlinerThroughFooter();
+        vacanciesPageOnliner = homePageOnliner.openVacanciesPageOnliner();
         Assert.assertTrue(vacanciesPageOnliner.isPageOpened(), "Vacancies page is not opened");
         
         //Open Contacts page from Vacancies page
@@ -94,9 +94,8 @@ public class OnlinerFooterTest extends ParentBaseTestNotLoginTests implements IA
         
         //Open Vacancies page from Contacts page
         vacanciesPageOnliner = contactsPageOnliner.openVacanciesPageOnliner();
-        pause(10.0);
         Assert.assertTrue(vacanciesPageOnliner.isPageOpened(), "Vacancies page is not opened");
-        
+        pause(1);
     }    
     
     

@@ -15,8 +15,10 @@ import com.qaprosoft.carina.demo.gui.components.onliner.UpperPriceSlider;
 import com.qaprosoft.carina.demo.gui.components.onliner.UpperYearSlider;
 
 public class RealEstatePageOnliner extends AbstractPage {
-    private static final Logger LOGGER = LoggerFactory.getLogger(RealEstatePageOnliner.class);
+    
+	private static final Logger LOGGER = LoggerFactory.getLogger(RealEstatePageOnliner.class);
 
+	
     @FindBy(xpath = "//span[@class='filter__item-inner' and text()='1']//parent::label")
     private ExtendedWebElement numberOfRoomsButtonLink;
     
@@ -33,10 +35,13 @@ public class RealEstatePageOnliner extends AbstractPage {
     @FindBy(xpath = "//div[@id='search-filter-price-slider']//div//div//div[contains(@class,'noUi-handle-upper')]")
     private ExtendedWebElement upperPriceSliderLink;
 
+    
+    
     public RealEstatePageOnliner(WebDriver driver) {
         super(driver);
-        setPageURL("https://r.onliner.by/pk");
     }
+    
+    
 
     public void clickOnNumberOfRoomsButton() {
     	numberOfRoomsButtonLink.scrollTo();

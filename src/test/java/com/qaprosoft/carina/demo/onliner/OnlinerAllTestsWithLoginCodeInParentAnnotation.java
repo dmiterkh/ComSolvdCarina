@@ -59,8 +59,7 @@ public class OnlinerAllTestsWithLoginCodeInParentAnnotation extends LoginBaseTes
     public void testAuthBarIsOpened() {
                
         // Open Authorization page
-        LoginPageOnliner loginPageOnliner = homePageOnliner.getTopHeaderBar().clickOnAuthLink();
-        loginPageOnliner.pause(5.0);
+        LoginPageOnliner loginPageOnliner = homePageOnliner.openLoginPageOnliner();
         Assert.assertTrue(loginPageOnliner.isPageOpened(), "Login page is not opened");
         
     }    
@@ -74,20 +73,20 @@ public class OnlinerAllTestsWithLoginCodeInParentAnnotation extends LoginBaseTes
     public void testUserCanActivateFieldsAndCanTypeInIt() {
                 
         // Open Authorization page
-        LoginPageOnliner loginPageOnliner = homePageOnliner.getTopHeaderBar().clickOnAuthLink();
+        LoginPageOnliner loginPageOnliner = homePageOnliner.openLoginPageOnliner();
         Assert.assertTrue(loginPageOnliner.isPageOpened(), "Login page is not opened");
         
         // Type in Login field
         loginPageOnliner.typeInLoginField("adaxdeaeca");
-        Assert.assertTrue(loginPageOnliner.getLoginFieldLink().isClickable(), "Login field is not clickable");  
+        Assert.assertTrue(loginPageOnliner.isLoginFieldClickable(), "Login field is not clickable");  
         
         // Type in Password field
         loginPageOnliner.typeInPasswordField("adaxdeaeca");
-        Assert.assertTrue(loginPageOnliner.getPasswordFieldLink().isClickable(), "Password field is not clickable");
+        Assert.assertTrue(loginPageOnliner.isPasswordFieldClickable(), "Password field is not clickable");
         
         // Password checking  
         loginPageOnliner.showPasswordInPasswordField();;
-        loginPageOnliner.pause(5.0);
+        pause(1);
 
     }        
     
@@ -100,20 +99,20 @@ public class OnlinerAllTestsWithLoginCodeInParentAnnotation extends LoginBaseTes
     public void testUserCanEnterLettersNumbersAndSpecialSymbols() {
                 
         // Open Authorization page
-        LoginPageOnliner loginPageOnliner = homePageOnliner.getTopHeaderBar().clickOnAuthLink();
+        LoginPageOnliner loginPageOnliner = homePageOnliner.openLoginPageOnliner();
         Assert.assertTrue(loginPageOnliner.isPageOpened(), "Login page is not opened");
         
         // Type in Login field
         loginPageOnliner.typeInLoginField("SolvD_@#$%^&_2020");
-        Assert.assertTrue(loginPageOnliner.getLoginFieldLink().isClickable(), "Login field is not clickable");  
+        Assert.assertTrue(loginPageOnliner.isLoginFieldClickable(), "Login field is not clickable");  
         
         // Type in Password field
         loginPageOnliner.typeInPasswordField("SolvD_@#$%^&_2020");
-        Assert.assertTrue(loginPageOnliner.getPasswordFieldLink().isClickable(), "Password field is not clickable");
+        Assert.assertTrue(loginPageOnliner.isPasswordFieldClickable(), "Password field is not clickable");
         
         // Password checking
         loginPageOnliner.showPasswordInPasswordField();;
-        loginPageOnliner.pause(5.0);
+        pause(1);
         
     }    
         
@@ -124,16 +123,14 @@ public class OnlinerAllTestsWithLoginCodeInParentAnnotation extends LoginBaseTes
     
     //testcase003 Verify that the user can Access his registered personal account through the registration form entering correct login (email) and correct password.
     public void testUserCanAccessAccountThroughEnteringValidLogAndPas() {
-                
-        AuthorizedPageOnliner authorizedPageOnliner = homePageOnliner.getTopHeaderBar().clickOnAuthLink().getAuthorizedPageOnliner("dmiterkh@mail.ru", "3909091");
-        pause(5.0);
+        
+        // Open Authorized page
+        AuthorizedPageOnliner authorizedPageOnliner = homePageOnliner.openAuthorizedLoginPageOnliner("dmiterkh@mail.ru", "3909091");
         Assert.assertTrue(authorizedPageOnliner.isPageOpened(), "Authorized page is not opened");
         
-        
-        homePageOnliner = authorizedPageOnliner.returnPopupProfileLink().openHomePageOnliner();
-        pause(5.0);
-        Assert.assertTrue(authorizedPageOnliner.isPageOpened(), "Authorized page is not opened");
-        
+        // Return to Home page
+        homePageOnliner = authorizedPageOnliner.openHomePageOnliner();
+        Assert.assertTrue(homePageOnliner.isPageOpened(), "Authorized page is not opened");
         
     }
     
@@ -144,9 +141,9 @@ public class OnlinerAllTestsWithLoginCodeInParentAnnotation extends LoginBaseTes
     
     //testcase007 (Negative) Verify that the user Cannot Access his registered personal account through the registration form entering incorrect login (email) and correct password.
     public void testUserCanNotAccessAccountThroughEnteringInvalidLogValidPas() {
-                
-        LoginPageOnliner loginPageOnliner = homePageOnliner.getTopHeaderBar().clickOnAuthLink().getNotAuthorizedLoginPageOnliner("dmiterkh.mail.ru", "3909091");
-        pause(5);  
+        
+        // Open Authorization page
+        LoginPageOnliner loginPageOnliner = homePageOnliner.openNotAuthorizedLoginPageOnliner("dmiterkh.mail.ru", "3909091"); 
         Assert.assertTrue(loginPageOnliner.isPageOpened(), "Not Authorized Login page is not opened");
         
     }    

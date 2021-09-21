@@ -14,8 +14,10 @@ import com.qaprosoft.carina.core.gui.AbstractPage;
 import com.qaprosoft.carina.demo.gui.pages.onliner.LaptopPageOnliner;
 
 public class CatalogPageOnliner extends AbstractPage {
+	
     private static final Logger LOGGER = LoggerFactory.getLogger(CatalogPageOnliner.class);
 	
+    
     @FindBy(xpath = "//span[@class='catalog-navigation-classifier__item-title-wrapper' and contains(text(),'Компьютеры и')]//parent::span//parent::li")
     private ExtendedWebElement computerTechnicsLink;
         
@@ -25,11 +27,12 @@ public class CatalogPageOnliner extends AbstractPage {
     @FindBy(xpath = "//a[@href='https://catalog.onliner.by/notebook']")
     private ExtendedWebElement laptopLink;
     
+    
 
     public CatalogPageOnliner(WebDriver driver) {
         super(driver);
-        setPageURL("https://catalog.onliner.by/");
     }
+    
     
     public void clickOnComputerTechnicsLink() {
     	computerTechnicsLink.click();

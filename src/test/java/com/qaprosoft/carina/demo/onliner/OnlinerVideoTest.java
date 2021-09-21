@@ -40,6 +40,8 @@ public class OnlinerVideoTest extends ParentBaseTestNotLoginTests implements IAb
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(OnlinerVideoTest.class);
 	
+	private  HomePageOnliner homePageOnliner;
+	
 	@BeforeSuite
     public void beforeSuiteVideoTestChild() {
 		LOGGER.info("@VideoTest-BeforeSuite-Child");
@@ -58,6 +60,12 @@ public class OnlinerVideoTest extends ParentBaseTestNotLoginTests implements IAb
 	@BeforeMethod
 	public void beforeMethodVideoTestChild() {
 		LOGGER.info("@VideoTest-BeforeMethod-Child");
+		
+    	// Open Home page
+    	homePageOnliner = new HomePageOnliner(getDriver());
+        homePageOnliner.open();
+        Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");   
+
 	}
 	
 	
@@ -70,20 +78,36 @@ public class OnlinerVideoTest extends ParentBaseTestNotLoginTests implements IAb
     //testcase017 Verify that the user Gets correct work of youtube video in any article with youtube video
     public void testUserGetsCorrectWorkOfYoutubeVideo() {
     	
-    	// Open Home page
-        HomePageOnliner homePageOnliner = new HomePageOnliner(getDriver());
-        homePageOnliner.open();
-        Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
-        
         // Open Video page 
-		VideoPageOnliner videoPageOnliner = homePageOnliner.openVideoPageOnlinerUsualFor();
-		Assert.assertTrue(videoPageOnliner.isPageOpened(), "Video page is not opened");
-        		
-		videoPageOnliner.showVideoPageOperations();
-		videoPageOnliner.returnToHomePage();
+    	if (homePageOnliner.isVideoPageLinkPresent()) {
+    		VideoPageOnliner videoPageOnliner = homePageOnliner.openVideoPageOnlinerUsualFor();
+    		videoPageOnliner.showVideoPageOperations();
+    		videoPageOnliner.returnToHomePage();
+    		pause(3);
+    	} else {   		
+    		LOGGER.info("Required Elements are not found on the Home Page");
+    	}
         
     }
     
+    @Test()
+    @MethodOwner(owner = "dkharevich")
+    @TestPriority(Priority.P3)
+    @TestLabel(name = "feature", value = {"web", "regression"})
+    
+    //testcase017 Verify that the user Gets correct work of youtube video in any article with youtube video
+    public void testUserGetsCorrectWorkOfYoutubeVideoWithForEach() {
+    	
+        // Open Video page 
+    	if (homePageOnliner.isVideoPageLinkPresent()) {
+    		VideoPageOnliner videoPageOnliner = homePageOnliner.openVideoPageOnlinerForEach();         		
+    		videoPageOnliner.showVideoPageOperations();
+    		videoPageOnliner.returnToHomePage();
+    	} else {   		
+    		LOGGER.info("Required Elements are not found on the Home Page");
+    	}
+        
+    }
     
     
 	@AfterMethod

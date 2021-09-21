@@ -44,10 +44,12 @@ public class AutomobilePageOnliner extends AbstractPage {
     private ExtendedWebElement lowerYearChoiseLink;
     
        
+    
   	public AutomobilePageOnliner(WebDriver driver) {
         super(driver);
-        setPageURL("https://ab.onliner.by");
     }
+  	
+  	
   	
     public void clickOnCountryDropdownLink() {
 //    	countryDropdownListLink.get(0).scrollTo();

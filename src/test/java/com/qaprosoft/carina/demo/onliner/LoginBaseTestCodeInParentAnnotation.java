@@ -59,27 +59,27 @@ public class LoginBaseTestCodeInParentAnnotation implements IAbstractTest {
         
         getDriver().manage().window().setSize(new Dimension(1100, 768));
         pause(1);
-        Assert.assertTrue(homePageOnliner.getTopHeaderBar().isUIObjectPresent());
+        Assert.assertTrue(homePageOnliner.isTopHeaderBarPresent());
 
         getDriver().manage().window().setSize(new Dimension(1000, 700));
         pause(1);
-        Assert.assertTrue(homePageOnliner.getTopHeaderBar().isUIObjectPresent());
+        Assert.assertTrue(homePageOnliner.isTopHeaderBarPresent());
         
         getDriver().manage().window().maximize();
         pause(1);
-        Assert.assertTrue(homePageOnliner.getTopHeaderBar().isUIObjectPresent());
+        Assert.assertTrue(homePageOnliner.isTopHeaderBarPresent());
         
         getDriver().manage().window().setSize(new Dimension(900, 600));
         pause(1);
-        Assert.assertTrue(homePageOnliner.getTopHeaderBar().isUIObjectPresent());
+        Assert.assertTrue(homePageOnliner.isTopHeaderBarPresent());
         
         getDriver().manage().window().fullscreen();
         pause(1);
-        Assert.assertTrue(homePageOnliner.getTopHeaderBar().isUIObjectPresent());
+        Assert.assertTrue(homePageOnliner.isTopHeaderBarPresent());
         
         getDriver().manage().window().setSize(new Dimension(1100, 768));
         pause(1);
-        Assert.assertTrue(homePageOnliner.getTopHeaderBar().isUIObjectPresent());        
+        Assert.assertTrue(homePageOnliner.isTopHeaderBarPresent());        
 	}
 
 	@BeforeMethod
@@ -89,12 +89,11 @@ public class LoginBaseTestCodeInParentAnnotation implements IAbstractTest {
 		//Refresh Home Page
         homePageOnliner.open();
         Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
-        pause(3.0);
         
-        while (!(homePageOnliner.getTopHeaderBar().getAuthLink().isElementPresent())){
-        	homePageOnliner.refresh(); 
-        	pause(0.5);
-        };
+        // Authorization Link is present
+        homePageOnliner.refreshPageIfAuthLinkIsNotPresent();
+        Assert.assertTrue(homePageOnliner.isAuthLinkElementPresent(), "Element has not been found after 20 attempts");
+
 	}
 
 	

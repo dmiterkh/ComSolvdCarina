@@ -29,16 +29,14 @@ public class HomePageOnliner extends AbstractPage {
     private ExtendedWebElement vacanciesLink;
     
     @FindBy(xpath = "//header[@class='g-top']")
-    private TopHeaderBar topHeaderBarLink;
-    
-    private boolean authLinkPresent = false;   		
+    private TopHeaderBar topHeaderBarLink;		
     
     @FindBy(xpath = "//i[@class='b-icon-3']//parent::span[@class='complementary-item video']//parent::span[@class='complementary-group']//parent::div//parent::figure//a")
     private List<ExtendedWebElement> videoPageListLink;
     
     @FindBy(xpath = "//i[@class='b-icon-3']//parent::span[@class='complementary-item video']//parent::span[@class='complementary-group']//parent::div//parent::figure//a")
     private ExtendedWebElement videoPageLink;
-    
+
     
     
     public HomePageOnliner(WebDriver driver) {
@@ -52,11 +50,11 @@ public class HomePageOnliner extends AbstractPage {
         return footerLink;
     }
     
-    public VacanciesPageOnliner openVacanciesPageOnlinerThroughFooter() {
+    public VacanciesPageOnliner openVacanciesPageOnliner() {
     	return getFooterMenu().openVacanciesPageOnliner();
     }
     
-    public ContactsPageOnliner openContactsPageOnlinerThroughFooter() {
+    public ContactsPageOnliner openContactsPageOnliner() {
     	return getFooterMenu().openContactsPageOnliner();
     }
     
@@ -64,9 +62,24 @@ public class HomePageOnliner extends AbstractPage {
         return topHeaderBarLink;
     }
     
-    public LoginPageOnliner clickOnAuthLinkThroughTopHeader() {
+    public LoginPageOnliner openLoginPageOnliner() {
         getTopHeaderBar().getAuthLink().click();
         return new LoginPageOnliner(driver);
+    }
+    
+    public RealEstatePageOnliner openRealEstatePageOnliner() {
+        getTopHeaderBar().getRealEstatePageLink().click();
+        return new RealEstatePageOnliner(driver);
+    }
+    
+    public CatalogPageOnliner openCatalogPageOnliner() {
+    	getTopHeaderBar().getCatalogPageLink().click();
+        return new CatalogPageOnliner(driver);
+    }
+    
+    public AutomobilePageOnliner openAutomobilePageOnliner() {
+    	getTopHeaderBar().getAutomobilePageLink().click();
+        return new AutomobilePageOnliner(driver);
     }
     
     public boolean isAuthLinkElementPresent() {
@@ -80,27 +93,20 @@ public class HomePageOnliner extends AbstractPage {
         	LOGGER.trace(String.valueOf(k));
         	refresh(); 
         	k--;
-        };
-        if (getTopHeaderBar().getAuthLink().isElementPresent()) {
-        	authLinkPresent = true; 
         }
     }
 
-    public boolean returnAuthLinkPresent() {
-    	return authLinkPresent;	
-    }
     
-    public AuthorizedPageOnliner getAuthorizedPageOnliner(String loginArg, String passwordArg) {
+    public AuthorizedPageOnliner openAuthorizedPageOnliner(String loginArg, String passwordArg) {
     	getTopHeaderBar().getAuthLink().click();
-    	
         return new AuthorizedPageOnliner(driver);
     }
     
-    public LoginPageOnliner getNotAuthorizedLoginPageOnliner(String loginArg, String passwordArg) {
+    public LoginPageOnliner openNotAuthorizedLoginPageOnliner(String loginArg, String passwordArg) {
     	return getTopHeaderBar().clickOnAuthLink().getNotAuthorizedLoginPageOnliner(loginArg, passwordArg);
     }
     
-    public AuthorizedPageOnliner getAuthorizedLoginPageOnliner(String loginArg, String passwordArg) {
+    public AuthorizedPageOnliner openAuthorizedLoginPageOnliner(String loginArg, String passwordArg) {
     	return getTopHeaderBar().clickOnAuthLink().getAuthorizedPageOnliner(loginArg, passwordArg);
     }
     
@@ -113,43 +119,44 @@ public class HomePageOnliner extends AbstractPage {
         return new VideoPageOnliner(driver);
     }
     
-
-    
     public VideoPageOnliner openVideoPageOnlinerUsualFor() {
-    	int k=0;
-    	if ((getVideoPageListLink() != null)&&(!getVideoPageListLink().isEmpty())) {
-			int j = getVideoPageListLink().size();
-			for (int i=0; i < j; i++) {
-		  		while(k < 1) {
-		  			if(openVideoPageOnliner(getVideoPageListLink().get(i)).checkYoutubeVideoLink()) {
-		  			k++;
-		  			} 
-		  		}
-			}
+    	if (videoPageLink.isPresent()) {
+    		int k=0;
+	    	if ((getVideoPageListLink() != null)&&(!getVideoPageListLink().isEmpty())) {
+				int j = getVideoPageListLink().size();
+				for (int i=0; i < j; i++) {
+			  		while(k < 1) {
+
+			  			if(openVideoPageOnliner(getVideoPageListLink().get(i)).checkYoutubeVideoLink()) {
+			  				k++;
+			  			} 
+			  		}
+				}
+		    	return new VideoPageOnliner(driver);
+	    	}
+    	} else {
+    		LOGGER.info("Required Element is not found on the Home Page");
+    	}	
+    	return new VideoPageOnliner(driver);	    	
+    }
+    	
+    public VideoPageOnliner openVideoPageOnlinerForEach() {
+    	if (videoPageLink.isPresent()) {
+    		int k=0;
+	    	if ((getVideoPageListLink() != null)&&(!getVideoPageListLink().isEmpty())) {
+				for (ExtendedWebElement videoPageLinkFromList : getVideoPageListLink()) {
+			  		while(k < 1) {
+			  			if(openVideoPageOnliner(videoPageLinkFromList).checkYoutubeVideoLink()) {
+			  				k++;
+			  			} 
+			  		}
+				}
+	    	}
+    	} else {
+    		LOGGER.info("Required Element is not found on the Home Page");
     	}	
 		return new VideoPageOnliner(driver);    	    	
     }
-    
-
-//  int k = 0;
-//  VideoPageOnliner videoPageOnliner3 = new VideoPageOnliner(getDriver());
-//  if ((homePageOnliner.getVideoPageListLink() != null)&&(!homePageOnliner.getVideoPageListLink().isEmpty())) {
-//  	for (ExtendedWebElement videoPageLink : homePageOnliner.getVideoPageListLink()) {
-//  		while(k < 1) {
-//  			videoPageOnliner3 = homePageOnliner.openVideoPageOnliner(videoPageLink);
-//  			if(videoPageOnliner3.checkYoutubeVideoLink()) {
-//  				System.out.println("Ok");
-//  				k++;
-//  				System.out.println("k = " + k);
-//  			} 
-//  			videoPageOnliner3.returnToHomePage();
-//  		}	
-//  	}	
-//  	System.out.println(k);
-//	} else {
-//		System.out.println("The required List of Extended Web Elements is Null or Empty");	
-//	}
-    
     
     public void scrollToBottom() {
     	vacanciesLink.scrollTo();
@@ -159,4 +166,12 @@ public class HomePageOnliner extends AbstractPage {
     	homeLink.scrollTo();
     }  
     
+    public boolean isTopHeaderBarPresent() {
+    	return getTopHeaderBar().isUIObjectPresent();  			
+    }  
+    
+    public boolean isVideoPageLinkPresent() {
+    	return videoPageLink.isElementPresent();  			
+    }  
+
 }

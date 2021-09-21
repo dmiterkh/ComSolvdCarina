@@ -15,8 +15,10 @@ import com.qaprosoft.carina.core.gui.AbstractPage;
 import com.qaprosoft.carina.demo.gui.pages.onliner.ItemPageOnliner;
 
 public class LaptopPageOnliner extends AbstractPage {
+	
     private static final Logger LOGGER = LoggerFactory.getLogger(LaptopPageOnliner.class);
 	
+    
     @FindBy(xpath = "//input[@type='checkbox' and @value='lenovo']//parent::span//parent::label")
     private List<ExtendedWebElement> producerCheckboxListLink;
         
@@ -28,11 +30,13 @@ public class LaptopPageOnliner extends AbstractPage {
     private List<ExtendedWebElement> itemListLink;
    
     
+    
     public LaptopPageOnliner(WebDriver driver) {
         super(driver);
         setPageURL("https://catalog.onliner.by/notebook");
     }
-           
+         
+    
    
     public void clickOnProducerCheckboxLink() {
     	producerCheckboxListLink.get(0).scrollTo();
@@ -45,16 +49,13 @@ public class LaptopPageOnliner extends AbstractPage {
     	upperBoundPriceFieldLink.type(upperBoundPriceArg);
     }
     
-    public ItemPageOnliner openItemPageOnliner() {
+    public ItemPageOnliner openFirstItemPageOnliner() {
     	itemListLink.get(0).click();
         return new ItemPageOnliner(driver);
     }
     
-    public ItemPageOnliner getItemPageOnliner(String upperBoundPriceArg) {
-    	producerCheckboxListLink.get(0).scrollTo();
+    public ItemPageOnliner openFirstItemPageOnliner(String upperBoundPriceArg) {
     	producerCheckboxListLink.get(0).click();
-    	producerCheckboxListLink.get(0).scrollTo();
-       	upperBoundPriceFieldLink.scrollTo();
     	upperBoundPriceFieldLink.click();
     	upperBoundPriceFieldLink.type(upperBoundPriceArg);
     	itemListLink.get(0).click();

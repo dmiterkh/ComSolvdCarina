@@ -39,6 +39,8 @@ public class OnlinerSectionsBarTest extends ParentBaseTestNotLoginTests implemen
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(OnlinerSectionsBarTest.class);
 	
+	private HomePageOnliner homePageOnliner;
+	
 	@BeforeSuite
     public void beforeSuiteSectionsBarTestChild() {
 		LOGGER.info("@SectionsBarTest-BeforeSuite-Child");
@@ -57,65 +59,49 @@ public class OnlinerSectionsBarTest extends ParentBaseTestNotLoginTests implemen
 	@BeforeMethod
 	public void beforeMethodSectionsBarTestChild() {
 		LOGGER.info("@SectionsBarTest-BeforeMethod-Child");
+		
+		// Open Home page
+        homePageOnliner = new HomePageOnliner(getDriver());
+        homePageOnliner.open();
+        Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
 	}
 	
 	
 	
-//
-//    @Test()
-//    @MethodOwner(owner = "dkharevich")
-//    @TestPriority(Priority.P3)
-//    @TestLabel(name = "feature", value = {"web", "regression"})
-//    
-//	//testcase011 Verify that the user Is Being Redirected to the list of all categories page with relevant categories of items of any section of the site after clicking on one of the links at the top of the home page
-//    public void testUserRedirectedToListOfCategoriesWithRelevantCategoriesClickingOnLink() {
-//        
-//    	// Open Home page
-//        HomePageOnliner homePageOnliner = new HomePageOnliner(getDriver());
-//        homePageOnliner.open();
-//        Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
-//                
-//        // Open Catalog page
-//        CatalogPageOnliner catalogPageOnliner = homePageOnliner.getTopHeaderBar().openCatalogPageOnliner();
-//    	catalogPageOnliner.pause(10);
-//
-//        
-//    }    
-//        
-//    @Test()
-//    @MethodOwner(owner = "dkharevich")
-//    @TestPriority(Priority.P3)
-//    @TestLabel(name = "feature", value = {"web", "regression"})
-//    
-//	//testcase012 Verify that the user Is Being Redirected to the search results page with relevant search results items after setting on certain options in the search filter for extremely detailed search on the certain section
-//    public void testExtremelyDetailedSearchWorksCorrectlyForCatalogPage() {
-//        
-//    	// Open Home page
-//        HomePageOnliner homePageOnliner = new HomePageOnliner(getDriver());
-//        homePageOnliner.open();
-//        Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
-//                
-//        // Open Catalog page
-//        CatalogPageOnliner catalogPageOnliner = homePageOnliner.getTopHeaderBar().openCatalogPageOnliner();
-//        
-//        // Open Computer techics subsection
-//        catalogPageOnliner.clickOnComputerTechnicsLink();
-//        
-//        // Open Computers subsection
-//        catalogPageOnliner.clickOnComputersLink();
-//               
-//        // Open Laptop subsection
-//        LaptopPageOnliner laptopPageOnliner = catalogPageOnliner.openLaptopPageOnliner();
-//        
-//        // Choose producer
-//        laptopPageOnliner.clickOnProducerCheckboxLink();
-//        
-//        // Set value of upper bound price field
-//        laptopPageOnliner.typeInUpperBoundPriceField("1000");            
-//        laptopPageOnliner.pause(10);
-//
-//        
-//    }    
+
+    @Test()
+    @MethodOwner(owner = "dkharevich")
+    @TestPriority(Priority.P3)
+    @TestLabel(name = "feature", value = {"web", "regression"})
+    
+	//testcase011 Verify that the user Is Being Redirected to the list of all categories page with relevant categories of items of any section of the site after clicking on one of the links at the top of the home page
+    public void testUserRedirectedToListOfCategoriesWithRelevantCategoriesClickingOnLink() {
+
+        // Open Catalog page
+        CatalogPageOnliner catalogPageOnliner = homePageOnliner.openCatalogPageOnliner();
+    	pause(1);
+   
+    }    
+        
+    @Test()
+    @MethodOwner(owner = "dkharevich")
+    @TestPriority(Priority.P3)
+    @TestLabel(name = "feature", value = {"web", "regression"})
+    
+	//testcase012 Verify that the user Is Being Redirected to the search results page with relevant search results items after setting on certain options in the search filter for extremely detailed search on the certain section
+    public void testExtremelyDetailedSearchWorksCorrectlyForCatalogPage() {
+                        
+        // Open Catalog page
+        CatalogPageOnliner catalogPageOnliner = homePageOnliner.openCatalogPageOnliner();
+        catalogPageOnliner.clickOnComputerTechnicsLink();
+        catalogPageOnliner.clickOnComputersLink();
+        
+        LaptopPageOnliner laptopPageOnliner = catalogPageOnliner.openLaptopPageOnliner();
+        laptopPageOnliner.clickOnProducerCheckboxLink();
+        laptopPageOnliner.typeInUpperBoundPriceField("1000");            
+        pause(1);
+
+    }    
 
     @Test()
     @MethodOwner(owner = "dkharevich")
@@ -124,144 +110,38 @@ public class OnlinerSectionsBarTest extends ParentBaseTestNotLoginTests implemen
     
 	//testcase013 Verify that the user Is Being Redirected to the search results page with relevant search results items after setting on certain options in the search filter for extremely detailed search on the certain section
     public void testExtremelyDetailedSearchWorksCorrectlyForAutomobilePage() {
-        
-    	// Open Home page
-        HomePageOnliner homePageOnliner = new HomePageOnliner(getDriver());
-        homePageOnliner.open();
-        Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
-                
+                        
         // Open Automobile catalog page
-        AutomobilePageOnliner automobilePageOnliner = homePageOnliner.getTopHeaderBar().openAutomobilePageOnliner();
+        AutomobilePageOnliner automobilePageOnliner = homePageOnliner.openAutomobilePageOnliner();
+        automobilePageOnliner.clickOnCountryDropdownLink();
+        automobilePageOnliner.clickOnCountryChoiseLink();
         
-        if(automobilePageOnliner.returnCountryDropdownLink().isElementPresent())
-        {
-            // Click on Country dropdown
-        	// Choose Country
-    		
-    		LOGGER.info("!!!");		
-    		LOGGER.info("Country-section-started");
-    		LOGGER.info("!!!");
-    		
-            automobilePageOnliner.clickOnCountryDropdownLink();
-            automobilePageOnliner.clickOnCountryChoiseLink();
-            pause(5);
-            
-    		LOGGER.info("!!!");		
-    		LOGGER.info("Country-section-passed");
-    		LOGGER.info("!!!");                    
-            
-        } else {
-        	LOGGER.info("!!!");		
-    		LOGGER.info("Country-section-has not been found");
-    		LOGGER.info("!!!");
-        };
-        
-        
-        
-        if(automobilePageOnliner.returnProducerDropdownLink().isElementPresent())
-        {
-            // Click on Producer dropdown
-            // Choose Producer
-        	
-    		LOGGER.info("!!!");		
-    		LOGGER.info("Producer-section-started");
-    		LOGGER.info("!!!");
-        	
-        	automobilePageOnliner.clickOnProducerDropdownLink();
-        	automobilePageOnliner.clickOnProducerChoiseLink();
-        	
-    		LOGGER.info("!!!");		
-    		LOGGER.info("Producer-section-passed");
-    		LOGGER.info("!!!");
-            
-        } else {
-        	LOGGER.info("!!!");		
-    		LOGGER.info("Producer-section-has not been found");
-    		LOGGER.info("!!!");
-        };
-        
-        
-        
-        if(automobilePageOnliner.returnModelDropdownLink().isElementPresent())
-        {
-            // Click on Model dropdown
-            // Choose Model
-        	
-    		LOGGER.info("!!!");		
-    		LOGGER.info("Model-section-started");
-    		LOGGER.info("!!!");
-        	
-        	automobilePageOnliner.clickOnModelDropdownLink();
-        	automobilePageOnliner.clickOnModelChoiseLink();
-        	
-    		LOGGER.info("!!!");		
-    		LOGGER.info("Model-section-passed");
-    		LOGGER.info("!!!");
-            
-        } else {
-        	LOGGER.info("!!!");		
-    		LOGGER.info("Model-section-has not been found");
-    		LOGGER.info("!!!");
-        };
-        
-        
-        
-        if(automobilePageOnliner.returnLowerYearDropdownLink().isElementPresent())
-        {
-        	// Click on Lower Year dropdown
-            // Choose lower year
-        	
-    		LOGGER.info("!!!");		
-    		LOGGER.info("LowerYear-section-started");
-    		LOGGER.info("!!!");
-        	
-            automobilePageOnliner.clickOnLowerYearDropdownLink();
-            automobilePageOnliner.clickOnLowerYearChoiseLink();
-            
-    		LOGGER.info("!!!");		
-    		LOGGER.info("LowerYear-section");
-    		LOGGER.info("!!!");
-            
-        } else {
-        	LOGGER.info("!!!");		
-    		LOGGER.info("LowerYear-section-has not been found");
-    		LOGGER.info("!!!");
-        };
-        	       
+    	automobilePageOnliner.clickOnProducerDropdownLink();
+    	automobilePageOnliner.clickOnProducerChoiseLink();
+    	
+    	automobilePageOnliner.clickOnModelDropdownLink();
+    	automobilePageOnliner.clickOnModelChoiseLink();
+    	
+        automobilePageOnliner.clickOnLowerYearDropdownLink();
+        automobilePageOnliner.clickOnLowerYearChoiseLink();
+    	pause(1);
     }   
 
+	@Test()
+	@MethodOwner(owner = "dkharevich")
+	@TestPriority(Priority.P3)
+	@TestLabel(name = "feature", value = {"web", "regression"})
+	
+	//testcase014 (Negative) Verify that the user Gets the message "No results found for this term" or is being redirected to the search results page with irrelevant search result items after setting on certain options in the search filter for extremely detailed search on the certain section
+	public void testExtremelyDetailedSearchWorksCorrectlyForRealEstatePage() {
 
-//	@Test()
-//	@MethodOwner(owner = "dkharevich")
-//	@TestPriority(Priority.P3)
-//	@TestLabel(name = "feature", value = {"web", "regression"})
-//	
-//	//testcase014 (Negative) Verify that the user Gets the message "No results found for this term" or is being redirected to the search results page with irrelevant search result items after setting on certain options in the search filter for extremely detailed search on the certain section
-//	public void testExtremelyDetailedSearchWorksCorrectlyForRealEstatePage() {
-//    
-//		// Open Home page
-//	    HomePageOnliner homePageOnliner = new HomePageOnliner(getDriver());
-//	    homePageOnliner.open();
-//	    Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");          
-//	    
-//	    // Open Real estate page
-//	    RealEstatePageOnliner realEstatePageOnliner = homePageOnliner.getTopHeaderBar().openRealEstatePageOnliner();
-//	
-//	    // Click on number 1 button
-//	    realEstatePageOnliner.clickOnNumberOfRoomsButton();
-//
-////	    // Move Upper Year Slider to 1960 or to -168 px 
-////	    realEstatePageOnliner.getUpperYearSliderLinkUI().slide(realEstatePageOnliner.getUpperYearSliderLink(), -168, 0);
-////	    realEstatePageOnliner.pause(10.0);	
-////	    // Move Upper Price Slider to $19195 or to -181 px 
-////	    realEstatePageOnliner.getUpperPriceSliderLinkUI().slide(realEstatePageOnliner.getUpperPriceSliderLink(), -181, 0);
-////	    realEstatePageOnliner.pause(20.0);	
-//	    
-//	    realEstatePageOnliner.moveOnUpperYearSlider();	
-//	    realEstatePageOnliner.moveOnUpperPriceSlider();	 
-//	    
-//        
-//	}
+	    // Open Real estate page
+	    RealEstatePageOnliner realEstatePageOnliner = homePageOnliner.openRealEstatePageOnliner();
+	    realEstatePageOnliner.clickOnNumberOfRoomsButton();
+	    realEstatePageOnliner.moveOnUpperYearSlider();	
+	    realEstatePageOnliner.moveOnUpperPriceSlider();	   
+    	pause(1);
+	}
 	
     
     
