@@ -50,8 +50,6 @@ public class TopHeaderBar extends AbstractUIObject {
     @FindBy(xpath = "//img[@class='onliner_logo']")
     private ExtendedWebElement homeLink;
     
-    @FindBy(xpath = "//div//div//a[contains(@class,'b-top-profile__link') and contains(text(),'Выйти')]")
-    private ExtendedWebElement popupProfileExitLink;
 
     
     
@@ -93,35 +91,38 @@ public class TopHeaderBar extends AbstractUIObject {
     	fastSearchFieldLink.pause(5.0);
     }
     
+    public ExtendedWebElement getCatalogPageLink() {
+        return catalogLink;
+    }
+    
     public CatalogPageOnliner openCatalogPageOnliner() {
-    	catalogLink.scrollTo();
         catalogLink.click();
         return new CatalogPageOnliner(driver);
     }
     
+    public ExtendedWebElement getAutomobilePageLink() {
+        return automobileLink;
+    }
+    
     public AutomobilePageOnliner openAutomobilePageOnliner() {
-    	automobileLink.scrollTo();
     	automobileLink.click();
         return new AutomobilePageOnliner(driver);
     }
     
+    public ExtendedWebElement getRealEstatePageLink() {
+        return realEstateLink;
+    }
+    
     public RealEstatePageOnliner openRealEstatePageOnliner() {
-    	realEstateLink.scrollTo();
     	realEstateLink.click();
         return new RealEstatePageOnliner(driver);
     }
 
     public ShoppingCartPageOnliner clickOnShoppingCartLink() {
-    	shoppingCartLink.scrollTo();
     	shoppingCartLink.click();
         return new ShoppingCartPageOnliner(driver);
     }
     
-    public HomePageOnliner openHomePageOnliner() {
-        popupProfileExitLink.click();
-        pause(5);
-        homeLink.click();
-        return new HomePageOnliner(driver);
-    }
+
     
 }

@@ -15,7 +15,9 @@ import com.qaprosoft.carina.core.gui.AbstractPage;
 import com.qaprosoft.carina.demo.gui.pages.onliner.AuthorizedPageOnliner;
 
 public class ShoppingCartPageOnliner extends AbstractPage {
+	
     private static final Logger LOGGER = LoggerFactory.getLogger(ShoppingCartPageOnliner.class);
+    
     
 	@FindBy(xpath = "//a[@href='https://www.onliner.by']")
     private ExtendedWebElement autorizedHomePageLink;
@@ -32,60 +34,48 @@ public class ShoppingCartPageOnliner extends AbstractPage {
 	@FindBy(xpath = "//div[@class='cart-form__offers-part cart-form__offers-part_action']//div//div//div//a[contains(@class,'cart-form__button_remove')]")
     private ExtendedWebElement removeButtonLink;	
 	
+	
+	
     public ShoppingCartPageOnliner(WebDriver driver) {
         super(driver);
-        setPageURL("https://cart.onliner.by/");
     }    
     
-    public AuthorizedPageOnliner clickOnAutorizedPageLink() {
+    
+    
+    public AuthorizedPageOnliner openAutorizedPageLink() {
     	autorizedHomePageLink.click();
         return new AuthorizedPageOnliner(driver);
     }
       
     public void typeInNumberOfItemWindowLink() {
     	numberOfItemWindowLink.click();
+    	numberOfItemWindowLink.getElement().clear();
     	numberOfItemWindowLink.type("23");
     }
     
     public void clickOnIncrementButtonLink() {
     	numberOfItemWindowLink.click();
-    	incrementButtonLink.scrollTo();
     	incrementButtonLink.click();
-    	incrementButtonLink.pause(5);
+    	pause(3);
     }
     
     public void clickOnDecrementButtonLink() {
     	numberOfItemWindowLink.click();
-    	decrementButtonLink.scrollTo();
     	decrementButtonLink.click();
-    	decrementButtonLink.pause(5);
+    	pause(3);
     }
     
     public void clickOnRemoveButtonLink() {
     	numberOfItemWindowLink.click();
-    	removeButtonLink.scrollTo();
     	removeButtonLink.click();
-    	removeButtonLink.pause(5);
+    	pause(3);
     }
     
-    public AuthorizedPageOnliner showShoppingCartOperations() {
-    	numberOfItemWindowLink.click();
-    	numberOfItemWindowLink.getElement().clear();
-    	numberOfItemWindowLink.type("23");
-    	numberOfItemWindowLink.click();
-    	incrementButtonLink.scrollTo();
-    	incrementButtonLink.click();
-    	incrementButtonLink.pause(5);
-    	numberOfItemWindowLink.click();
-    	decrementButtonLink.scrollTo();
-    	decrementButtonLink.click();
-    	decrementButtonLink.pause(5);
-    	numberOfItemWindowLink.click();
-    	removeButtonLink.scrollTo();
-    	removeButtonLink.click();
-    	removeButtonLink.pause(5);
-    	autorizedHomePageLink.click();
-        return new AuthorizedPageOnliner(driver);
+    public void showShoppingCartOperations() {
+    	typeInNumberOfItemWindowLink();
+    	clickOnIncrementButtonLink();
+    	clickOnDecrementButtonLink();
+    	clickOnRemoveButtonLink();
     }
 
 }

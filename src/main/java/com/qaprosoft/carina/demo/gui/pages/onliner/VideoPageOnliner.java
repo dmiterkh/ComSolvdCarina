@@ -37,9 +37,8 @@ public class VideoPageOnliner extends AbstractPage {
     
     
     public void showVideoPageOperations() {
-    	youtubeVideoLink.scrollTo();
     	youtubeVideoLink.click();
-    	youtubeVideoLink.pause(3.0);
+    	youtubeVideoLink.pause(1);
     	
     	getDriver().switchTo().frame(0);
     	WebElement element;
@@ -55,20 +54,7 @@ public class VideoPageOnliner extends AbstractPage {
     	
     	element = getDriver().findElement(By.xpath("//button[contains(@class,'ytp-mute-button') and contains(@aria-label,'(m)')]"));
     	element.click();
-    	
-//		!!!!!!  slider  !!!!!!
-//    	element = getDriver().findElement(By.xpath("//div[@class='ytp-volume-slider-handle')]"));
-//    	element.click();
-//    	youtubeVideoLink.pause(3.0);    	
-    	
-//    	element = getDriver().findElement(By.xpath("//button[contains(@class,'ytp-subtitles-button')]"));
-//		?????????
-//    	if(element.) {
-//    	element.click();
-//    	}
-//    	youtubeVideoLink.pause(3.0);
-//    	element = getDriver().findElement(By.xpath("//button[contains(@class,'ytp-subtitles-button') and contains(@title,'(c)')]"));
-//    	element.click();
+
     	
     	element = getDriver().findElement(By.xpath("//button[contains(@class,'ytp-fullscreen-button') and contains(@title,'(f)')]"));
     	element.click();
@@ -79,8 +65,12 @@ public class VideoPageOnliner extends AbstractPage {
     	element = getDriver().findElement(By.xpath("//button[contains(@class,'ytp-settings-button')]"));
     	element.click();
     	
+    	String videoPageWindow = driver.getWindowHandle();
     	element = getDriver().findElement(By.xpath("//a[contains(@class,'ytp-youtube-button')]"));
     	element.click();
+    	pause(3);	
+    	driver.switchTo().window(videoPageWindow);
+    	pause(3);
     	
     }
 
@@ -102,11 +92,7 @@ public class VideoPageOnliner extends AbstractPage {
 	}
     
     public boolean checkYoutubeVideoLink() {
-    	if (youtubeVideoLink.isPresent()) {
-    		return true;
-    	} else {
-    		return false;
-    	} 	
+    	return youtubeVideoLink.isPresent();	
     } 
     
 }

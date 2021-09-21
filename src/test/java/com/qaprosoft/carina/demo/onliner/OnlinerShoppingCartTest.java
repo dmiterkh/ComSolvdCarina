@@ -40,6 +40,8 @@ public class OnlinerShoppingCartTest extends ParentBaseTestNotLoginTests impleme
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(OnlinerShoppingCartTest.class);
 	
+	private HomePageOnliner homePageOnliner;
+	
 	@BeforeSuite
     public void beforeSuiteShoppingCartTestChild() {
 		LOGGER.info("@ShoppingCartTest-BeforeSuite-Child");
@@ -58,140 +60,60 @@ public class OnlinerShoppingCartTest extends ParentBaseTestNotLoginTests impleme
 	@BeforeMethod
 	public void beforeMethodShoppingCartTestChild() {
 		LOGGER.info("@ShoppingCartTest-BeforeMethod-Child");
-	}
-	
-	
-       
-    @Test()
-    @MethodOwner(owner = "dkharevich")
-    @TestPriority(Priority.P3)
-    @TestLabel(name = "feature", value = {"web", "regression"})
-    
-    //testcase019 Verify that the user Gets correct work of Shopping Cart in Catalog section
-    public void testUserGetsCorrectWorkOfShoppingCartInCatalog() {
-        
-    	// Open Home page
-        HomePageOnliner homePageOnliner = new HomePageOnliner(getDriver());
+		
+        // Open Home page
+        homePageOnliner = new HomePageOnliner(getDriver());
         homePageOnliner.open();
         Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
-                
-        // Open Authorization page
-        LoginPageOnliner loginPageOnliner = homePageOnliner.getTopHeaderBar().clickOnAuthLink();
         
-        // Type in Login field
-        loginPageOnliner.typeInLoginField("dmiterkh@mail.ru");
-        
-        // Type in Password field
-        loginPageOnliner.typeInPasswordField("3909091");
-        
-        // Password checking
-        loginPageOnliner.showPasswordInPasswordField();;
-        
-        // Click on Auth button
-        AuthorizedPageOnliner authorizedPageOnliner = loginPageOnliner.clickOnAuthButton();
+        // Authorization Link is present
+        homePageOnliner.refreshPageIfAuthLinkIsNotPresent();
+        Assert.assertTrue(homePageOnliner.isAuthLinkElementPresent(), "Element has not been found after 20 attempts");
 
-        // Click on (Enter to) Shopping Cart
-        ShoppingCartPageOnliner shoppingCartPageOnliner = authorizedPageOnliner.getTopHeaderBar().clickOnShoppingCartLink();        
-        
-        // Return to Home page
-        authorizedPageOnliner = shoppingCartPageOnliner.clickOnAutorizedPageLink();
-       
-        // Open Catalog page
-        CatalogPageOnliner catalogPageOnliner = authorizedPageOnliner.getTopHeaderBar().openCatalogPageOnliner();
-      
-        // Open Computer techics subsection
-        catalogPageOnliner.clickOnComputerTechnicsLink();
-      
-        // Open Computers subsection
-        catalogPageOnliner.clickOnComputersLink();
-             
-        // Open Laptop subsection
-        LaptopPageOnliner laptopPageOnliner = catalogPageOnliner.openLaptopPageOnliner();
-        
-        // Choose producer
-        laptopPageOnliner.clickOnProducerCheckboxLink();
-      
-        // Set value of upper bound price field
-        laptopPageOnliner.typeInUpperBoundPriceField("1000"); 
-        
-        // Choose item
-        ItemPageOnliner itemPageOnliner = laptopPageOnliner.openItemPageOnliner();
-        
-        // Add to Shopping cart
-        itemPageOnliner.addToShoppingCart();
-        
-        // Go to Shopping cart
-        shoppingCartPageOnliner = itemPageOnliner.clickOnShoppingCartLink();
-        
-        // Type in Number of Item window
-        shoppingCartPageOnliner.typeInNumberOfItemWindowLink();
-        
-        // Add one item
-        shoppingCartPageOnliner.clickOnIncrementButtonLink();
-      
-        // Subtract one item
-        shoppingCartPageOnliner.clickOnDecrementButtonLink();
-      
-        // Remove item
-        shoppingCartPageOnliner.clickOnRemoveButtonLink();
-        shoppingCartPageOnliner.pause(5);
-        
-        // Return to Home page
-        authorizedPageOnliner = shoppingCartPageOnliner.clickOnAutorizedPageLink();
-        authorizedPageOnliner.pause(10);
+	}
 
-        
-    }
-    
     @Test()
     @MethodOwner(owner = "dkharevich")
     @TestPriority(Priority.P3)
     @TestLabel(name = "feature", value = {"web", "regression"})
     
-    //testcase019 short description
+ 	//testcase019 Verify that the user Gets correct work of Shopping Cart in Catalog section
     public void testUserGetsCorrectWorkOfShoppingCartInCatalogShort() {
         
-        // Open Home page
-        HomePageOnliner homePageOnliner = new HomePageOnliner(getDriver());
-        homePageOnliner.open();
-        Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
-        
         // Enter to personal account
-        AuthorizedPageOnliner authorizedPageOnliner = homePageOnliner.getTopHeaderBar().clickOnAuthLink().getAuthorizedPageOnliner("dmiterkh@mail.ru", "3909091");
+        AuthorizedPageOnliner authorizedPageOnliner = homePageOnliner.openAuthorizedPageOnliner("dmiterkh@mail.ru", "3909091");
 
         // Get Item (List of items)
-        ItemPageOnliner itemPageOnliner = authorizedPageOnliner.getTopHeaderBar().openCatalogPageOnliner().getLaptopPageOnliner().getItemPageOnliner("1000");
-        
-        // Add to Shopping cart
+        ItemPageOnliner itemPageOnliner = authorizedPageOnliner.openFirstItemPageOnliner("1000");
         itemPageOnliner.addToShoppingCart();
         
         // Go to Shopping cart
-        ShoppingCartPageOnliner shoppingCartPageOnliner = itemPageOnliner.clickOnShoppingCartLink();
+        ShoppingCartPageOnliner shoppingCartPageOnliner = itemPageOnliner.openShoppingCartPageOnliner();
+        shoppingCartPageOnliner.showShoppingCartOperations();
+        pause(1);
         
-        // Do Shopping cart operations
-        authorizedPageOnliner = shoppingCartPageOnliner.showShoppingCartOperations();
-        authorizedPageOnliner.pause(10);
+        authorizedPageOnliner = shoppingCartPageOnliner.openAutorizedPageOnliner()
             
     }
     
     
     
-	@BeforeMethod
+	@AfterMethod
 	public void afterMethodShoppingCartTestChild() {
 		LOGGER.info("@ShoppingCartTest-AfterMethod-Child");
 	}
 	
-	@BeforeClass
+	@AfterClass
 	public void afterClassShoppingCartTestChild() {
 		LOGGER.info("@ShoppingCartTest-AfterClass-Child");
 	}
 
-	@BeforeTest
+	@AfterTest
 	public void afterTestShoppingCartTestChild() {
 		LOGGER.info("@ShoppingCartTest-AfterTest-Child");
 	}
 
-	@BeforeSuite
+	@AfterSuite
     public void afterSuiteShoppingCartTestChild() {
 		LOGGER.info("@ShoppingCartTest-AfterSuite-Child");
     }

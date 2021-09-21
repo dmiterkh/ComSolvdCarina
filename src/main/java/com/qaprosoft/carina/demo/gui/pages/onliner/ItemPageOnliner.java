@@ -15,8 +15,10 @@ import com.qaprosoft.carina.core.gui.AbstractPage;
 import com.qaprosoft.carina.demo.gui.pages.onliner.ItemPageOnliner;
 
 public class ItemPageOnliner extends AbstractPage {
+	
 	private static final Logger LOGGER = LoggerFactory.getLogger(ItemPageOnliner.class);
  	  
+	
     @FindBy(xpath = "//a[contains(@class,'product-aside__item-button') and contains(text(),'В корзину')]")
     private List<ExtendedWebElement> addToShoppingCartListLink;
     
@@ -26,21 +28,22 @@ public class ItemPageOnliner extends AbstractPage {
     @FindBy(xpath = "//div[@id='cart-desktop']//a[@href='https://cart.onliner.by']")
     private ExtendedWebElement shoppingCartLink; 
     
+    
+    
     public ItemPageOnliner(WebDriver driver) {
         super(driver);
     }
     
+    
     public void addToShoppingCart(){
     	if (addedToShoppingCartLink.isElementPresent()) {
-    		
+
     	} else {	    	
-    		addToShoppingCartListLink.get(0).scrollTo();
 	    	addToShoppingCartListLink.get(0).click();
     	}
     }
     
-    public ShoppingCartPageOnliner clickOnShoppingCartLink() {
-    	shoppingCartLink.scrollTo();
+    public ShoppingCartPageOnliner openShoppingCartPageOnliner() {
     	shoppingCartLink.click();
         return new ShoppingCartPageOnliner(driver);
     }

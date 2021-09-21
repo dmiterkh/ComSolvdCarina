@@ -19,11 +19,10 @@ public class AuthorizedPageOnliner extends AbstractPage {
 	
     private static final Logger LOGGER = LoggerFactory.getLogger(AuthorizedPageOnliner.class);
     
-    // Additional link
+
     @FindBy(xpath = "//a[@href='https://blog.onliner.by/vacancy']")
     private ExtendedWebElement vacanciesLink;
     
-    // Additional link
     @FindBy(xpath = "//img[@class='onliner_logo']")
     private ExtendedWebElement homeLink;    
     
@@ -36,22 +35,21 @@ public class AuthorizedPageOnliner extends AbstractPage {
     @FindBy(xpath = "//a[contains(@href,'https://profile.onliner.by') and contains(@class,'b-top-profile__preview')]")
     private  ExtendedWebElement profileLink;
     
-    @FindBy(xpath = "//div[@class='b-top-profile__link b-top-profile__link_secondary']")
-    private TopHeaderBar popupProfileExitLink;
+    @FindBy(xpath = "//a[@class='b-top-profile__link b-top-profile__link_secondary']")
+    private ExtendedWebElement popupProfileExitLink;
+    
     
     
     public AuthorizedPageOnliner(WebDriver driver) {
         super(driver);
-        
-        
     }
     
-    // Additional method
+    
+    
     public void scrollToBottom() {
     	vacanciesLink.scrollTo();
     }
     
-    // Additional method
     public void scrollToTop() {
     	homeLink.scrollTo();
     }
@@ -60,10 +58,17 @@ public class AuthorizedPageOnliner extends AbstractPage {
         return topHeaderBarLink;
     }
     
-    public TopHeaderBar returnPopupProfileLink() {
-        return popupProfileExitLink;
-        
+    public ItemPageOnliner openFirstItemPageOnliner(String stringArg) {
+    	return getTopHeaderBar().openCatalogPageOnliner().getLaptopPageOnliner().openFirstItemPageOnliner(stringArg);
     }
     
+    public HomePageOnliner openHomePageOnliner() {
+    	profileLink.click();
+        pause(3);
+        popupProfileExitLink.click();
+        pause(3);
+        homeLink.click();
+        return new HomePageOnliner(driver);
+    }
 
 }

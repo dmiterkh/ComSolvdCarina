@@ -59,7 +59,7 @@ public class OnlinerLoginTest extends LoginBaseTestCodeInChildAnnotation impleme
         
         // Authorization Link is present
         homePageOnliner.refreshPageIfAuthLinkIsNotPresent();
-        Assert.assertTrue(homePageOnliner.returnAuthLinkPresent(), "Element has not been found after 20 attempts");
+        Assert.assertTrue(homePageOnliner.isAuthLinkElementPresent(), "Element has not been found after 20 attempts");
 
                 	
 	}
@@ -75,7 +75,7 @@ public class OnlinerLoginTest extends LoginBaseTestCodeInChildAnnotation impleme
     public void testAuthBarIsOpened() {
     
         // Open Authorization page
-        LoginPageOnliner loginPageOnliner = homePageOnliner.clickOnAuthLinkThroughTopHeader();
+        LoginPageOnliner loginPageOnliner = homePageOnliner.openLoginPageOnliner();
         Assert.assertTrue(loginPageOnliner.isPageOpened(), "Login page is not opened");
 
     }    
@@ -89,7 +89,7 @@ public class OnlinerLoginTest extends LoginBaseTestCodeInChildAnnotation impleme
     public void testUserCanActivateFieldsAndCanTypeInIt() {
                         
         // Open Authorization page
-        LoginPageOnliner loginPageOnliner = homePageOnliner.clickOnAuthLinkThroughTopHeader();
+        LoginPageOnliner loginPageOnliner = homePageOnliner.openLoginPageOnliner();
         Assert.assertTrue(loginPageOnliner.isPageOpened(), "Not Authorized Login page is not opened");
         
         // Type in Login field
@@ -100,7 +100,9 @@ public class OnlinerLoginTest extends LoginBaseTestCodeInChildAnnotation impleme
         loginPageOnliner.typeInPasswordField("adaxdeaeca");
         Assert.assertTrue(loginPageOnliner.isPasswordFieldClickable(), "Password field is not clickable");
 
-        loginPageOnliner.showPasswordInPasswordField();
+        // Password checking
+        loginPageOnliner.showPasswordInPasswordField();;
+        pause(1);
   
     }        
     
@@ -113,7 +115,7 @@ public class OnlinerLoginTest extends LoginBaseTestCodeInChildAnnotation impleme
     public void testUserCanEnterLettersNumbersAndSpecialSymbols() {
         
         // Open Authorization page
-        LoginPageOnliner loginPageOnliner = homePageOnliner.clickOnAuthLinkThroughTopHeader();
+        LoginPageOnliner loginPageOnliner = homePageOnliner.openLoginPageOnliner();
         Assert.assertTrue(loginPageOnliner.isPageOpened(), "Login page is not opened");
         
         // Type in Login field
@@ -124,7 +126,9 @@ public class OnlinerLoginTest extends LoginBaseTestCodeInChildAnnotation impleme
         loginPageOnliner.typeInPasswordField("SolvD_@#$%^&_2020");
         Assert.assertTrue(loginPageOnliner.isPasswordFieldClickable(), "Password field is not clickable");
 
-        loginPageOnliner.showPasswordInPasswordField();
+        // Password checking
+        loginPageOnliner.showPasswordInPasswordField();;
+        pause(1);
 
     }    
         
@@ -137,7 +141,7 @@ public class OnlinerLoginTest extends LoginBaseTestCodeInChildAnnotation impleme
     public void testUserCanAccessAccountThroughEnteringValidLogAndPas() {
         
     	//Open Authorized Page
-        AuthorizedPageOnliner authorizedPageOnliner = homePageOnliner.getAuthorizedPageOnliner("dmiterkh@mail.ru", "3909091");
+        AuthorizedPageOnliner authorizedPageOnliner = homePageOnliner.openAuthorizedPageOnliner("dmiterkh@mail.ru", "3909091");
         Assert.assertTrue(authorizedPageOnliner.isPageOpened(), "Authorized page is not opened");
 
     }
@@ -151,7 +155,7 @@ public class OnlinerLoginTest extends LoginBaseTestCodeInChildAnnotation impleme
     public void testUserCanNotAccessAccountThroughEnteringInvalidLogValidPas() {
         
     	//Open Not Authorized Page        
-        LoginPageOnliner loginPageOnliner = homePageOnliner.getNotAuthorizedLoginPageOnliner("dmiterkh.mail.ru", "111111");
+        LoginPageOnliner loginPageOnliner = homePageOnliner.openNotAuthorizedLoginPageOnliner("dmiterkh.mail.ru", "111111");
         Assert.assertTrue(loginPageOnliner.isPageOpened(), "Not Authorized Login page is not opened");
     
     }    
