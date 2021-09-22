@@ -17,26 +17,12 @@ public class MobileCalculatorTest extends MobileCalculatorTestBase implements IA
 	@Test()
     public void testCalculatorNumberPanel() {
     	
-		
         CalculatorPageBase calc = initPage(getDriver(), CalculatorPageBase.class);
         calc.getInfoFromEntryField();
         Assert.assertEquals(calc.getInfoFromEntryField(), "", "Display Panel does not work correctly");
         
-        calc.clickOnDigitBtn("0");
-        calc.clickOnPointBtn();
-        calc.clickOnDigitBtn("9");
-        calc.clickOnDigitBtn("8");
-        calc.clickOnDigitBtn("7");
-        calc.clickOnDigitBtn("6");
-        calc.clickOnDigitBtn("5");
-        calc.clickOnDigitBtn("4");
-        calc.clickOnDigitBtn("3");
-        calc.clickOnDigitBtn("2");
-        calc.clickOnDigitBtn("1");
+        calc.clickOnAllButtonsOnNumberPanel();
         Assert.assertEquals(calc.getInfoFromEntryField(), "0.987654321", "Number Panel does not work correctly");
-
-        
-        
         
     }	
  
@@ -90,10 +76,6 @@ public class MobileCalculatorTest extends MobileCalculatorTestBase implements IA
 		
     	Double actualNum = calc.returnRoundedActualNumber(calc.checkSinFunction("3"));
     	Double checkNum = calc.returnRoundedCheckNumber(Math.sin(3));			    	
-	    
-	    LOGGER.info(String.valueOf(actualNum));
-	    LOGGER.info(String.valueOf(checkNum));
-	    
 		String ModeDegRad = calc.returnModeDegRad(actualNum, checkNum); 
 		
 		
@@ -101,9 +83,6 @@ public class MobileCalculatorTest extends MobileCalculatorTestBase implements IA
 	    calc.clickOnClearBtn();
     	actualNum = calc.returnRoundedActualNumber(calc.checkSinFunction("4"));
     	checkNum = calc.returnRoundedCheckNumber(Math.sin(4));			
-	    
-	    LOGGER.info(String.valueOf(actualNum));
-	    LOGGER.info(String.valueOf(checkNum));
 	    LOGGER.info(ModeDegRad);
 		Assert.assertEquals(actualNum, checkNum, "Function sin in " + ModeDegRad + " Mode does not work correctly");
 	    
@@ -112,9 +91,6 @@ public class MobileCalculatorTest extends MobileCalculatorTestBase implements IA
 		calc.clickOnClearBtn();
 	   	actualNum = calc.returnRoundedActualNumber(calc.checkCosFunction("2"));
     	checkNum = calc.returnRoundedCheckNumber(Math.cos(2));			
-	    
-	    LOGGER.info(String.valueOf(actualNum));
-	    LOGGER.info(String.valueOf(checkNum));
 	    LOGGER.info(ModeDegRad);
 	    Assert.assertEquals(actualNum, checkNum, "Function cos in " + ModeDegRad + " Mode does not work correctly");
         
@@ -123,9 +99,6 @@ public class MobileCalculatorTest extends MobileCalculatorTestBase implements IA
 		calc.clickOnClearBtn();
 	   	actualNum = calc.returnRoundedActualNumber(calc.checkTanFunction("2"));
     	checkNum = calc.returnRoundedCheckNumber(Math.tan(2));			
-	    
-	    LOGGER.info(String.valueOf(actualNum));
-	    LOGGER.info(String.valueOf(checkNum));
 	    LOGGER.info(ModeDegRad);
 		Assert.assertEquals(actualNum, checkNum, "Function tan in " + ModeDegRad + " Mode does not work correctly");
 
@@ -136,9 +109,6 @@ public class MobileCalculatorTest extends MobileCalculatorTestBase implements IA
 		calc.clickOnClearBtn();
     	actualNum = calc.returnRoundedActualNumber(calc.checkSinFunction("3"));
     	checkNum = calc.returnRoundedCheckNumber(Math.sin(Math.toRadians(3)));			
-	    
-	    LOGGER.info(String.valueOf(actualNum));
-	    LOGGER.info(String.valueOf(checkNum));
 	    LOGGER.info(ModeDegRad);
 		Assert.assertEquals(actualNum, checkNum, "Function sin in " + ModeDegRad + " Mode does not work correctly");
 		
@@ -146,9 +116,6 @@ public class MobileCalculatorTest extends MobileCalculatorTestBase implements IA
 		calc.clickOnClearBtn();
 	   	actualNum = calc.returnRoundedActualNumber(calc.checkCosFunction("1"));
     	checkNum = calc.returnRoundedCheckNumber(Math.cos(Math.toRadians(1)));			
-	    
-	    LOGGER.info(String.valueOf(actualNum));
-	    LOGGER.info(String.valueOf(checkNum));
 	    LOGGER.info(ModeDegRad);
 	    Assert.assertEquals(actualNum, checkNum, "Function cos in " + ModeDegRad + " Mode does not work correctly");
         
@@ -156,9 +123,6 @@ public class MobileCalculatorTest extends MobileCalculatorTestBase implements IA
 		calc.clickOnClearBtn();
 	   	actualNum = calc.returnRoundedActualNumber(calc.checkTanFunction("1"));
     	checkNum = calc.returnRoundedCheckNumber(Math.tan(Math.toRadians(1)));			
-	    
-	    LOGGER.info(String.valueOf(actualNum));
-	    LOGGER.info(String.valueOf(checkNum));
 	    LOGGER.info(ModeDegRad);
 		Assert.assertEquals(actualNum, checkNum, "Function tan in " + ModeDegRad + " Mode does not work correctly");
 				
@@ -172,18 +136,11 @@ public class MobileCalculatorTest extends MobileCalculatorTestBase implements IA
 		
     	Double actualNum = calc.returnRoundedActualNumber(calc.checkArcSinFunction("0", "5"));
     	Double checkNum = calc.returnRoundedCheckNumber(Math.asin(0.5));			    	
-	    
-	    LOGGER.info(String.valueOf(actualNum));
-	    LOGGER.info(String.valueOf(checkNum));
-	    
 		String ModeDegRad = calc.returnModeDegRad(actualNum, checkNum); 
 
 		
     	actualNum = calc.returnRoundedActualNumber(calc.checkArcSinFunction("0", "5"));
     	checkNum = calc.returnRoundedCheckNumber(Math.asin(0.5));			    	
-	    
-	    LOGGER.info(String.valueOf(actualNum));
-	    LOGGER.info(String.valueOf(checkNum)); 
 	    LOGGER.info(ModeDegRad);
 		Assert.assertEquals(actualNum, checkNum, "Function arcsin in " + ModeDegRad + " Mode does not work correctly");
 		
@@ -191,9 +148,6 @@ public class MobileCalculatorTest extends MobileCalculatorTestBase implements IA
 		calc.clickOnClearBtn();
     	actualNum = calc.returnRoundedActualNumber(calc.checkArcCosFunction("0", "5"));
     	checkNum = calc.returnRoundedCheckNumber(Math.acos(0.5));			    	
-	    
-	    LOGGER.info(String.valueOf(actualNum));
-	    LOGGER.info(String.valueOf(checkNum)); 
 	    LOGGER.info(ModeDegRad);
 		Assert.assertEquals(actualNum, checkNum, "Function arccos in " + ModeDegRad + " Mode does not work correctly");
 		
@@ -201,9 +155,6 @@ public class MobileCalculatorTest extends MobileCalculatorTestBase implements IA
 		calc.clickOnClearBtn();	
     	actualNum = calc.returnRoundedActualNumber(calc.checkArcTanFunction("0", "5"));
     	checkNum = calc.returnRoundedCheckNumber(Math.atan(0.5));			    	
-	    
-	    LOGGER.info(String.valueOf(actualNum));
-	    LOGGER.info(String.valueOf(checkNum)); 
 	    LOGGER.info(ModeDegRad);
 		Assert.assertEquals(actualNum, checkNum, "Function arctan in " + ModeDegRad + " Mode does not work correctly");
 	
@@ -214,9 +165,6 @@ public class MobileCalculatorTest extends MobileCalculatorTestBase implements IA
 		calc.clickOnClearBtn();
     	actualNum = calc.returnRoundedActualNumber(calc.checkArcSinFunction("0", "5"));
     	checkNum = calc.returnRoundedCheckNumber(Math.toDegrees(Math.asin(0.5)));			    	
-	    
-	    LOGGER.info(String.valueOf(actualNum));
-	    LOGGER.info(String.valueOf(checkNum)); 
 	    LOGGER.info(ModeDegRad);
 	    Assert.assertEquals(actualNum, checkNum, "Function arcsin in " + ModeDegRad + " Mode does not work correctly");
 
@@ -224,9 +172,6 @@ public class MobileCalculatorTest extends MobileCalculatorTestBase implements IA
 		calc.clickOnClearBtn();
     	actualNum = calc.returnRoundedActualNumber(calc.checkArcCosFunction("0", "5"));
     	checkNum = calc.returnRoundedCheckNumber(Math.toDegrees(Math.acos(0.5)));			    	
-	    
-	    LOGGER.info(String.valueOf(actualNum));
-	    LOGGER.info(String.valueOf(checkNum)); 
 	    LOGGER.info(ModeDegRad);
 	    Assert.assertEquals(actualNum, checkNum, "Function arccos in " + ModeDegRad + " Mode does not work correctly");
 	    
@@ -234,9 +179,6 @@ public class MobileCalculatorTest extends MobileCalculatorTestBase implements IA
 		calc.clickOnClearBtn();
     	actualNum = calc.returnRoundedActualNumber(calc.checkArcTanFunction("0", "5"));
     	checkNum = calc.returnRoundedCheckNumber(Math.toDegrees(Math.atan(0.5)));	
-		
-	    LOGGER.info(String.valueOf(actualNum));
-	    LOGGER.info(String.valueOf(checkNum));	 
 	    LOGGER.info(ModeDegRad);
 		Assert.assertEquals(actualNum, checkNum, "Function arctan in " + ModeDegRad + " Mode does not work correctly");
 
@@ -249,26 +191,17 @@ public class MobileCalculatorTest extends MobileCalculatorTestBase implements IA
     	
     	Double actualNum = calc.returnRoundedActualNumber(calc.checkLnFunction("5"));
     	Double checkNum = calc.returnRoundedCheckNumber(Math.log(5.0));			    	
-	   
-	    LOGGER.info(String.valueOf(actualNum));
-	    LOGGER.info(String.valueOf(checkNum));	
-		Assert.assertEquals(actualNum, checkNum, "Function Ln does not work correctly");
+    	Assert.assertEquals(actualNum, checkNum, "Function Ln does not work correctly");
 
     	
     	actualNum = calc.returnRoundedActualNumber(calc.checkLogFunction("5"));
     	checkNum = calc.returnRoundedCheckNumber(Math.log10(5.0));			    	
-	   
-	    LOGGER.info(String.valueOf(actualNum));
-	    LOGGER.info(String.valueOf(checkNum));	
-		Assert.assertEquals(actualNum, checkNum, "Function Log does not work correctly");
+	    Assert.assertEquals(actualNum, checkNum, "Function Log does not work correctly");
 		
 		
     	actualNum = calc.checkSqrtFunction("9");
     	checkNum = 3.0;			    	
-	   
-	    LOGGER.info(String.valueOf(actualNum));
-	    LOGGER.info(String.valueOf(checkNum));	
-		Assert.assertEquals(actualNum, checkNum, "Function Sqrt does not work correctly");	
+	   	Assert.assertEquals(actualNum, checkNum, "Function Sqrt does not work correctly");	
 
 	}	
 	
@@ -280,27 +213,18 @@ public class MobileCalculatorTest extends MobileCalculatorTestBase implements IA
 		
     	Double actualNum = calc.returnRoundedActualNumber(calc.checkExpPowFunction("2"));
     	Double checkNum = calc.returnRoundedCheckNumber(Math.exp(2.0));			    	
-	   
-	    LOGGER.info(String.valueOf(actualNum));
-	    LOGGER.info(String.valueOf(checkNum));	
 		Assert.assertEquals(actualNum, checkNum, "Function e^x does not work correctly");
 		
 		
 		calc.clickOnClearBtn();
 		actualNum = calc.checkTenPowFunction("2");	 
 		checkNum = Math.pow(10.0, 2.0);
-	   
-	    LOGGER.info(String.valueOf(actualNum));
-	    LOGGER.info(String.valueOf(checkNum));	
 		Assert.assertEquals(actualNum, checkNum, "Function 10^x does not work correctly");
 		
 		
 		calc.clickOnClearBtn();		
 		actualNum = calc.checkSqrFunction("9");	 
 		checkNum = Math.pow(9.0, 2.0);
-	   
-	    LOGGER.info(String.valueOf(actualNum));
-	    LOGGER.info(String.valueOf(checkNum));	
 		Assert.assertEquals(actualNum, checkNum, "Function Sqr does not work correctly");
 		
 	}
@@ -312,54 +236,36 @@ public class MobileCalculatorTest extends MobileCalculatorTestBase implements IA
 
 		Double actualNum = calc.checkPercentFunction("2");	 
 		Double checkNum = (double) 2/100;
-	   
-	    LOGGER.info(String.valueOf(actualNum));
-	    LOGGER.info(String.valueOf(checkNum));	
 		Assert.assertEquals(actualNum, checkNum, "Function Percent does not work correctly");
 	
 		
 		calc.clickOnClearBtn();	
 		actualNum = calc.checkPowerFunction("7", "3");	 
 		checkNum = Math.pow(7.0, 3.0);
-	   
-	    LOGGER.info(String.valueOf(actualNum));
-	    LOGGER.info(String.valueOf(checkNum));	
 		Assert.assertEquals(actualNum, checkNum, "Function ^ does not work correctly");
 
 		
 		calc.clickOnClearBtn();	
 		actualNum = calc.returnRoundedActualNumber(calc.checkPiFunction());	 
 		checkNum = calc.returnRoundedCheckNumber(Math.PI);
-	   
-	    LOGGER.info(String.valueOf(actualNum));
-	    LOGGER.info(String.valueOf(checkNum));	
 		Assert.assertEquals(actualNum, checkNum, "Function Pi does not work correctly");
 		
 		
 		calc.clickOnClearBtn();	
 		actualNum = calc.returnRoundedActualNumber(calc.checkEFunction());	 
 		checkNum = calc.returnRoundedCheckNumber(Math.E);
-	   
-	    LOGGER.info(String.valueOf(actualNum));
-	    LOGGER.info(String.valueOf(checkNum));	
 		Assert.assertEquals(actualNum, checkNum, "Function Pi does not work correctly");
 		
 		
 		calc.clickOnClearBtn();	
 		actualNum = calc.checkParenthesisFunction("7","3","4");
 		checkNum = (double) (7+3)*4;
-	   
-	    LOGGER.info(String.valueOf(actualNum));
-	    LOGGER.info(String.valueOf(checkNum));	
 		Assert.assertEquals(actualNum, checkNum, "Function Parenthesis does not work correctly");
 		
 		
 		calc.clickOnClearBtn();
 		actualNum = calc.checkFactorialFunction("6");	 
 		checkNum = calc.checkInnerFactorialFunction("6");
-	   
-	    LOGGER.info(String.valueOf(actualNum));
-	    LOGGER.info(String.valueOf(checkNum));
 		Assert.assertEquals(actualNum, checkNum, "Function Sqr does not work correctly");
 	
 	}	

@@ -1,10 +1,7 @@
 package com.qaprosoft.carina.demo.gui.pages.onliner;
 
-import java.lang.invoke.MethodHandles;
 import java.util.List;
 
-import com.qaprosoft.carina.core.foundation.utils.Configuration;
-import com.qaprosoft.carina.core.foundation.utils.R;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
@@ -12,7 +9,6 @@ import org.slf4j.LoggerFactory;
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractPage;
-import com.qaprosoft.carina.demo.gui.pages.onliner.ItemPageOnliner;
 
 public class LaptopPageOnliner extends AbstractPage {
 	
@@ -33,18 +29,15 @@ public class LaptopPageOnliner extends AbstractPage {
     
     public LaptopPageOnliner(WebDriver driver) {
         super(driver);
-        setPageURL("https://catalog.onliner.by/notebook");
     }
          
     
    
     public void clickOnProducerCheckboxLink() {
-    	producerCheckboxListLink.get(0).scrollTo();
     	producerCheckboxListLink.get(0).click();
     }
     
     public void typeInUpperBoundPriceField(String upperBoundPriceArg) {
-    	upperBoundPriceFieldLink.scrollTo();
     	upperBoundPriceFieldLink.click();
     	upperBoundPriceFieldLink.type(upperBoundPriceArg);
     }

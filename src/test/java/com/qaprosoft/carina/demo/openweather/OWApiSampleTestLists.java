@@ -1,8 +1,5 @@
 package com.qaprosoft.carina.demo.openweather;
 
-import java.lang.invoke.MethodHandles;
-
-import org.apache.velocity.runtime.directive.Parse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.Test;
@@ -11,17 +8,11 @@ import com.qaprosoft.carina.core.foundation.IAbstractTest;
 import com.qaprosoft.carina.core.foundation.api.http.HttpResponseStatusType;
 import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
 import com.qaprosoft.carina.demo.api.openweather.GetForecastMethod;
-import com.qaprosoft.carina.demo.api.openweather.GetWeatherBboxMethod;
-import com.qaprosoft.carina.demo.api.openweather.GetWeatherCircleMethod;
-import com.qaprosoft.carina.demo.api.openweather.GetWeatherOneApiCallMethod;
 
 import io.restassured.path.json.JsonPath;
 import org.testng.Assert;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-
-import java.util.Collections;
 import java.util.List;
 
 import static org.aspectj.runtime.internal.Conversions.intValue;

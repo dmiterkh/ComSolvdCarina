@@ -2,7 +2,6 @@ package com.qaprosoft.carina.demo.mobile.gui.pages.android.calculator;
 
 import com.qaprosoft.carina.core.foundation.utils.factory.DeviceType;
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
-import com.qaprosoft.carina.core.foundation.webdriver.locator.ExtendedFindBy;
 import com.qaprosoft.carina.demo.mobile.gui.pages.common.calculator.CalculatorPageBase;
 
 import org.openqa.selenium.By;
@@ -25,13 +24,12 @@ public class CalculatorPage extends CalculatorPageBase {
     
     
 //  NUMBER PANEL    
-//  @FindBy(xpath = "//android.widget.Button[@content-desc='point']")
 	@FindBy(id = "com.google.android.calculator:id/dec_point")
     private ExtendedWebElement point;
 
-//    @FindBy(id = "com.google.android.calculator:id/digit_")
-//    private List<ExtendedWebElement> digitBtnList;
-	
+    @FindBy(id = "com.google.android.calculator:id/digit_%s")
+    private ExtendedWebElement digit;
+    
 	
 //  SYMBAL PANEL	
     @FindBy(id = "com.google.android.calculator:id/eq")
@@ -103,7 +101,6 @@ public class CalculatorPage extends CalculatorPageBase {
 
     @FindBy(id = "com.google.android.calculator:id/op_sqr")
     private ExtendedWebElement numberSqrBtn;
- 
     
 
     @FindBy(id = "com.google.android.calculator:id/op_pow")
@@ -153,15 +150,19 @@ public class CalculatorPage extends CalculatorPageBase {
         digitBtn.click();
     }
     
-//    public void clickOnDigitBtn(String digit){
-//    	if ("0".equals(digit)) {
-//    		digitBtnList.get(9).click();
-//    	} else {
-//    		int i = Integer.parseInt(digit);
-//    		digitBtnList.get(i-1).click();
-//    	}	  
-//    }
-
+    public void clickOnDigitBtnUsingFormat(String digitArg){
+        ExtendedWebElement digitBtn = digit.format(digitArg);    	
+        digitBtn.click();
+    }
+    
+    public void clickOnAllButtonsOnNumberPanel(){
+    	clickOnDigitBtnUsingFormat("0");
+    	clickOnPointBtn();
+    	for (int i = 9; i>0; i--) {
+    		clickOnDigitBtnUsingFormat(String.valueOf(i));		
+    	}
+    }
+    
     public void clickOnPointBtn(){
         point.click();
     }

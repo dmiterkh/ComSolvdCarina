@@ -5,6 +5,8 @@ import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.AfterMethod;
@@ -14,22 +16,17 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.Test;
 
 import com.qaprosoft.carina.core.foundation.IAbstractTest;
-import com.zebrunner.agent.core.annotation.TestLabel;
 import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
-import com.qaprosoft.carina.core.foundation.utils.tag.Priority;
-import com.qaprosoft.carina.core.foundation.utils.tag.TestPriority;
-import com.qaprosoft.carina.demo.gui.pages.onliner.AuthorizedPageOnliner;
+import com.qaprosoft.carina.demo.gui.pages.onliner.CatalogPageOnliner;
 import com.qaprosoft.carina.demo.gui.pages.onliner.HomePageOnliner;
-import com.qaprosoft.carina.demo.gui.pages.onliner.ItemPageOnliner;
-import com.qaprosoft.carina.demo.gui.pages.onliner.ShoppingCartPageOnliner;
 
 /**
  * @author Dmitry Kharevich
  */
 
-public class OnlinerShoppingCartTest extends ParentBaseTestNotLoginTests implements IAbstractTest {
+public class OnlinerDataProviderUsingFormatTest extends ParentBaseTestNotLoginTests implements IAbstractTest {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(OnlinerShoppingCartTest.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(OnlinerDataProviderUsingFormatTest.class);
 	
 	private HomePageOnliner homePageOnliner;
 	
@@ -57,35 +54,32 @@ public class OnlinerShoppingCartTest extends ParentBaseTestNotLoginTests impleme
         homePageOnliner.open();
         Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");
         
-        // Authorization Link is present
-        homePageOnliner.refreshPageIfAuthLinkIsNotPresent();
-        Assert.assertTrue(homePageOnliner.isAuthLinkElementPresent(), "Element has not been found after 20 attempts");
-
 	}
-
-    @Test()
-    @MethodOwner(owner = "dkharevich")
-    @TestPriority(Priority.P3)
-    @TestLabel(name = "feature", value = {"web", "regression"})
     
- 	//testcase019 Verify that the user Gets correct work of Shopping Cart in Catalog section
-    public void testUserGetsCorrectWorkOfShoppingCartInCatalogShort() {
+	
+	
+	
+    @Test(dataProvider = "DP1")
+    @MethodOwner(owner = "dkharevich")
+    @Parameters({"a", "b", "c"})
+    public void testCategoriesUsingDataProviderAndFormat(String a, String b, String c) {
         
-        // Enter to personal account
-        AuthorizedPageOnliner authorizedPageOnliner = homePageOnliner.openAuthorizedPageOnliner("dmiterkh@mail.ru", "3909091");
+    	CatalogPageOnliner catalogPageOnliner = homePageOnliner.openCatalogPageOnliner();
+    	catalogPageOnliner.getCategoryAndSubCategoryPageOnliner(a, b, c);
 
-        // Get Item (List of items)
-        ItemPageOnliner itemPageOnliner = authorizedPageOnliner.openFirstItemPageOnliner("1000");
-        itemPageOnliner.addToShoppingCart();
-        
-        // Go to Shopping cart
-        ShoppingCartPageOnliner shoppingCartPageOnliner = itemPageOnliner.openShoppingCartPageOnliner();
-        shoppingCartPageOnliner.showShoppingCartOperations();
-        pause(1);
-        
-        authorizedPageOnliner = shoppingCartPageOnliner.openAutorizedPageOnliner();
-            
+    } 
+    
+    @DataProvider(parallel = false, name = "DP1")
+    public static Object[][] dataprovider1()
+    {
+        return new Object[][] {
+            { "Компьютеры и", "Ноутбуки, компьютеры, мониторы", "notebook" },
+            { "Бытовая техника", "Приготовление пищи", "microvawe" },
+            { "Стройка и", "Оснастка для", "saw_blades" },
+            { "Дом и", "Уход за одеждой", "linendryer"}
+        };
     }
+    
     
     
     

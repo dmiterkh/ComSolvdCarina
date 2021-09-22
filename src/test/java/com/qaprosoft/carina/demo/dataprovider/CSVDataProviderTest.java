@@ -1,22 +1,14 @@
 package com.qaprosoft.carina.demo.dataprovider;
 
-import java.util.HashMap;
-
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.qaprosoft.carina.core.foundation.IAbstractTest;
 import com.qaprosoft.carina.core.foundation.dataprovider.annotations.XlsDataSourceParameters;
 import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
-import com.qaprosoft.carina.core.foundation.utils.tag.Priority;
-import com.qaprosoft.carina.core.foundation.utils.tag.TestPriority;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import com.qaprosoft.carina.demo.onliner.OnlinerAllTestsWithLoginCodeInParentAnnotation;
 
 public class CSVDataProviderTest extends ParentDataProviderBaseTest implements IAbstractTest{
 	

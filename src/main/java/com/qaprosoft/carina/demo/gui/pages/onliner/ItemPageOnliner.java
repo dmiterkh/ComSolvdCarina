@@ -1,10 +1,7 @@
 package com.qaprosoft.carina.demo.gui.pages.onliner;
 
-import java.lang.invoke.MethodHandles;
 import java.util.List;
 
-import com.qaprosoft.carina.core.foundation.utils.Configuration;
-import com.qaprosoft.carina.core.foundation.utils.R;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.slf4j.Logger;
@@ -36,9 +33,7 @@ public class ItemPageOnliner extends AbstractPage {
     
     
     public void addToShoppingCart(){
-    	if (addedToShoppingCartLink.isElementPresent()) {
-
-    	} else {	    	
+    	if (!(addedToShoppingCartLink.isElementPresent())) {	    	
 	    	addToShoppingCartListLink.get(0).click();
     	}
     }
