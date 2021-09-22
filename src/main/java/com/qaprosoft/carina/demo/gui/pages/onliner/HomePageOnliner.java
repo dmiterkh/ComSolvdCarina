@@ -1,6 +1,5 @@
 package com.qaprosoft.carina.demo.gui.pages.onliner;
 
-import java.lang.invoke.MethodHandles;
 import java.util.List;
 
 import com.qaprosoft.carina.core.foundation.utils.Configuration;
@@ -88,10 +87,12 @@ public class HomePageOnliner extends AbstractPage {
 
     public void refreshPageIfAuthLinkIsNotPresent() {
     	int k=20;
-    	LOGGER.trace(String.valueOf(k));
+    	LOGGER.info(String.valueOf(k));
         while(!(isAuthLinkElementPresent()) && k>0){
-        	LOGGER.trace(String.valueOf(k));
-        	refresh(); 
+        	LOGGER.info(Integer.toString(k));
+        	getDriver().manage().deleteAllCookies();
+        	refresh();
+        	//getDriver().get(getDriver().getCurrentUrl());
         	k--;
         }
     }

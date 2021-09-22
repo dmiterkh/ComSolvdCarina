@@ -18,11 +18,9 @@ import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
 import com.qaprosoft.carina.core.foundation.utils.tag.Priority;
 import com.qaprosoft.carina.core.foundation.utils.tag.TestPriority;
 import com.qaprosoft.carina.demo.gui.pages.onliner.AuthorizedPageOnliner;
-import com.qaprosoft.carina.demo.gui.pages.onliner.HomePageOnliner;
 import com.qaprosoft.carina.demo.gui.pages.onliner.LoginPageOnliner;
 import com.zebrunner.agent.core.annotation.TestLabel;
 
-import org.openqa.selenium.Dimension;
 
 
 public class OnlinerAllTestsWithLoginCodeInParentAnnotation extends LoginBaseTestCodeInParentAnnotation implements IAbstractTest {

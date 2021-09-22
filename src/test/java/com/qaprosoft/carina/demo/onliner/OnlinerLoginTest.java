@@ -53,6 +53,7 @@ public class OnlinerLoginTest extends LoginBaseTestCodeInChildAnnotation impleme
 		LOGGER.info("@LoginTest-BeforeMethod-Child");
 		
 		// Open Home page
+		getDriver().manage().deleteAllCookies();
 		homePageOnliner = new HomePageOnliner(getDriver());
         homePageOnliner.open();
         Assert.assertTrue(homePageOnliner.isPageOpened(), "Home page is not opened");

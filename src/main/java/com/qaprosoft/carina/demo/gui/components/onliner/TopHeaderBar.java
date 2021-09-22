@@ -11,7 +11,6 @@ import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebEleme
 import com.qaprosoft.carina.core.gui.AbstractUIObject;
 import com.qaprosoft.carina.demo.gui.pages.onliner.AutomobilePageOnliner;
 import com.qaprosoft.carina.demo.gui.pages.onliner.CatalogPageOnliner;
-import com.qaprosoft.carina.demo.gui.pages.onliner.HomePageOnliner;
 import com.qaprosoft.carina.demo.gui.pages.onliner.LoginPageOnliner;
 import com.qaprosoft.carina.demo.gui.pages.onliner.RealEstatePageOnliner;
 import com.qaprosoft.carina.demo.gui.pages.onliner.ShoppingCartPageOnliner;

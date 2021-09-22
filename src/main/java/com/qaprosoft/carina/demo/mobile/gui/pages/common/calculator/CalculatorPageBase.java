@@ -2,9 +2,7 @@ package com.qaprosoft.carina.demo.mobile.gui.pages.common.calculator;
 
 import com.qaprosoft.carina.core.gui.AbstractPage;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 public abstract class CalculatorPageBase extends AbstractPage {
 	
@@ -23,12 +21,13 @@ public abstract class CalculatorPageBase extends AbstractPage {
 //  NUMBER PANEL  
     public abstract void clickOnDigitBtn(String digit);
     
-//    public abstract void clickOnDigitBtn(String digit);
+    public abstract void clickOnDigitBtnUsingFormat(String digit);
 
     public abstract void clickOnPointBtn();
     
-    public abstract void enterDoubleNumber(String aDigitArg, String bDigitArg);
+    public abstract void clickOnAllButtonsOnNumberPanel();
     
+    public abstract void enterDoubleNumber(String aDigitArg, String bDigitArg);
     
     
 //  SYMBOL PANEL      

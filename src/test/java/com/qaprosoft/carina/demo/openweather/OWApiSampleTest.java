@@ -1,7 +1,5 @@
 package com.qaprosoft.carina.demo.openweather;
 
-import java.lang.invoke.MethodHandles;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.Test;
@@ -16,7 +14,6 @@ import com.qaprosoft.carina.demo.api.openweather.GetWeatherMethodByLonLat;
 
 import io.restassured.path.json.JsonPath;
 import org.testng.Assert;
-import org.testng.annotations.Test;
 
 public class OWApiSampleTest implements IAbstractTest {
     private static final Logger LOGGER = LoggerFactory.getLogger(OWApiSampleTest.class);
