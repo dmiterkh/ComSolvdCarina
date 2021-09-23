@@ -20,6 +20,9 @@ import com.qaprosoft.carina.core.foundation.utils.tag.Priority;
 import com.qaprosoft.carina.core.foundation.utils.tag.TestPriority;
 import com.qaprosoft.carina.demo.gui.pages.onliner.AutomobilePageOnliner;
 import com.qaprosoft.carina.demo.gui.pages.onliner.HomePageOnliner;
+import com.qaprosoft.carina.demo.gui.pages.onliner.CatalogPageOnliner;
+import com.qaprosoft.carina.demo.gui.pages.onliner.LaptopPageOnliner;
+import com.qaprosoft.carina.demo.gui.pages.onliner.RealEstatePageOnliner;
 
 /**
  * @author Dmitry Kharevich
@@ -59,39 +62,39 @@ public class OnlinerSectionsBarTest extends ParentBaseTestNotLoginTests implemen
 	
 	
 
-//    @Test()
-//    @MethodOwner(owner = "dkharevich")
-//    @TestPriority(Priority.P3)
-//    @TestLabel(name = "feature", value = {"web", "regression"})
-//    
-//	//testcase011 Verify that the user Is Being Redirected to the list of all categories page with relevant categories of items of any section of the site after clicking on one of the links at the top of the home page
-//    public void testUserRedirectedToListOfCategoriesWithRelevantCategoriesClickingOnLink() {
-//
-//        // Open Catalog page
-//        CatalogPageOnliner catalogPageOnliner = homePageOnliner.openCatalogPageOnliner();
-//    	pause(1);
-//   
-//    }    
-//        
-//    @Test()
-//    @MethodOwner(owner = "dkharevich")
-//    @TestPriority(Priority.P3)
-//    @TestLabel(name = "feature", value = {"web", "regression"})
-//    
-//	//testcase012 Verify that the user Is Being Redirected to the search results page with relevant search results items after setting on certain options in the search filter for extremely detailed search on the certain section
-//    public void testExtremelyDetailedSearchWorksCorrectlyForCatalogPage() {
-//                        
-//        // Open Catalog page
-//        CatalogPageOnliner catalogPageOnliner = homePageOnliner.openCatalogPageOnliner();
-//        catalogPageOnliner.clickOnComputerTechnicsLink();
-//        catalogPageOnliner.clickOnComputersLink();
-//        
-//        LaptopPageOnliner laptopPageOnliner = catalogPageOnliner.openLaptopPageOnliner();
-//        laptopPageOnliner.clickOnProducerCheckboxLink();
-//        laptopPageOnliner.typeInUpperBoundPriceField("1000");            
-//        pause(1);
-//
-//    }    
+    @Test()
+    @MethodOwner(owner = "dkharevich")
+    @TestPriority(Priority.P3)
+    @TestLabel(name = "feature", value = {"web", "regression"})
+    
+	//testcase011 Verify that the user Is Being Redirected to the list of all categories page with relevant categories of items of any section of the site after clicking on one of the links at the top of the home page
+    public void testUserRedirectedToListOfCategoriesWithRelevantCategoriesClickingOnLink() {
+
+        // Open Catalog page
+        CatalogPageOnliner catalogPageOnliner = homePageOnliner.openCatalogPageOnliner();
+    	pause(1);
+   
+    }    
+        
+    @Test()
+    @MethodOwner(owner = "dkharevich")
+    @TestPriority(Priority.P3)
+    @TestLabel(name = "feature", value = {"web", "regression"})
+    
+	//testcase012 Verify that the user Is Being Redirected to the search results page with relevant search results items after setting on certain options in the search filter for extremely detailed search on the certain section
+    public void testExtremelyDetailedSearchWorksCorrectlyForCatalogPage() {
+                        
+        // Open Catalog page
+        CatalogPageOnliner catalogPageOnliner = homePageOnliner.openCatalogPageOnliner();
+        catalogPageOnliner.clickOnComputerTechnicsLink();
+        catalogPageOnliner.clickOnComputersLink();
+        
+        LaptopPageOnliner laptopPageOnliner = catalogPageOnliner.openLaptopPageOnliner();
+        laptopPageOnliner.clickOnProducerCheckboxLink();
+        laptopPageOnliner.typeInUpperBoundPriceField("1000");            
+        pause(1);
+
+    }    
 
     @Test()
     @MethodOwner(owner = "dkharevich")
@@ -103,41 +106,35 @@ public class OnlinerSectionsBarTest extends ParentBaseTestNotLoginTests implemen
                         
         // Open Automobile catalog page
         AutomobilePageOnliner automobilePageOnliner = homePageOnliner.openAutomobilePageOnliner();
-        LOGGER.info("1");
         automobilePageOnliner.clickOnCountryDropdownLink();
-        LOGGER.info("2");
         automobilePageOnliner.clickOnCountryChoiseLink();
-        LOGGER.info("3");
-    	automobilePageOnliner.clickOnProducerDropdownLink();
-        LOGGER.info("4");    	
-    	automobilePageOnliner.clickOnProducerChoiseLink();
-        LOGGER.info("5");
+        
+        automobilePageOnliner.clickOnProducerDropdownLink();
+        automobilePageOnliner.clickOnProducerChoiseLink();
+        
     	automobilePageOnliner.clickOnModelDropdownLink();
-        LOGGER.info("6");
-    	automobilePageOnliner.clickOnModelChoiseLink();
-        LOGGER.info("7");
-        automobilePageOnliner.clickOnLowerYearDropdownLink();
-        LOGGER.info("8");
+        automobilePageOnliner.clickOnModelChoiseLink();
+
+    	automobilePageOnliner.clickOnLowerYearDropdownLink();
         automobilePageOnliner.clickOnLowerYearChoiseLink();
-        LOGGER.info("9");    	
         pause(1);
     }   
 
-//	@Test()
-//	@MethodOwner(owner = "dkharevich")
-//	@TestPriority(Priority.P3)
-//	@TestLabel(name = "feature", value = {"web", "regression"})
-//	
-//	//testcase014 (Negative) Verify that the user Gets the message "No results found for this term" or is being redirected to the search results page with irrelevant search result items after setting on certain options in the search filter for extremely detailed search on the certain section
-//	public void testExtremelyDetailedSearchWorksCorrectlyForRealEstatePage() {
-//
-//	    // Open Real estate page
-//	    RealEstatePageOnliner realEstatePageOnliner = homePageOnliner.openRealEstatePageOnliner();
-//	    realEstatePageOnliner.clickOnNumberOfRoomsButton();
-//	    realEstatePageOnliner.moveOnUpperYearSlider();	
-//	    realEstatePageOnliner.moveOnUpperPriceSlider();	   
-//    	pause(1);
-//	}
+	@Test()
+	@MethodOwner(owner = "dkharevich")
+	@TestPriority(Priority.P3)
+	@TestLabel(name = "feature", value = {"web", "regression"})
+	
+	//testcase014 (Negative) Verify that the user Gets the message "No results found for this term" or is being redirected to the search results page with irrelevant search result items after setting on certain options in the search filter for extremely detailed search on the certain section
+	public void testExtremelyDetailedSearchWorksCorrectlyForRealEstatePage() {
+
+	    // Open Real estate page
+	    RealEstatePageOnliner realEstatePageOnliner = homePageOnliner.openRealEstatePageOnliner();
+	    realEstatePageOnliner.clickOnNumberOfRoomsButton();
+	    realEstatePageOnliner.moveOnUpperYearSlider();	
+	    realEstatePageOnliner.moveOnUpperPriceSlider();	   
+    	pause(1);
+	}
 	
     
     

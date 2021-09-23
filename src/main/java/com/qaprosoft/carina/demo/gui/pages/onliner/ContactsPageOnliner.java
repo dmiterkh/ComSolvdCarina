@@ -23,7 +23,6 @@ public class ContactsPageOnliner extends AbstractPage {
     
     public ContactsPageOnliner(WebDriver driver) {
         super(driver);
-        setPageURL("https://people.onliner.by/contacts");
     }
 
     

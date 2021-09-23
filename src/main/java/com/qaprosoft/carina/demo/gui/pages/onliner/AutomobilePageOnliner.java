@@ -20,23 +20,11 @@ public class AutomobilePageOnliner extends AbstractPage {
     @FindBy(xpath = "//div[@class='input-style__faux' and text()='Все страны']//parent::div//parent::div")
     private List<ExtendedWebElement> countryDropdownListLink;
     
-//    @FindBy(xpath = "//div[@class='input-style__faux' and text()='Все страны']//parent::div//parent::div")
-//    private List<WebElement> countryDropdownListLinkWeb;
-    
-    @FindBy(xpath = "//div[@class='vehicle-form__row'][1]//div//div//div//div//div//div//div//div//div[@class='input-style__faux' and text()='Все страны']//parent::div//parent::div")
-    private List<ExtendedWebElement> countryDropdownListLink2;
-  
   	@FindBy(xpath = "//div[@class='dropdown-style__checkbox-sign' and text()='Беларусь']//parent::div//parent::div//parent::label//parent::li")
   	private ExtendedWebElement countryChoiseLink;
     
     @FindBy(xpath = "//div[@class='input-style__faux' and text()='Марка']//parent::div//parent::div")
     private List<ExtendedWebElement> producerDropdownListLink;
-  	
-    @FindBy(xpath = "//div[@class='vehicle-form__label-title' and text()='Марка']//parent::div//parent::div//parent::div//parent::div//div[@class='vehicle-form__field']//div/div/div//div//div/div//div[text()='Марка']//parent::div//parent::div[contains(@class,'input-style__wrapper')]")
-    private List<ExtendedWebElement> producerDropdownListLink2;
-    
-    @FindBy(xpath = "//div[@class='vehicle-form__row'][2]//div//div//div//div//div//div//div//div//div[@class='input-style__faux' and text()='Марка']//parent::div//parent::div")
-    private List<ExtendedWebElement> producerDropdownListLink3;
   
   	@FindBy(xpath = "//div[@class='dropdown-style__checkbox-sign' and text()='Renault']//parent::div//parent::div//parent::label//parent::li")
   	private ExtendedWebElement producerChoiseLink;
@@ -70,16 +58,9 @@ public class AutomobilePageOnliner extends AbstractPage {
     }
     
     public void clickOnProducerDropdownLink() {
-//		JavascriptExecutor js = (JavascriptExecutor) driver;
-//		js.executeScript("arguments[0].click();", producerDropdownListLink.get(0).getElement());	
-//		
-//		JavascriptExecutor js = (JavascriptExecutor) driver;
-//		js.executeScript("arguments[0].click();", producerDropdownListLink2.get(0).getElement());	
-		
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("arguments[0].click();", producerDropdownListLink3.get(0).getElement());	
-//		
-//		producerDropdownListLink.get(0).click();	
+    	JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(0,100)");	
+		producerDropdownListLink.get(0).click();	
     }
     
     public void clickOnProducerChoiseLink() {
@@ -87,10 +68,9 @@ public class AutomobilePageOnliner extends AbstractPage {
     }
     
     public void clickOnModelDropdownLink() {
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("arguments[0].click();", modelDropdownListLink.get(0).getElement());	
-
-//    	modelDropdownListLink.get(0).click();
+    	JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(0,50)");
+    	modelDropdownListLink.get(0).click();
     }
     
     public void clickOnModelChoiseLink() {
@@ -98,6 +78,8 @@ public class AutomobilePageOnliner extends AbstractPage {
     }
     
     public void clickOnLowerYearDropdownLink() {
+    	JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(0,100)");
     	lowerYearDropdownListLink.get(0).click();
     }
     
