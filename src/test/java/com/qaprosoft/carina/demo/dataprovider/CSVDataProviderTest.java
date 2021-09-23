@@ -5,10 +5,7 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 import com.qaprosoft.carina.core.foundation.IAbstractTest;
-import com.qaprosoft.carina.core.foundation.dataprovider.annotations.XlsDataSourceParameters;
 import com.qaprosoft.carina.core.foundation.dataprovider.annotations.CsvDataSourceParameters;
-
-import com.qaprosoft.carina.core.foundation.dataprovider.core.impl.CsvDataProvider;
 import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
 
 import java.util.HashMap;
