@@ -19,17 +19,14 @@ import com.qaprosoft.carina.demo.gui.pages.onliner.ShoppingCartPageOnliner;
 public class TopHeaderBar extends AbstractUIObject {
 	
 	
-	@FindBy(xpath ="//body[@class='no-touch']//div//div//div//div//header[@class='g-top']//div[@class='b-top-actions']//div[@class='g-top-i']//div//div//div//div//div//div[contains(@class,'auth-bar__item--text')]")
+	@FindBy(xpath ="//div[contains(@class,'auth-bar__item--text')]")
 	private ExtendedWebElement authLink;
 	
 	@FindBy(xpath = "//input[@class='fast-search__input']")
 	private ExtendedWebElement fastSearchFieldLink;
 
-    @FindBy(xpath = "//html//body//div//div//div//div//div//div[text()='на барахолке']")
+    @FindBy(xpath = "//div[text()='на барахолке']")
     private ExtendedWebElement usedGoodsButtonLink;
-    
-    @FindBy(xpath = "//html//body//div//div//div//div//div//div[text()='на барахолке']")
-    private WebElement usedGoodsButtonLink2;
     
     @FindBy(xpath = "//li[@class='search__result']")
     private List<ExtendedWebElement> foundItemListLink;
