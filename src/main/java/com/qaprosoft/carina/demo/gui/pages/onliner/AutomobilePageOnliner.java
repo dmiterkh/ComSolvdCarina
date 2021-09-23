@@ -1,9 +1,12 @@
 package com.qaprosoft.carina.demo.gui.pages.onliner;
 
+import java.time.Duration;
 import java.util.List;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -71,8 +74,13 @@ public class AutomobilePageOnliner extends AbstractPage {
     	JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("window.scrollBy(0,50)");
     	modelDropdownListLink.get(0).click();
-    }
     
+//    	getDriver().manage().timeouts()..implicitlyWait(Durartion.ofSeconds(10));
+//    	
+//    	ExtendedWebElement element = (new WebDriverWait(getDriver(), Duration.ofSeconds(10)));
+//    			.until(ExpectedConditions.presenceOfAllElementLocated(By.xpath("//div[@class='input-style__faux' and text()='Модель']//parent::div//parent::div")));
+    
+    }	
     public void clickOnModelChoiseLink() {
     	modelChoiseLink.click();
     }
