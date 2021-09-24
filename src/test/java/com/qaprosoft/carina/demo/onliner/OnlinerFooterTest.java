@@ -1,5 +1,7 @@
 package com.qaprosoft.carina.demo.onliner;
 
+import java.util.concurrent.TimeUnit;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
@@ -60,6 +62,8 @@ public class OnlinerFooterTest extends ParentBaseTestNotLoginTests implements IA
     //testcase018 Verify that the user Is Being Redirected to the relevant page after clicking on any link in footer 
     public void testUserRedirectedToRelevantPageClickingOnLinkInFooter() {
         
+    	getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    	
     	// Open Home page
         HomePageOnliner homePageOnliner = new HomePageOnliner(getDriver());
         homePageOnliner.open();

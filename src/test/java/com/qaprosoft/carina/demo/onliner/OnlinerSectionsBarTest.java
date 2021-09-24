@@ -119,7 +119,55 @@ public class OnlinerSectionsBarTest extends ParentBaseTestNotLoginTests implemen
         automobilePageOnliner.clickOnLowerYearChoiseLink();
         pause(1);
     }   
+    
+    @Test()
+    @MethodOwner(owner = "dkharevich")
+    @TestPriority(Priority.P3)
+    @TestLabel(name = "feature", value = {"web", "regression"})
+    
+	//testcase013 Verify that the user Is Being Redirected to the search results page with relevant search results items after setting on certain options in the search filter for extremely detailed search on the certain section
+    public void testExtremelyDetailedSearchWorksCorrectlyForAutomobilePageUsingJS() {
+                        
+        // Open Automobile catalog page
+        AutomobilePageOnliner automobilePageOnliner = homePageOnliner.openAutomobilePageOnliner();
+        automobilePageOnliner.clickOnCountryDropdownLink();
+        automobilePageOnliner.clickOnCountryChoiseLink();
+        
+        automobilePageOnliner.clickOnProducerDropdownLinkUsingJS();
+        automobilePageOnliner.clickOnProducerChoiseLink();
+        
+    	automobilePageOnliner.clickOnModelDropdownLinkUsingJS();
+        automobilePageOnliner.clickOnModelChoiseLink();
 
+    	automobilePageOnliner.clickOnLowerYearDropdownLinkUsingJS();
+        automobilePageOnliner.clickOnLowerYearChoiseLink();
+        pause(1);
+    } 
+
+    @Test()
+    @MethodOwner(owner = "dkharevich")
+    @TestPriority(Priority.P3)
+    @TestLabel(name = "feature", value = {"web", "regression"})
+    
+	//testcase013 Verify that the user Is Being Redirected to the search results page with relevant search results items after setting on certain options in the search filter for extremely detailed search on the certain section
+    public void testExtremelyDetailedSearchWorksCorrectlyForAutomobilePageUsingWait() {
+                        
+        // Open Automobile catalog page
+        AutomobilePageOnliner automobilePageOnliner = homePageOnliner.openAutomobilePageOnliner();
+        automobilePageOnliner.clickOnCountryDropdownLinkUsingWait();
+        automobilePageOnliner.clickOnCountryChoiseLink();
+        
+        automobilePageOnliner.clickOnProducerDropdownLinkUsingWait();
+        automobilePageOnliner.clickOnProducerChoiseLink();
+        
+    	automobilePageOnliner.clickOnModelDropdownLinkUsingWait();
+        automobilePageOnliner.clickOnModelChoiseLink();
+
+    	automobilePageOnliner.clickOnLowerYearDropdownLinkUsingWait();
+        automobilePageOnliner.clickOnLowerYearChoiseLink();
+        pause(1);
+    } 
+    
 	@Test()
 	@MethodOwner(owner = "dkharevich")
 	@TestPriority(Priority.P3)
